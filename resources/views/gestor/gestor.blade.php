@@ -1,7 +1,47 @@
 @extends('layouts.layoutgestor')
  
 @section('content')
-<div class="container">
+<style>
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0);
+  transition: background 0.5s ease;
+}
+
+#carr:hover .overlay {
+  display: block;
+  background: rgba(0, 0, 0, .3);
+}
+
+.btnn {
+  position: absolute;
+  width: 100%;
+  left:0;
+  top: 180px;
+  text-align: center;
+  opacity: 0;
+  transition: opacity .35s ease;
+}
+
+.btnn a {
+  width: 200px;
+  padding: 12px 48px;
+  text-align: center;
+  color: white;
+  border: solid 2px white;
+  z-index: 1;
+}
+
+#carr:hover .btnn {
+  opacity: 1;
+}
+</style>
+<div class="container" id="carr">
     <div class="row">
         <div class="col-md-12">
             <div class="panel panel-default">
@@ -15,26 +55,32 @@
                     <div class="carousel-item active">
                         <img src="../../imagen/fondo4.jpg" alt="primera imagen" 
                             height="500px" width="100%">
+                            <div class="overlay"></div>
+                            <div class="btnn"><a href="#"> Editar imágenes </a></div>
                         <div class="carousel-caption">
-                        <h3>Komi-san Besto waifu</h3>
-                        <p>Komi-san god</p>
-                    </div>
+                            <h3>Komi-san Besto waifu</h3>
+                            <p>Komi-san god</p>
+                        </div>
+                   </div>
+                <div class="carousel-item">
+                <img src="../../imagen/fondo4.jpg" alt="primera imagen" 
+                            height="500px" width="100%">
+                            <div class="overlay"></div>
+                            <div class="btnn"><a href="#"> Editar imágenes </a></div>
+                        <div class="carousel-caption">
+                            <h3>Komi-san Besto waifu</h3>
+                            <p>Komi-san god</p>
+                        </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="imagen/lotte1.jpg" alt="segunda imagen" 
-                    height="500px" width="100%">
-                    <div class="carousel-caption">
-                        <h3>lotte Besto waifu</h3>
-                        <p>lotte god</p>
-                    </div>   
-                </div>
-                <div class="carousel-item">
-                    <img src="imagen/lotte2.jpg" alt="tercera imagen" 
-                    height="500px" width="100%">
-                    <div class="carousel-caption">
-                        <h3>lotte Besto waifu</h3>
-                        <p>lotte god</p>
-                    </div>
+                <img src="../../imagen/fondo4.jpg" alt="primera imagen" 
+                            height="500px" width="100%">
+                            <div class="overlay"></div>
+                            <div class="btnn"><a href="#"> Editar imágenes</a></div>
+                        <div class="carousel-caption">
+                            <h3>Komi-san Besto waifu</h3>
+                            <p>Komi-san god</p>
+                        </div>
                 </div>
             </div>
             <a href="#carrusel" class="carousel-control-prev" role="button"
