@@ -8,6 +8,7 @@
     <!--Bootstrap-->
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.css')}}">
     <script src="{{ asset('assets/js/jquery-3.3.1.slim.min.js')}}"></script> 
+    <script src="{{ asset('assets/js/Eventos.js')}}"></script> 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
@@ -92,15 +93,14 @@
                     </li>
                     
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-                        Programas Sociales
-                        </a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="{{route('evento1')}}">La Hora del codigo</a>
-                            <a class="dropdown-item" href="#">Beca de Servicio Social</a>
-                            <a class="dropdown-item" href="#">Beca del Estudiante</a>
-                            <a class="dropdown-item" href="#">Agregar Eventos</a>
-                        </div>
+                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                    Programas Sociales
+                    </a>
+                    <div class="dropdown-menu">
+                    <button class="dropdown-item programa" data-toggle="modal" data-target="#modalEdicion">Eventos 1</button>
+                    <button class="dropdown-item programa" data-toggle="modal" data-target="#modalEdicion">Eventos 1</button>
+                    <button class="dropdown-item programa" data-toggle="modal" data-target="#modalEdicion">Eventos 1</button>
+                    </div>
                     </li>
                 </ul>
             </div>
@@ -109,29 +109,21 @@
 </header>
  
  @yield('content')
- <footer class="container-fluid" style="background:gray; width:100%;">
-    <div class="pie-de-pagina">
-        <div class="container-fluid">
-            <div class="info-de-contacto">
-                <div class="row">
-                    <div class="col-md-3">
-                        <img src="http://isjuventud.gob.mx/wp-content/themes/PortalesBCS/assets/images/logo-estado-mejor-futuro.png" alt="">
-                    </div>  
-                    <div class="col-md-6">
-                        <div class="info-domicilio">
-                            <h5> Instituto Sudcaliforniano de la Juventud
-                            </h5>
-                            Calle Antonio Navarro, esq. Melitón Albáñez <br>
-                            La Paz, Baja California Sur, México         
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="medios-de-comunicacion">
-                            Conmutador (612) 125 3767 <br>
-                            <a href="http://www.facebook.com/isjbcs">Contactanos vía web</a>
-                        </div>
-                    </div>
-                </div>
+
+ <footer style="background:gray;">
+ <div class="pie-de-pagina">
+  <div class="container-fluid">
+    <div class="info-de-contacto">
+      <div class="row">
+          <div class="col-md-3">
+          <img src="http://isjuventud.gob.mx/wp-content/themes/PortalesBCS/assets/images/logo-estado-mejor-futuro.png" alt="">
+        </div>  
+        <div class="col-md-6">
+          <div class="info-domicilio">
+            <h5> Instituto Sudcaliforniano de la Juventud
+            </h5>
+            Calle Antonio Navarro, esq. Melitón Albáñez <br>
+            La Paz, Baja California Sur, México         
             </div>
         </div>
         <div class="enlaces-adicionales">
