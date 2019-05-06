@@ -57,4 +57,7 @@
             <span class="sr-only">Siguiente</span>
         </a>
 </div>
+</div>
+</div>
+</div>
 @endsection

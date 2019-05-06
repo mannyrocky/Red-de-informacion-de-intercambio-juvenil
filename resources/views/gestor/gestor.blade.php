@@ -21,7 +21,7 @@
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="imagen/lotte1.jpg" alt="segunda imagen" 
+                    <img src="../../imagen/lotte1.jpg" alt="segunda imagen" 
                     height="500px" width="100%">
                     <div class="carousel-caption">
                         <h3>lotte Besto waifu</h3>
@@ -29,7 +29,7 @@
                     </div>   
                 </div>
                 <div class="carousel-item">
-                    <img src="imagen/lotte2.jpg" alt="tercera imagen" 
+                    <img src="../../imagen/lotte2.jpg" alt="tercera imagen" 
                     height="500px" width="100%">
                     <div class="carousel-caption">
                         <h3>lotte Besto waifu</h3>
@@ -87,7 +87,9 @@
                 </div>
             </div>
         </div>
-        <div class="Container" id ="noticias">
+    </div>
+</div>
+        <div class="container" id ="noticias">
             <div class="footer-main">
                 <div class="container">
                     <div class="row">
@@ -114,9 +116,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
         </div>
     </div>
 </div>

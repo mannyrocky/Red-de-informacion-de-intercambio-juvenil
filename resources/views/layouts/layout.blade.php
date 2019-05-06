@@ -107,40 +107,38 @@
  @yield('content')
 
  <footer style="background:gray;">
- <div class="pie-de-pagina">
-  <div class="container">
-    <div class="info-de-contacto">
-      <div class="row">
-          <div class="col-md-3">
-          <img src="http://isjuventud.gob.mx/wp-content/themes/PortalesBCS/assets/images/logo-estado-mejor-futuro.png" alt="">
-        </div>  
-        <div class="col-md-6">
-          <div class="info-domicilio">
-            <h5> Instituto Sudcaliforniano de la Juventud
-            </h5>
-            Calle Antonio Navarro, esq. Melitón Albáñez <br>
-            La Paz, Baja California Sur, México         
+    <div class="pie-de-pagina">
+    <div class="container">
+        <div class="info-de-contacto">
+        <div class="row">
+            <div class="col-md-3">
+            <img src="http://isjuventud.gob.mx/wp-content/themes/PortalesBCS/assets/images/logo-estado-mejor-futuro.png" alt="">
+            </div>  
+            <div class="col-md-6">
+            <div class="info-domicilio">
+                <h5> Instituto Sudcaliforniano de la Juventud
+                </h5>
+                Calle Antonio Navarro, esq. Melitón Albáñez <br>
+                La Paz, Baja California Sur, México         
+                </div>
+            </div>
+            <div class="col-md-3">
+            <div class="medios-de-comunicacion">
+                Conmutador (612) 125 3767 <br>
+                <a href="http://www.facebook.com/isjbcs">Contactanos vía web</a>
+            </div>
             </div>
         </div>
-        <div class="col-md-3">
-          <div class="medios-de-comunicacion">
-            Conmutador (612) 125 3767 <br>
-            <a href="http://www.facebook.com/isjbcs">Contactanos vía web</a>
-          </div>
         </div>
-      </div>
     </div>
-
-
-  </div>
-  <div class="enlaces-adicionales">
-    <div class="container">
-      <nav class="nav navbar-nav">
-      </nav>
-      <p class="copy">Algunos derechos reservados © 2015 - 2021</p>
+    <div class="enlaces-adicionales">
+        <div class="container">
+        <nav class="nav navbar-nav">
+        </nav>
+        <p class="copy">Algunos derechos reservados © 2015 - 2021</p>
+        </div>
     </div>
-  </div>
-</div>
+    </div>
  </footer>
 </body>
 </html>
