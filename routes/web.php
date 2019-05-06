@@ -22,3 +22,9 @@ Route::get('/dependencias/Dependencia1','Dependencia1Controller@index')->name('d
 Route::get('/eventos/evento1','evento1Controller@index')->name('evento1');
 Route::get('/noticias/noticia1','noticia1Controller@index')->name('noticia1');
 Route::get('/auth/registrar','RegistrarController@index')->name('registrar');
+Route::get('/gestor/gestor','GestorController@index')->name('Gestor');
+Route::get('/gestor/editarcarrusel','CarruseleditController@index')->name('Carrusel');
+Route::get('/gestor/editarfooter','FooteditController@index')->name('Footer');
+Route::get('/gestor/editarnoticia','NotieditController@index')->name('Notiedit');
+Route::get('/gestor/editartexto','TexteditController@index')->name('Textedit');
+Route::get('/gestor/infopagina','InfoeditController@index')->name('Infoedit');
