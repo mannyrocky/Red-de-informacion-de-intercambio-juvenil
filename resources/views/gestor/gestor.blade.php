@@ -102,60 +102,62 @@
                                 de flujos (Flux Capacitor), Dispositivo que permite
                                 el viaje en el tiempo.
                     </p>
-                    <p><a href="{{route('evento1')}}"><button class="btn btn-outline-success">leer más</button></a></p>
+                    <p><a href="{{route('evento1')}}"><button class="btn btn-outline-success">Editar</button></a></p>
                 </div>
                 <div class="col-md-3">
-                    <h2>Titulo 1</h2><br>
+                    <h2>Titulo 2</h2><br>
                     <img src="../../imagen/fondo4.jpg" width="100" class="my-4">
                     <p style="t">El Doc. Emmet Brown anuncia la invencion del condensador
                                 de flujos (Flux Capacitor), Dispositivo que permite
                                 el viaje en el tiempo.
                     </p>
-                    <p><button class="btn btn-outline-success">leer más</button></p>
+                    <p><button class="btn btn-outline-success">Editar</button></p>
                 </div>
                 <div class="col-md-3" >
-                        <h2>Titulo 1</h2><br>
+                        <h2>Titulo 3</h2><br>
                         <img src="../../imagen/fondo4.jpg" width="100" class="my-4">
                         <p style="t">El Doc. Emmet Brown anuncia la invencion del condensador
                                 de flujos (Flux Capacitor), Dispositivo que permite
                                 el viaje en el tiempo.
                         </p>
-                        <p><button class="btn btn-outline-success">leer más</button></p>
+                        <p><button class="btn btn-outline-success">Editar</button></p>
                 </div>
                 <div class="col-md-3">
-                        <h2>Titulo 1</h2><br>
+                        <h2>Titulo 4</h2><br>
                         <img src="../../imagen/fondo4.jpg" width="100" class="my-4">
                         <p style="t">El Doc. Emmet Brown anuncia la invencion del condensador
                                 de flujos (Flux Capacitor), Dispositivo que permite
                                 el viaje en el tiempo.
                     </p>
-                        <p><button class="btn btn-outline-success">leer más</button></p>
+                        <p><button class="btn btn-outline-success">Editar</button></p>
                 </div>
             </div>
         </div>
-        <div class="Container" id ="noticias">
+    </div>
+</div>
+        <div class="container" id ="noticias">
             <div class="footer-main">
                 <div class="container">
                     <div class="row">
                         <div class="footer-main-item col-md-12">
-                            <h3><i class="fa fa-text-height" aria-hidden="true"></i>Noticia1</h3>
+                            <h3><i class="fa fa-text-height" aria-hidden="true"></i>Informacion 1</h3>
                             <p>Herramientas para sitio web responsive</p>
-                            <p><a href="#" class="btn btn-primary"> ver mas </a></p>
+                            <p><a href="#" class="btn btn-primary"> Editar </a></p>
                         </div>
                         <div class="footer-main-item col-md-12">
-                            <h3><img src="../../imagen/lotte1.jpg" width="100px" height ="100px">Noticia2</h3>
+                            <h3><img src="../../imagen/lotte1.jpg" width="100px" height ="100px">Informacion 2</h3>
                             <p>Libreria para Javascript muy versatil</p>
-                            <p><a href="#" class="btn btn-primary"> ver mas </a></p>
+                            <p><a href="#" class="btn btn-primary"> Editar </a></p>
                         </div>
                         <div class="footer-main-item col-md-12">
-                            <h3><i class="fa fa-paperclip" aria-hidden="true"></i>Noticia3</h3>
+                            <h3><i class="fa fa-paperclip" aria-hidden="true"></i>Informacion 3</h3>
                             <p>Libreria para generar hojas de estilo en cascada</p>
-                            <p><a href="#" class="btn btn-primary"> ver mas </a></p>
+                            <p><a href="#" class="btn btn-primary"> Editar </a></p>
                         </div>
                         <div class="footer-main-item col-md-12">
-                            <h3><i class="fa fa-paperclip" aria-hidden="true"></i>Noticia4</h3>
+                            <h3><i class="fa fa-paperclip" aria-hidden="true"></i>Informacion 4</h3>
                             <p>Libreria para generar hojas de estilo en cascada</p>
-                            <p><a href="#" class="btn btn-primary justify-content-end" > ver mas </a></p>
+                            <p><a href="#" class="btn btn-primary justify-content-end" > Editar </a></p>
                         </div>
                     </div>
                 </div>
