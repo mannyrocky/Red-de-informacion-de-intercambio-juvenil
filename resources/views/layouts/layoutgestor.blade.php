@@ -46,15 +46,15 @@
                 <!-- <img src="http://www.bcs.gob.mx/wp-content/uploads/2018/03/logo-gbcs.jpg" alt="Gobierno de Baja California Sur 2015-2021 | Mejor Futuro"> -->
             </a>
             <form class="form-inline" action="">
-                <input class="form-control mr-sm-2" type="text" placeholder="Search">
-                <button class="btn btn-success" type="submit">Search</button>
+                <input class="form-control mr-sm-2" type="text" placeholder="Buscar">
+                <button class="btn btn-success" type="submit">Buscar</button>
             </form>
         </nav>
         <nav class="navbar navbar-collapse">
             <div class="container-fluid">
                 <ul class="nav justify-content-center ">
                     <li class="nav-item ">
-                    <a class="nav-link" href="{{route('home')}}">Inicio</a>
+                    <a class="nav-link" href="{{route('Gestor')}}">Inicio</a>
                     </li>
                 <!-- Dropdown -->
                     <li class="nav-item dropdown">
@@ -62,7 +62,7 @@
                         Dependencias
                         </a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="{{ route('dependencia1') }}">Gobierno del Estado</a>
+                            <a class="dropdown-item" href="{{ route('Depedit') }}">Gobierno del Estado</a>
                             <a class="dropdown-item" href="#">Insituto de la Juventud</a>
                             <a class="dropdown-item" href="#">Tesoreria</a>
                             <a class="dropdown-item" href="#">Agregar Dependencia</a>
@@ -74,7 +74,7 @@
                         Codigo Joven
                         </a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="{{route('noticia1')}}">Informacion 1</a>
+                            <a class="dropdown-item" href="{{route('Notiedit')}}">Informacion</a>
                             <a class="dropdown-item" href="{{route('registrar')}}">Registrate</a>
                             <a class="dropdown-item" href="#">Enterate</a>
                         </div>
@@ -87,6 +87,7 @@
                             <a class="dropdown-item" href="#">Problemas de los jovenes</a>
                             <a class="dropdown-item" href="#">Deportes en la Juventud</a>
                             <a class="dropdown-item" href="#">Eventos sociales para jovenes</a>
+                            <a class="dropdown-item" href="#">Agregar Informacion</a>
                         </div>
                     </li>
                     
@@ -95,9 +96,10 @@
                         Programas Sociales
                         </a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="{{route('evento1')}}">Eventos 1</a>
-                            <a class="dropdown-item" href="#">Eventos 2</a>
-                            <a class="dropdown-item" href="#">Eventos 3</a>
+                            <a class="dropdown-item" href="{{route('evento1')}}">La Hora del codigo</a>
+                            <a class="dropdown-item" href="#">Beca de Servicio Social</a>
+                            <a class="dropdown-item" href="#">Beca del Estudiante</a>
+                            <a class="dropdown-item" href="#">Agregar Eventos</a>
                         </div>
                     </li>
                 </ul>

@@ -1,10 +1,11 @@
 @extends('layouts.layoutgestor')
 @section('content')
+
 <div class="container">
     <div class="row justify-content-center" >
         <div class="col-md-8">
             <div class = "card">
-                <h3 style="text-align:center;">Editar Noticias</h3>
+                <h3 style="text-align:center;">Editar Dependencia</h3>
                 <div class="card-body">
                     <form action="" method="POST">
                         @csrf
@@ -15,21 +16,15 @@
                                 </div>
                         </div>
                         <div class="form-group row">
-                            <label for="Titulo" class="col-md-4 col-form-label text-md-right">{{__('Titulo')}}</label>
+                            <label for="Dependencia" class="col-md-4 col-form-label text-md-right">{{__('Dependencia')}}</label>
                             <div class="col-md-6">
                                 <input type="text" class="form-control">
                             </div>
                         </div>
                         <div class="form-group row">
-                        <label for="Autor" class="col-md-4 col-form-label text-md-right">{{__('Autor')}}</label>
+                        <label for="Director" class="col-md-4 col-form-label text-md-right">{{__('Director')}}</label>
                             <div class="col-md-6">
                                 <input type="text" class="form-control">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                        <label for="Fecha" class="col-md-4 col-form-label text-md-right">{{__('Fecha')}}</label>
-                            <div class="col-md-6">
-                                <input type="date" class="form-control">
                             </div>
                         </div>
                         <div class="form-group row">
@@ -38,7 +33,35 @@
                                 <input type="text" class="form-control">
                             </div>
                         </div>
-                        <br>
+                        <div class="form-group row">
+                        <label for="Dependencia" class="col-md-4 col-form-label text-md-right">{{__('Dependencia')}}</label>
+                            <div class="col-md-6">
+                                <input type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="card">
+                            <h3 style="text-align:center;">Imagenes del Carrusel</h3>
+                            <div class="card-body">
+                                <div class="form-group row">
+                                <label for="Imagen" class="col-md-4 col-form-label text-md-right">{{ __('Imagen') }}</label>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control"><input type="button" class="form-control" value="Cambiar">
+                                </div>
+                                </div>
+                                <div class="form-group row">
+                                <label for="Imagen" class="col-md-4 col-form-label text-md-right">{{ __('Imagen') }}</label>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control"><input type="button" class="form-control" value="Cambiar">
+                                </div>
+                                </div>
+                                <div class="form-group row">
+                                <label for="Imagen" class="col-md-4 col-form-label text-md-right">{{ __('Imagen') }}</label>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control"><input type="button" class="form-control" value="Cambiar">
+                                </div>
+                                </div>
+                            </div>
+                        </div><br>
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-success">

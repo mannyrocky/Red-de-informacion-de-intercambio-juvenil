@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class CarruseleditController extends Controller
+class DepeditController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +13,7 @@ class CarruseleditController extends Controller
      */
     public function index()
     {
-        return view('gestor.editarcarrusel');
+        return view('gestor.depedit');
     }
 
     /**
@@ -23,7 +23,7 @@ class CarruseleditController extends Controller
      */
     public function create()
     {
-        
+        //
     }
 
     /**
