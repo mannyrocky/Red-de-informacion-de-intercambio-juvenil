@@ -8,6 +8,7 @@
     <!--Bootstrap-->
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.css')}}">
     <script src="{{ asset('assets/js/jquery-3.3.1.slim.min.js')}}"></script> 
+    <script src="{{ asset('assets/js/Eventos.js')}}"></script> 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
@@ -93,9 +94,9 @@
                     Programas Sociales
                     </a>
                     <div class="dropdown-menu">
-                    <a class="dropdown-item" href="" data-target="modalEdicion">Eventos 1</a>
-                    <a class="dropdown-item" href="#">Eventos 2</a>
-                    <a class="dropdown-item" href="#">Eventos 3</a>
+                    <button class="dropdown-item programa" data-toggle="modal" data-target="#modalEdicion">Eventos 1</button>
+                    <button class="dropdown-item programa" data-toggle="modal" data-target="#modalEdicion">Eventos 1</button>
+                    <button class="dropdown-item programa" data-toggle="modal" data-target="#modalEdicion">Eventos 1</button>
                     </div>
                     </li>
                 </ul>
