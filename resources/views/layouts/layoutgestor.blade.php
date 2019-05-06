@@ -93,7 +93,7 @@
                     Programas Sociales
                     </a>
                     <div class="dropdown-menu">
-                    <a class="dropdown-item" href="{{route('evento1')}}">Eventos 1</a>
+                    <a class="dropdown-item" href="" data-target="modalEdicion">Eventos 1</a>
                     <a class="dropdown-item" href="#">Eventos 2</a>
                     <a class="dropdown-item" href="#">Eventos 3</a>
                     </div>
@@ -108,7 +108,7 @@
 
  <footer style="background:gray;">
  <div class="pie-de-pagina">
-  <div class="container">
+  <div class="container-fluid">
     <div class="info-de-contacto">
       <div class="row">
           <div class="col-md-3">
