@@ -14,6 +14,9 @@
     <script src="{{ asset('assets/js/Eventos3.js')}}"></script>
     <script src="{{ asset('assets/js/Eventos4.js')}}"></script>
     <script src="{{ asset('assets/js/Eventos5.js')}}"></script>
+    <script src="{{ asset('assets/js/Agregarevento.js')}}"></script>
+    <script src="{{ asset('assets/js/Agregarevento2.js')}}"></script>
+    <script src="{{ asset('assets/js/Agregarevento3.js')}}"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
@@ -68,10 +71,7 @@
                         Dependencias
                         </a>
                         <div class="dropdown-menu">
-                            <button class="dropdown-item dependencia" data-toggle="modal" data-target="#modalEdicion2">Gobierno del Estado</button>
-                            <button class="dropdown-item dependencia" data-toggle="modal" data-target="#modalEdicion2">Insituto de la Juventud</button>
-                            <button class="dropdown-item dependencia" data-toggle="modal" data-target="#modalEdicion2">Tesoreria</button>
-                            <button class="dropdown-item dependencia" data-toggle="modal" data-target="#modalEdicion2">Agregar Dependencia</button>
+                            <button class="dropdown-item dependencia" data-toggle="modal" data-target="#agregardependencia">Agregar Dependencias</button>
                         </div>
                     </li>
                 <!-- Dropdown -->
@@ -90,10 +90,7 @@
                         Juventud
                         </a>
                         <div class="dropdown-menu">
-                            <button class="dropdown-item juventud" data-toggle="modal" data-target="#modalEdicion3">Problemas de los jovenes</button>
-                            <button class="dropdown-item juventud" data-toggle="modal" data-target="#modalEdicion3">Deportes en la Juventud</button>
-                            <button class="dropdown-item juventud" data-toggle="modal" data-target="#modalEdicion3">Eventos sociales para jovenes</button>
-                            <button class="dropdown-item juventud" data-toggle="modal" data-target="#modalEdicion3">Agregar Informacion</button>
+                            <button class="dropdown-item juventud" data-toggle="modal" data-target="#agregarjuventud">Agregar Noticia de Juventud</button>
                         </div>
                     </li>
                     
@@ -102,9 +99,7 @@
                     Programas Sociales
                     </a>
                     <div class="dropdown-menu">
-                    <button class="dropdown-item programa" data-toggle="modal" data-target="#modalEdicion">Eventos 1</button>
-                    <button class="dropdown-item programa" data-toggle="modal" data-target="#modalEdicion">Eventos 1</button>
-                    <button class="dropdown-item programa" data-toggle="modal" data-target="#modalEdicion">Eventos 1</button>
+                    <button class="dropdown-item programa" data-toggle="modal" data-target="#agregarprograma">Agregar Programa</button>
                     </div>
                     </li>
                 </ul>
@@ -245,6 +240,63 @@
         </button>
       </div>
       <div class="modal-body" id="bodyModal6">
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-outline-success">Aceptar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="agregarprograma" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="titleprograma"></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="bodyprograma">
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-outline-success">Aceptar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="agregardependencia" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="titledependencia"></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="bodydependencia">
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-outline-success">Aceptar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="agregarjuventud" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="titlejuventud"></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="bodyjuventud">
         
       </div>
       <div class="modal-footer">
