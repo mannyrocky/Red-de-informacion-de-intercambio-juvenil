@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use \App\Programas;
-class Programascontroller extends Controller
+
+class ProgramasController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -23,7 +23,7 @@ class Programascontroller extends Controller
      */
     public function create()
     {
-        
+        //
     }
 
     /**
@@ -34,13 +34,7 @@ class Programascontroller extends Controller
      */
     public function store(Request $request)
     {
-        $usuario = new Programas;
-        $usuario->nomprog = $request->nomprog;
-        $usuario->nomdep = $request->nomdep;
-        $usuario->responsable = $request->responsable;
-        $usuario->descriprog = $request->nomdep;
-        $usuario->imagenprog = $request->imagenprog;
-        $usuario->save();
+        //
     }
 
     /**
@@ -62,7 +56,7 @@ class Programascontroller extends Controller
      */
     public function edit($id)
     {
-        //
+        
     }
 
     /**
