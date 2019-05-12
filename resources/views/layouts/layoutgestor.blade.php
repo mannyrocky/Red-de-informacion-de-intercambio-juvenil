@@ -93,7 +93,6 @@
                             <button class="dropdown-item juventud" data-toggle="modal" data-target="#agregarjuventud">Agregar Noticia de Juventud</button>
                         </div>
                     </li>
-                    
                     <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
                     Programas Sociales
@@ -109,31 +108,6 @@
 </header>
  
  @yield('content')
-<<<<<<< HEAD
- <footer class="container-fluid" style="background:gray; width:100%;">
-    <div class="pie-de-pagina">
-        <div class="container-fluid">
-            <div class="info-de-contacto">
-                <div class="row">
-                    <div class="col-md-3">
-                        <img src="http://isjuventud.gob.mx/wp-content/themes/PortalesBCS/assets/images/logo-estado-mejor-futuro.png" alt="">
-                    </div>  
-                    <div class="col-md-6">
-                        <div class="info-domicilio">
-                            <h5> Instituto Sudcaliforniano de la Juventud
-                            </h5>
-                            Calle Antonio Navarro, esq. Melitón Albáñez <br>
-                            La Paz, Baja California Sur, México         
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="medios-de-comunicacion">
-                            Conmutador (612) 125 3767 <br>
-                            <a href="http://www.facebook.com/isjbcs">Contactanos vía web</a>
-                        </div>
-                    </div>
-                </div>
-=======
 
  <footer style="background:gray;">
  <div class="pie-de-pagina">
@@ -149,7 +123,6 @@
             </h5>
             Calle Antonio Navarro, esq. Melitón Albáñez <br>
             La Paz, Baja California Sur, México         
->>>>>>> origin/manuel
             </div>
         </div>
         <div class="enlaces-adicionales">
