@@ -71,7 +71,13 @@
                         Dependencias
                         </a>
                         <div class="dropdown-menu">
+                            @if (App\Dependencias::count() > 0)
+                              @foreach($dependencias as $dependencia)
+                                <button id="{{$dependencia->id}}" class="dropdown-item dependencia" data-toggle="modal" data-target="#modalEdicion2">{{$dependencia->nombredep}}</button>
+                              @endforeach
+                            @endif
                             <button class="dropdown-item dependencia" data-toggle="modal" data-target="#agregardependencia">Agregar Dependencias</button>
+                            
                         </div>
                     </li>
                 <!-- Dropdown -->
@@ -90,6 +96,11 @@
                         Juventud
                         </a>
                         <div class="dropdown-menu">
+                        @if(App\Juventud::count()>0)
+                          @foreach($juventudes as $juventud)
+                          <button id="{{$juventud->id}}" class="dropdown-item juventud" data-toggle="modal" data-target="#modalEdicion3">{{$juventud->titulo}}</button>
+                          @endforeach
+                        @endif
                             <button class="dropdown-item juventud" data-toggle="modal" data-target="#agregarjuventud">Agregar Noticia de Juventud</button>
                         </div>
                     </li>
@@ -98,8 +109,8 @@
                     <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
                     Programas Sociales
                     </a>
-                    <div class="dropdown-menu">
-                    <button class="dropdown-item programa" data-toggle="modal" data-target="#agregarprograma">Agregar Programa</button>
+                    <div class="dropdown-menu" id="programas">
+                      <button class="dropdown-item programa" data-toggle="modal" data-target="#agregarprograma">Agregar Programa</button>
                     </div>
                     </li>
                 </ul>
