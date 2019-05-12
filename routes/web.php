@@ -29,3 +29,4 @@ Route::get('/gestor/editarnoticia','NotieditController@index')->name('Notiedit')
 Route::get('/gestor/editartexto','TexteditController@index')->name('Textedit');
 Route::get('/gestor/infopagina','InfoeditController@index')->name('Infoedit');
 Route::get('/gestor/depedit','DepeditController@index')->name('Depedit');
+Route::post('/gestor/gestor/ajaxProgramas','Programascontroller@store');
