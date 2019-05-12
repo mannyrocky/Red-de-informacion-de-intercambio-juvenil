@@ -12,7 +12,7 @@
                         <div class="form-group row">
                             <label for="Imagen" class="col-md-4 col-form-label text-md-right">{{ __('Imagen') }}</label>
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control"><input type="button" class="form-control" value="Cambiar">
+                                    <input type="file" class="form-control btn btn-secondary" name="uploadfile">
                                 </div>
                         </div>
                         <div class="form-group row">
@@ -45,19 +45,19 @@
                                 <div class="form-group row">
                                 <label for="Imagen" class="col-md-4 col-form-label text-md-right">{{ __('Imagen') }}</label>
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control"><input type="button" class="form-control" value="Cambiar">
+                                    <input type="file" class="form-control btn btn-secondary">
                                 </div>
                                 </div>
                                 <div class="form-group row">
                                 <label for="Imagen" class="col-md-4 col-form-label text-md-right">{{ __('Imagen') }}</label>
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control"><input type="button" class="form-control" value="Cambiar">
+                                    <input type="file" class="form-control btn-secondary">
                                 </div>
                                 </div>
                                 <div class="form-group row">
                                 <label for="Imagen" class="col-md-4 col-form-label text-md-right">{{ __('Imagen') }}</label>
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control"><input type="button" class="form-control" value="Cambiar">
+                                    <input type="file" class="form-control btn-secondary">
                                 </div>
                                 </div>
                             </div>
