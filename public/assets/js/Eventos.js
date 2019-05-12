@@ -9,6 +9,6 @@ $(document).ready(function(){
        form+='<div class="row mt-4"><div class="col"><textarea rows="4" class="form-control" placeholder="Descrpicion"></textarea></div></div>';
        form+='<div class="row mt-4 justify-content-center"><input class="btn btn-info" name="uploadedfile" type="file" /></div>';
        body.html(form);
-       titulo.html('Editar dependencia');
+       titulo.html('Editar Programas de Sociales');
     });
 });

@@ -56,27 +56,27 @@
                         <img src="../../imagen/fondo4.jpg" alt="primera imagen" 
                             height="500px" width="100%">
                             <div class="overlay"></div>
-                            <div class="btnn"><a href="#"> Editar imágenes </a></div>
+                            <div class="btnn" data-toggle="modal" data-target="#modalEdicion6"><a href="#"> Editar imágenes </a></div>
                         <div class="carousel-caption">
                             <h3>Komi-san Besto waifu</h3>
                             <p>Komi-san god</p>
                         </div>
                    </div>
                 <div class="carousel-item">
-                <img src="../../imagen/fondo4.jpg" alt="primera imagen" 
+                <img src="../../imagen/fondo4.jpg" alt="segunda imagen" 
                             height="500px" width="100%">
                             <div class="overlay"></div>
-                            <div class="btnn"><a href="#"> Editar imágenes </a></div>
+                            <div class="btnn" data-toggle="modal" data-target="#modalEdicion6"><a href="#"> Editar imágenes </a></div>
                         <div class="carousel-caption">
                             <h3>Komi-san Besto waifu</h3>
                             <p>Komi-san god</p>
                         </div>
                 </div>
                 <div class="carousel-item">
-                <img src="../../imagen/fondo4.jpg" alt="primera imagen" 
+                <img src="../../imagen/fondo4.jpg" alt="tercera imagen" 
                             height="500px" width="100%">
                             <div class="overlay"></div>
-                            <div class="btnn"><a href="#"> Editar imágenes</a></div>
+                            <div class="btnn" data-toggle="modal" data-target="#modalEdicion6"><a href="#"> Editar imágenes</a></div>
                         <div class="carousel-caption">
                             <h3>Komi-san Besto waifu</h3>
                             <p>Komi-san god</p>
@@ -93,7 +93,7 @@
                 <span class="sr-only">Siguiente</span>
             </a>
         </div>
-        <div class="container" id ="infodep">
+        <div class="container" id ="evento">
             <div class="row">
                 <div class="col-md-3">
                     <h2>Titulo 1</h2><br>
@@ -102,7 +102,7 @@
                                 de flujos (Flux Capacitor), Dispositivo que permite
                                 el viaje en el tiempo.
                     </p>
-                    <p><a href="{{route('evento1')}}"><button class="btn btn-outline-success">Editar</button></a></p>
+                    <p><button class="btn btn-outline-success evento" data-toggle="modal" data-target="#modalEdicion5">Editar</button></p>
                 </div>
                 <div class="col-md-3">
                     <h2>Titulo 2</h2><br>
@@ -111,7 +111,7 @@
                                 de flujos (Flux Capacitor), Dispositivo que permite
                                 el viaje en el tiempo.
                     </p>
-                    <p><button class="btn btn-outline-success">Editar</button></p>
+                    <p><button class="btn btn-outline-success evento" data-toggle="modal" data-target="#modalEdicion5">Editar</button></p>
                 </div>
                 <div class="col-md-3" >
                         <h2>Titulo 3</h2><br>
@@ -120,7 +120,7 @@
                                 de flujos (Flux Capacitor), Dispositivo que permite
                                 el viaje en el tiempo.
                         </p>
-                        <p><button class="btn btn-outline-success">Editar</button></p>
+                        <p><button class="btn btn-outline-success evento" data-toggle="modal" data-target="#modalEdicion5">Editar</button></p>
                 </div>
                 <div class="col-md-3">
                         <h2>Titulo 4</h2><br>
@@ -129,7 +129,7 @@
                                 de flujos (Flux Capacitor), Dispositivo que permite
                                 el viaje en el tiempo.
                     </p>
-                        <p><button class="btn btn-outline-success">Editar</button></p>
+                        <p><button class="btn btn-outline-success evento" data-toggle="modal" data-target="#modalEdicion5">Editar</button></p>
                 </div>
             </div>
         </div>
@@ -142,22 +142,22 @@
                         <div class="footer-main-item col-md-12">
                             <h3><i class="fa fa-text-height" aria-hidden="true"></i>Informacion 1</h3>
                             <p>Herramientas para sitio web responsive</p>
-                            <p><a href="#" class="btn btn-primary"> Editar </a></p>
+                            <p><button class="btn btn-primary noticias" data-toggle="modal" data-target="#modalEdicion4"> Editar </button></p>
                         </div>
                         <div class="footer-main-item col-md-12">
                             <h3><img src="../../imagen/lotte1.jpg" width="100px" height ="100px">Informacion 2</h3>
                             <p>Libreria para Javascript muy versatil</p>
-                            <p><a href="#" class="btn btn-primary"> Editar </a></p>
+                            <p><button class="btn btn-primary noticias" data-toggle="modal" data-target="#modalEdicion4"> Editar </button></p>
                         </div>
                         <div class="footer-main-item col-md-12">
                             <h3><i class="fa fa-paperclip" aria-hidden="true"></i>Informacion 3</h3>
                             <p>Libreria para generar hojas de estilo en cascada</p>
-                            <p><a href="#" class="btn btn-primary"> Editar </a></p>
+                            <p><button class="btn btn-primary noticias" data-toggle="modal" data-target="#modalEdicion4"> Editar </button></p>
                         </div>
                         <div class="footer-main-item col-md-12">
                             <h3><i class="fa fa-paperclip" aria-hidden="true"></i>Informacion 4</h3>
                             <p>Libreria para generar hojas de estilo en cascada</p>
-                            <p><a href="#" class="btn btn-primary justify-content-end" > Editar </a></p>
+                            <p><button class="btn btn-primary noticias" data-toggle="modal" data-target="#modalEdicion4" > Editar </button></p>
                         </div>
                     </div>
                 </div>
@@ -168,23 +168,9 @@
         </div>
     </div>
 </div>
-<div class="modal fade" id="modalEdicion" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="modalTitle"></h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body" id="bodyModal">
-        
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-outline-success">Success</button>
-      </div>
-    </div>
-  </div>
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/manuel
 @endsection

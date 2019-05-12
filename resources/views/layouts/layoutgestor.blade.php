@@ -8,7 +8,12 @@
     <!--Bootstrap-->
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.css')}}">
     <script src="{{ asset('assets/js/jquery-3.3.1.slim.min.js')}}"></script> 
-    <script src="{{ asset('assets/js/Eventos.js')}}"></script> 
+    <script src="{{ asset('assets/js/Eventos.js')}}"></script>
+    <script src="{{ asset('assets/js/Evento6.js')}}"></script>
+    <script src="{{ asset('assets/js/Eventos2.js')}}"></script>
+    <script src="{{ asset('assets/js/Eventos3.js')}}"></script>
+    <script src="{{ asset('assets/js/Eventos4.js')}}"></script>
+    <script src="{{ asset('assets/js/Eventos5.js')}}"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
@@ -63,19 +68,19 @@
                         Dependencias
                         </a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="{{ route('Depedit') }}">Gobierno del Estado</a>
-                            <a class="dropdown-item" href="#">Insituto de la Juventud</a>
-                            <a class="dropdown-item" href="#">Tesoreria</a>
-                            <a class="dropdown-item" href="#">Agregar Dependencia</a>
+                            <button class="dropdown-item dependencia" data-toggle="modal" data-target="#modalEdicion2">Gobierno del Estado</button>
+                            <button class="dropdown-item dependencia" data-toggle="modal" data-target="#modalEdicion2">Insituto de la Juventud</button>
+                            <button class="dropdown-item dependencia" data-toggle="modal" data-target="#modalEdicion2">Tesoreria</button>
+                            <button class="dropdown-item dependencia" data-toggle="modal" data-target="#modalEdicion2">Agregar Dependencia</button>
                         </div>
                     </li>
                 <!-- Dropdown -->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-                        Codigo Joven
+                        Código Joven
                         </a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="{{route('Notiedit')}}">Informacion</a>
+                            <a class="dropdown-item" href="{{route('Notiedit')}}">Información</a>
                             <a class="dropdown-item" href="{{route('registrar')}}">Registrate</a>
                             <a class="dropdown-item" href="#">Enterate</a>
                         </div>
@@ -85,10 +90,10 @@
                         Juventud
                         </a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Problemas de los jovenes</a>
-                            <a class="dropdown-item" href="#">Deportes en la Juventud</a>
-                            <a class="dropdown-item" href="#">Eventos sociales para jovenes</a>
-                            <a class="dropdown-item" href="#">Agregar Informacion</a>
+                            <button class="dropdown-item juventud" data-toggle="modal" data-target="#modalEdicion3">Problemas de los jovenes</button>
+                            <button class="dropdown-item juventud" data-toggle="modal" data-target="#modalEdicion3">Deportes en la Juventud</button>
+                            <button class="dropdown-item juventud" data-toggle="modal" data-target="#modalEdicion3">Eventos sociales para jovenes</button>
+                            <button class="dropdown-item juventud" data-toggle="modal" data-target="#modalEdicion3">Agregar Informacion</button>
                         </div>
                     </li>
                     
@@ -109,6 +114,7 @@
 </header>
  
  @yield('content')
+<<<<<<< HEAD
  <footer class="container-fluid" style="background:gray; width:100%;">
     <div class="pie-de-pagina">
         <div class="container-fluid">
@@ -132,6 +138,23 @@
                         </div>
                     </div>
                 </div>
+=======
+
+ <footer style="background:gray;">
+ <div class="pie-de-pagina">
+  <div class="container-fluid">
+    <div class="info-de-contacto">
+      <div class="row">
+          <div class="col-md-3">
+          <img src="http://isjuventud.gob.mx/wp-content/themes/PortalesBCS/assets/images/logo-estado-mejor-futuro.png" alt="">
+        </div>  
+        <div class="col-md-6">
+          <div class="info-domicilio">
+            <h5> Instituto Sudcaliforniano de la Juventud
+            </h5>
+            Calle Antonio Navarro, esq. Melitón Albáñez <br>
+            La Paz, Baja California Sur, México         
+>>>>>>> origin/manuel
             </div>
         </div>
         <div class="enlaces-adicionales">
@@ -143,5 +166,119 @@
         </div>
     </div>
  </footer>
+ <div class="modal fade" id="modalEdicion2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalTitle2"></h5>
+        <button type="button" class="close" data-dismiss="modal2" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="bodyModal2">
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-outline-success">Aceptar</button>
+      </div>
+    </div>
+  </div>
+</div>  
+<div class="modal fade" id="modalEdicion" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalTitle"></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="bodyModal">
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-outline-success">Aceptar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="modalEdicion3" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalTitle3"></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="bodyModal3">
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-outline-success">Aceptar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="modalEdicion4" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalTitle4"></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="bodyModal4">
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-outline-success">Aceptar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="modalEdicion5" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalTitle5"></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="bodyModal5">
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-outline-success">Aceptar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="modalEdicion6" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalTitle6"></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="bodyModal6">
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-outline-success">Aceptar</button>
+      </div>
+    </div>
+  </div>
+</div>
 </body>
 </html>
