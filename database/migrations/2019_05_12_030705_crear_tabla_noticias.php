@@ -17,6 +17,7 @@ class CrearTablaNoticias extends Migration
             $table->bigIncrements('id');
             $table->string('titulonoti');
             $table->string('autornoti');
+            $table->string('fechanoti');
             $table->string('Descripcionnot');
             $table->string('imagennoti');
             $table->timestamps();

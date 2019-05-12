@@ -17,6 +17,7 @@ class CrearTablaEventos extends Migration
             $table->bigIncrements('id');
             $table->string('tituloev');
             $table->string('depev');
+            $table->string('lugar');
             $table->string('Descripcionev');
             $table->string('imagenjuv');
             $table->timestamps();
