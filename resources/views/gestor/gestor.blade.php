@@ -169,8 +169,4 @@
     </div>
 </div>
 
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/manuel
 @endsection
