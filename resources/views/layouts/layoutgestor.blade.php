@@ -262,7 +262,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-outline-success">Aceptar</button>
+        <button type="button" class="btn btn-outline-success" id="rgProg">Aceptar</button>
       </div>
     </div>
   </div>
@@ -305,5 +305,42 @@
     </div>
   </div>
 </div>
+<script>
+$(document).ready(function(){
+    $(".programa").click(function(){
+        var form = "";
+        var titulo = $("#titleprograma");
+        var body = $("#bodyprograma");
+        form+='<form><div class="row"><div class="col"><input type="text" id="nomprog" class="form-control" placeholder="Nombre del programa"></div></div>';
+       form+='<div class="row mt-4"><div class="col"><input type="text" class="form-control" id="nomdep" placeholder="Nombre de la dependencia"></div><div class="col"><input type="text" class="form-control" id="responsable" placeholder="Responsable"></div></div></form>';
+       form+='<div class="row mt-4"><div class="col"><textarea rows="4" class="form-control" id="descriprog" placeholder="Descrpicion"></textarea></div></div>';
+       form+='<div class="row mt-4 justify-content-center"><input class="btn btn-info" id="imagenprog" name="uploadedfile" type="file" /></div>';
+       body.html(form);
+       titulo.html('Agregar Programas Sociales');
+    });
+    $("#rgProg").click(function(){
+        var nomprog = $("#nomprog").val();
+        var responsable = $("#responsable").val();
+        var nomdep = $("#nomdep").val();
+        var descriprog = $("#descriprog").val();
+        var imagenprog = $("#imagenprog").val();
+        $.ajax({
+            url:"/gestor/gestor/ajaxProgramas",
+            method:'POST',
+            data:{
+            "_token":"{{ csrf_token() }}",
+            nomprog:nomprog,
+            nomdep:nomdep,
+            responsable:responsable,
+            descriprog:descriprog,
+            imagenprog:imagenprog
+            },
+            success:function(data){
+                console.log('se agrego');
+        }
+        });
+    });
+});
+</script>
 </body>
 </html>
