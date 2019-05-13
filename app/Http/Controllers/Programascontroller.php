@@ -34,6 +34,7 @@ class Programascontroller extends Controller
      */
     public function store(Request $request)
     {
+        //
         $usuario = new Programas;
         $usuario->nomprog = $request->nomprog;
         $usuario->nomdep = $request->nomdep;
