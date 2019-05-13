@@ -14,8 +14,6 @@
     <script src="{{ asset('assets/js/Eventos3.js')}}"></script>
     <script src="{{ asset('assets/js/Eventos4.js')}}"></script>
     <script src="{{ asset('assets/js/Eventos5.js')}}"></script>
-    <script src="{{ asset('assets/js/Agregarevento.js')}}"></script>
-    <script src="{{ asset('assets/js/Agregarevento2.js')}}"></script>
     <script src="{{ asset('assets/js/Agregarevento3.js')}}"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -63,7 +61,7 @@
             <div class="container-fluid">
                 <ul class="nav justify-content-center ">
                     <li class="nav-item ">
-                    <a class="nav-link" href="{{route('Gestor')}}">Inicio</a>
+                    <a class="nav-link" href="{{route('gestor')}}">Inicio</a>
                     </li>
                 <!-- Dropdown -->
                     <li class="nav-item dropdown">
@@ -71,7 +69,13 @@
                         Dependencias
                         </a>
                         <div class="dropdown-menu">
+                            @if (App\Dependencias::count() > 0)
+                              @foreach($dependencias as $dependencia)
+                                <button id="{{$dependencia->id}}" class="dropdown-item dependencia" data-toggle="modal" data-target="#modalEdicion2" onclick="mostrar('{{$dependencia->id}}','{{$dependencia->nombredep}}','{{$dependencia->director}}','{{$dependencia->descripciondep}}','{{$dependencia->url}}','{{$dependencia->imagendep}}');">{{$dependencia->nombredep}}</button>
+                              @endforeach
+                            @endif
                             <button class="dropdown-item dependencia" data-toggle="modal" data-target="#agregardependencia">Agregar Dependencias</button>
+                            
                         </div>
                     </li>
                 <!-- Dropdown -->
@@ -90,6 +94,11 @@
                         Juventud
                         </a>
                         <div class="dropdown-menu">
+                        @if(App\Juventud::count()>0)
+                          @foreach($juventudes as $juventud)
+                          <button id="this.{{$juventud->id}}" class="dropdown-item juventud" data-toggle="modal" data-target="#modalEdicion3" >{{$juventud->titulo}}</button>
+                          @endforeach
+                        @endif
                             <button class="dropdown-item juventud" data-toggle="modal" data-target="#agregarjuventud">Agregar Noticia de Juventud</button>
                         </div>
                     </li>
@@ -98,7 +107,12 @@
                     Programas Sociales
                     </a>
                     <div class="dropdown-menu">
-                    <button class="dropdown-item programa" data-toggle="modal" data-target="#agregarprograma">Agregar Programa</button>
+                      @if(App\Programas::count()>0)
+                          @foreach($programa as $prog)
+                          <button id="{{$prog->id}}" class="dropdown-item programa" data-toggle="modal" data-target="#modalEdicion3">{{$prog->nomprog}}</button>
+                          @endforeach
+                        @endif
+                      <button class="dropdown-item programa" data-toggle="modal" data-target="#agregarprograma">Agregar Programa</button>
                     </div>
                     </li>
                 </ul>
@@ -148,7 +162,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-outline-success">Aceptar</button>
+        <button type="button" class="btn btn-outline-success" id="rgDep">Aceptar</button>
       </div>
     </div>
   </div>
@@ -267,6 +281,25 @@
     </div>
   </div>
 </div>
+<div class="modal fade" id="agregarprograma" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="titleprograma"></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="bodyprograma">
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-outline-success" id="rgProg">Aceptar</button>
+      </div>
+    </div>
+  </div>
+</div>
 <div class="modal fade" id="agregardependencia" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
     <div class="modal-content">
@@ -281,7 +314,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-outline-success">Aceptar</button>
+        <button type="button" class="btn btn-outline-success" id="rgDep">Aceptar</button>
       </div>
     </div>
   </div>
@@ -337,6 +370,91 @@ $(document).ready(function(){
             },
             success:function(data){
               console.log('se agrego');
+        }
+        });
+    });
+});
+</script>
+<script>
+  $(document).ready(function(){
+    $(".dependencia").click(function(){
+        var form = "";
+        var titulo = $("#titledependencia");
+        var body = $("#bodydependencia");
+        form+='<form><div class="row">';
+       form+='<div class="col"><input type="text" class="form-control" placeholder="Nombre de la Dependencia"  id="nombredep"></div></div>';
+       form+='<div class="row mt-4"><div class="col"><input type="text" class="form-control" placeholder="Director"  id="director"></div><div class="col"><input type="text" class="form-control" placeholder="url" id="url"></div></div></form>';
+       form+='<div class="row mt-4"><div class="col"><textarea rows="4" class="form-control" placeholder="Descrpicion" id="descripciondep"></textarea></div></div>';
+       form+='<div class="row mt-4 justify-content-center"><input class="btn btn-info" name="uploadedfile" id="imagendep" type="file" /></div>';
+       body.html(form);
+       titulo.html('Agregar Dependencia');
+    });
+    $("#rgDep").click(function(){
+        var nombredep = $("#nombredep").val();
+        var director = $("#director").val();
+        var url = $("#url").val();
+        var descripciondep = $("#descripciondep").val();
+        var imagendep = $("#imagendep").val();
+        $.ajax({
+            url:"/gestor/gestor/ajaxDependencia",
+            method:'POST',
+            data:{
+            "_token":"{{ csrf_token() }}",
+            nombredep:nombredep,
+            director:director,
+            url:url,
+            descripciondep:descripciondep,
+            imagendep:imagendep
+            },
+            success:function(data){
+                console.log('se agrego');
+        }
+        });
+    });
+});
+</script>
+<script>
+mostrar = function(ids,depename,direc,descrip,urls,imagens){
+  $('#ids').val(ids);
+  $('#depename').val(depename);
+  $('#direc').val(direc);
+  $('#descrip').val(descrip);
+  $('#urls').val(urls); 
+};
+</script>
+<script>
+  $(document).ready(function(){
+    $(".dependencia").click(function(){
+        var form = "";
+        var titulo = $("#modalTitle2");
+        var body = $("#bodyModal2");
+        form+='<form><div class="row"><div class="col">';
+       form+='<input type="text" class="form-control" placeholder="Id"  id="ids" disabled></div><div class="col"><input type="text" class="form-control" placeholder="Dependencia"  id="depename"></div></div>';
+       form+='<div class="row mt-4"><div class="col"><input type="text" class="form-control" placeholder="Director"  id="direc"></div><div class="col"><input type="text" class="form-control" placeholder="Url"  id="urls"></div></div></form>';
+       form+='<div class="row mt-4"><div class="col"><textarea rows="4" class="form-control" placeholder="Descrpicion" id="descrip"></textarea></div></div>';
+       form+='<div class="row mt-4 justify-content-center"><input class="btn btn-info" name="uploadedfile" id="imagens" type="file" /></div>';
+       body.html(form);
+       titulo.html('Editar Dependencias');
+    });
+    $("#rgDep").click(function(){
+        var nombredep = $("#nombredep").val();
+        var director = $("#director").val();
+        var url = $("#url").val();
+        var descripciondep = $("#descripciondep").val();
+        var imagendep = $("#imagendep").val();
+        $.ajax({
+            url:"/gestor/gestor/ajaxDependencia",
+            method:'POST',
+            data:{
+            "_token":"{{ csrf_token() }}",
+            nombredep:nombredep,
+            director:director,
+            url:url,
+            descripciondep:descripciondep,
+            imagendep:imagendep
+            },
+            success:function(data){
+                console.log('se Modifico');
         }
         });
     });

@@ -1,11 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
+use \App\Dependencias;
 
-class noticia2Controller extends Controller
+class DependenciaController extends Controller
 {
+    
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +14,7 @@ class noticia2Controller extends Controller
      */
     public function index()
     {
-        return View::make('noticia2');
+        return view('dependencias.Dependencia1');
     }
 
     /**
@@ -23,7 +24,9 @@ class noticia2Controller extends Controller
      */
     public function create()
     {
-        //
+
+       
+
     }
 
     /**
@@ -34,9 +37,23 @@ class noticia2Controller extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $usuario = new Dependencias;
+        $usuario->nombredep = $request->nombredep;
+        $usuario->director = $request->director;
+        $usuario->descripciondep = $request->descripciondep;
+        $usuario->url = $request->url;
+        $usuario->imagendep = $request->imagendep;
+        $usuario->save();
     }
-
+    public function modificar(Request $request,$id){
+        $usuario = Dependencia::find($id);
+        $usuario->nombredep = $request->nombredep;
+        $usuario->director = $request->director;
+        $usuario->descripciondep = $request->descripciondep;
+        $usuario->url = $request->url;
+        $usuario->imagendep = $request->imagendep;
+        $usuario->save();
+    }
     /**
      * Display the specified resource.
      *
@@ -56,7 +73,7 @@ class noticia2Controller extends Controller
      */
     public function edit($id)
     {
-        //
+             
     }
 
     /**
@@ -68,7 +85,7 @@ class noticia2Controller extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
     }
 
     /**

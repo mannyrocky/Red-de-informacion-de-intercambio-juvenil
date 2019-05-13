@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Dependencias;
 
 class DepeditController extends Controller
 {
+    $dependencias = Dependecias::all();
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +15,8 @@ class DepeditController extends Controller
      */
     public function index()
     {
-        return view('gestor.depedit');
+
+        return view('gestor.gestor',compact('dependencias'));
     }
 
     /**
@@ -56,7 +59,7 @@ class DepeditController extends Controller
      */
     public function edit($id)
     {
-        //
+        
     }
 
     /**
