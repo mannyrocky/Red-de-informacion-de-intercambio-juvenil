@@ -31,4 +31,3 @@ Route::get('/gestor/infopagina','InfoeditController@index')->name('Infoedit');
 Route::get('/gestor/depedit','DepeditController@index')->name('Depedit');
 Route::post('/gestor/gestor/ajaxProgramas','Programascontroller@store');
 Route::post('/gestor/gestor/ajaxDependencia','DependenciaController@store');
-Route::post('/gestor/gestor/ajaxDependencia','DependenciaController@modificar');

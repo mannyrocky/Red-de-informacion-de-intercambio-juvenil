@@ -45,15 +45,6 @@ class DependenciaController extends Controller
         $usuario->imagendep = $request->imagendep;
         $usuario->save();
     }
-    public function modificar(Request $request,$id){
-        $usuario = Dependencia::find($id);
-        $usuario->nombredep = $request->nombredep;
-        $usuario->director = $request->director;
-        $usuario->descripciondep = $request->descripciondep;
-        $usuario->url = $request->url;
-        $usuario->imagendep = $request->imagendep;
-        $usuario->save();
-    }
     /**
      * Display the specified resource.
      *
@@ -73,7 +64,7 @@ class DependenciaController extends Controller
      */
     public function edit($id)
     {
-             
+
     }
 
     /**

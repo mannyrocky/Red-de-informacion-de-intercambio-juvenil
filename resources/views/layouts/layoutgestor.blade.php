@@ -162,7 +162,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-outline-success" id="rgDep">Aceptar</button>
+        <button type="button" class="btn btn-outline-success">Aceptar</button>
       </div>
     </div>
   </div>
@@ -381,7 +381,7 @@ $(document).ready(function(){
         var form = "";
         var titulo = $("#titledependencia");
         var body = $("#bodydependencia");
-        form+='<form><div class="row">';
+       form+='<form><div class="row">';
        form+='<div class="col"><input type="text" class="form-control" placeholder="Nombre de la Dependencia"  id="nombredep"></div></div>';
        form+='<div class="row mt-4"><div class="col"><input type="text" class="form-control" placeholder="Director"  id="director"></div><div class="col"><input type="text" class="form-control" placeholder="url" id="url"></div></div></form>';
        form+='<div class="row mt-4"><div class="col"><textarea rows="4" class="form-control" placeholder="Descrpicion" id="descripciondep"></textarea></div></div>';
@@ -429,7 +429,7 @@ mostrar = function(ids,depename,direc,descrip,urls,imagens){
         var titulo = $("#modalTitle2");
         var body = $("#bodyModal2");
         form+='<form><div class="row"><div class="col">';
-       form+='<input type="text" class="form-control" placeholder="Id"  id="ids" disabled></div><div class="col"><input type="text" class="form-control" placeholder="Dependencia"  id="depename"></div></div>';
+       form+='<input type="text" class="form-control" placeholder="Id"  id="id" disabled></div><div class="col"><input type="text" class="form-control" placeholder="Dependencia"  id="depename"></div></div>';
        form+='<div class="row mt-4"><div class="col"><input type="text" class="form-control" placeholder="Director"  id="direc"></div><div class="col"><input type="text" class="form-control" placeholder="Url"  id="urls"></div></div></form>';
        form+='<div class="row mt-4"><div class="col"><textarea rows="4" class="form-control" placeholder="Descrpicion" id="descrip"></textarea></div></div>';
        form+='<div class="row mt-4 justify-content-center"><input class="btn btn-info" name="uploadedfile" id="imagens" type="file" /></div>';
