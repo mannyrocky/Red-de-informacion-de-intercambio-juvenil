@@ -204,16 +204,16 @@
     </div>
   </div>
 </div>
-<div class="modal fade" id="agregar" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="agregardependencia" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="title"></h5>
+        <h5 class="modal-title" id="titledependencia"></h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body" id="body">
+      <div class="modal-body" id="bodydependencia">
         
       </div>
       <div class="modal-footer">
@@ -264,8 +264,8 @@ $(document).ready(function(){
   $(document).ready(function(){
     $(".dependencia").click(function(){
         var form = "";
-        var titulo = $("#titledependencia");
-        var body = $("#bodydependencia");
+        var titulo = $("#title");
+        var body = $("#body");
         form+='<form><div class="row">';
        form+='<div class="col"><input type="text" class="form-control" placeholder="Nombre de la Dependencia"  id="nombredep"></div></div>';
        form+='<div class="row mt-4"><div class="col"><input type="text" class="form-control" placeholder="Director"  id="director"></div><div class="col"><input type="text" class="form-control" placeholder="url" id="url"></div></div></form>';
@@ -293,41 +293,6 @@ $(document).ready(function(){
             },
             success:function(data){
                 console.log('se agrego');
-        }
-        });
-    });
-});$(document).ready(function(){
-    $(".juventud").click(function(){
-        var form = "";
-        var titulo = $("#titledependencia");
-        var body = $("#bodydependencia");
-        form+='<form><div class="row">';
-       form+='<div class="col"><input type="text" class="form-control" placeholder="Nombre de la Dependencia"  id="nombredep"></div></div>';
-       form+='<div class="row mt-4"><div class="col"><input type="text" class="form-control" placeholder="Director"  id="director"></div><div class="col"><input type="text" class="form-control" placeholder="url" id="url"></div></div></form>';
-       form+='<div class="row mt-4"><div class="col"><textarea rows="4" class="form-control" placeholder="Descrpicion" id="descripciondep"></textarea></div></div>';
-       form+='<div class="row mt-4 justify-content-center"><input class="btn btn-info" name="uploadedfile" id="imagendep" type="file" /></div>';
-       body.html(form);
-       titulo.html('Agregar Juventud');
-    });
-    $("#rgDep").click(function(){
-        var nombredep = $("#nombredep").val();
-        var director = $("#director").val();
-        var url = $("#url").val();
-        var descripciondep = $("#descripciondep").val();
-        var imagendep = $("#imagendep").val();
-        $.ajax({
-            url:"/gestor/gestor/ajaxDependencia",
-            method:'POST',
-            data:{
-            "_token":"{{ csrf_token() }}",
-            nombredep:nombredep,
-            director:director,
-            url:url,
-            descripciondep:descripciondep,
-            imagendep:imagendep
-            },
-            success:function(data){
-                console.log('se agrego Juventud');
         }
         });
     });
