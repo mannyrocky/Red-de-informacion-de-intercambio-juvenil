@@ -336,7 +336,7 @@ $(document).ready(function(){
             imagenprog:imagenprog
             },
             success:function(data){
-                console.log('se agrego');
+              console.log('se agrego');
         }
         });
     });
