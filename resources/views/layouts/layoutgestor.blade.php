@@ -66,7 +66,7 @@
                         <div class="dropdown-menu">
                             @if (App\Dependencias::count() > 0)
                               @foreach($dependencias as $dependencia)
-                                <button id="{{$dependencia->id}}" class="dropdown-item dependencia" data-toggle="modal" data-target="#modalEdicion2" onclick="mostrar('{{$dependencia->id}}','{{$dependencia->nombredep}}','{{$dependencia->director}}','{{$dependencia->descripciondep}}','{{$dependencia->url}}','{{$dependencia->imagendep}}');">{{$dependencia->nombredep}}</button>
+                                <button id="{{$dependencia->id}}" class="dropdown-item dependencia" data-toggle="modal" data-target="#editardependencia" onclick="mostrardep('{{$dependencia->id}}','{{$dependencia->nombredep}}','{{$dependencia->director}}','{{$dependencia->descripciondep}}','{{$dependencia->url}}','{{$dependencia->imagendep}}');">{{$dependencia->nombredep}}</button>
                               @endforeach
                             @endif
                             <button class="dropdown-item dependencia" data-toggle="modal" data-target="#agregardependencia">Agregar Dependencias</button>
@@ -91,7 +91,7 @@
                         <div class="dropdown-menu">
                         @if(App\Juventud::count()>0)
                           @foreach($juventudes as $juventud)
-                          <button id="this.{{$juventud->id}}" class="dropdown-item juventud" data-toggle="modal" data-target="#modalEdicion3" >{{$juventud->titulo}}</button>
+                          <button id="this.{{$juventud->id}}" class="dropdown-item juventud" data-toggle="modal"  data-target="#editarjuventud" onclick="mostrarjuv('{{$juventud->id}}','{{$juventud->titulo}}','{{$juventud->autor}}','{{$juventud->fecha}}','{{$juventud->descripcionjuv}}','{{$juventud->imagenjuv}}');">{{$juventud->titulo}}</button>
                           @endforeach
                         @endif
                             <button class="dropdown-item juventud" data-toggle="modal" data-target="#agregarjuventud">Agregar Noticia de Juventud</button>
@@ -104,7 +104,7 @@
                     <div class="dropdown-menu">
                       @if(App\Programas::count()>0)
                           @foreach($programa as $prog)
-                          <button id="{{$prog->id}}" class="dropdown-item programa" data-toggle="modal" data-target="#modalEdicion3">{{$prog->nomprog}}</button>
+                          <button id="{{$prog->id}}" class="dropdown-item programa" data-toggle="modal"  data-target="#editarprograma" onclick="mostrarprog('{{$prog->id}}','{{$prog->nomprog}}','{{$prog->nomdep}}','{{$prog->responsable}}','{{$prog->descriprog}}','{{$prog->imagenprog}}');">{{$prog->nomprog}}</button>
                           @endforeach
                         @endif
                       <button class="dropdown-item programa" data-toggle="modal" data-target="#agregarprograma">Agregar Programa</button>
@@ -143,48 +143,135 @@
         </div>
     </div>
  </footer>
- <div class="modal fade" id="modalEdicion2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+ <div class="modal fade" id="editarprograma" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="modalTitle2"></h5>
+        <h5 class="modal-title" id="modalTitle">Editar Programa</h5>
         <button type="button" class="close" data-dismiss="modal2" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body" id="bodyModal2">
-      <form><div class="row"><div class="col">
-       <input type="text" class="form-control" placeholder="Id"  id="ids" disabled></div><div class="col"><input type="text" class="form-control" placeholder="Dependencia"  id="depename"></div></div>
-       <div class="row mt-4"><div class="col"><input type="text" class="form-control" placeholder="Director"  id="direc"></div><div class="col"><input type="text" class="form-control" placeholder="Url"  id="urls"></div></div></form>
-       <div class="row mt-4"><div class="col"><textarea rows="4" class="form-control" placeholder="Descrpicion" id="descrip"></textarea></div></div>
-       <div class="row mt-4 justify-content-center"><input class="btn btn-info" name="uploadedfile" id="imagens" type="file" /></div>
+      <div class="modal-body" id="bodyModal">
+        <form>
+          <div class="row">
+            <div class="col">
+              <input type="text" class="form-control" placeholder="Id"  id="idprog" disabled>
+            </div>
+            <div class="col">
+              <input type="text" class="form-control" placeholder="Nombre del Programa"  id="progname">
+            </div>
+          </div>
+          <div class="row mt-4">
+            <div class="col">
+              <input type="text" class="form-control" placeholder="Dependencia"  id="namedepe">
+            </div>
+            <div class="col">
+              <input type="text" class="form-control" placeholder="Responsable"  id="respo">
+            </div>
+          </div>
+        </form>
+        <div class="row mt-4"><div class="col">
+          <textarea rows="4" class="form-control" placeholder="Descrpicion" id="descriprograma"></textarea>
+        </div>
+      </div>
+      <div class="row mt-4 justify-content-center">
+        <input class="btn btn-info" name="uploadedfile" id="imagenprograma" type="file" />
+      </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-outline-success" id="editDep">Aceptar</button>
-      </div>
-    </div>
-  </div>
-</div>  
-<div class="modal fade" id="agregarprograma" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="titleprograma"></h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body" id="bodyprograma">
-        
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-outline-success" id="rgProg">Aceptar</button>
+        <button type="button" class="btn btn-outline-success" id="editprog">Aceptar</button>
       </div>
     </div>
   </div>
 </div>
+<div class="modal fade" id="editarjuventud" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalTitle">Editar Programa</h5>
+        <button type="button" class="close" data-dismiss="modal2" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="bodyModal">
+        <form>
+          <div class="row">
+            <div class="col">
+              <input type="text" class="form-control" placeholder="Id"  id="idj" disabled>
+            </div>
+            <div class="col">
+              <input type="text" class="form-control" placeholder="Titulo"  id="titjuv">
+            </div>
+          </div>
+          <div class="row mt-4">
+            <div class="col">
+              <input type="text" class="form-control" placeholder="Autor"  id="autjuv">
+            </div>
+            <div class="col">
+              <input type="date" class="form-control" placeholder="fecha"  id="fechajuv">
+            </div>
+          </div>
+        </form>
+        <div class="row mt-4"><div class="col">
+          <textarea rows="4" class="form-control" placeholder="Descrpicion" id="descripjuv"></textarea>
+        </div>
+      </div>
+      <div class="row mt-4 justify-content-center">
+        <input class="btn btn-info" name="uploadedfile" id="imagenjuv" type="file" />
+      </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-outline-success" id="editjuv">Aceptar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="editardependencia" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalTitle2">Editar Dependencia</h5>
+        <button type="button" class="close" data-dismiss="modal2" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="bodyModal">
+        <form>
+          <div class="row">
+            <div class="col">
+              <input type="text" class="form-control" placeholder="Id"  id="ids" disabled>
+            </div>
+            <div class="col">
+              <input type="text" class="form-control" placeholder="Dependencia"  id="depename">
+            </div>
+          </div>
+          <div class="row mt-4">
+            <div class="col">
+              <input type="text" class="form-control" placeholder="Director"  id="direc">
+            </div>
+            <div class="col">
+              <input type="text" class="form-control" placeholder="Url"  id="urls">
+            </div>
+          </div>
+        </form>
+        <div class="row mt-4"><div class="col">
+          <textarea rows="4" class="form-control" placeholder="Descrpicion" id="descrip"></textarea>
+        </div>
+      </div>
+      <div class="row mt-4 justify-content-center">
+        <input class="btn btn-info" name="uploadedfile" id="imagens" type="file" />
+      </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-outline-success" id="edit">Aceptar</button>
+      </div>
+    </div>
+  </div>
+</div>  
 <div class="modal fade" id="agregarprograma" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
     <div class="modal-content">
@@ -242,6 +329,7 @@
     </div>
   </div>
 </div>
+
 <script>
 $(document).ready(function(){
     $(".programa").click(function(){
@@ -356,7 +444,7 @@ $(document).ready(function(){
 });
 </script>
 <script>
-mostrar = function(ids,depename,direc,descrip,urls,imagens){
+mostrardep = function(ids,depename,direc,descrip,urls,imagens){
   $('#ids').val(ids);
   $('#depename').val(depename);
   $('#direc').val(direc);
@@ -366,14 +454,34 @@ mostrar = function(ids,depename,direc,descrip,urls,imagens){
 };
 </script>
 <script>
+mostrarjuv = function(idj,titjuv,autjuv,fechajuv,descripjuv,imagenjuv){
+  $('#idj').val(idj);
+  $('#titjuv').val(titjuv);
+  $('#autjuv').val(autjuv);
+  $('#fechajuv').val(fechajuv);
+  $('#descripjuv').val(descripjuv);
+  $('imagenjuv').val(imagenjuv); 
+};
+</script>
+<script>
+mostrarprog = function(idp,progname,namedepe,respo,despro,imagenpro){
+  $('#idprog').val(idp);
+  $('#progname').val(progname);
+  $('#namedepe').val(namedepe);
+  $('#respo').val(respo);
+  $('#descriprograma').val(despro);
+  $('#imagenprograma').val(imagenpro); 
+};
+</script>
+<script>
 $(document).ready(function(){
-  $("#editDep").click(function(){
+  $("#edit").click(function(){
     var id = $("#ids").val();
     var nombredep = $("#depename").val();
     var director = $("#direc").val();
     var descripciondep = $("#descrip").val();
     var url = $("#urls").val();
-    var imagendep = "prueba";
+    var imagendep = $("#imagens").val();
     $.ajax({
       url:'/gestor/gestor/ajaxDependencia/'+id,
             method:'POST',
@@ -387,6 +495,60 @@ $(document).ready(function(){
             },
             success:function(data){
                 console.log('se modifico la Dependencia');
+        }
+    });
+  });
+});
+</script>
+<script>
+$(document).ready(function(){
+  $("#editprog").click(function(){
+    var id = $("#idprog").val();
+    var nomprog = $("#progname").val();
+    var nomdep = $("#namedepe").val();
+    var responsable = $("#respo").val();
+    var descriprog = $("#descriprograma").val();
+    var imagenprog = $("#imagenprograma").val();
+    $.ajax({
+      url:'/gestor/gestor/ajaxPrograma/'+id,
+            method:'POST',
+            data:{
+            "_token":"{{ csrf_token() }}",
+            nomprog:nomprog,
+            nomdep:nomdep,
+            responsable:responsable,
+            descriprog:descriprog,
+            imagenprog:imagenprog
+            },
+            success:function(data){
+                console.log('se modifico el Programa');
+        }
+    });
+  });
+});
+</script>
+<script>
+$(document).ready(function(){
+  $("#editjuv").click(function(){
+    var id = $("#idj").val();
+    var titulo = $("#titjuv").val();
+    var autor = $("#autjuv").val();
+    var fecha = $("#fechajuv").val();
+    var descripcionjuv = $("#descripjuv").val();
+    var imagenjuv = $("#imagenjuv").val();
+    $.ajax({
+      url:'/gestor/gestor/ajaxJuventud/'+id,
+            method:'POST',
+            data:{
+            "_token":"{{ csrf_token() }}",
+            titulo:titulo,
+            autor:autor,
+            fecha:fecha,
+            descripcionjuv:descripcionjuv,
+            imagenjuv:imagenjuv
+            },
+            success:function(data){
+                console.log('se modifico la Noticia de Juventud');
         }
     });
   });

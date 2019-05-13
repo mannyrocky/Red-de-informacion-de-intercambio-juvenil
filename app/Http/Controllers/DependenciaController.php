@@ -12,9 +12,10 @@ class DependenciaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function mostrar($id)
     {
-        return view('dependencias.Dependencia1');
+        $dependencia = Dependencias::find($id);
+        return view('dependencias.Dependencia')->with(compact('dependencia'));
     }
 
     /**
@@ -62,7 +63,7 @@ class DependenciaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $resquest,$id)
+    public function edit(Request $request,$id)
     {
         $usuario = Dependencias::find($id);
         $usuario->nombredep = $request->nombredep;

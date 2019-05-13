@@ -1,17 +1,16 @@
 @extends('layouts.layout')
  
 @section('content')
+@crsf
 <div class="container">
-    <img src="../../imagen/lotte1.jpg" alt="segunda imagen" 
+    <img src="{{$dependencia->imagendep}}" alt="segunda imagen" 
                     height="300px" width="100%">
-    <h2>Dependencia 1</h2>
-    <h3>Director: </h3>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend
+    <h2>{{$dependencia->nombredep}}</h2>
+    <h3>Director: {{$dependencia->director}} </h3>
+    <p>
+    {{$dependencia->descripciondep}}
     </p>
-    <a href="http://www.bcs.gob.mx"><button>ir</button></a>
+    <a href="{{$dependencia->url}}"><button>ir</button></a>
     <br>
     <div class="col-md-12">
             <div class="panel panel-default">

@@ -60,9 +60,15 @@ class JuventudController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request,$id)
     {
-        //
+        $usuario = Juventud::find($id);
+        $usuario->titulo = $request->titulo;
+        $usuario->autor = $request->autor;
+        $usuario->fecha = $request->fecha;
+        $usuario->descripcionjuv = $request->descripcionjuv;
+        $usuario->imagenjuv = $request->imagenjuv;
+        $usuario->save();
     }
 
     /**

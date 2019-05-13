@@ -18,7 +18,7 @@ Route::get('/', [
     'as' => 'home',
     'uses' => 'HomeController@index'
 ]);
-Route::get('/dependencias/Dependencia1','DependenciaController@index')->name('dependencia1');
+Route::get('/dependencias/Dependencia/{id}','DependenciaController@mostrar')->name('Dependencia');
 Route::get('/eventos/evento1','evento1Controller@index')->name('evento1');
 Route::get('/noticias/noticia1','noticia1Controller@index')->name('noticia1');
 Route::get('/auth/registrar','RegistrarController@index')->name('registrar');
@@ -33,3 +33,5 @@ Route::post('/gestor/gestor/ajaxProgramas','Programascontroller@store');
 Route::post('/gestor/gestor/ajaxDependencia','DependenciaController@store');
 Route::post('/gestor/gestor/ajaxJuventud','JuventudController@store');
 Route::post('/gestor/gestor/ajaxDependencia/{id}','DependenciaController@edit');
+Route::post('/gestor/gestor/ajaxPrograma/{id}','Programascontroller@edit');
+Route::post('/gestor/gestor/ajaxJuventud/{id}','JuventudController@edit');

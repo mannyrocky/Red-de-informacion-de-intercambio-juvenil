@@ -39,7 +39,7 @@ class Programascontroller extends Controller
         $usuario->nomprog = $request->nomprog;
         $usuario->nomdep = $request->nomdep;
         $usuario->responsable = $request->responsable;
-        $usuario->descriprog = $request->nomdep;
+        $usuario->descriprog = $request->descriprog;
         $usuario->imagenprog = $request->imagenprog;
         $usuario->save();
     }
@@ -61,9 +61,15 @@ class Programascontroller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request,$id)
     {
-        //
+        $usuario = Programas::find($id);
+        $usuario->nomprog = $request->nomprog;
+        $usuario->nomdep = $request->nomdep;
+        $usuario->responsable = $request->responsable;
+        $usuario->descriprog = $request->descriprog;
+        $usuario->imagenprog = $request->imagenprog;
+        $usuario->save();
     }
 
     /**

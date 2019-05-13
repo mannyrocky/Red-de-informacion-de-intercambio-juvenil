@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Juventud;
+use App\Programas;
+use App\Dependencias;
 
 class HomeController extends Controller
 {
@@ -13,7 +16,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return \View::make('home');
+        $dependencia = Dependencias::all();
+        $programas = Programas::all();
+        $juventud = Juventud::all();
+        return view('home',compact('dependencia'),compact('programas','juventud'));
     }
 
     /**
