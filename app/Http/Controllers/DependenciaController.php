@@ -1,9 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Dependencias;
-use App\Juventud;
 use Illuminate\Http\Request;
+use \App\Dependencias;
 
 class DependenciaController extends Controller
 {
@@ -23,18 +22,10 @@ class DependenciaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function create()
     {
-        $dependencias = Dependencias::all();
-        $juventudes = Juventud::all();
-        $dependencia = new Dependencias();
-        $dependencia->nombredep = $request->nombredep;
-        $dependencia->director = $request->director;
-        $dependencia->descripciondep = $request->descripciondep;
-        $dependencia->url = $request->url;
-        $dependencia->imagendep = $request->imagendep;
-        $dependencia->save();
-        return redirect()->route('gestor');
+
+       
 
     }
 
@@ -46,9 +37,23 @@ class DependenciaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $usuario = new Dependencias;
+        $usuario->nombredep = $request->nombredep;
+        $usuario->director = $request->director;
+        $usuario->descripciondep = $request->descripciondep;
+        $usuario->url = $request->url;
+        $usuario->imagendep = $request->imagendep;
+        $usuario->save();
     }
-
+    public function modificar(Request $request,$id){
+        $usuario = Dependencia::find($id);
+        $usuario->nombredep = $request->nombredep;
+        $usuario->director = $request->director;
+        $usuario->descripciondep = $request->descripciondep;
+        $usuario->url = $request->url;
+        $usuario->imagendep = $request->imagendep;
+        $usuario->save();
+    }
     /**
      * Display the specified resource.
      *
@@ -68,7 +73,7 @@ class DependenciaController extends Controller
      */
     public function edit($id)
     {
-        //
+             
     }
 
     /**
@@ -80,7 +85,7 @@ class DependenciaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
     }
 
     /**

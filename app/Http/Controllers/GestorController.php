@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Dependencias;
-use App\Juventud;
+use \App\Programas;
+use \App\Dependencias;
+use \App\Juventud;
 use Illuminate\Http\Request;
 
 class GestorController extends Controller
@@ -14,9 +15,10 @@ class GestorController extends Controller
      */
     public function index()
     {
+        $programa = Programas::all();
         $dependencias = Dependencias::all();
         $juventudes = Juventud::all();
-        return view('gestor.gestor',compact('dependencias'),compact('juventudes'));
+        return view('gestor.gestor',compact('dependencias'),compact('juventudes','programa'));
     }
 
     /**
