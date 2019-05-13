@@ -18,11 +18,11 @@ Route::get('/', [
     'as' => 'home',
     'uses' => 'HomeController@index'
 ]);
-Route::get('/dependencias/Dependencia1','Dependencia1Controller@index')->name('dependencia1');
+Route::get('/dependencias/Dependencia1','DependenciaController@index')->name('dependencia1');
 Route::get('/eventos/evento1','evento1Controller@index')->name('evento1');
 Route::get('/noticias/noticia1','noticia1Controller@index')->name('noticia1');
 Route::get('/auth/registrar','RegistrarController@index')->name('registrar');
-Route::get('/gestor/gestor','GestorController@index')->name('Gestor');
+Route::get('/gestor/gestor','GestorController@index')->name('gestor');
 Route::get('/gestor/editarcarrusel','CarruseleditController@index')->name('Carrusel');
 Route::get('/gestor/editarfooter','FooteditController@index')->name('Footer');
 Route::get('/gestor/editarnoticia','NotieditController@index')->name('Notiedit');
@@ -30,3 +30,4 @@ Route::get('/gestor/editartexto','TexteditController@index')->name('Textedit');
 Route::get('/gestor/infopagina','InfoeditController@index')->name('Infoedit');
 Route::get('/gestor/depedit','DepeditController@index')->name('Depedit');
 Route::post('/gestor/gestor/ajaxProgramas','Programascontroller@store');
+Route::post('gestor/gestor','DependenciaController@create')->name('AgregarDependencia');

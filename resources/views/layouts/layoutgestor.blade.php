@@ -63,7 +63,7 @@
             <div class="container-fluid">
                 <ul class="nav justify-content-center ">
                     <li class="nav-item ">
-                    <a class="nav-link" href="{{route('Gestor')}}">Inicio</a>
+                    <a class="nav-link" href="{{route('gestor')}}">Inicio</a>
                     </li>
                 <!-- Dropdown -->
                     <li class="nav-item dropdown">
@@ -71,6 +71,7 @@
                         Dependencias
                         </a>
                         <div class="dropdown-menu">
+                          {!! csrf_field() !!}
                             @if (App\Dependencias::count() > 0)
                               @foreach($dependencias as $dependencia)
                                 <button id="{{$dependencia->id}}" class="dropdown-item dependencia" data-toggle="modal" data-target="#modalEdicion2">{{$dependencia->nombredep}}</button>
@@ -280,6 +281,8 @@
 </div>
 <div class="modal fade" id="agregardependencia" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <form action="{{route('AgregarDependencia')}}" method="post">
+    @csrf
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="titledependencia"></h5>
@@ -292,9 +295,10 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-outline-success">Aceptar</button>
+        <button type="submit" class="btn btn-outline-success">Aceptar</button>
       </div>
     </div>
+    </form>
   </div>
 </div>
 <div class="modal fade" id="agregarjuventud" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">

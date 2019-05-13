@@ -1,11 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Dependencias;
+use App\Juventud;
 use Illuminate\Http\Request;
 
-class Dependencia1Controller extends Controller
+class DependenciaController extends Controller
 {
+    
     /**
      * Display a listing of the resource.
      *
@@ -21,9 +23,19 @@ class Dependencia1Controller extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $dependencias = Dependencias::all();
+        $juventudes = Juventud::all();
+        $dependencia = new Dependencias();
+        $dependencia->nombredep = $request->nombredep;
+        $dependencia->director = $request->director;
+        $dependencia->descripciondep = $request->descripciondep;
+        $dependencia->url = $request->url;
+        $dependencia->imagendep = $request->imagendep;
+        $dependencia->save();
+        return redirect()->route('gestor');
+
     }
 
     /**
