@@ -62,8 +62,15 @@ class DependenciaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $resquest,$id)
     {
+        $usuario = Dependencias::find($id);
+        $usuario->nombredep = $request->nombredep;
+        $usuario->director = $request->director;
+        $usuario->descripciondep = $request->descripciondep;
+        $usuario->url = $request->url;
+        $usuario->imagendep = $request->imagendep;
+        $usuario->save();
 
     }
 

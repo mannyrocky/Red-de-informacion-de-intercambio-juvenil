@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
+use App\Juventud;
 
-class Dependencia2Controller extends Controller
+class JuventudController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +13,7 @@ class Dependencia2Controller extends Controller
      */
     public function index()
     {
-        return View::make('dependencia2');
+        
     }
 
     /**
@@ -34,7 +34,13 @@ class Dependencia2Controller extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $usuario = new Juventud;
+        $usuario->titulo = $request->titulo;
+        $usuario->autor = $request->autor;
+        $usuario->fecha = $request->fecha;
+        $usuario->descripcionjuv = $request->descripcionjuv;
+        $usuario->imagenjuv = $request->imagenjuv;
+        $usuario->save();
     }
 
     /**

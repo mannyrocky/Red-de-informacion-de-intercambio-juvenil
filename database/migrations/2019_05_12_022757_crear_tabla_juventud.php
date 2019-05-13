@@ -17,7 +17,8 @@ class CrearTablaJuventud extends Migration
             $table->bigIncrements('id');
             $table->string('titulo');
             $table->string('autor');
-            $table->string('Descripcionjuv');
+            $table->string('fecha');
+            $table->string('descripcionjuv');
             $table->string('imagenjuv');
             $table->timestamps();
         });

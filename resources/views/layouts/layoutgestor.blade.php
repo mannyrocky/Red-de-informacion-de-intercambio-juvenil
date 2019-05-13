@@ -161,7 +161,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-outline-success">Aceptar</button>
+        <button type="button" class="btn btn-outline-success" id="editDep">Aceptar</button>
       </div>
     </div>
   </div>
@@ -208,17 +208,36 @@
   <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="titledependencia"></h5>
+        <h5 class="modal-title" id="title"></h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body" id="bodydependencia">
+      <div class="modal-body" id="body">
         
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
         <button type="button" class="btn btn-outline-success" id="rgDep">Aceptar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="agregarjuventud" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="titlejuventud"></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="bodyjuventud">
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-outline-success" id="rgJuv">Aceptar</button>
       </div>
     </div>
   </div>
@@ -299,13 +318,79 @@ $(document).ready(function(){
 });
 </script>
 <script>
+$(document).ready(function(){
+    $(".juventud").click(function(){
+        var form = "";
+        var titulo = $("#titlejuventud");
+        var body = $("#bodyjuventud");
+        form+='<form><div class="row">';
+       form+='<div class="col"><input type="text" class="form-control" placeholder="Titulo de la Noticia"  id="titulo"></div></div>';
+       form+='<div class="row mt-4"><div class="col"><input type="text" class="form-control" placeholder="Autor"  id="autor"></div><div class="col"><input type="date" class="form-control" id="fecha"></div></div></form>';
+       form+='<div class="row mt-4"><div class="col"><textarea rows="4" class="form-control" placeholder="Descrpicion" id="descripcionjuv"></textarea></div></div>';
+       form+='<div class="row mt-4 justify-content-center"><input class="btn btn-info" name="uploadedfile" id="imagenjuv" type="file" /></div>';
+       body.html(form);
+       titulo.html('Agregar Noticias sobre la Juventud');
+    });
+    $("#rgJuv").click(function(){
+        var titulo = $("#titulo").val();
+        var autor = $("#autor").val();
+        var fecha = $("#fecha").val();
+        var descripcionjuv = $("#descripcionjuv").val();
+        var imagenjuv = $("#imagenjuv").val();
+        $.ajax({
+            url:"/gestor/gestor/ajaxJuventud",
+            method:'POST',
+            data:{
+            "_token":"{{ csrf_token() }}",
+            titulo:titulo,
+            autor:autor,
+            fecha:fecha,
+            descripcionjuv:descripcionjuv,
+            imagenjuv:imagenjuv
+            },
+            success:function(data){
+                console.log('se agrego Noticia de la Juventud');
+        }
+        });
+    });
+});
+</script>
+<script>
 mostrar = function(ids,depename,direc,descrip,urls,imagens){
   $('#ids').val(ids);
   $('#depename').val(depename);
   $('#direc').val(direc);
   $('#descrip').val(descrip);
-  $('#urls').val(urls); 
+  $('#urls').val(urls);
+  $('imagens').val(imagens); 
 };
+</script>
+<script>
+$(document).ready(function(){
+  $("#editDep").click(function(){
+    var id = $("#ids").val();
+    var nombredep = $("#depename").val();
+    var director = $("#direc").val();
+    var descripciondep = $("#descrip").val();
+    var url = $("#urls").val();
+    var imagendep = "prueba";
+    $.ajax({
+      url:'/gestor/gestor/ajaxDependencia/'+id,
+            method:'POST',
+            data:{
+            "_token":"{{ csrf_token() }}",
+            nombredep:nombredep,
+            director:director,
+            descripciondep:descripciondep,
+            url:url,
+            imagendep:imagendep
+            },
+            success:function(data){
+                console.log('se modifico la Dependencia');
+        }
+    });
+  });
+});
 </script>
 </body>
 </html>
