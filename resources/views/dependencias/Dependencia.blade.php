@@ -1,16 +1,14 @@
 @extends('layouts.layout')
- 
 @section('content')
-@crsf
 <div class="container">
-    <img src="{{$dependencia->imagendep}}" alt="segunda imagen" 
+    <img src="{{$valor->imagendep}}" alt="primera imagen" 
                     height="300px" width="100%">
-    <h2>{{$dependencia->nombredep}}</h2>
-    <h3>Director: {{$dependencia->director}} </h3>
+    <h2>{{$valor->nombredep}}</h2>
+    <h3>Director: {{$valor->director}} </h3>
     <p>
-    {{$dependencia->descripciondep}}
+    {{$valor->descripciondep}}
     </p>
-    <a href="{{$dependencia->url}}"><button>ir</button></a>
+    <a href="http://{{$valor->url}}"><button>ir</button></a>
     <br>
     <div class="col-md-12">
             <div class="panel panel-default">

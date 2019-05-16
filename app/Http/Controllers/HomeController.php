@@ -19,7 +19,7 @@ class HomeController extends Controller
         $dependencia = Dependencias::all();
         $programas = Programas::all();
         $juventud = Juventud::all();
-        return view('home',compact('dependencia'),compact('programas','juventud'));
+        return view('home',compact('dependencia'),compact("juventud","programas"));
     }
 
     /**

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use \App\Dependencias;
+use \App\Juventud;
+use \App\Programas;
 
 class DependenciaController extends Controller
 {
@@ -12,11 +14,6 @@ class DependenciaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function mostrar($id)
-    {
-        $dependencia = Dependencias::find($id);
-        return view('dependencias.Dependencia')->with(compact('dependencia'));
-    }
 
     /**
      * Show the form for creating a new resource.
@@ -54,7 +51,12 @@ class DependenciaController extends Controller
      */
     public function show($id)
     {
-        //
+        $juventud = Juventud::all();
+        $dependencia = Dependencias::all();
+        $programas = Programas::all();
+        $valor = Dependencias::find($id);
+        //dd($dependencia->id);
+        return view('dependencias.Dependencia',compact('dependencia','valor','juventud','programas'));
     }
 
     /**

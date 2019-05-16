@@ -57,7 +57,7 @@
                                 de flujos (Flux Capacitor), Dispositivo que permite
                                 el viaje en el tiempo.
                     </p>
-                    <p><a href="{{route('evento1')}}"><button class="btn btn-outline-success">leer más</button></a></p>
+                    <p><a href="#"><button class="btn btn-outline-success">leer más</button></a></p>
                 </div>
                 <div class="col-md-3">
                     <h2>Titulo 2</h2><br>

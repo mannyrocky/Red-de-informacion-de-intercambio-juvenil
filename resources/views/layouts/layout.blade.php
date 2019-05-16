@@ -63,8 +63,8 @@
                     </a>
                     <div class="dropdown-menu">
                     @if (App\Dependencias::count() > 0)
-                        @foreach($dependencia as $dependencia)
-                            <a class="dropdown-item" href="{{url('/dependencias/Dependencia/'.$dependencia->id)}}" data-toggle="tooltip" title="Mirar datos de {{$dependencia->nombredep}}">{{$dependencia->nombredep}}</a>
+                        @foreach($dependencia as $variable)
+                            <a class="dropdown-item"  href="{{url('/dependencias/Dependencia/'.$variable->id)}}" data-toggle="tooltip" title="Mirar datos de {{$variable->nombredep}}">{{$variable->nombredep}}</a>
                         @endforeach
                     @endif
                     </div>
@@ -74,7 +74,7 @@
                     Codigo Joven
                     </a>
                     <div class="dropdown-menu">
-                    <a class="dropdown-item" href="{{route('noticia1')}}">Información Código Joven</a>
+                    <a class="dropdown-item" href="#">Información Código Joven</a>
                     <a class="dropdown-item" href="{{route('registrar')}}">Registrate</a>
                     <a class="dropdown-item" href="#">Enterate</a>
                     </div>
@@ -85,8 +85,8 @@
                     </a>
                     <div class="dropdown-menu">
                     @if (App\Juventud::count() > 0)
-                        @foreach($juventud as $juventud)
-                            <a class="dropdown-item" href="{{url('/dependencias/'.$juventud->id.'/Dependencia')}}" data-toggle="tooltip" title="Mirar datos de {{$juventud->titulo}}">{{$juventud->titulo}}</a>
+                        @foreach($juventud as $vari)
+                            <a class="dropdown-item"  href="{{url('/juventud/Juventud/'.$vari->id)}}" data-toggle="tooltip" title="Mirar datos de {{$vari->titulo}}">{{$vari->titulo}}</a>
                         @endforeach
                     @endif
                     </div>
@@ -98,8 +98,8 @@
                     </a>
                     <div class="dropdown-menu">
                     @if (App\Programas::count() > 0)
-                        @foreach($programas as $programas)
-                            <a class="dropdown-item" href="{{url('/dependencias/'.$programas->id.'/Dependencia1')}}" data-toggle="tooltip" title="Mirar datos de {{$programas->nomprog}}">{{$programas->nomprog}}</a>
+                        @foreach($programas as $vars)
+                            <a class="dropdown-item"  href="{{url('/programas/Programas/'.$vars->id)}}" data-toggle="tooltip" title="Mirar datos de {{$vars->nomprog}}">{{$vars->nomprog}}</a>
                         @endforeach
                     @endif
                     </div>

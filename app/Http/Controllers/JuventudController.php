@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
-use App\Juventud;
+use \App\Juventud;
+use \App\Dependencias;
+use \App\Programas;
 
 class JuventudController extends Controller
 {
@@ -51,7 +53,12 @@ class JuventudController extends Controller
      */
     public function show($id)
     {
-        //
+        $dependencia = Dependencias::all();
+        $programas = Programas::all();
+        $juventud=Juventud::all();
+        $juve = Juventud::find($id);
+        return view("juventud.Juventud",compact("juventud","juve","dependencia","programas"));
+
     }
 
     /**

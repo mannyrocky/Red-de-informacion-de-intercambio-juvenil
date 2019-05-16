@@ -14,24 +14,26 @@
 /*Route::get('/', function () {
     return view('welcome');
 });*/
+
+//Front-End vistas por parte del usuario
 Route::get('/', [
     'as' => 'home',
     'uses' => 'HomeController@index'
 ]);
-Route::get('/dependencias/Dependencia/{id}','DependenciaController@mostrar')->name('Dependencia');
-Route::get('/eventos/evento1','evento1Controller@index')->name('evento1');
-Route::get('/noticias/noticia1','noticia1Controller@index')->name('noticia1');
+Route::get('/dependencias/Dependencia/{id}','DependenciaController@show');
+Route::get('/juventud/Juventud/{id}','JuventudController@show');
+Route::get('/programas/Programas/{id}','Programascontroller@show');
 Route::get('/auth/registrar','RegistrarController@index')->name('registrar');
+
+//Back-end vista que ve el administrador
 Route::get('/gestor/gestor','GestorController@index')->name('gestor');
 Route::get('/gestor/editarcarrusel','CarruseleditController@index')->name('Carrusel');
-Route::get('/gestor/editarfooter','FooteditController@index')->name('Footer');
-Route::get('/gestor/editarnoticia','NotieditController@index')->name('Notiedit');
-Route::get('/gestor/editartexto','TexteditController@index')->name('Textedit');
-Route::get('/gestor/infopagina','InfoeditController@index')->name('Infoedit');
-Route::get('/gestor/depedit','DepeditController@index')->name('Depedit');
-Route::post('/gestor/gestor/ajaxProgramas','Programascontroller@store');
+//Dependencia
 Route::post('/gestor/gestor/ajaxDependencia','DependenciaController@store');
-Route::post('/gestor/gestor/ajaxJuventud','JuventudController@store');
 Route::post('/gestor/gestor/ajaxDependencia/{id}','DependenciaController@edit');
-Route::post('/gestor/gestor/ajaxPrograma/{id}','Programascontroller@edit');
+//Juventud
+Route::post('/gestor/gestor/ajaxJuventud','JuventudController@store');
 Route::post('/gestor/gestor/ajaxJuventud/{id}','JuventudController@edit');
+//Programas
+Route::post('/gestor/gestor/ajaxProgramas','Programascontroller@store');
+Route::post('/gestor/gestor/ajaxPrograma/{id}','Programascontroller@edit');
