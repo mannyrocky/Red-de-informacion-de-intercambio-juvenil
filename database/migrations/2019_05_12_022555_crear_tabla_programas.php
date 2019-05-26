@@ -15,7 +15,7 @@ class CrearTablaProgramas extends Migration
     {
         Schema::create('programas', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nomprog');
+            $table->string('nomprog')->unique();
             $table->string('nomdep');
             $table->string('responsable');
             $table->string('descriprog');

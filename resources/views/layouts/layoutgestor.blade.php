@@ -8,8 +8,6 @@
     <!--Bootstrap-->
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.css')}}">
     <script src="{{ asset('assets/js/jquery-3.3.1.slim.min.js')}}"></script> 
-    <script src="{{ asset('assets/js/Eventos.js')}}"></script>
-    <script src="{{ asset('assets/js/Agregarevento3.js')}}"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
@@ -180,7 +178,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-outline-warning" id="editcarru">Eliminar</button>
+        <button type="button" class="btn btn-outline-warning" id="borrarprog">Eliminar</button>
         <button type="button" class="btn btn-outline-success" id="editprog">Aceptar</button>
       </div>
     </div>
@@ -224,7 +222,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-outline-warning" id="editcarru">Eliminar</button>
+        <button type="button" class="btn btn-outline-warning" id="borrarjuv">Eliminar</button>
         <button type="button" class="btn btn-outline-success" id="editjuv">Aceptar</button>
       </div>
     </div>
@@ -268,7 +266,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-outline-warning" id="elmdepe">Eliminar</button>
+        <button type="button" class="btn btn-outline-warning" id="borrardepe">Eliminar</button>
         <button type="button" class="btn btn-outline-success" id="edit">Aceptar</button>
       </div>
     </div>
@@ -648,6 +646,58 @@ $(document).ready(function(){
       },
       success:function(data){
         $("#editarcarrusel").modal("hide");
+      }
+    });
+  });
+});
+</script>
+<script>
+$(document).ready(function(){
+  $("#borrarprog").click(function(){
+    var id = $("#idprog").val();
+    $.ajax({
+      url: '/gestor/gestor/ajaxPrograma/'+id,
+      method:'POST',
+      data:{
+      "_token":"{{ csrf_token() }}"
+      },
+      success:function(data){
+        console.log("se borro el programa");
+      }
+    });
+  });
+});
+</script>
+<script>
+$(document).ready(function(){
+  $("#borrarjuv").click(function(){
+    var id = $("#idj").val();
+    $.ajax({
+      url: '/gestor/gestor/ajaxJuventud/'+id,
+      method:'POST',
+      data:{
+      "_token":"{{ csrf_token() }}"
+      },
+      success:function(data){
+        console.log("se borro la noticia de Juventud");
+      }
+    });
+  });
+});
+</script>
+<script>
+$(document).ready(function(){
+  $("#borrardepe").click(function(){
+    var id = $("#ids").val();
+    var nomdep = $("#depename").val();
+    $.ajax({
+      url: '/gestor/gestor/ajaxDependencia/'+id+'/'+nomdep,
+      method:'POST',
+      data:{
+      "_token":"{{ csrf_token() }}",
+      },
+      success:function(data){
+        console.log("se borro la noticia de Dependencia");
       }
     });
   });

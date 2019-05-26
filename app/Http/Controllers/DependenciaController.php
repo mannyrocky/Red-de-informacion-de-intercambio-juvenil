@@ -95,8 +95,11 @@ class DependenciaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function borrar($id,$nomdep)
     {
-        //
+        Dependencias::destroy($id);
+        $programas = Programas::all();
+        $programas = Programas::find($nomdep);
+        $programas->destroy($nomdep);
     }
 }

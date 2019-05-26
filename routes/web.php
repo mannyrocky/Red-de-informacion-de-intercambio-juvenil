@@ -46,10 +46,12 @@ Route::post('/gestor/gestor/ajaxCarrusel/{id}','CarruselController@edit');
     //Dependencia
 Route::post('/gestor/gestor/ajaxDependencia','DependenciaController@store');
 Route::post('/gestor/gestor/ajaxDependencia/{id}','DependenciaController@edit');
+Route::post('/gestor/gestor/ajaxDependencia/{id}/{nomdep}','DependenciaController@borrar');
     //Juventud
 Route::post('/gestor/gestor/ajaxJuventud','JuventudController@store');
 Route::post('/gestor/gestor/ajaxJuventud/{id}','JuventudController@edit');
+Route::post('/gestor/gestor/ajaxJuventud/{id}/','JuventudController@borrar');
     //Programas
 Route::post('/gestor/gestor/ajaxProgramas','Programascontroller@store');
 Route::post('/gestor/gestor/ajaxPrograma/{id}','Programascontroller@edit');
-
+Route::post('/gestor/gestor/ajaxPrograma/{id}','Programascontroller@borrar');
