@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use \App\Programas;
 use \App\Dependencias;
+use \App\Carrusel;
 use \App\Juventud;
 use Illuminate\Http\Request;
 
@@ -18,7 +19,8 @@ class GestorController extends Controller
         $programa = Programas::all();
         $dependencias = Dependencias::all();
         $juventudes = Juventud::all();
-        return view('gestor.gestor',compact('dependencias'),compact('juventudes','programa'));
+        $carrusel = Carrusel::find(1);
+        return view('gestor.gestor',compact('dependencias'),compact('juventudes','programa',"carrusel"));
     }
 
     /**

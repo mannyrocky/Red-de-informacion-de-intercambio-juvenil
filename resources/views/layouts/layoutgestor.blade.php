@@ -70,7 +70,6 @@
                               @endforeach
                             @endif
                             <button class="dropdown-item dependencia" data-toggle="modal" data-target="#agregardependencia">Agregar Dependencias</button>
-                            
                         </div>
                     </li>
                 <!-- Dropdown -->
@@ -79,7 +78,7 @@
                         Código Joven
                         </a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="{{route('Notiedit')}}">Información</a>
+                            <a class="dropdown-item" href="#">Información</a>
                             <a class="dropdown-item" href="{{route('registrar')}}">Registrate</a>
                             <a class="dropdown-item" href="#">Enterate</a>
                         </div>
@@ -181,6 +180,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-outline-warning" id="editcarru">Eliminar</button>
         <button type="button" class="btn btn-outline-success" id="editprog">Aceptar</button>
       </div>
     </div>
@@ -224,6 +224,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-outline-warning" id="editcarru">Eliminar</button>
         <button type="button" class="btn btn-outline-success" id="editjuv">Aceptar</button>
       </div>
     </div>
@@ -267,7 +268,68 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-outline-warning" id="elmdepe">Eliminar</button>
         <button type="button" class="btn btn-outline-success" id="edit">Aceptar</button>
+      </div>
+    </div>
+  </div>
+</div>  
+<div class="modal fade" id="editarcarrusel" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalTitle2">Editar Carrusel</h5>
+        <button type="button" class="close" data-dismiss="modal2" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="bodyModal">
+        <form>
+          <div class="row">
+            <div class="col">
+              Imagen 1: <input type="file" class="btn btn-info"   id="imagen1" value="{{$carrusel->imagen1}}">
+            </div>
+            <div class="col">
+              Url de Imagen1 : <input type="text" class="form-control"  id="urlimagen1" value="{{$carrusel->urlimagen1}}">
+            </div>
+          </div>
+          <div class="row mt-4">
+            <div class="col">
+              Imagen 2:<input type="file" class="btn btn-info"  id="imagen2" value="{{$carrusel->imagen2}}">
+            </div>
+            <div class="col">
+              url de Imagen 2:<input type="text" class="form-control"   id="urlimagen2" value="{{$carrusel->urlimagen2}}">
+            </div>
+          </div>
+          <div class="row mt-4">
+              <div class="col">
+                Imagen 3:<input class="btn btn-info"  id="imagen3" type="file" value="{{$carrusel->imagen3}}">
+              </div>
+              <div class="col">
+                  Url de Imagen 3<input class="form-control" type="text" placeholder="Url" id="urlimagen3" value="{{$carrusel->urlimagen3}}">
+              </div>
+          </div>
+          <div class="row mt-4">
+              <div class="col">
+                Imagen 4:<input class="btn btn-info"  id="imagen4" type="file" value="{{$carrusel->imagen4}}">
+              </div>
+              <div class="col">
+                  Url de Imagen 4<input class="form-control" type="text" placeholder="Url" id="urlimagen4" value="{{$carrusel->urlimagen4}}">
+              </div>
+          </div>  
+          <div class="row mt-4">
+              <div class="col">
+                Imagen 5:<input class="btn btn-info"  id="imagen5" type="file" value="{{$carrusel->imagen5}}">           
+              </div>
+              <div class="col">
+                  Url de Imagen 5<input class="form-control" type="text" placeholder="Url" id="urlimagen5" value="{{$carrusel->urlimagen5}}">
+              </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-outline-success" id="editcarru">Aceptar</button>
       </div>
     </div>
   </div>
@@ -550,6 +612,43 @@ $(document).ready(function(){
             success:function(data){
                 console.log('se modifico la Noticia de Juventud');
         }
+    });
+  });
+});
+</script>
+<script>
+$(document).ready(function(){
+  $('#editcarru').click(function(){
+    var ids = 1;
+    var imagen1 = $("#imagen1").val();
+    var urlimagen1 = $("#urlimagen1").val();
+    var imagen2 = $("#imagen2").val();
+    var urlimagen2 = $("#urlimagen2").val();
+    var imagen3 = $("#imagen3").val();
+    var urlimagen3 = $("#urlimagen3").val();
+    var imagen4 = $("#imagen4").val();
+    var urlimagen4 = $("#urlimagen4").val();
+    var imagen5 = $("#imagen5").val();
+    var urlimagen5 = $("#urlimagen5").val();
+    $.ajax({
+      url:'/gestor/gestor/ajaxCarrusel'+ids,
+      method:'POST',
+      data:{
+        "_token":"{{ csrf_token() }}",
+        imagen1:imagen1,
+        urlimagen1:urlimagen1,
+        imagen2:imagen2,
+        urlimagen2:urlimagen2,
+        imagen3:imagen3,
+        urlimagen3:urlimagen3,
+        imagen4:imagen4,
+        urlimagen4:urlimagen4,
+        imagen5:imagen5,
+        urlimagen5:urlimagen5
+      },
+      success:function(data){
+        $("#editarcarrusel").modal("hide");
+      }
     });
   });
 });

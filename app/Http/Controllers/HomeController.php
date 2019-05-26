@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Juventud;
 use App\Programas;
 use App\Dependencias;
-
+use App\Carrusel;
 class HomeController extends Controller
 {
     /**
@@ -19,7 +19,8 @@ class HomeController extends Controller
         $dependencia = Dependencias::all();
         $programas = Programas::all();
         $juventud = Juventud::all();
-        return view('home',compact('dependencia'),compact("juventud","programas"));
+        $carrusel = Carrusel::find(1);
+        return view('home',compact('dependencia'),compact("juventud","programas","carrusel"));
     }
 
     /**

@@ -10,27 +10,50 @@
                         <li class="active" data-target="#carrusel" data-slide-to="0"></li>
                         <li data-target="#carrusel" data-slide-to="1"></li>
                         <li data-target="#carrusel" data-slide-to="2"></li>
+                        <li data-target="#carrusel" data-slide-to="3"></li>
+                        <li data-target="#carrusel" data-slide-to="4"></li>
                     </ol>
                 <div class="carousel-inner" role="listbox">
-                    <div class="carousel-item active">
-                        <img src="../../imagen/fondo4.jpg" alt="primera imagen" 
+                    <div class="carousel-item active"><a href="htpp://{{$carrusel->urlimagen1}}">
+                        <img src="{{$carrusel->imagen1}}" alt="primera imagen" 
                             height="500px" width="100%">
+                        </a>
                         <div class="carousel-caption">
                         <h3>Komi-san Besto waifu</h3>
                         <p>Komi-san god</p>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="imagen/lotte1.jpg" alt="segunda imagen" 
+                    <a href="htpp://{{$carrusel->urlimagen2}}"><img src="{{$carrusel->imagen2}}" alt="segunda imagen" 
                     height="500px" width="100%">
+                    </a>
                     <div class="carousel-caption">
                         <h3>lotte Besto waifu</h3>
                         <p>lotte god</p>
                     </div>   
                 </div>
                 <div class="carousel-item">
-                    <img src="imagen/lotte2.jpg" alt="tercera imagen" 
+                    <img src="{{$carrusel->imagen3}}" alt="tercera imagen" 
                     height="500px" width="100%">
+                    <a href="htpp://"></a>
+                    <div class="carousel-caption">
+                        <h3>lotte Besto waifu</h3>
+                        <p>lotte god</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="{{$carrusel->imagen4}}" alt="cuarta imagen" 
+                    height="500px" width="100%">
+                    <a href="htpp://"></a>
+                    <div class="carousel-caption">
+                        <h3>lotte Besto waifu</h3>
+                        <p>lotte god</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="{{$carrusel->imagen5}}" alt="quinta imagen" 
+                    height="500px" width="100%">
+                    <a href="htpp://"></a>
                     <div class="carousel-caption">
                         <h3>lotte Besto waifu</h3>
                         <p>lotte god</p>
@@ -103,11 +126,13 @@
                             <p>Libreria para Javascript muy versatil</p>
                             <p><a href="#" class="btn btn-primary"> ver mas </a></p>
                         </div>
+                        <hr>
                         <div class="footer-main-item col-md-12">
                             <h3><i class="fa fa-paperclip" aria-hidden="true"></i>Noticia3</h3>
                             <p>Libreria para generar hojas de estilo en cascada</p>
                             <p><a href="#" class="btn btn-primary"> ver mas </a></p>
                         </div>
+                        <hr>
                         <div class="footer-main-item col-md-12">
                             <h3><i class="fa fa-paperclip" aria-hidden="true"></i>Noticia4</h3>
                             <p>Libreria para generar hojas de estilo en cascada</p>
@@ -116,7 +141,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> 
     </div>
 </div>
         </div>

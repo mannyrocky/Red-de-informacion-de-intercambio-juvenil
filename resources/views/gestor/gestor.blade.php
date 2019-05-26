@@ -50,13 +50,15 @@
                         <li class="active" data-target="#carrusel" data-slide-to="0"></li>
                         <li data-target="#carrusel" data-slide-to="1"></li>
                         <li data-target="#carrusel" data-slide-to="2"></li>
+                        <li data-target="#carrusel" data-slide-to="3"></li>
+                        <li data-target="#carrusel" data-slide-to="4"></li>
                     </ol>
                 <div class="carousel-inner" role="listbox">
                     <div class="carousel-item active">
                         <img src="../../imagen/fondo4.jpg" alt="primera imagen" 
                             height="500px" width="100%">
                             <div class="overlay"></div>
-                            <div class="btnn" data-toggle="modal" data-target="#modalEdicion6"><a href="#"> Editar imágenes </a></div>
+                            <div class="btnn" id="1" data-toggle="modal" data-target="#editarcarrusel"><a href="#"> Editar imágenes </a></div>
                         <div class="carousel-caption">
                             <h3>Komi-san Besto waifu</h3>
                             <p>Komi-san god</p>
@@ -66,7 +68,7 @@
                 <img src="../../imagen/fondo4.jpg" alt="segunda imagen" 
                             height="500px" width="100%">
                             <div class="overlay"></div>
-                            <div class="btnn" data-toggle="modal" data-target="#modalEdicion6"><a href="#"> Editar imágenes </a></div>
+                            <div class="btnn" data-toggle="modal" data-target="#editarcarrusel"><a href="#"> Editar imágenes </a></div>
                         <div class="carousel-caption">
                             <h3>Komi-san Besto waifu</h3>
                             <p>Komi-san god</p>
@@ -76,7 +78,27 @@
                 <img src="../../imagen/fondo4.jpg" alt="tercera imagen" 
                             height="500px" width="100%">
                             <div class="overlay"></div>
-                            <div class="btnn" data-toggle="modal" data-target="#modalEdicion6"><a href="#"> Editar imágenes</a></div>
+                            <div class="btnn" data-toggle="modal" data-target="#editarcarrusel"><a href="#"> Editar imágenes</a></div>
+                        <div class="carousel-caption">
+                            <h3>Komi-san Besto waifu</h3>
+                            <p>Komi-san god</p>
+                        </div>
+                </div>
+                <div class="carousel-item">
+                <img src="../../imagen/fondo4.jpg" alt="tercera imagen" 
+                            height="500px" width="100%">
+                            <div class="overlay"></div>
+                            <div class="btnn" data-toggle="modal" data-target="#editarcarrusel"><a href="#"> Editar imágenes</a></div>
+                        <div class="carousel-caption">
+                            <h3>Komi-san Besto waifu</h3>
+                            <p>Komi-san god</p>
+                        </div>
+                </div>
+                <div class="carousel-item">
+                <img src="../../imagen/fondo4.jpg" alt="tercera imagen" 
+                            height="500px" width="100%">
+                            <div class="overlay"></div>
+                            <div class="btnn" data-toggle="modal" data-target="#editarcarrusel"><a href="#"> Editar imágenes</a></div>
                         <div class="carousel-caption">
                             <h3>Komi-san Besto waifu</h3>
                             <p>Komi-san god</p>
