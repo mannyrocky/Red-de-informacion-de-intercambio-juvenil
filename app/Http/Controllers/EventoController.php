@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Eventos;
 use Illuminate\Http\Request;
 
 class EventoController extends Controller
@@ -54,11 +54,16 @@ class EventoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request,$id)
     {
-        //
+        $evento = Eventos::find($id);
+        $evento->tituloev = $request->tituloev;
+        $evento->depev = $request->depev;
+        $evento->lugar = $request->lugar;
+        $evento->Descripcionev = $request->Descripcionev;
+        $evento->imagenjuv = $request->imagenjuv;
+        $evento->save();
     }
-
     /**
      * Update the specified resource in storage.
      *

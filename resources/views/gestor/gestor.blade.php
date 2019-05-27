@@ -118,40 +118,36 @@
                 <div class="container" id ="evento">
                     <div class="row">
                         <div class="col-md-3">
-                            <h2>Titulo 1</h2><br>
+                            <h2>{{$even1->tituloev}}</h2><br>
                             <img src="../../imagen/fondo4.jpg" width="100" class="my-4">
-                            <p style="t">El Doc. Emmet Brown anuncia la invencion del condensador
-                                        de flujos (Flux Capacitor), Dispositivo que permite
-                                        el viaje en el tiempo.
+                            <p style="t">
+                                {{$even1->Descripcionev}}
                             </p>
-                            <p><button class="btn btn-outline-success evento" data-toggle="modal" data-target="#editarevento">Editar</button></p>
+                            <p><button class="btn btn-outline-success evento" data-toggle="modal" data-target="#editarevento" onclick="mostrarevento('{{$even1->id}}','{{$even1->tituloev}}','{{$even1->depev}}','{{$even1->lugar}}','{{$even1->Descripcionev}}','{{$even1->imagenjuv}}');">Editar</button></p>
                         </div>
                         <div class="col-md-3">
-                            <h2>Titulo 2</h2><br>
+                            <h2>{{$even2->tituloev}}</h2><br>
                             <img src="../../imagen/fondo4.jpg" width="100" class="my-4">
-                            <p style="t">El Doc. Emmet Brown anuncia la invencion del condensador
-                                        de flujos (Flux Capacitor), Dispositivo que permite
-                                        el viaje en el tiempo.
+                            <p style="t">
+                            {{$even2->Descripcionev}}
                             </p>
-                            <p><button class="btn btn-outline-success evento" data-toggle="modal" data-target="#editarevento">Editar</button></p>
+                            <p><button class="btn btn-outline-success evento" data-toggle="modal" data-target="#editarevento" onclick="mostrarevento('{{$even2->id}}','{{$even2->tituloev}}','{{$even2->depev}}','{{$even2->lugar}}','{{$even2->Descripcionev}}','{{$even2->imagenjuv}}');">Editar</button></p>
                         </div>
                         <div class="col-md-3" >
-                                <h2>Titulo 3</h2><br>
+                                <h2>{{$even3->tituloev}}</h2><br>
                                 <img src="../../imagen/fondo4.jpg" width="100" class="my-4">
-                                <p style="t">El Doc. Emmet Brown anuncia la invencion del condensador
-                                        de flujos (Flux Capacitor), Dispositivo que permite
-                                        el viaje en el tiempo.
+                                <p style="t">
+                                    {{$even3->Descripcionev}}
                                 </p>
-                                <p><button class="btn btn-outline-success evento" data-toggle="modal" data-target="#editarevento">Editar</button></p>
+                                <p><button class="btn btn-outline-success evento" data-toggle="modal" data-target="#editarevento"onclick="mostrarevento('{{$even3->id}}','{{$even3->tituloev}}','{{$even3->depev}}','{{$even3->lugar}}','{{$even3->Descripcionev}}','{{$even3->imagenjuv}}');">Editar</button></p>
                         </div>
                         <div class="col-md-3">
-                                <h2>Titulo 4</h2><br>
+                                <h2>{{$even4->tituloev}}</h2><br>
                                 <img src="../../imagen/fondo4.jpg" width="100" class="my-4">
-                                <p style="t">El Doc. Emmet Brown anuncia la invencion del condensador
-                                        de flujos (Flux Capacitor), Dispositivo que permite
-                                        el viaje en el tiempo.
+                                <p style="t">
+                                {{$even4->Descripcionev}}
                             </p>
-                                <p><button class="btn btn-outline-success evento" data-toggle="modal" data-target="#editarevento">Editar</button></p>
+                                <p><button class="btn btn-outline-success evento" data-toggle="modal" data-target="#editarevento" onclick="mostrarevento('{{$even4->id}}','{{$even4->tituloev}}','{{$even4->depev}}','{{$even4->lugar}}','{{$even4->Descripcionev}}','{{$even4->imagenjuv}}');">Editar</button></p>
                         </div>
                     </div>
                 </div>
@@ -162,24 +158,24 @@
                         <div class="container">
                             <div class="row">
                                 <div class="footer-main-item col-md-12">
-                                    <h3><i class="fa fa-text-height" aria-hidden="true"></i>Informacion 1</h3>
-                                    <p>Herramientas para sitio web responsive</p>
-                                    <p><button class="btn btn-primary noticias" data-toggle="modal" data-target="#editarnoticia"> Editar </button></p>
+                                    <h3><i class="fa fa-text-height" aria-hidden="true"></i>{{$noti1->titulonoti}}</h3>
+                                    <p>{{$noti1->Descripcionnot}}</p>
+                                    <p><button class="btn btn-primary noticias" data-toggle="modal" data-target="#editarnoticia"onclick="mostrarnoticia('{{$noti1->id}}','{{$noti1->titulonoti}}','{{$noti1->autornoti}}','{{$noti1->fechanoti}}','{{$noti1->Descripcionnot}}','{{$noti1->imagennoti}}');"> Editar </button></p>
                                 </div>
                                 <div class="footer-main-item col-md-12">
-                                    <h3><img src="../../imagen/lotte1.jpg" width="100px" height ="100px">Informacion 2</h3>
-                                    <p>Libreria para Javascript muy versatil</p>
-                                    <p><button class="btn btn-primary noticias" data-toggle="modal" data-target="#editarnoticia"> Editar </button></p>
+                                    <h3><img src="../../imagen/lotte1.jpg" width="100px" height ="100px">{{$noti2->titulonoti}}</h3>
+                                    <p>{{$noti2->Descripcionnot}}</p>
+                                    <p><button class="btn btn-primary noticias" data-toggle="modal" data-target="#editarnoticia" onclick="mostrarnoticia('{{$noti2->id}}','{{$noti2->titulonoti}}','{{$noti2->autornoti}}','{{$noti2->fechanoti}}','{{$noti2->Descripcionnot}}','{{$noti2->imagennoti}}');" > Editar </button></p>
                                 </div>
                                 <div class="footer-main-item col-md-12">
-                                    <h3><i class="fa fa-paperclip" aria-hidden="true"></i>Informacion 3</h3>
-                                    <p>Libreria para generar hojas de estilo en cascada</p>
-                                    <p><button class="btn btn-primary noticias" data-toggle="modal" data-target="#editarnoticia"> Editar </button></p>
+                                    <h3><i class="fa fa-paperclip" aria-hidden="true"></i>{{$noti3->titulonoti}}</h3>
+                                    <p>{{$noti3->Descripcionnot}}</p>
+                                    <p><button class="btn btn-primary noticias" data-toggle="modal" data-target="#editarnoticia" onclick="mostrarnoticia('{{$noti3->id}}','{{$noti3->titulonoti}}','{{$noti3->autornoti}}','{{$noti3->fechanoti}}','{{$noti3->Descripcionnot}}','{{$noti3->imagennoti}}');"> Editar </button></p>
                                 </div>
                                 <div class="footer-main-item col-md-12">
-                                    <h3><i class="fa fa-paperclip" aria-hidden="true"></i>Informacion 4</h3>
-                                    <p>Libreria para generar hojas de estilo en cascada</p>
-                                    <p><button class="btn btn-primary noticias" data-toggle="modal" data-target="#editarnoticia" > Editar </button></p>
+                                    <h3><i class="fa fa-paperclip" aria-hidden="true"></i>{{$noti4->titulonoti}}</h3>
+                                    <p>{{$noti4->Descripcionnot}}</p>
+                                    <p><button class="btn btn-primary noticias" data-toggle="modal" data-target="#editarnoticia" onclick="mostrarnoticia('{{$noti4->id}}','{{$noti4->titulonoti}}','{{$noti4->autornoti}}','{{$noti4->fechanoti}}','{{$noti4->Descripcionnot}}','{{$noti4->imagennoti}}');"> Editar </button></p>
                                 </div>
                             </div>
                         </div>

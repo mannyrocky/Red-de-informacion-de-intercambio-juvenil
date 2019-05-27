@@ -402,27 +402,27 @@
         <form>
           <div class="row">
             <div class="col">
-              <input type="text" class="form-control" placeholder="Id"  id="ids" disabled>
+              <input type="text" class="form-control" placeholder="Id"  id="idev" disabled>
             </div>
             <div class="col">
-              <input type="text" class="form-control" placeholder="Dependencia"  id="depename">
+              <input type="text" class="form-control" placeholder="Titulo Evento"  id="titev">
             </div>
           </div>
           <div class="row mt-4">
             <div class="col">
-              <input type="text" class="form-control" placeholder="Director"  id="direc">
+              <input type="text" class="form-control" placeholder="Dependencia"  id="depeve">
             </div>
             <div class="col">
-              <input type="text" class="form-control" placeholder="Url"  id="urls">
+              <input type="text" class="form-control" placeholder="Lugar"  id="lugar">
             </div>
           </div>
         </form>
         <div class="row mt-4"><div class="col">
-          <textarea rows="4" class="form-control" placeholder="Descrpicion" id="descrip"></textarea>
+          <textarea rows="4" class="form-control" placeholder="Descrpicion" id="descripeven"></textarea>
         </div>
       </div>
       <div class="row mt-4 justify-content-center">
-        <input class="btn btn-info" name="uploadedfile" id="imagens" type="file" />
+        <input class="btn btn-info" name="uploadedfile" id="imageneve" type="file" />
       </div>
       </div>
       <div class="modal-footer">
@@ -445,27 +445,27 @@
         <form>
           <div class="row">
             <div class="col">
-              <input type="text" class="form-control" placeholder="Id"  id="ids" disabled>
+              <input type="text" class="form-control" placeholder="Id"  id="idnoti" disabled>
             </div>
             <div class="col">
-              <input type="text" class="form-control" placeholder="Dependencia"  id="depename">
+              <input type="text" class="form-control" placeholder="Titulo Noticia"  id="titnoti">
             </div>
           </div>
           <div class="row mt-4">
             <div class="col">
-              <input type="text" class="form-control" placeholder="Director"  id="direc">
+              <input type="text" class="form-control" placeholder="Autor"  id="autonoti">
             </div>
             <div class="col">
-              <input type="text" class="form-control" placeholder="Url"  id="urls">
+              <input type="date" class="form-control"  id="fechanoti">
             </div>
           </div>
         </form>
         <div class="row mt-4"><div class="col">
-          <textarea rows="4" class="form-control" placeholder="Descrpicion" id="descrip"></textarea>
+          <textarea rows="4" class="form-control" placeholder="Descrpicion" id="descripnoti"></textarea>
         </div>
       </div>
       <div class="row mt-4 justify-content-center">
-        <input class="btn btn-info" name="uploadedfile" id="imagens" type="file" />
+        <input class="btn btn-info" name="uploadedfile" id="imagenoti" type="file" />
       </div>
       </div>
       <div class="modal-footer">
@@ -620,6 +620,24 @@ mostrarprog = function(idp,progname,namedepe,respo,despro,imagenpro){
 };
 </script>
 <script>
+mostrarevento = function(ide,titev,depev,lugar,deseve,imageneve){
+  $('#idev').val(ide);
+  $('#titev').val(titev);
+  $('#depeve').val(depev);
+  $('#lugar').val(lugar);
+  $('#descripeven').val(deseve);
+  $('#imageneve').val(imageneve); 
+};
+</script>
+<script>
+mostrarnoticia = function(idn,titnot,autornot,fechanot,desnot,imagenot){
+  $('#idnoti').val(idn);
+  $('#titnoti').val(titnot);
+  $('#autonoti').val(autornot);
+  $('#fechanoti').val(fechanot);
+  $('#descripnoti').val(desnot);
+  $('#imagenoti').val(imagenot); 
+};
 </script>
 <script>
 $(document).ready(function(){
@@ -787,6 +805,61 @@ $(document).ready(function(){
       success:function(data){
         console.log("se borro la noticia de Dependencia");
       }
+    });
+  });
+});
+</script>
+<script>
+$(document).ready(function(){
+  $("#editnoti").click(function(){
+    var id = $("#idnoti").val();
+    var titulonoti = $("#titnoti").val();
+    var autornoti = $("#autonoti").val();
+    var fechanoti = $("#fechanoti").val();
+    var Descripcionnot = $("#descripnoti").val();
+    var imagennoti = $("#imagenoti").val();
+    $.ajax({
+      url:'/gestor/gestor/ajaxNoticia/'+id,
+            method:'POST',
+            data:{
+            "_token":"{{ csrf_token() }}",
+            titulonoti:titulonoti,
+            autornoti:autornoti,
+            fechanoti:fechanoti,
+            Descripcionnot:Descripcionnot,
+            imagennoti:imagennoti
+            },
+            success:function(data){
+                console.log('se modifico la Noticia');
+                
+        }
+    });
+  });
+});
+</script>
+<script>
+$(document).ready(function(){
+  $("#editevento").click(function(){
+    var id = $("#idev").val();
+    var tituloev = $("#titev").val();
+    var depev = $("#depeve").val();
+    var lugar = $("#lugar").val();
+    var Descripcionev = $("#descripeven").val();
+    var imagenjuv = $("#imageneve").val();
+    $.ajax({
+      url:'/gestor/gestor/ajaxEvento/'+id,
+            method:'POST',
+            data:{
+            "_token":"{{ csrf_token() }}",
+            tituloev:tituloev,
+            depev:depev,
+            lugar:lugar,
+            Descripcionev:Descripcionev,
+            imagenjuv:imagenjuv
+            },
+            success:function(data){
+                console.log('se modifico la Noticia de Juventud');
+        }
     });
   });
 });

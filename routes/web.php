@@ -55,3 +55,8 @@ Route::post('/gestor/gestor/ajaxJuventud/{id}/','JuventudController@borrar');
 Route::post('/gestor/gestor/ajaxProgramas','Programascontroller@store');
 Route::post('/gestor/gestor/ajaxPrograma/{id}','Programascontroller@edit');
 Route::post('/gestor/gestor/ajaxPrograma/{id}','Programascontroller@borrar');
+    //Noticias
+Route::post('/gestor/gestor/ajaxNoticia/{id}','NoticiaController@edit');
+
+    //Eventos
+Route::post('/gestor/gestor/ajaxEvento/{id}','EventoController@edit');

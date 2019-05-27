@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Noticias;
 use Illuminate\Http\Request;
 
-class NotieditController extends Controller
+class NoticiaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -54,9 +54,15 @@ class NotieditController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request,$id)
     {
-        //
+        $noticias = Noticias::find($id);
+        $noticias->titulonoti = $request->titulonoti;
+        $noticias->autornoti = $request->autornoti;
+        $noticias->fechanoti = $request->fechanoti;
+        $noticias->Descripcionnot = $request->Descripcionnot;
+        $noticias->imagennoti = $request->imagennoti;
+        $noticias->save();
     }
 
     /**
