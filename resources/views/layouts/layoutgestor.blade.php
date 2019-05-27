@@ -282,10 +282,9 @@
         </button>
       </div>
       <div class="modal-body" id="bodyModal">
-        <form>
           <div class="row">
             <div class="col">
-              Imagen 1: <input type="file" class="btn btn-info"   id="imagen1" value="{{$carrusel->imagen1}}">
+              Imagen 1: <input type="file" class="btn btn-info"   name="imagen1" value="{{$carrusel->imagen1}}">
             </div>
             <div class="col">
               Url de Imagen1 : <input type="text" class="form-control"  id="urlimagen1" value="{{$carrusel->urlimagen1}}">
@@ -293,7 +292,7 @@
           </div>
           <div class="row mt-4">
             <div class="col">
-              Imagen 2:<input type="file" class="btn btn-info"  id="imagen2" value="{{$carrusel->imagen2}}">
+              Imagen 2:<input type="file" class="btn btn-info"  name="imagen2" value="{{$carrusel->imagen2}}">
             </div>
             <div class="col">
               url de Imagen 2:<input type="text" class="form-control"   id="urlimagen2" value="{{$carrusel->urlimagen2}}">
@@ -301,7 +300,7 @@
           </div>
           <div class="row mt-4">
               <div class="col">
-                Imagen 3:<input class="btn btn-info"  id="imagen3" type="file" value="{{$carrusel->imagen3}}">
+                Imagen 3:<input class="btn btn-info"  name="imagen3" type="file" value="{{$carrusel->imagen3}}">
               </div>
               <div class="col">
                   Url de Imagen 3<input class="form-control" type="text" placeholder="Url" id="urlimagen3" value="{{$carrusel->urlimagen3}}">
@@ -309,7 +308,7 @@
           </div>
           <div class="row mt-4">
               <div class="col">
-                Imagen 4:<input class="btn btn-info"  id="imagen4" type="file" value="{{$carrusel->imagen4}}">
+                Imagen 4:<input class="btn btn-info"  name="imagen4" type="file" value="{{$carrusel->imagen4}}">
               </div>
               <div class="col">
                   Url de Imagen 4<input class="form-control" type="text" placeholder="Url" id="urlimagen4" value="{{$carrusel->urlimagen4}}">
@@ -317,17 +316,17 @@
           </div>  
           <div class="row mt-4">
               <div class="col">
-                Imagen 5:<input class="btn btn-info"  id="imagen5" type="file" value="{{$carrusel->imagen5}}">           
+                Imagen 5:<input class="btn btn-info"  name="imagen5" type="file" value="{{$carrusel->imagen5}}">           
               </div>
               <div class="col">
                   Url de Imagen 5<input class="form-control" type="text" placeholder="Url" id="urlimagen5" value="{{$carrusel->urlimagen5}}">
               </div>
           </div>
-        </form>
+        
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-outline-success" id="editcarru">Aceptar</button>
+        <button id="envImg" class="btn btn-outline-success">Aceptar</button>
       </div>
     </div>
   </div>
@@ -790,6 +789,37 @@ $(document).ready(function(){
     });
   });
 });
+</script>
+<script>
+$(document).ready(function(){
+  $('#envImg').click( function() {
+  // agrego la data del form a formData
+  var formData = new FormData();
+  formData.append('imagen1', $('input[name=imagen1]')[0].files[0]);
+  formData.append('imagen2', $('input[name=imagen2]')[0].files[0]);
+  formData.append('imagen3', $('input[name=imagen3]')[0].files[0]);
+  formData.append('imagen4', $('input[name=imagen4]')[0].files[0]);
+  formData.append('imagen5', $('input[name=imagen5]')[0].files[0]);
+  formData.append('urlimagen1', $('#urlimagen1').val());
+  formData.append('urlimagen2', $('#urlimagen2').val());
+  formData.append('urlimagen3', $('#urlimagen3').val());
+  formData.append('urlimagen4', $('#urlimagen4').val());
+  formData.append('urlimagen5', $('#urlimagen5').val());
+  formData.append('_token','{{ csrf_token() }}');
+  $.ajax({
+      type:'POST',
+      url: '/gestor/gestor/imagenesAjax',
+      data:formData,
+      cache:false,
+      contentType: false,
+      processData: false,
+      success:function(data){
+      alert(data);
+      }
+  });
+});
+});
+
 </script>
 </body>
 </html>

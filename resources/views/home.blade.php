@@ -14,7 +14,7 @@
                         <li data-target="#carrusel" data-slide-to="4"></li>
                     </ol>
                 <div class="carousel-inner" role="listbox">
-                    <div class="carousel-item active"><a href="htpp://{{$carrusel->urlimagen1}}">
+                    <div class="carousel-item active"><a href="http://{{$carrusel->urlimagen1}}">
                         <img src="{{$carrusel->imagen1}}" alt="primera imagen" 
                             height="500px" width="100%">
                         </a>
@@ -147,4 +147,29 @@
         </div>
     </div>
 </div>
+<script>
+$('#formCarrusel').on('submit', function(e) {
+  // evito que propague el submit
+  e.preventDefault();
+  
+  // agrego la data del form a formData
+  var formData = new FormData(this);
+  formData.append('_token', $('input[name=_token]').val());
+
+  $.ajax({
+      type:'POST',
+      url: '../update/' + id,
+      data:formData,
+      cache:false,
+      contentType: false,
+      processData: false,
+      success:function(data){
+          toastr.error('Validation true!', 'se pudo Añadir los datos<br>', {timeOut: 5000});
+      },
+      error: function(jqXHR, text, error){
+          toastr.error('Validation error!', 'No se pudo Añadir los datos<br>' + error, {timeOut: 5000});
+      }
+  });
+});
+</script>
 @endsection
