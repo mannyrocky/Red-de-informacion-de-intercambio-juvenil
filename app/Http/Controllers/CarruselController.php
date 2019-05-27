@@ -6,6 +6,7 @@ use App\Juventud;
 use App\Dependencias;
 use App\Programas;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class CarruselController extends Controller
 {
@@ -94,5 +95,25 @@ class CarruselController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function actualizar(Request $request)
+    {
+        $data = $request->all();
+        $imagen1 = $request->file('imagen1');
+        $nombre1 =$imagen1->getClientOriginalName();
+        $imagen2 = $request->file('imagen2');
+        $nombre2 =$imagen2->getClientOriginalName();
+        $imagen3 = $request->file('imagen3');
+        $nombre3 =$imagen3->getClientOriginalName();
+        $imagen4 = $request->file('imagen4');
+        $nombre4 =$imagen4->getClientOriginalName();
+        $imagen5 = $request->file('imagen5');
+        $nombre5 =$imagen5->getClientOriginalName();
+        Storage::put($nombre1, file_get_contents($imagen1));
+        Storage::put($nombre2, file_get_contents($imagen2));
+        Storage::put($nombre3, file_get_contents($imagen3));
+        Storage::put($nombre4, file_get_contents($imagen4));
+        Storage::put($nombre5, file_get_contents($imagen5));
+        echo "Se subieron las imagenes";
     }
 }
