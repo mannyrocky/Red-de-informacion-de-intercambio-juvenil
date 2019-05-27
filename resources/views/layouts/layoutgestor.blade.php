@@ -864,7 +864,9 @@ $(document).ready(function(){
     });
   });
 });
-  $('#envImg').click( function() {
+</script>
+<script>
+$('#envImg').click( function() {
   // agrego la data del form a formData
   var formData = new FormData();
   formData.append('imagen1', $('input[name=imagen1]')[0].files[0]);
@@ -890,8 +892,6 @@ $(document).ready(function(){
       }
   });
 });
-});
-
 </script>
 </body>
 </html>

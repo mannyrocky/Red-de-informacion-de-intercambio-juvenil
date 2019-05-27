@@ -60,18 +60,7 @@ class CarruselController extends Controller
      */
     public function edit(Request $request,$id)
     {
-        $carru = Carrusel::find($id);
-        $carru->imagen1 = $request->imagen1;
-        $carru->urlimagen1 = $request->urlimagen1;
-        $carru->imagen2 = $request->imagen2;
-        $carru->urlimagen2 = $request->urlimagen2;
-        $carru->imagen3 = $request->imagen3;
-        $carru->urlimagen3 = $request->urlimagen3;
-        $carru->imagen4 = $request->imagen4;
-        $carru->urlimagen4 = $request->urlimagen4;
-        $carru->imagen5 = $request->imagen5;
-        $carru->urlimagen5 = $request->urlimagen5;
-        $carru->save();
+       
     }
 
     /**
@@ -115,5 +104,17 @@ class CarruselController extends Controller
         Storage::put($nombre4, file_get_contents($imagen4));
         Storage::put($nombre5, file_get_contents($imagen5));
         echo "Se subieron las imagenes";
+        $carrusel = Carrusel::find(1);
+        $carrusel->imagen1 = $nombre1
+        $carrusel->ulrimagen1 = "tmofans.com";
+        $carrusel->imagen2 = $nombre2
+        $carrusel->ulrimagen2 = "tmofans.com";
+        $carrusel->imagen3 = $nombre3
+        $carrusel->ulrimagen3 = "tmofans.com";
+        $carrusel->imagen4 = $nombre4
+        $carrusel->ulrimagen4 = "tmofans.com";
+        $carrusel->imagen5 = $nombre5
+        $carrusel->ulrimagen5 = "tmofans.com";
+        $carrusel->save();
     }
 }
