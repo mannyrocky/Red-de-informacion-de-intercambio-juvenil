@@ -831,7 +831,7 @@ $(document).ready(function(){
             imagennoti:imagennoti
             },
             success:function(data){
-                console.log('se modifico la Noticia');
+                alert(data);
                 
         }
     });

@@ -87,6 +87,8 @@ class CarruselController extends Controller
     }
     public function actualizar(Request $request)
     {
+        
+        $carrusel = Carrusel::find(1);
         $data = $request->all();
         $imagen1 = $request->file('imagen1');
         $nombre1 =$imagen1->getClientOriginalName();
@@ -98,23 +100,27 @@ class CarruselController extends Controller
         $nombre4 =$imagen4->getClientOriginalName();
         $imagen5 = $request->file('imagen5');
         $nombre5 =$imagen5->getClientOriginalName();
+        $url1 = $_POST['urlimagen1'];
+        $url2 = $_POST['urlimagen2'];
+        $url3 = $_POST['urlimagen3'];
+        $url4 = $_POST['urlimagen4'];
+        $url5 = $_POST['urlimagen5'];
+        $carrusel->imagen1 = $nombre1;
+        $carrusel->urlimagen1 = $url1;
+        $carrusel->imagen2 = $nombre2;
+        $carrusel->urlimagen2 = $url2;
+        $carrusel->imagen3 = $nombre3;
+        $carrusel->urlimagen3 = $url3;
+        $carrusel->imagen4 = $nombre4;
+        $carrusel->urlimagen4 = $url4;
+        $carrusel->imagen5 = $nombre5;
+        $carrusel->urlimagen5 = $url5;
+        $carrusel->save();
         Storage::put($nombre1, file_get_contents($imagen1));
         Storage::put($nombre2, file_get_contents($imagen2));
         Storage::put($nombre3, file_get_contents($imagen3));
         Storage::put($nombre4, file_get_contents($imagen4));
         Storage::put($nombre5, file_get_contents($imagen5));
-        echo "Se subieron las imagenes";
-        $carrusel = Carrusel::find(1);
-        $carrusel->imagen1 = $nombre1
-        $carrusel->ulrimagen1 = "tmofans.com";
-        $carrusel->imagen2 = $nombre2
-        $carrusel->ulrimagen2 = "tmofans.com";
-        $carrusel->imagen3 = $nombre3
-        $carrusel->ulrimagen3 = "tmofans.com";
-        $carrusel->imagen4 = $nombre4
-        $carrusel->ulrimagen4 = "tmofans.com";
-        $carrusel->imagen5 = $nombre5
-        $carrusel->ulrimagen5 = "tmofans.com";
-        $carrusel->save();
+        echo $url1." ".$url2." ".$url3." ".$url4." ".$url5;
     }
 }

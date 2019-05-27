@@ -55,7 +55,7 @@
                             </ol>
                         <div class="carousel-inner" role="listbox">
                             <div class="carousel-item active">
-                                <img src="../../imagen/fondo4.jpg" alt="primera imagen" 
+                                <img src="../../uploads/{{$carrusel->imagen1}}" alt="primera imagen" 
                                     height="500px" width="100%">
                                     <div class="overlay"></div>
                                     <div class="btnn" id="1" data-toggle="modal" data-target="#editarcarrusel"><a href="#"> Editar imágenes </a></div>
@@ -65,7 +65,7 @@
                                 </div>
                         </div>
                         <div class="carousel-item">
-                        <img src="../../imagen/fondo4.jpg" alt="segunda imagen" 
+                        <img src="../../uploads/{{$carrusel->imagen2}}" alt="segunda imagen" 
                                     height="500px" width="100%">
                                     <div class="overlay"></div>
                                     <div class="btnn" data-toggle="modal" data-target="#editarcarrusel"><a href="#"> Editar imágenes </a></div>
@@ -75,7 +75,7 @@
                                 </div>
                         </div>
                         <div class="carousel-item">
-                        <img src="../../imagen/fondo4.jpg" alt="tercera imagen" 
+                        <img src="../../uploads/{{$carrusel->imagen3}}" alt="tercera imagen" 
                                     height="500px" width="100%">
                                     <div class="overlay"></div>
                                     <div class="btnn" data-toggle="modal" data-target="#editarcarrusel"><a href="#"> Editar imágenes</a></div>
@@ -85,7 +85,7 @@
                                 </div>
                         </div>
                         <div class="carousel-item">
-                        <img src="../../imagen/fondo4.jpg" alt="tercera imagen" 
+                        <img src="../../uploads/{{$carrusel->imagen4}}" alt="tercera imagen" 
                                     height="500px" width="100%">
                                     <div class="overlay"></div>
                                     <div class="btnn" data-toggle="modal" data-target="#editarcarrusel"><a href="#"> Editar imágenes</a></div>
@@ -95,7 +95,7 @@
                                 </div>
                         </div>
                         <div class="carousel-item">
-                        <img src="../../imagen/fondo4.jpg" alt="tercera imagen" 
+                        <img src="../../uploads/{{$carrusel->imagen5}}" alt="tercera imagen" 
                                     height="500px" width="100%">
                                     <div class="overlay"></div>
                                     <div class="btnn" data-toggle="modal" data-target="#editarcarrusel"><a href="#"> Editar imágenes</a></div>
