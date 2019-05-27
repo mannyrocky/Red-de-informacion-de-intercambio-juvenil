@@ -63,6 +63,7 @@ class EventoController extends Controller
         $evento->Descripcionev = $request->Descripcionev;
         $evento->imagenjuv = $request->imagenjuv;
         $evento->save();
+        echo"Evento Editado Exitosamente";
     }
     /**
      * Update the specified resource in storage.

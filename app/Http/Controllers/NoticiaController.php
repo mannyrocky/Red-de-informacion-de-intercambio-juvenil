@@ -63,6 +63,7 @@ class NoticiaController extends Controller
         $noticias->Descripcionnot = $request->Descripcionnot;
         $noticias->imagennoti = $request->imagennoti;
         $noticias->save();
+        echo"Noticia Editada Exitosamente";
     }
 
     /**

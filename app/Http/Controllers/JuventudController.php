@@ -43,6 +43,7 @@ class JuventudController extends Controller
         $usuario->descripcionjuv = $request->descripcionjuv;
         $usuario->imagenjuv = $request->imagenjuv;
         $usuario->save();
+        echo"Noticia Creada Exitosamente";
     }
 
     /**
@@ -76,6 +77,7 @@ class JuventudController extends Controller
         $usuario->descripcionjuv = $request->descripcionjuv;
         $usuario->imagenjuv = $request->imagenjuv;
         $usuario->save();
+        echo"Editado Exitosamente";
     }
 
     /**
@@ -99,5 +101,6 @@ class JuventudController extends Controller
     public function borrar($id)
     {
         Juventud::destroy($id);
+        echo"Borrado Exitosamente";
     }
 }

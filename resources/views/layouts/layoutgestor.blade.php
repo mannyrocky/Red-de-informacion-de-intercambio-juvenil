@@ -50,7 +50,7 @@
                 <button class="btn btn-success" type="submit">Buscar</button>
             </form>
         </nav>
-        <nav class="navbar navbar-collapse">
+        <nav class="navbar navbar-collapse" id="navbarra">
             <div class="container-fluid">
                 <ul class="nav justify-content-center ">
                     <li class="nav-item ">
@@ -335,13 +335,40 @@
   <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="titleprograma"></h5>
+        <h5 class="modal-title" id="titleprograma">Agregar Programas Sociales</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body" id="bodyprograma">
-        
+      <div class="row">
+            <div class="col">
+              <input type="text" class="form-control" placeholder="Nombre del Programa"  id="nomprog">
+            </div>
+          </div>
+          <div class="row mt-4">
+            <div class="col">
+              <select class="form-control" id="nomdep">
+              <option selected>Selecciona una opcion</option>
+              @if (App\Dependencias::count() > 0)
+                              @foreach($dependencias as $dependencia)
+                              <option>{{$dependencia->nombredep}}</option>
+                              @endforeach
+              @endif
+              </select>
+            </div>
+            <div class="col">
+              <input type="text" class="form-control" placeholder="Responsable"  id="responsable">
+            </div>
+          </div>
+        </form>
+        <div class="row mt-4"><div class="col">
+          <textarea rows="4" class="form-control" placeholder="Descrpicion" id="descriprog"></textarea>
+        </div>
+      </div>
+      <div class="row mt-4 justify-content-center">
+        <input class="btn btn-info" name="uploadedfile" id="imagenprog" type="file" />
+      </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
@@ -479,21 +506,10 @@
 
 <script>
 $(document).ready(function(){
-    $(".programa").click(function(){
-        var form = "";
-        var titulo = $("#titleprograma");
-        var body = $("#bodyprograma");
-        form+='<form><div class="row"><div class="col"><input type="text" id="nomprog" class="form-control" placeholder="Nombre del programa"></div></div>';
-       form+='<div class="row mt-4"><div class="col"><input type="text" class="form-control" id="nomdep" placeholder="Nombre de la dependencia"></div><div class="col"><input type="text" class="form-control" id="responsable" placeholder="Responsable"></div></div></form>';
-       form+='<div class="row mt-4"><div class="col"><textarea rows="4" class="form-control" id="descriprog" placeholder="Descrpicion"></textarea></div></div>';
-       form+='<div class="row mt-4 justify-content-center"><input class="btn btn-info" id="imagenprog" name="uploadedfile" type="file" /></div>';
-       body.html(form);
-       titulo.html('Agregar Programas Sociales');
-    });
     $("#rgProg").click(function(){
         var nomprog = $("#nomprog").val();
-        var responsable = $("#responsable").val();
         var nomdep = $("#nomdep").val();
+        var responsable = $("#responsable").val();
         var descriprog = $("#descriprog").val();
         var imagenprog = $("#imagenprog").val();
         $.ajax({
@@ -508,7 +524,9 @@ $(document).ready(function(){
             imagenprog:imagenprog
             },
             success:function(data){
-              console.log('se agrego');
+            $("#agregarprograma").modal("hide");
+            location.reload();
+            alert(data);
         }
         });
     });
@@ -546,7 +564,9 @@ $(document).ready(function(){
             imagendep:imagendep
             },
             success:function(data){
-                console.log('se agrego');
+            $("#agregardependencia").modal("hide");
+            location.reload();
+            alert(data);
         }
         });
     });
@@ -584,7 +604,10 @@ $(document).ready(function(){
             imagenjuv:imagenjuv
             },
             success:function(data){
-                console.log('se agrego Noticia de la Juventud');
+            $("#agregarjuventud").modal("hide");
+            location.reload();
+            alert(data);
+            
         }
         });
     });
@@ -661,7 +684,9 @@ $(document).ready(function(){
             imagendep:imagendep
             },
             success:function(data){
-                console.log('se modifico la Dependencia');
+            $("#editardependencia").modal("hide");
+            location.reload();
+            alert(data);
         }
     });
   });
@@ -677,7 +702,7 @@ $(document).ready(function(){
     var descriprog = $("#descriprograma").val();
     var imagenprog = $("#imagenprograma").val();
     $.ajax({
-      url:'/gestor/gestor/ajaxPrograma/'+id,
+      url:'/gestor/gestor/ajaxProgramas/'+id,
             method:'POST',
             data:{
             "_token":"{{ csrf_token() }}",
@@ -688,7 +713,9 @@ $(document).ready(function(){
             imagenprog:imagenprog
             },
             success:function(data){
-                console.log('se modifico el Programa');
+            $("#editarprograma").modal("hide");
+            location.reload();
+            alert(data);
         }
     });
   });
@@ -715,45 +742,10 @@ $(document).ready(function(){
             imagenjuv:imagenjuv
             },
             success:function(data){
-                console.log('se modifico la Noticia de Juventud');
+            $("#editarjuventud").modal("hide");
+            location.reload();
+            alert(data);
         }
-    });
-  });
-});
-</script>
-<script>
-$(document).ready(function(){
-  $('#editcarru').click(function(){
-    var ids = 1;
-    var imagen1 = $("#imagen1").val();
-    var urlimagen1 = $("#urlimagen1").val();
-    var imagen2 = $("#imagen2").val();
-    var urlimagen2 = $("#urlimagen2").val();
-    var imagen3 = $("#imagen3").val();
-    var urlimagen3 = $("#urlimagen3").val();
-    var imagen4 = $("#imagen4").val();
-    var urlimagen4 = $("#urlimagen4").val();
-    var imagen5 = $("#imagen5").val();
-    var urlimagen5 = $("#urlimagen5").val();
-    $.ajax({
-      url:'/gestor/gestor/ajaxCarrusel'+ids,
-      method:'POST',
-      data:{
-        "_token":"{{ csrf_token() }}",
-        imagen1:imagen1,
-        urlimagen1:urlimagen1,
-        imagen2:imagen2,
-        urlimagen2:urlimagen2,
-        imagen3:imagen3,
-        urlimagen3:urlimagen3,
-        imagen4:imagen4,
-        urlimagen4:urlimagen4,
-        imagen5:imagen5,
-        urlimagen5:urlimagen5
-      },
-      success:function(data){
-        $("#editarcarrusel").modal("hide");
-      }
     });
   });
 });
@@ -769,7 +761,9 @@ $(document).ready(function(){
       "_token":"{{ csrf_token() }}"
       },
       success:function(data){
-        console.log("se borro el programa");
+        $("#editarprograma").modal("hide");
+        location.reload();
+        alert(data);
       }
     });
   });
@@ -786,7 +780,9 @@ $(document).ready(function(){
       "_token":"{{ csrf_token() }}"
       },
       success:function(data){
-        console.log("se borro la noticia de Juventud");
+        $("#editarjuventud").modal("hide");
+        location.reload();
+        alert(data);
       }
     });
   });
@@ -804,7 +800,9 @@ $(document).ready(function(){
       "_token":"{{ csrf_token() }}",
       },
       success:function(data){
-        console.log("se borro la noticia de Dependencia");
+      $("#editardependencia").modal("hide");
+      location.reload();
+      alert(data);
       }
     });
   });
@@ -831,7 +829,8 @@ $(document).ready(function(){
             imagennoti:imagennoti
             },
             success:function(data){
-                alert(data);
+            location.reload();
+            alert(data);
                 
         }
     });
@@ -859,7 +858,8 @@ $(document).ready(function(){
             imagenjuv:imagenjuv
             },
             success:function(data){
-                console.log('se modifico la Noticia de Juventud');
+            location.reload();
+            alert(data);
         }
     });
   });
@@ -888,6 +888,7 @@ $('#envImg').click( function() {
       contentType: false,
       processData: false,
       success:function(data){
+      location.reload();
       alert(data);
       }
   });

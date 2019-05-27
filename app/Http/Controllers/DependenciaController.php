@@ -42,6 +42,7 @@ class DependenciaController extends Controller
         $usuario->url = $request->url;
         $usuario->imagendep = $request->imagendep;
         $usuario->save();
+        echo"Dependencia Agregada Correctamente";
     }
     /**
      * Display the specified resource.
@@ -74,6 +75,7 @@ class DependenciaController extends Controller
         $usuario->url = $request->url;
         $usuario->imagendep = $request->imagendep;
         $usuario->save();
+        echo "Dependencia editada correctamente";
 
     }
 
@@ -101,5 +103,6 @@ class DependenciaController extends Controller
         $programas = Programas::all();
         $programas = Programas::find($nomdep);
         $programas->destroy($nomdep);
+        echo"borrado Exitosamente";
     }
 }

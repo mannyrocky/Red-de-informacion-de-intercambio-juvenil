@@ -44,6 +44,8 @@ class Programascontroller extends Controller
         $usuario->descriprog = $request->descriprog;
         $usuario->imagenprog = $request->imagenprog;
         $usuario->save();
+        echo "Programa Agregado Correctamente";
+        
     }
 
     /**
@@ -76,6 +78,7 @@ class Programascontroller extends Controller
         $usuario->descriprog = $request->descriprog;
         $usuario->imagenprog = $request->imagenprog;
         $usuario->save();
+        echo "Programa Editado Correctamente";
     }
 
     /**
@@ -99,6 +102,6 @@ class Programascontroller extends Controller
     public function borrar($id)
     {
         Programas::destroy($id);
-        return view("gestor.gestor");
+        echo "Programa Borrado Correctamente";
     }
 }
