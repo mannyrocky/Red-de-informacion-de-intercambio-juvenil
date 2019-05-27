@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use \App\Dependencias;
+use \App\Juventud;
+use \App\Programas;
 
 class DependenciaController extends Controller
 {
@@ -12,10 +14,6 @@ class DependenciaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        return view('dependencias.Dependencia1');
-    }
 
     /**
      * Show the form for creating a new resource.
@@ -53,7 +51,12 @@ class DependenciaController extends Controller
      */
     public function show($id)
     {
-        //
+        $juventud = Juventud::all();
+        $dependencia = Dependencias::all();
+        $programas = Programas::all();
+        $valor = Dependencias::find($id);
+        //dd($dependencia->id);
+        return view('dependencias.Dependencia',compact('dependencia','valor','juventud','programas'));
     }
 
     /**
@@ -62,8 +65,15 @@ class DependenciaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request,$id)
     {
+        $usuario = Dependencias::find($id);
+        $usuario->nombredep = $request->nombredep;
+        $usuario->director = $request->director;
+        $usuario->descripciondep = $request->descripciondep;
+        $usuario->url = $request->url;
+        $usuario->imagendep = $request->imagendep;
+        $usuario->save();
 
     }
 
@@ -85,8 +95,11 @@ class DependenciaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function borrar($id,$nomdep)
     {
-        //
+        Dependencias::destroy($id);
+        $programas = Programas::all();
+        $programas = Programas::find($nomdep);
+        $programas->destroy($nomdep);
     }
 }

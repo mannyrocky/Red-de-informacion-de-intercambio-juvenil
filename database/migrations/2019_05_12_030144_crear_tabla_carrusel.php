@@ -16,10 +16,15 @@ class CrearTablaCarrusel extends Migration
         Schema::create('carrusel', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('imagen1');
+            $table->string("urlimagen1");
             $table->string('imagen2');
+            $table->string("urlimagen2");
             $table->string('imagen3');
+            $table->string("urlimagen3");
             $table->string('imagen4');
+            $table->string("urlimagen4");
             $table->string('imagen5');
+            $table->string("urlimagen5");
             $table->timestamps();
         });
     }

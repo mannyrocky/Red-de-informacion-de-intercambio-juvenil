@@ -1,10 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
+use \App\Juventud;
+use \App\Dependencias;
+use \App\Programas;
 
-class LoginController extends Controller
+class JuventudController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +15,7 @@ class LoginController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**
@@ -34,7 +36,13 @@ class LoginController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $usuario = new Juventud;
+        $usuario->titulo = $request->titulo;
+        $usuario->autor = $request->autor;
+        $usuario->fecha = $request->fecha;
+        $usuario->descripcionjuv = $request->descripcionjuv;
+        $usuario->imagenjuv = $request->imagenjuv;
+        $usuario->save();
     }
 
     /**
@@ -45,7 +53,12 @@ class LoginController extends Controller
      */
     public function show($id)
     {
-        //
+        $dependencia = Dependencias::all();
+        $programas = Programas::all();
+        $juventud=Juventud::all();
+        $juve = Juventud::find($id);
+        return view("juventud.Juventud",compact("juventud","juve","dependencia","programas"));
+
     }
 
     /**
@@ -54,9 +67,15 @@ class LoginController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request,$id)
     {
-        //
+        $usuario = Juventud::find($id);
+        $usuario->titulo = $request->titulo;
+        $usuario->autor = $request->autor;
+        $usuario->fecha = $request->fecha;
+        $usuario->descripcionjuv = $request->descripcionjuv;
+        $usuario->imagenjuv = $request->imagenjuv;
+        $usuario->save();
     }
 
     /**
@@ -77,8 +96,8 @@ class LoginController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function borrar($id)
     {
-        //
+        Juventud::destroy($id);
     }
 }

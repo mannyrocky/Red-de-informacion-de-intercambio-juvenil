@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Juventud;
+use App\Programas;
+use App\Dependencias;
+use App\Carrusel;
 class HomeController extends Controller
 {
     /**
@@ -13,7 +16,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return \View::make('home');
+        $dependencia = Dependencias::all();
+        $programas = Programas::all();
+        $juventud = Juventud::all();
+        $carrusel = Carrusel::find(1);
+        return view('home',compact('dependencia'),compact("juventud","programas","carrusel"));
     }
 
     /**

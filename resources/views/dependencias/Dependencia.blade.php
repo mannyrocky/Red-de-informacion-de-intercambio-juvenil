@@ -1,17 +1,14 @@
 @extends('layouts.layout')
- 
 @section('content')
 <div class="container">
-    <img src="../../imagen/lotte1.jpg" alt="segunda imagen" 
+    <img src="{{$valor->imagendep}}" alt="primera imagen" 
                     height="300px" width="100%">
-    <h2>Dependencia 1</h2>
-    <h3>Director: </h3>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend
+    <h2>{{$valor->nombredep}}</h2>
+    <h3>Director: {{$valor->director}} </h3>
+    <p>
+    {{$valor->descripciondep}}
     </p>
-    <a href="http://www.bcs.gob.mx"><button>ir</button></a>
+    <a href="http://{{$valor->url}}"><button>ir</button></a>
     <br>
     <div class="col-md-12">
             <div class="panel panel-default">

@@ -1,10 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Carrusel;
+use App\Juventud;
+use App\Dependencias;
+use App\Programas;
 use Illuminate\Http\Request;
 
-class Dependencia2Controller extends Controller
+class CarruselController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +16,7 @@ class Dependencia2Controller extends Controller
      */
     public function index()
     {
-        return View::make('dependencia2');
+
     }
 
     /**
@@ -23,7 +26,7 @@ class Dependencia2Controller extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -54,9 +57,20 @@ class Dependencia2Controller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request,$id)
     {
-        //
+        $carru = Carrusel::find($id);
+        $carru->imagen1 = $request->imagen1;
+        $carru->urlimagen1 = $request->urlimagen1;
+        $carru->imagen2 = $request->imagen2;
+        $carru->urlimagen2 = $request->urlimagen2;
+        $carru->imagen3 = $request->imagen3;
+        $carru->urlimagen3 = $request->urlimagen3;
+        $carru->imagen4 = $request->imagen4;
+        $carru->urlimagen4 = $request->urlimagen4;
+        $carru->imagen5 = $request->imagen5;
+        $carru->urlimagen5 = $request->urlimagen5;
+        $carru->save();
     }
 
     /**
