@@ -61,7 +61,10 @@ class NoticiaController extends Controller
         $noticias->autornoti = $request->autornoti;
         $noticias->fechanoti = $request->fechanoti;
         $noticias->Descripcionnot = $request->Descripcionnot;
-        $noticias->imagennoti = $request->imagennoti;
+        $extencion = $request->file('imagenoti')->getClientOriginalExtension();
+        $file_name = $noticias->titulonoti.'.'.$extencion;
+        Image::make($request->file('imagenoti'))->save('../../imagen/'.$file_name);
+        $noticias->imagennoti = $file_name;
         $noticias->save();
     }
 

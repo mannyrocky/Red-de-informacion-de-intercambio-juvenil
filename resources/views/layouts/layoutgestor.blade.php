@@ -441,6 +441,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
+    <form method="post" enctype="multipart/form-data">
       <div class="modal-body" id="bodyModal">
         <form>
           <div class="row">
@@ -465,13 +466,14 @@
         </div>
       </div>
       <div class="row mt-4 justify-content-center">
-        <input class="btn btn-info" name="uploadedfile" id="imagenoti" type="file" />
+        <input class="btn btn-info" name="imagenoti" id="imagenoti" type="file" />
       </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
         <button type="button" class="btn btn-outline-success" id="editnoti">Aceptar</button>
       </div>
+      </form>
     </div>
   </div>
 </div>
