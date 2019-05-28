@@ -15,11 +15,11 @@ class CrearTablaJuventud extends Migration
     {
         Schema::create('juventud', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('titulo');
-            $table->string('autor');
-            $table->string('fecha');
-            $table->string('descripcionjuv');
-            $table->string('imagenjuv');
+            $table->string('titulo')->unique();
+            $table->string('autor')->required();
+            $table->string('fecha')->required();
+            $table->string('descripcionjuv')->nullable();
+            $table->string('imagenjuv')->nullable();
             $table->timestamps();
         });
     }

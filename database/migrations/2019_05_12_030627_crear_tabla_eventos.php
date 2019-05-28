@@ -15,11 +15,11 @@ class CrearTablaEventos extends Migration
     {
         Schema::create('eventos', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('tituloev');
-            $table->string('depev');
-            $table->string('lugar');
-            $table->string('Descripcionev');
-            $table->string('imagenjuv');
+            $table->string('tituloev')->required();
+            $table->string('depev')->required();
+            $table->string('lugar')->required();
+            $table->string('Descripcionev')->nullable();
+            $table->string('imagenjuv')->nullable();
             $table->timestamps();
         });
     }

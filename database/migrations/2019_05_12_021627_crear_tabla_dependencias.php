@@ -15,11 +15,11 @@ class CrearTablaDependencias extends Migration
     {
         Schema::create('dependencias', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nombredep')->unique();
-            $table->string('director');
-            $table->string('descripciondep');
-            $table->string('url');
-            $table->string('imagendep');
+            $table->string('nombredep')->unique()->required();
+            $table->string('director')->required();
+            $table->string('descripciondep')->nullable();
+            $table->string('url')->required();
+            $table->string('imagendep')->nullable();
             $table->timestamps();
         });
     }

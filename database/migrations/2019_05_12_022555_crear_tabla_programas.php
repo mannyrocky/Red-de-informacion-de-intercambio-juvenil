@@ -15,11 +15,11 @@ class CrearTablaProgramas extends Migration
     {
         Schema::create('programas', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nomprog')->unique();
-            $table->string('nomdep');
-            $table->string('responsable');
-            $table->string('descriprog');
-            $table->string('imagenprog');
+            $table->string('nomprog')->unique()->required();
+            $table->string('nomdep')->required();
+            $table->string('responsable')->required();
+            $table->string('descriprog')->nullable();
+            $table->string('imagenprog')->nullable();
             $table->timestamps();
         });
     }

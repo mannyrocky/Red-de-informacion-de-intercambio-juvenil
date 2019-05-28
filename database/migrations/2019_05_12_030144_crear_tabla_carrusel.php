@@ -14,17 +14,17 @@ class CrearTablaCarrusel extends Migration
     public function up()
     {
         Schema::create('carrusel', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('imagen1');
-            $table->string("urlimagen1");
-            $table->string('imagen2');
-            $table->string("urlimagen2");
-            $table->string('imagen3');
-            $table->string("urlimagen3");
-            $table->string('imagen4');
-            $table->string("urlimagen4");
-            $table->string('imagen5');
-            $table->string("urlimagen5");
+            $table->string('id')->default("1");
+            $table->string('imagen1')->default("42b.jpg");
+            $table->string("urlimagen1")->default("tmofans.com");
+            $table->string('imagen2')->default("42b.jpg");
+            $table->string("urlimagen2")->default("tmofans.com");
+            $table->string('imagen3')->default("42b.jpg");
+            $table->string("urlimagen3")->default("tmofans.com");
+            $table->string('imagen4')->default("42b.jpg");
+            $table->string("urlimagen4")->default("tmofans.com");
+            $table->string('imagen5')->default("42b.jpg");
+            $table->string("urlimagen5")->default("tmofans.com");
             $table->timestamps();
         });
     }

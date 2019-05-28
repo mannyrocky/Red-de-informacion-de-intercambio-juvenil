@@ -343,7 +343,7 @@
       <div class="modal-body" id="bodyprograma">
       <div class="row">
             <div class="col">
-              <input type="text" class="form-control" placeholder="Nombre del Programa"  id="nomprog">
+              <input type="text" class="form-control" placeholder="Nombre del Programa"  id="nomprog" required>
             </div>
           </div>
           <div class="row mt-4">
@@ -358,7 +358,7 @@
               </select>
             </div>
             <div class="col">
-              <input type="text" class="form-control" placeholder="Responsable"  id="responsable">
+              <input type="text" class="form-control" placeholder="Responsable"  id="responsable" required>
             </div>
           </div>
         </form>

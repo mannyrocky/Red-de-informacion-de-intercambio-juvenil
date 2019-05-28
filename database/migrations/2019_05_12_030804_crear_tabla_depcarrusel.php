@@ -15,9 +15,9 @@ class CrearTablaDepcarrusel extends Migration
     {
         Schema::create('depcarrusel', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('depimagen1');
-            $table->string('depimagen2');
-            $table->string('depimagen3');
+            $table->string('depimagen1')->required();
+            $table->string('depimagen2')->required();
+            $table->string('depimagen3')->required();
             $table->timestamps();
         });
     }
