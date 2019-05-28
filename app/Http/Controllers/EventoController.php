@@ -57,12 +57,20 @@ class EventoController extends Controller
     public function edit(Request $request,$id)
     {
         $evento = Eventos::find($id);
-        $evento->tituloev = $request->tituloev;
-        $evento->depev = $request->depev;
-        $evento->lugar = $request->lugar;
-        $evento->Descripcionev = $request->Descripcionev;
-        $evento->imagenjuv = $request->imagenjuv;
+        $data = $request->all();
+        $imagen = $request->file('imagenjuv');
+        $imagenjuv = $imagen->getClientOriginalName();
+        $titulo = $_POST['tituloev'];
+        $depeneve = $_POST['depev'];
+        $lugar = $_POST['lugar'];
+        $descripcion = $_POST['Descripcionev'];
+        $evento->tituloev = $titulo;
+        $evento->depev = $depeneve;
+        $evento->lugar = $lugar;
+        $evento->Descripcionev = $descripcion;
+        $evento->imagenjuv =$imagenjuv;
         $evento->save();
+        Storage::put($imagenjuv, file_get_contents($imagen));
         echo"Evento Editado Exitosamente";
     }
     /**

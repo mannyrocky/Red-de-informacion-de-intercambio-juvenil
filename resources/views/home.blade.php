@@ -15,7 +15,7 @@
                     </ol>
                 <div class="carousel-inner" role="listbox">
                     <div class="carousel-item active"><a href="http://{{$carrusel->urlimagen1}}">
-                        <img src="{{$carrusel->imagen1}}" alt="primera imagen" 
+                        <img src="../../uploads/{{$carrusel->imagen1}}" alt="primera imagen" 
                             height="500px" width="100%">
                         </a>
                         <div class="carousel-caption">
@@ -24,7 +24,7 @@
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <a href="htpp://{{$carrusel->urlimagen2}}"><img src="{{$carrusel->imagen2}}" alt="segunda imagen" 
+                    <a href="htpp://{{$carrusel->urlimagen2}}"><img src="../../uploads/{{$carrusel->imagen2}}" alt="segunda imagen" 
                     height="500px" width="100%">
                     </a>
                     <div class="carousel-caption">
@@ -33,7 +33,7 @@
                     </div>   
                 </div>
                 <div class="carousel-item">
-                    <img src="{{$carrusel->imagen3}}" alt="tercera imagen" 
+                    <img src="../../uploads/{{$carrusel->imagen3}}" alt="tercera imagen" 
                     height="500px" width="100%">
                     <a href="htpp://"></a>
                     <div class="carousel-caption">
@@ -42,7 +42,7 @@
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="{{$carrusel->imagen4}}" alt="cuarta imagen" 
+                    <img src="../../uploads/{{$carrusel->imagen4}}" alt="cuarta imagen" 
                     height="500px" width="100%">
                     <a href="htpp://"></a>
                     <div class="carousel-caption">
@@ -51,7 +51,7 @@
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="{{$carrusel->imagen5}}" alt="quinta imagen" 
+                    <img src="../../uploads/{{$carrusel->imagen5}}" alt="quinta imagen" 
                     height="500px" width="100%">
                     <a href="htpp://"></a>
                     <div class="carousel-caption">

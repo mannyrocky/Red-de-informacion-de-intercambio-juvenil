@@ -448,7 +448,7 @@
         </div>
       </div>
       <div class="row mt-4 justify-content-center">
-        <input class="btn btn-info" name="uploadedfile" id="imageneve" type="file" />
+        <input class="btn btn-info" name="imageneve" id="imageneve" type="file" />
       </div>
       </div>
       <div class="modal-footer">
@@ -840,23 +840,21 @@ $(document).ready(function(){
 <script>
 $(document).ready(function(){
   $("#editevento").click(function(){
+    var formData = new FormData();
     var id = $("#idev").val();
-    var tituloev = $("#titev").val();
-    var depev = $("#depeve").val();
-    var lugar = $("#lugar").val();
-    var Descripcionev = $("#descripeven").val();
-    var imagenjuv = $("#imageneve").val();
+    formData.append('tituloev',$("#titev").val());
+    formData.append('depev',$("#depeve").val());
+    formData.append('lugar',$("#lugar").val());
+    formData.append('Descripcionev',$("#descripeven").val());
+    formData.append('imagenjuv',$('input[name=imageneve]')[0].files[0]);
+    formData.append('_token','{{ csrf_token() }}');
     $.ajax({
       url:'/gestor/gestor/ajaxEvento/'+id,
             method:'POST',
-            data:{
-            "_token":"{{ csrf_token() }}",
-            tituloev:tituloev,
-            depev:depev,
-            lugar:lugar,
-            Descripcionev:Descripcionev,
-            imagenjuv:imagenjuv
-            },
+            data:formData,
+            cache:false,
+            contentType: false,
+            processData: false,
             success:function(data){
             location.reload();
             alert(data);
