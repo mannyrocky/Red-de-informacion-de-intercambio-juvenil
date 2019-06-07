@@ -17,6 +17,7 @@ class CrearTablaProgramas extends Migration
             $table->bigIncrements('id');
             $table->string('nomprog')->unique()->required();
             $table->string('nomdep')->required();
+            $table->foreign('nomdep')->references('nombredep')->on('dependencias')->onDelete('cascade');
             $table->string('responsable')->required();
             $table->string('descriprog')->nullable();
             $table->string('imagenprog')->nullable();

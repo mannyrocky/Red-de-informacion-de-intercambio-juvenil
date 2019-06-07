@@ -100,11 +100,11 @@ class CarruselController extends Controller
         $nombre4 =$imagen4->getClientOriginalName();
         $imagen5 = $request->file('imagen5');
         $nombre5 =$imagen5->getClientOriginalName();
-        $url1 = $_POST['urlimagen1'];
-        $url2 = $_POST['urlimagen2'];
-        $url3 = $_POST['urlimagen3'];
-        $url4 = $_POST['urlimagen4'];
-        $url5 = $_POST['urlimagen5'];
+        $url1 = $request->urlimagen1;
+        $url2 = $request->urlimagen2;
+        $url3 = $request->urlimagen3;
+        $url4 = $request->urlimagen4;
+        $url5 = $request->urlimagen5;
         $carrusel->imagen1 = $nombre1;
         $carrusel->urlimagen1 = $url1;
         $carrusel->imagen2 = $nombre2;
@@ -121,6 +121,6 @@ class CarruselController extends Controller
         Storage::put($nombre3, file_get_contents($imagen3));
         Storage::put($nombre4, file_get_contents($imagen4));
         Storage::put($nombre5, file_get_contents($imagen5));
-        echo $url1." ".$url2." ".$url3." ".$url4." ".$url5;
+        echo "Carrusel editado correctamente";
     }
 }

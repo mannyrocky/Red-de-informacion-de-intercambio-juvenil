@@ -5,7 +5,7 @@ use Illuminate\Http\Request;
 use \App\Dependencias;
 use \App\Juventud;
 use \App\Programas;
-
+use Illuminate\Support\Facades\Storage;
 class DependenciaController extends Controller
 {
     
@@ -36,12 +36,21 @@ class DependenciaController extends Controller
     public function store(Request $request)
     {
         $usuario = new Dependencias;
+        $data = $request->all();
         $usuario->nombredep = $request->nombredep;
         $usuario->director = $request->director;
         $usuario->descripciondep = $request->descripciondep;
         $usuario->url = $request->url;
-        $usuario->imagendep = $request->imagendep;
-        $usuario->save();
+        if(isset($_POST['imagendep'])){
+            $usuario->imagendep = "";
+            $usuario->save();
+        }else{
+            $imagen = $request->file('imagendep');
+            $imagendep = $imagen->getClientOriginalName();
+            $usuario->imagendep = $imagendep;
+            $usuario->save();
+            Storage::put($imagendep, file_get_contents($imagen));
+        }
         echo"Dependencia Agregada Correctamente";
     }
     /**
@@ -69,12 +78,21 @@ class DependenciaController extends Controller
     public function edit(Request $request,$id)
     {
         $usuario = Dependencias::find($id);
+        $data = $request->all();
         $usuario->nombredep = $request->nombredep;
         $usuario->director = $request->director;
         $usuario->descripciondep = $request->descripciondep;
         $usuario->url = $request->url;
-        $usuario->imagendep = $request->imagendep;
-        $usuario->save();
+        if(isset($_POST['imagendep'])){
+            $usuario->imagendep = $usuario->imagendep;
+            $usuario->save();
+        }else{
+            $imagen = $request->file('imagendep');
+            $imagendep = $imagen->getClientOriginalName();
+            $usuario->imagendep = $imagendep;
+            $usuario->save();
+            Storage::put($imagendep, file_get_contents($imagen));
+        }
         echo "Dependencia editada correctamente";
 
     }
@@ -100,9 +118,6 @@ class DependenciaController extends Controller
     public function borrar($id,$nomdep)
     {
         Dependencias::destroy($id);
-        $programas = Programas::all();
-        $programas = Programas::find($nomdep);
-        $programas->destroy($nomdep);
         echo"borrado Exitosamente";
     }
 }

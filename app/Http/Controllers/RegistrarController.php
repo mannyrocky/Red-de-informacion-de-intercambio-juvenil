@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use \App\Programas;
+use \App\Juventud;
+use \App\Dependencias;
 use Illuminate\Http\Request;
 
 class RegistrarController extends Controller
@@ -13,7 +15,10 @@ class RegistrarController extends Controller
      */
     public function index()
     {
-        return view('auth.registrar');
+        $dependencia = Dependencias::all();
+        $juventud = Juventud::all();
+        $programas = Programas::all();
+        return view('auth.registrar',compact('dependencia','juventud','programas'));
     }
 
     /**

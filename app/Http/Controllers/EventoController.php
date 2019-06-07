@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Eventos;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class EventoController extends Controller
 {
@@ -58,20 +59,25 @@ class EventoController extends Controller
     {
         $evento = Eventos::find($id);
         $data = $request->all();
-        $imagen = $request->file('imagenjuv');
-        $imagenjuv = $imagen->getClientOriginalName();
-        $titulo = $_POST['tituloev'];
-        $depeneve = $_POST['depev'];
-        $lugar = $_POST['lugar'];
-        $descripcion = $_POST['Descripcionev'];
+        $titulo = $request->tituloev;
+        $depeneve = $request->depev;
+        $lugar = $request->lugar;
+        $descripcion = $request->Descripcionev;
         $evento->tituloev = $titulo;
         $evento->depev = $depeneve;
         $evento->lugar = $lugar;
         $evento->Descripcionev = $descripcion;
-        $evento->imagenjuv =$imagenjuv;
-        $evento->save();
-        Storage::put($imagenjuv, file_get_contents($imagen));
-        echo"Evento Editado Exitosamente";
+        if(isset($_POST['imagenjuv'])){
+            $evento->imagenjuv = $evento->imagenjuv;
+            $evento->save();
+        }else{
+            $imagen = $request->file('imagenjuv');
+            $imagenjuv = $imagen->getClientOriginalName();
+            $evento->imagenjuv =$imagenjuv;
+            $evento->save();
+            Storage::put($imagenjuv, file_get_contents($imagen));
+        }
+        echo "Evento Editado Exitosamente";
     }
     /**
      * Update the specified resource in storage.

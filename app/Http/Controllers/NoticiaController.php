@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Noticias;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class NoticiaController extends Controller
 {
@@ -57,13 +58,26 @@ class NoticiaController extends Controller
     public function edit(Request $request,$id)
     {
         $noticias = Noticias::find($id);
-        $noticias->titulonoti = $request->titulonoti;
-        $noticias->autornoti = $request->autornoti;
-        $noticias->fechanoti = $request->fechanoti;
-        $noticias->Descripcionnot = $request->Descripcionnot;
-        $noticias->imagennoti = $request->imagennoti;
+        $data = $request->all();
+        $titulo = $request->titulonoti;
+        $autor = $request->autornoti;
+        $fecha = $request->fechanoti;
+        $descripcion = $request->descripnoti;
+        $noticias->titulonoti = $titulo;
+        $noticias->autornoti = $autor;
+        $noticias->fechanoti = $fecha;
+        $noticias->Descripcionnot = $descripcion;
+        if(isset($_POST['imagennoti'])){
+            $noticias->imagennoti = $noticias->imagennoti;
+            $noticias->save();
+        }else{
+        $imagen = $request->file('imagennoti');
+        $imagennoti = $imagen->getClientOriginalName();
+        $noticias->imagennoti = $imagennoti;
         $noticias->save();
-        echo"Noticia Editada Exitosamente";
+        Storage::put($imagennoti, file_get_contents($imagen));
+        }
+        echo "Editado Correctamente";
     }
 
     /**

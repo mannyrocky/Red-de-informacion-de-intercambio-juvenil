@@ -14,7 +14,7 @@ class CrearTablaDependencias extends Migration
     public function up()
     {
         Schema::create('dependencias', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->BigIncrements('id');
             $table->string('nombredep')->unique()->required();
             $table->string('director')->required();
             $table->string('descripciondep')->nullable();

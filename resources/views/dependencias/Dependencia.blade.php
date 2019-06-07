@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 @section('content')
 <div class="container">
-    <img src="{{$valor->imagendep}}" alt="primera imagen" 
+    <img src="../../uploads/{{$valor->imagendep}}" alt="primera imagen" 
                     height="300px" width="100%">
     <h2>{{$valor->nombredep}}</h2>
     <h3>Director: {{$valor->director}} </h3>
@@ -20,7 +20,7 @@
         </ol>
         <div class="carousel-inner" role="listbox">
             <div class="carousel-item active">
-                <img src="../../imagen/fondo4.jpg" alt="primera imagen" 
+                <img src="../../uploads/{{$valor->imagendep}}" alt="primera imagen" 
                 height="500px" width="100%">
                 <div class="carousel-caption">
                     <h3>Komi-san Besto waifu</h3>
@@ -28,7 +28,7 @@
                 </div>
             </div>
             <div class="carousel-item">
-                    <img src="../../imagen/lotte1.jpg" alt="segunda imagen" 
+                    <img src="../../uploads/{{$valor->imagendep}}" alt="segunda imagen" 
                     height="500px" width="100%">
                     <div class="carousel-caption">
                             <h3>lotte Besto waifu</h3>
@@ -36,7 +36,7 @@
                         </div>   
             </div>
             <div class="carousel-item">
-                    <img src="../../imagen/lotte2.jpg" alt="tercera imagen" 
+                    <img src="../../uploads/{{$valor->imagendep}}" alt="tercera imagen" 
                     height="500px" width="100%">
                         <div class="carousel-caption">
                             <h3>lotte Besto waifu</h3>

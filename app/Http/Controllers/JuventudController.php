@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use \App\Juventud;
 use \App\Dependencias;
 use \App\Programas;
+use Illuminate\Support\Facades\Storage;
 
 class JuventudController extends Controller
 {
@@ -41,8 +42,16 @@ class JuventudController extends Controller
         $usuario->autor = $request->autor;
         $usuario->fecha = $request->fecha;
         $usuario->descripcionjuv = $request->descripcionjuv;
-        $usuario->imagenjuv = $request->imagenjuv;
-        $usuario->save();
+        if(isset($_POST['imagenjuv'])){
+            $usuario->imagenjuv = $usuario->imagenjuv;
+            $usuario->save();
+        }else{
+            $imagen = $request->file('imagenjuv');
+            $imagenjuv = $imagen->getClientOriginalName();
+            $usuario->imagenjuv = $imagenjuv;
+            $usuario->save();
+            Storage::put($imagenjuv, file_get_contents($imagen));
+        }
         echo"Noticia Creada Exitosamente";
     }
 
@@ -71,12 +80,21 @@ class JuventudController extends Controller
     public function edit(Request $request,$id)
     {
         $usuario = Juventud::find($id);
+        $data = $request->all();
         $usuario->titulo = $request->titulo;
         $usuario->autor = $request->autor;
         $usuario->fecha = $request->fecha;
         $usuario->descripcionjuv = $request->descripcionjuv;
-        $usuario->imagenjuv = $request->imagenjuv;
-        $usuario->save();
+        if(isset($_POST['imagenjuv'])){
+            $usuario->imagenjuv = $usuario->imagenjuv;
+            $usuario->save();
+        }else{
+            $imagen = $request->file('imagenjuv');
+            $imagenjuv = $imagen->getClientOriginalName();
+            $usuario->imagenjuv = $imagenjuv;
+            $usuario->save();
+            Storage::put($imagenjuv, file_get_contents($imagen));
+        }
         echo"Editado Exitosamente";
     }
 

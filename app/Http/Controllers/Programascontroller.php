@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use \App\Programas;
 use \App\Juventud;
 use \App\Dependencias;
+use Illuminate\Support\Facades\Storage;
 class Programascontroller extends Controller
 {
     /**
@@ -42,8 +43,16 @@ class Programascontroller extends Controller
         $usuario->nomdep = $request->nomdep;
         $usuario->responsable = $request->responsable;
         $usuario->descriprog = $request->descriprog;
-        $usuario->imagenprog = $request->imagenprog;
-        $usuario->save();
+        if(isset($_POST['imagenprog'])){
+            $usuario->imagenprog = $usuario->imagenprog;
+            $usuario->save();
+        }else{
+            $imagen = $request->file('imagenprog');
+            $imagenprog = $imagen->getClientOriginalName();
+            $usuario->imagenprog = $imagenprog;
+            $usuario->save();
+            Storage::put($imagenprog, file_get_contents($imagen));
+        }
         echo "Programa Agregado Correctamente";
         
     }
@@ -72,12 +81,21 @@ class Programascontroller extends Controller
     public function edit(Request $request,$id)
     {
         $usuario = Programas::find($id);
+        $data = $request->all();
         $usuario->nomprog = $request->nomprog;
         $usuario->nomdep = $request->nomdep;
         $usuario->responsable = $request->responsable;
         $usuario->descriprog = $request->descriprog;
-        $usuario->imagenprog = $request->imagenprog;
-        $usuario->save();
+        if(isset($_POST['imagenprog'])){
+            $usuario->imagenprog = $usuario->imagenprog;
+            $usuario->save();
+        }else{
+            $imagen = $request->file('imagenprog');
+            $imagenprog = $imagen->getClientOriginalName();
+            $usuario->imagenprog = $imagenprog;
+            $usuario->save();
+            Storage::put($imagenprog, file_get_contents($imagen));
+        }
         echo "Programa Editado Correctamente";
     }
 

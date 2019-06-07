@@ -2,7 +2,7 @@
  
 @section('content')
     <div class="container">
-    <img src="{{$juve->imagenjuv}}" alt="segunda imagen" 
+    <img src="../../uploads/{{$juve->imagenjuv}}" alt="segunda imagen" 
                         height="300px" width="100%">
     <h1>Titulo: {{$juve->titulo}}</h1>
     <h2>Autor: {{$juve->autor}}</h2>

@@ -173,7 +173,7 @@
         </div>
       </div>
       <div class="row mt-4 justify-content-center">
-        <input class="btn btn-info" name="uploadedfile" id="imagenprograma" type="file" />
+        <input class="btn btn-info" name="imagenprograma" id="imagenprograma" type="file" />
       </div>
       </div>
       <div class="modal-footer">
@@ -217,7 +217,7 @@
         </div>
       </div>
       <div class="row mt-4 justify-content-center">
-        <input class="btn btn-info" name="uploadedfile" id="imagenjuv" type="file" />
+        <input class="btn btn-info" name="imagenjuv" id="imagenjuv" type="file" />
       </div>
       </div>
       <div class="modal-footer">
@@ -261,7 +261,7 @@
         </div>
       </div>
       <div class="row mt-4 justify-content-center">
-        <input class="btn btn-info" name="uploadedfile" id="imagens" type="file" />
+        <input class="btn btn-info" name="imagens" id="imagens" type="file" />
       </div>
       </div>
       <div class="modal-footer">
@@ -349,7 +349,6 @@
           <div class="row mt-4">
             <div class="col">
               <select class="form-control" id="nomdep">
-              <option selected>Selecciona una opcion</option>
               @if (App\Dependencias::count() > 0)
                               @foreach($dependencias as $dependencia)
                               <option>{{$dependencia->nombredep}}</option>
@@ -367,7 +366,7 @@
         </div>
       </div>
       <div class="row mt-4 justify-content-center">
-        <input class="btn btn-info" name="uploadedfile" id="imagenprog" type="file" />
+        <input class="btn btn-info" name="imagenprog" id="imagenprog" type="file" />
       </div>
       </div>
       <div class="modal-footer">
@@ -431,15 +430,15 @@
               <input type="text" class="form-control" placeholder="Id"  id="idev" disabled>
             </div>
             <div class="col">
-              <input type="text" class="form-control" placeholder="Titulo Evento"  id="titev">
+              <input type="text" class="form-control" placeholder="Titulo Evento"  id="titev" required>
             </div>
           </div>
           <div class="row mt-4">
             <div class="col">
-              <input type="text" class="form-control" placeholder="Dependencia"  id="depeve">
+              <input type="text" class="form-control" placeholder="Dependencia"  id="depeve" required>
             </div>
             <div class="col">
-              <input type="text" class="form-control" placeholder="Lugar"  id="lugar">
+              <input type="text" class="form-control" placeholder="Lugar"  id="lugar" required>
             </div>
           </div>
         </form>
@@ -475,15 +474,15 @@
               <input type="text" class="form-control" placeholder="Id"  id="idnoti" disabled>
             </div>
             <div class="col">
-              <input type="text" class="form-control" placeholder="Titulo Noticia"  id="titnoti">
+              <input type="text" class="form-control" placeholder="Titulo Noticia"  id="titnoti" required>
             </div>
           </div>
           <div class="row mt-4">
             <div class="col">
-              <input type="text" class="form-control" placeholder="Autor"  id="autonoti">
+              <input type="text" class="form-control" placeholder="Autor"  id="autonoti" required>
             </div>
             <div class="col">
-              <input type="date" class="form-control"  id="fechanoti">
+              <input type="date" class="form-control"  id="fechanoti" required>
             </div>
           </div>
         </form>
@@ -507,22 +506,20 @@
 <script>
 $(document).ready(function(){
     $("#rgProg").click(function(){
-        var nomprog = $("#nomprog").val();
-        var nomdep = $("#nomdep").val();
-        var responsable = $("#responsable").val();
-        var descriprog = $("#descriprog").val();
-        var imagenprog = $("#imagenprog").val();
+        var formData = new FormData();
+        formData.append('nomprog',$("#nomprog").val());
+        formData.append('nomdep',$("#nomdep").val());
+        formData.append('responsable',$("#responsable").val());
+        formData.append('descriprog',$("#descriprog").val());
+        formData.append('imagenprog',$('input[name=imagenprog]')[0].files[0]);
+        formData.append('_token','{{ csrf_token() }}');
         $.ajax({
+            type:'POST',
             url:"/gestor/gestor/ajaxProgramas",
-            method:'POST',
-            data:{
-            "_token":"{{ csrf_token() }}",
-            nomprog:nomprog,
-            nomdep:nomdep,
-            responsable:responsable,
-            descriprog:descriprog,
-            imagenprog:imagenprog
-            },
+            data:formData,
+            cache:false,
+            contentType: false,
+            processData: false,
             success:function(data){
             $("#agregarprograma").modal("hide");
             location.reload();
@@ -542,27 +539,25 @@ $(document).ready(function(){
        form+='<div class="col"><input type="text" class="form-control" placeholder="Nombre de la Dependencia"  id="nombredep"></div></div>';
        form+='<div class="row mt-4"><div class="col"><input type="text" class="form-control" placeholder="Director"  id="director"></div><div class="col"><input type="text" class="form-control" placeholder="url" id="url"></div></div></form>';
        form+='<div class="row mt-4"><div class="col"><textarea rows="4" class="form-control" placeholder="Descrpicion" id="descripciondep"></textarea></div></div>';
-       form+='<div class="row mt-4 justify-content-center"><input class="btn btn-info" name="uploadedfile" id="imagendep" type="file" /></div>';
+       form+='<div class="row mt-4 justify-content-center"><input class="btn btn-info" name="imagendep" id="imagendep" type="file" /></div>';
        body.html(form);
        titulo.html('Agregar Dependencia');
     });
     $("#rgDep").click(function(){
-        var nombredep = $("#nombredep").val();
-        var director = $("#director").val();
-        var url = $("#url").val();
-        var descripciondep = $("#descripciondep").val();
-        var imagendep = $("#imagendep").val();
+        var formData = new FormData();
+        formData.append('nombredep',$("#nombredep").val());
+        formData.append('director',$("#director").val());
+        formData.append('url',$("#url").val());
+        formData.append('descripciondep',$("#descripciondep").val());
+        formData.append('imagendep',$('input[name=imagendep]')[0].files[0]);
+        formData.append('_token','{{ csrf_token() }}');
         $.ajax({
+            type:'POST',
             url:"/gestor/gestor/ajaxDependencia",
-            method:'POST',
-            data:{
-            "_token":"{{ csrf_token() }}",
-            nombredep:nombredep,
-            director:director,
-            url:url,
-            descripciondep:descripciondep,
-            imagendep:imagendep
-            },
+            data:formData,
+            cache:false,
+            contentType: false,
+            processData: false,
             success:function(data){
             $("#agregardependencia").modal("hide");
             location.reload();
@@ -582,27 +577,25 @@ $(document).ready(function(){
        form+='<div class="col"><input type="text" class="form-control" placeholder="Titulo de la Noticia"  id="titulo"></div></div>';
        form+='<div class="row mt-4"><div class="col"><input type="text" class="form-control" placeholder="Autor"  id="autor"></div><div class="col"><input type="date" class="form-control" id="fecha"></div></div></form>';
        form+='<div class="row mt-4"><div class="col"><textarea rows="4" class="form-control" placeholder="Descrpicion" id="descripcionjuv"></textarea></div></div>';
-       form+='<div class="row mt-4 justify-content-center"><input class="btn btn-info" name="uploadedfile" id="imagenjuv" type="file" /></div>';
+       form+='<div class="row mt-4 justify-content-center"><input class="btn btn-info" name="imagenjuve" id="imagenjuve" type="file" /></div>';
        body.html(form);
        titulo.html('Agregar Noticias sobre la Juventud');
     });
     $("#rgJuv").click(function(){
-        var titulo = $("#titulo").val();
-        var autor = $("#autor").val();
-        var fecha = $("#fecha").val();
-        var descripcionjuv = $("#descripcionjuv").val();
-        var imagenjuv = $("#imagenjuv").val();
+        var formData = new FormData();
+        formData.append('titulo',$("#titulo").val());
+        formData.append('autor',$("#autor").val());
+        formData.append('fecha',$("#fecha").val());
+        formData.append('descripcionjuv',$("#descripcionjuv").val());
+        formData.append('imagenjuv',$('input[name=imagenjuve]')[0].files[0]);
+        formData.append('_token','{{ csrf_token() }}');
         $.ajax({
+            type:'POST',
             url:"/gestor/gestor/ajaxJuventud",
-            method:'POST',
-            data:{
-            "_token":"{{ csrf_token() }}",
-            titulo:titulo,
-            autor:autor,
-            fecha:fecha,
-            descripcionjuv:descripcionjuv,
-            imagenjuv:imagenjuv
-            },
+            data:formData,
+            cache:false,
+            contentType: false,
+            processData: false,
             success:function(data){
             $("#agregarjuventud").modal("hide");
             location.reload();
@@ -666,23 +659,21 @@ mostrarnoticia = function(idn,titnot,autornot,fechanot,desnot,imagenot){
 <script>
 $(document).ready(function(){
   $("#edit").click(function(){
+    var formData = new FormData();
     var id = $("#ids").val();
-    var nombredep = $("#depename").val();
-    var director = $("#direc").val();
-    var descripciondep = $("#descrip").val();
-    var url = $("#urls").val();
-    var imagendep = $("#imagens").val();
+    formData.append('nombredep',$("#depename").val());
+    formData.append('director',$("#direc").val());
+    formData.append('descripciondep',$("#descrip").val());
+    formData.append('url',$("#urls").val());
+    formData.append('imagendep',$('input[name=imagens]')[0].files[0]);
+    formData.append('_token','{{ csrf_token() }}');
     $.ajax({
-      url:'/gestor/gestor/ajaxDependencia/'+id,
-            method:'POST',
-            data:{
-            "_token":"{{ csrf_token() }}",
-            nombredep:nombredep,
-            director:director,
-            descripciondep:descripciondep,
-            url:url,
-            imagendep:imagendep
-            },
+            type:'POST',
+            url:'/gestor/gestor/ajaxDependencias/'+id,
+            data:formData,
+            cache:false,
+            contentType: false,
+            processData: false,
             success:function(data){
             $("#editardependencia").modal("hide");
             location.reload();
@@ -695,23 +686,21 @@ $(document).ready(function(){
 <script>
 $(document).ready(function(){
   $("#editprog").click(function(){
+    var formData = new FormData();
     var id = $("#idprog").val();
-    var nomprog = $("#progname").val();
-    var nomdep = $("#namedepe").val();
-    var responsable = $("#respo").val();
-    var descriprog = $("#descriprograma").val();
-    var imagenprog = $("#imagenprograma").val();
+    formData.append('nomprog',$("#progname").val());
+    formData.append('nomdep',$("#namedepe").val());
+    formData.append('responsable',$("#respo").val());
+    formData.append('descriprog',$("#descriprograma").val());
+    formData.append('imagenprog',$('input[name=imagenprograma]')[0].files[0]);
+    formData.append('_token','{{ csrf_token() }}');
     $.ajax({
-      url:'/gestor/gestor/ajaxProgramas/'+id,
-            method:'POST',
-            data:{
-            "_token":"{{ csrf_token() }}",
-            nomprog:nomprog,
-            nomdep:nomdep,
-            responsable:responsable,
-            descriprog:descriprog,
-            imagenprog:imagenprog
-            },
+            type:'POST',
+            url:'/gestor/gestor/ajaxProgramas/'+id,
+            data:formData,
+            cache:false,
+            contentType: false,
+            processData: false,
             success:function(data){
             $("#editarprograma").modal("hide");
             location.reload();
@@ -724,23 +713,21 @@ $(document).ready(function(){
 <script>
 $(document).ready(function(){
   $("#editjuv").click(function(){
+    var formData = new FormData();
     var id = $("#idj").val();
-    var titulo = $("#titjuv").val();
-    var autor = $("#autjuv").val();
-    var fecha = $("#fechajuv").val();
-    var descripcionjuv = $("#descripjuv").val();
-    var imagenjuv = $("#imagenjuv").val();
+    formData.append('titulo',$("#titjuv").val());
+    formData.append('autor',$("#autjuv").val());
+    formData.append('fecha',$("#fechajuv").val());
+    formData.append('descripcionjuv',$("#descripjuv").val());
+    formData.append('imagenjuv',$('input[name=imagenjuv]')[0].files[0]);
+    formData.append('_token','{{ csrf_token() }}');
     $.ajax({
-      url:'/gestor/gestor/ajaxJuventud/'+id,
-            method:'POST',
-            data:{
-            "_token":"{{ csrf_token() }}",
-            titulo:titulo,
-            autor:autor,
-            fecha:fecha,
-            descripcionjuv:descripcionjuv,
-            imagenjuv:imagenjuv
-            },
+            type:'POST',
+            url:'/gestor/gestor/ajaxJuventudes/'+id,
+            data:formData,
+            cache:false,
+            contentType: false,
+            processData: false,
             success:function(data){
             $("#editarjuventud").modal("hide");
             location.reload();
@@ -792,9 +779,8 @@ $(document).ready(function(){
 $(document).ready(function(){
   $("#borrardepe").click(function(){
     var id = $("#ids").val();
-    var nomdep = $("#depename").val();
     $.ajax({
-      url: '/gestor/gestor/ajaxDependencia/'+id+'/'+nomdep,
+      url: '/gestor/gestor/ajaxDependencia/'+id,
       method:'POST',
       data:{
       "_token":"{{ csrf_token() }}",
@@ -811,27 +797,24 @@ $(document).ready(function(){
 <script>
 $(document).ready(function(){
   $("#editnoti").click(function(){
+    var formData = new FormData();
     var id = $("#idnoti").val();
-    var titulonoti = $("#titnoti").val();
-    var autornoti = $("#autonoti").val();
-    var fechanoti = $("#fechanoti").val();
-    var Descripcionnot = $("#descripnoti").val();
-    var imagennoti = $("#imagenoti").val();
+    formData.append('titulonoti',$("#titnoti").val());
+    formData.append('autornoti',$("#autonoti").val());
+    formData.append('fechanoti',$("#fechanoti").val());
+    formData.append('descripnoti',$("#descripnoti").val());
+    formData.append('imagennoti',$('input[name=imagenoti]')[0].files[0]);
+    formData.append('_token','{{ csrf_token() }}');
     $.ajax({
-      url:'/gestor/gestor/ajaxNoticia/'+id,
-            method:'POST',
-            data:{
-            "_token":"{{ csrf_token() }}",
-            titulonoti:titulonoti,
-            autornoti:autornoti,
-            fechanoti:fechanoti,
-            Descripcionnot:Descripcionnot,
-            imagennoti:imagennoti
-            },
+            type:'POST',
+            url:'/gestor/gestor/ajaxNoticia/'+id,
+            data:formData,
+            cache:false,
+            contentType: false,
+            processData: false,
             success:function(data){
-            location.reload();
             alert(data);
-                
+            location.reload();
         }
     });
   });
@@ -849,15 +832,15 @@ $(document).ready(function(){
     formData.append('imagenjuv',$('input[name=imageneve]')[0].files[0]);
     formData.append('_token','{{ csrf_token() }}');
     $.ajax({
-      url:'/gestor/gestor/ajaxEvento/'+id,
-            method:'POST',
+            type:'POST',
+            url:'/gestor/gestor/ajaxEvento/'+id,
             data:formData,
             cache:false,
             contentType: false,
             processData: false,
             success:function(data){
-            location.reload();
             alert(data);
+            location.reload();
         }
     });
   });
