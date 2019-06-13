@@ -149,38 +149,49 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body" id="bodyModal">
-        <form>
-          <div class="row">
-            <div class="col">
-              <input type="text" class="form-control" placeholder="Id"  id="idprog" disabled>
+      <form id="formprog" enctype="multipart/form-data" class="needs-validation" novalidate>
+        <div class="modal-body" id="bodyModal">
+          <form>
+            <div class="row">
+              <div class="col">
+                <input type="text" class="form-control" placeholder="Id"  id="idprog" disabled>
+              </div>
+              <div class="col">
+                <input type="text" class="form-control" placeholder="Nombre del Programa"  id="progname" required>
+                <div class="invalid-feedback">Ingresa un Nombre de Programa</div>
+              </div>
             </div>
-            <div class="col">
-              <input type="text" class="form-control" placeholder="Nombre del Programa"  id="progname">
+            <div class="row mt-4">
+              <div class="col">
+                <select class="form-control" id="namedepe" required>
+                @if (App\Dependencias::count() > 0)
+                              @foreach($dependencias as $dependencia)
+                              <option>{{$dependencia->nombredep}}</option>
+                              @endforeach
+              @endif
+              </select>
+                <div class="invalid-feedback">Ingresa una Dependencia</div>
+              </div>
+              <div class="col">
+                <input type="text" class="form-control" placeholder="Responsable"  id="respo" required>
+                <div class="invalid-feedback">Ingresa una fecha</div>
+              </div>
             </div>
+          </form>
+          <div class="row mt-4"><div class="col">
+            <textarea rows="4" class="form-control" placeholder="Descrpicion" id="descriprograma"></textarea>
           </div>
-          <div class="row mt-4">
-            <div class="col">
-              <input type="text" class="form-control" placeholder="Dependencia"  id="namedepe">
-            </div>
-            <div class="col">
-              <input type="text" class="form-control" placeholder="Responsable"  id="respo">
-            </div>
-          </div>
-        </form>
-        <div class="row mt-4"><div class="col">
-          <textarea rows="4" class="form-control" placeholder="Descrpicion" id="descriprograma"></textarea>
         </div>
-      </div>
-      <div class="row mt-4 justify-content-center">
-        <input class="btn btn-info" name="imagenprograma" id="imagenprograma" type="file" />
-      </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-outline-warning" id="borrarprog">Eliminar</button>
-        <button type="button" class="btn btn-outline-success" id="editprog">Aceptar</button>
-      </div>
+        <div class="row mt-4 justify-content-center">
+          <input class="btn btn-info" name="imagenprograma" id="imagenprograma" type="file" />
+        </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-outline-warning" id="borrarprog">Eliminar</button>
+          <button type="button" class="btn btn-outline-success" id="editprog">Aceptar</button>
+        </div>
+      </form>
     </div>
   </div>
 </div>
@@ -188,43 +199,48 @@
   <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="modalTitle">Editar Programa</h5>
-        <button type="button" class="close" data-dismiss="modal2" aria-label="Close">
+        <h5 class="modal-title" id="modalTitle">Editar Juventud</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body" id="bodyModal">
-        <form>
-          <div class="row">
-            <div class="col">
-              <input type="text" class="form-control" placeholder="Id"  id="idj" disabled>
+      <form enctype="multipart/form-data" id="formjuve" class="needs-validation" novalidate>
+        <div class="modal-body" id="bodyModal">
+          <form>
+            <div class="row">
+              <div class="col">
+                <input type="text" class="form-control" placeholder="Id"  id="idj" disabled>
+              </div>
+              <div class="col">
+                <input type="text" class="form-control" placeholder="Titulo"  id="titjuv" required>
+                <div class="invalid-feedback">Ingresa un titulo</div>
+              </div>
             </div>
-            <div class="col">
-              <input type="text" class="form-control" placeholder="Titulo"  id="titjuv">
+            <div class="row mt-4">
+              <div class="col">
+                <input type="text" class="form-control" placeholder="Autor"  id="autjuv" required>
+                <div class="invalid-feedback">Ingresa un Autor</div>
+              </div>
+              <div class="col">
+                <input type="date" class="form-control" placeholder="fecha"  id="fechajuv" required>
+                <div class="invalid-feedback">Ingresa una Fecha</div>
+              </div>
             </div>
+          </form>
+          <div class="row mt-4"><div class="col">
+            <textarea rows="4" class="form-control" placeholder="Descrpicion" id="descripjuv"></textarea>
           </div>
-          <div class="row mt-4">
-            <div class="col">
-              <input type="text" class="form-control" placeholder="Autor"  id="autjuv">
-            </div>
-            <div class="col">
-              <input type="date" class="form-control" placeholder="fecha"  id="fechajuv">
-            </div>
-          </div>
-        </form>
-        <div class="row mt-4"><div class="col">
-          <textarea rows="4" class="form-control" placeholder="Descrpicion" id="descripjuv"></textarea>
         </div>
-      </div>
-      <div class="row mt-4 justify-content-center">
-        <input class="btn btn-info" name="imagenjuv" id="imagenjuv" type="file" />
-      </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-outline-warning" id="borrarjuv">Eliminar</button>
-        <button type="button" class="btn btn-outline-success" id="editjuv">Aceptar</button>
-      </div>
+        <div class="row mt-4 justify-content-center">
+          <input class="btn btn-info" name="imagenjuv" id="imagenjuv" type="file" />
+        </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-outline-warning" id="borrarjuv">Eliminar</button>
+          <button type="button" class="btn btn-outline-success" id="editjuv">Aceptar</button>
+        </div>
+      </form>
     </div>
   </div>
 </div>
@@ -237,38 +253,43 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body" id="bodyModal">
-        <form>
-          <div class="row">
-            <div class="col">
-              <input type="text" class="form-control" placeholder="Id"  id="ids" disabled>
+    <form id="formdep" enctype="multipart/form-data" class="needs-validation" novalidate>
+        <div class="modal-body" id="bodyModal">
+          <form>
+            <div class="row">
+              <div class="col">
+                <input type="text" class="form-control" placeholder="Id"  id="ids" disabled>
+              </div>
+              <div class="col">
+                <input type="text" class="form-control" placeholder="Dependencia"  id="depename" required>
+                <div class="invalid-feedback">Ingresa un Nombre</div>
+              </div>
             </div>
-            <div class="col">
-              <input type="text" class="form-control" placeholder="Dependencia"  id="depename">
+            <div class="row mt-4">
+              <div class="col">
+                <input type="text" class="form-control" placeholder="Director"  id="direc" required>
+                <div class="invalid-feedback">Ingresa una Director</div>
+              </div>
+              <div class="col">
+                <input type="text" class="form-control" placeholder="Url"  id="urls" required>
+                <div class="invalid-feedback">Ingresa una Url</div>
+              </div>
             </div>
+          </form>
+          <div class="row mt-4"><div class="col">
+            <textarea rows="4" class="form-control" placeholder="Descrpicion" id="descrip"></textarea>
           </div>
-          <div class="row mt-4">
-            <div class="col">
-              <input type="text" class="form-control" placeholder="Director"  id="direc">
-            </div>
-            <div class="col">
-              <input type="text" class="form-control" placeholder="Url"  id="urls">
-            </div>
-          </div>
-        </form>
-        <div class="row mt-4"><div class="col">
-          <textarea rows="4" class="form-control" placeholder="Descrpicion" id="descrip"></textarea>
         </div>
-      </div>
-      <div class="row mt-4 justify-content-center">
-        <input class="btn btn-info" name="imagens" id="imagens" type="file" />
-      </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-outline-warning" id="borrardepe">Eliminar</button>
-        <button type="button" class="btn btn-outline-success" id="edit">Aceptar</button>
-      </div>
+        <div class="row mt-4 justify-content-center">
+          <input class="btn btn-info" name="imagens" id="imagens" type="file" />
+        </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-outline-warning" id="borrardepe">Eliminar</button>
+          <button type="button" class="btn btn-outline-success" id="edit">Aceptar</button>
+        </div>
+      </form>
     </div>
   </div>
 </div>  
@@ -340,39 +361,43 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body" id="bodyprograma">
-      <div class="row">
-            <div class="col">
-              <input type="text" class="form-control" placeholder="Nombre del Programa"  id="nomprog" required>
+    <form id="formrgp" enctype="multipart/form-data" class="needs-validation" novalidate>
+        <div class="modal-body" id="bodyprograma">
+        <div class="row">
+              <div class="col">
+                <input type="text" class="form-control" placeholder="Nombre del Programa"  id="nomprog" required>
+              <div class="invalid-feedback">Ingresa un Nombre</div>
+              </div>
             </div>
+            <div class="row mt-4">
+              <div class="col">
+                <select class="form-control" id="nomdep" required>
+                @if (App\Dependencias::count() > 0)
+                                @foreach($dependencias as $dependencia)
+                                <option>{{$dependencia->nombredep}}</option>
+                                @endforeach
+                @endif
+                </select>
+              </div>
+              <div class="col">
+                <input type="text" class="form-control" placeholder="Responsable"  id="responsable" required>
+              <div class="invalid-feedback">Ingresa un Responsable</div>
+              </div>
+            </div>
+          </form>
+          <div class="row mt-4"><div class="col">
+            <textarea rows="4" class="form-control" placeholder="Descrpicion" id="descriprog"></textarea>
           </div>
-          <div class="row mt-4">
-            <div class="col">
-              <select class="form-control" id="nomdep">
-              @if (App\Dependencias::count() > 0)
-                              @foreach($dependencias as $dependencia)
-                              <option>{{$dependencia->nombredep}}</option>
-                              @endforeach
-              @endif
-              </select>
-            </div>
-            <div class="col">
-              <input type="text" class="form-control" placeholder="Responsable"  id="responsable" required>
-            </div>
-          </div>
-        </form>
-        <div class="row mt-4"><div class="col">
-          <textarea rows="4" class="form-control" placeholder="Descrpicion" id="descriprog"></textarea>
         </div>
-      </div>
-      <div class="row mt-4 justify-content-center">
-        <input class="btn btn-info" name="imagenprog" id="imagenprog" type="file" />
-      </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-outline-success" id="rgProg">Aceptar</button>
-      </div>
+        <div class="row mt-4 justify-content-center">
+          <input class="btn btn-info" name="imagenprog" id="imagenprog" type="file" />
+        </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-outline-success" id="rgProg">Aceptar</button>
+        </div>
+      </form>
     </div>
   </div>
 </div>
@@ -385,6 +410,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
+    <form id="formrgd" enctype="multipart/form-data" class="needs-validation" novalidate>
       <div class="modal-body" id="body">
         
       </div>
@@ -392,6 +418,7 @@
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
         <button type="button" class="btn btn-outline-success" id="rgDep">Aceptar</button>
       </div>
+      </form>
     </div>
   </div>
 </div>
@@ -404,6 +431,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
+      <form id="formrgj" enctype="multipart/form-data" class="needs-validation" novalidate>
       <div class="modal-body" id="bodyjuventud">
         
       </div>
@@ -411,6 +439,7 @@
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
         <button type="button" class="btn btn-outline-success" id="rgJuv">Aceptar</button>
       </div>
+      </form>
     </div>
   </div>
 </div>
@@ -419,41 +448,46 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="modalTitle2">Editar Evento</h5>
-        <button type="button" class="close" data-dismiss="modal2" aria-label="Close">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
+    <form id="form" class="needs-validation" novalidate>
       <div class="modal-body" id="bodyModal">
-        <form>
-          <div class="row">
-            <div class="col">
-              <input type="text" class="form-control" placeholder="Id"  id="idev" disabled>
+            <div class="row">
+              <div class="col">
+                <input type="text" class="form-control" placeholder="Id"  id="idev" disabled>
+              </div>
+              <div class="col">
+                <input type="text" class="form-control" placeholder="Titulo Evento"  id="titev" required>
+                <div class="invalid-feedback">Ingresa un titulo</div>
+              </div>
             </div>
-            <div class="col">
-              <input type="text" class="form-control" placeholder="Titulo Evento"  id="titev" required>
+            <div class="row mt-4">
+              <div class="col">
+                <input type="text" class="form-control" placeholder="Dependencia"  id="depeve" required>
+                <div class="invalid-feedback">Ingresa una Dependencia!</div>
+              </div>
+              <div class="col">
+                <input type="text" class="form-control" placeholder="Lugar"  id="lugar" required>
+                <div class="invalid-feedback">Ingresa un lugar</div>
+              </div>
             </div>
-          </div>
-          <div class="row mt-4">
-            <div class="col">
-              <input type="text" class="form-control" placeholder="Dependencia"  id="depeve" required>
+            <div class="row mt-4">
+              <div class="col">
+                <textarea wrap="hard" rows="4" class="form-control" placeholder="Descrpicion" id="descripeven"></textarea>
+              </div>
             </div>
-            <div class="col">
-              <input type="text" class="form-control" placeholder="Lugar"  id="lugar" required>
+            <br>
+            <div class="row mt-2 justify-content-center">
+              <input class="btn btn-info" name="imageneve" id="imageneve" type="file" />
             </div>
-          </div>
-        </form>
-        <div class="row mt-4"><div class="col">
-          <textarea rows="4" class="form-control" placeholder="Descrpicion" id="descripeven"></textarea>
-        </div>
-      </div>
-      <div class="row mt-4 justify-content-center">
-        <input class="btn btn-info" name="imageneve" id="imageneve" type="file" />
-      </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
         <button type="button" class="btn btn-outline-success" id="editevento">Aceptar</button>
       </div>
+    </form>
     </div>
   </div>
 </div>
@@ -462,11 +496,11 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="modalTitle2">Editar Noticia</h5>
-        <button type="button" class="close" data-dismiss="modal2" aria-label="Close">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-    <form method="post" enctype="multipart/form-data">
+    <form method="post" enctype="multipart/form-data" id="formnoti" class="needs-validation" novalidate>
       <div class="modal-body" id="bodyModal">
         <form>
           <div class="row">
@@ -475,14 +509,17 @@
             </div>
             <div class="col">
               <input type="text" class="form-control" placeholder="Titulo Noticia"  id="titnoti" required>
+              <div class="invalid-feedback">Ingresa un titulo</div>
             </div>
           </div>
           <div class="row mt-4">
             <div class="col">
               <input type="text" class="form-control" placeholder="Autor"  id="autonoti" required>
+              <div class="invalid-feedback">Ingresa un Autor</div>
             </div>
             <div class="col">
               <input type="date" class="form-control"  id="fechanoti" required>
+              <div class="invalid-feedback">Ingresa una fecha</div>
             </div>
           </div>
         </form>
@@ -513,19 +550,24 @@ $(document).ready(function(){
         formData.append('descriprog',$("#descriprog").val());
         formData.append('imagenprog',$('input[name=imagenprog]')[0].files[0]);
         formData.append('_token','{{ csrf_token() }}');
-        $.ajax({
-            type:'POST',
-            url:"/gestor/gestor/ajaxProgramas",
-            data:formData,
-            cache:false,
-            contentType: false,
-            processData: false,
-            success:function(data){
-            $("#agregarprograma").modal("hide");
-            location.reload();
-            alert(data);
+        if ($('#formrgp')[0].checkValidity() === false) {
+            event.stopPropagation();
+        } else {
+          $.ajax({
+              type:'POST',
+              url:"/gestor/gestor/ajaxProgramas",
+              data:formData,
+              cache:false,
+              contentType: false,
+              processData: false,
+              success:function(data){
+              $("#agregarprograma").modal("hide");
+              location.reload();
+              alert(data);
+          }
+          });
         }
-        });
+        $('#formrgp').addClass('was-validated');
     });
 });
 </script>
@@ -536,8 +578,8 @@ $(document).ready(function(){
         var titulo = $("#title");
         var body = $("#body");
         form+='<form><div class="row">';
-       form+='<div class="col"><input type="text" class="form-control" placeholder="Nombre de la Dependencia"  id="nombredep"></div></div>';
-       form+='<div class="row mt-4"><div class="col"><input type="text" class="form-control" placeholder="Director"  id="director"></div><div class="col"><input type="text" class="form-control" placeholder="url" id="url"></div></div></form>';
+       form+='<div class="col"><input type="text" class="form-control" placeholder="Nombre de la Dependencia"  id="nombredep" required><div class="invalid-feedback">Ingresa una Dependencia</div></div></div>';
+       form+='<div class="row mt-4"><div class="col"><input type="text" class="form-control" placeholder="Director"  id="director" required><div class="invalid-feedback">Ingresa un Director</div></div><div class="col"><input type="text" class="form-control" placeholder="url" id="url" required><div class="invalid-feedback">Ingresa una Url</div></div></div></form>';
        form+='<div class="row mt-4"><div class="col"><textarea rows="4" class="form-control" placeholder="Descrpicion" id="descripciondep"></textarea></div></div>';
        form+='<div class="row mt-4 justify-content-center"><input class="btn btn-info" name="imagendep" id="imagendep" type="file" /></div>';
        body.html(form);
@@ -551,6 +593,9 @@ $(document).ready(function(){
         formData.append('descripciondep',$("#descripciondep").val());
         formData.append('imagendep',$('input[name=imagendep]')[0].files[0]);
         formData.append('_token','{{ csrf_token() }}');
+        if ($('#formrgd')[0].checkValidity() === false) {
+            event.stopPropagation();
+        } else {
         $.ajax({
             type:'POST',
             url:"/gestor/gestor/ajaxDependencia",
@@ -564,6 +609,8 @@ $(document).ready(function(){
             alert(data);
         }
         });
+        }
+        $('#formrgd').addClass('was-validated');
     });
 });
 </script>
@@ -574,8 +621,8 @@ $(document).ready(function(){
         var titulo = $("#titlejuventud");
         var body = $("#bodyjuventud");
         form+='<form><div class="row">';
-       form+='<div class="col"><input type="text" class="form-control" placeholder="Titulo de la Noticia"  id="titulo"></div></div>';
-       form+='<div class="row mt-4"><div class="col"><input type="text" class="form-control" placeholder="Autor"  id="autor"></div><div class="col"><input type="date" class="form-control" id="fecha"></div></div></form>';
+       form+='<div class="col"><input type="text" class="form-control" placeholder="Titulo de la Noticia"  id="titulo" required><div class="invalid-feedback">Ingresa un Titulo</div></div></div>';
+       form+='<div class="row mt-4"><div class="col"><input type="text" class="form-control" placeholder="Autor"  id="autor" required><div class="invalid-feedback">Ingresa un Autor</div></div><div class="col"><input type="date" class="form-control" id="fecha" required><div class="invalid-feedback">Ingresa una Fecha</div></div></div></form>';
        form+='<div class="row mt-4"><div class="col"><textarea rows="4" class="form-control" placeholder="Descrpicion" id="descripcionjuv"></textarea></div></div>';
        form+='<div class="row mt-4 justify-content-center"><input class="btn btn-info" name="imagenjuve" id="imagenjuve" type="file" /></div>';
        body.html(form);
@@ -589,6 +636,9 @@ $(document).ready(function(){
         formData.append('descripcionjuv',$("#descripcionjuv").val());
         formData.append('imagenjuv',$('input[name=imagenjuve]')[0].files[0]);
         formData.append('_token','{{ csrf_token() }}');
+        if ($('#formrgj')[0].checkValidity() === false) {
+            event.stopPropagation();
+        } else {
         $.ajax({
             type:'POST',
             url:"/gestor/gestor/ajaxJuventud",
@@ -603,6 +653,8 @@ $(document).ready(function(){
             
         }
         });
+        }
+        $('#formrgj').addClass('was-validated');
     });
 });
 </script>
@@ -613,7 +665,7 @@ mostrardep = function(ids,depename,direc,descrip,urls,imagens){
   $('#direc').val(direc);
   $('#descrip').val(descrip);
   $('#urls').val(urls);
-  $('imagens').val(imagens); 
+  $('imagens').val(imagens);
 };
 </script>
 <script>
@@ -667,19 +719,24 @@ $(document).ready(function(){
     formData.append('url',$("#urls").val());
     formData.append('imagendep',$('input[name=imagens]')[0].files[0]);
     formData.append('_token','{{ csrf_token() }}');
-    $.ajax({
-            type:'POST',
-            url:'/gestor/gestor/ajaxDependencias/'+id,
-            data:formData,
-            cache:false,
-            contentType: false,
-            processData: false,
-            success:function(data){
-            $("#editardependencia").modal("hide");
-            location.reload();
-            alert(data);
+    if ($('#formdep')[0].checkValidity() === false) {
+            event.stopPropagation();
+        } else {
+          $.ajax({
+                  type:'POST',
+                  url:'/gestor/gestor/ajaxDependencias/'+id,
+                  data:formData,
+                  cache:false,
+                  contentType: false,
+                  processData: false,
+                  success:function(data){
+                  $("#editardependencia").modal("hide");
+                  location.reload();
+                  alert(data);
+              }
+          });
         }
-    });
+        $('#formdep').addClass('was-validated');
   });
 });
 </script>
@@ -694,19 +751,24 @@ $(document).ready(function(){
     formData.append('descriprog',$("#descriprograma").val());
     formData.append('imagenprog',$('input[name=imagenprograma]')[0].files[0]);
     formData.append('_token','{{ csrf_token() }}');
-    $.ajax({
-            type:'POST',
-            url:'/gestor/gestor/ajaxProgramas/'+id,
-            data:formData,
-            cache:false,
-            contentType: false,
-            processData: false,
-            success:function(data){
-            $("#editarprograma").modal("hide");
-            location.reload();
-            alert(data);
+    if ($('#formprog')[0].checkValidity() === false) {
+            event.stopPropagation();
+        } else {
+          $.ajax({
+                  type:'POST',
+                  url:'/gestor/gestor/ajaxProgramas/'+id,
+                  data:formData,
+                  cache:false,
+                  contentType: false,
+                  processData: false,
+                  success:function(data){
+                  $("#editarprograma").modal("hide");
+                  location.reload();
+                  alert(data);
+              }
+          });
         }
-    });
+        $('#formprog').addClass('was-validated');
   });
 });
 </script>
@@ -721,19 +783,24 @@ $(document).ready(function(){
     formData.append('descripcionjuv',$("#descripjuv").val());
     formData.append('imagenjuv',$('input[name=imagenjuv]')[0].files[0]);
     formData.append('_token','{{ csrf_token() }}');
-    $.ajax({
-            type:'POST',
-            url:'/gestor/gestor/ajaxJuventudes/'+id,
-            data:formData,
-            cache:false,
-            contentType: false,
-            processData: false,
-            success:function(data){
-            $("#editarjuventud").modal("hide");
-            location.reload();
-            alert(data);
+    if ($('#formjuve')[0].checkValidity() === false) {
+            event.stopPropagation();
+        } else {
+          $.ajax({
+                  type:'POST',
+                  url:'/gestor/gestor/ajaxJuventudes/'+id,
+                  data:formData,
+                  cache:false,
+                  contentType: false,
+                  processData: false,
+                  success:function(data){
+                  $("#editarjuventud").modal("hide");
+                  location.reload();
+                  alert(data);
+              }
+          });
         }
-    });
+        $('#formjuve').addClass('was-validated');
   });
 });
 </script>
@@ -805,6 +872,9 @@ $(document).ready(function(){
     formData.append('descripnoti',$("#descripnoti").val());
     formData.append('imagennoti',$('input[name=imagenoti]')[0].files[0]);
     formData.append('_token','{{ csrf_token() }}');
+    if ($('#formnoti')[0].checkValidity() === false) {
+            event.stopPropagation();
+        } else {
     $.ajax({
             type:'POST',
             url:'/gestor/gestor/ajaxNoticia/'+id,
@@ -817,6 +887,8 @@ $(document).ready(function(){
             location.reload();
         }
     });
+  }
+        $('#formnoti').addClass('was-validated');
   });
 });
 </script>
@@ -831,18 +903,23 @@ $(document).ready(function(){
     formData.append('Descripcionev',$("#descripeven").val());
     formData.append('imagenjuv',$('input[name=imageneve]')[0].files[0]);
     formData.append('_token','{{ csrf_token() }}');
-    $.ajax({
-            type:'POST',
-            url:'/gestor/gestor/ajaxEvento/'+id,
-            data:formData,
-            cache:false,
-            contentType: false,
-            processData: false,
-            success:function(data){
-            alert(data);
-            location.reload();
+    if ($('#form')[0].checkValidity() === false) {
+            event.stopPropagation();
+        } else {
+            $.ajax({
+                    type:'POST',
+                    url:'/gestor/gestor/ajaxEvento/'+id,
+                    data:formData,
+                    cache:false,
+                    contentType: false,
+                    processData: false,
+                    success:function(data){
+                    alert(data);
+                    location.reload();
+                }
+            });
         }
-    });
+        $('#form').addClass('was-validated');
   });
 });
 </script>

@@ -7,6 +7,8 @@ use App\Juventud;
 use App\Programas;
 use App\Dependencias;
 use App\Carrusel;
+use \App\Eventos;
+use \App\Noticias;
 class HomeController extends Controller
 {
     /**
@@ -20,7 +22,15 @@ class HomeController extends Controller
         $programas = Programas::all();
         $juventud = Juventud::all();
         $carrusel = Carrusel::find(1);
-        return view('home',compact('dependencia'),compact("juventud","programas","carrusel"));
+        $noti1 = Noticias::find(1);
+        $noti2 = Noticias::find(2);
+        $noti3 = Noticias::find(3);
+        $noti4 = Noticias::find(4);
+        $even1 = Eventos::find(1);
+        $even2 = Eventos::find(3);
+        $even3 = Eventos::find(2);
+        $even4 = Eventos::find(4);
+        return view('home',compact('dependencia'),compact("juventud","programas","carrusel","noti1","noti2","noti3","noti4","even1","even2","even3","even4"));
     }
 
     /**

@@ -119,7 +119,7 @@
                     <div class="row">
                         <div class="col-md-3">
                             <h2>{{$even1->tituloev}}</h2><br>
-                            <img src="../../imagen/fondo4.jpg" width="100" class="my-4">
+                            <img src="../../uploads/{{$even2->imagenjuv}}" width="100" class="my-4">
                             <p style="t">
                                 {{$even1->Descripcionev}}
                             </p>
@@ -127,7 +127,7 @@
                         </div>
                         <div class="col-md-3">
                             <h2>{{$even2->tituloev}}</h2><br>
-                            <img src="../../imagen/fondo4.jpg" width="100" class="my-4">
+                            <img src="../../uploads/{{$even2->imagenjuv}}" width="100" class="my-4">
                             <p style="t">
                             {{$even2->Descripcionev}}
                             </p>
@@ -135,7 +135,7 @@
                         </div>
                         <div class="col-md-3" >
                                 <h2>{{$even3->tituloev}}</h2><br>
-                                <img src="../../imagen/fondo4.jpg" width="100" class="my-4">
+                                <img src="../../uploads/{{$even3->imagenjuv}}" width="100" class="my-4">
                                 <p style="t">
                                     {{$even3->Descripcionev}}
                                 </p>
@@ -143,7 +143,7 @@
                         </div>
                         <div class="col-md-3">
                                 <h2>{{$even4->tituloev}}</h2><br>
-                                <img src="../../imagen/fondo4.jpg" width="100" class="my-4">
+                                <img src="../../uploads/{{$even4->imagenjuv}}" width="100" class="my-4">
                                 <p style="t">
                                 {{$even4->Descripcionev}}
                             </p>
@@ -158,22 +158,22 @@
                         <div class="container">
                             <div class="row">
                                 <div class="footer-main-item col-md-12">
-                                    <h3><i class="fa fa-text-height" aria-hidden="true"></i>{{$noti1->titulonoti}}</h3>
+                                    <h3><img src="../../uploads/{{$noti1->imagennoti}}" width="100px" height ="100px">{{$noti1->titulonoti}}</h3>
                                     <p>{{$noti1->Descripcionnot}}</p>
                                     <p><button class="btn btn-primary noticias" data-toggle="modal" data-target="#editarnoticia"onclick="mostrarnoticia('{{$noti1->id}}','{{$noti1->titulonoti}}','{{$noti1->autornoti}}','{{$noti1->fechanoti}}','{{$noti1->Descripcionnot}}','{{$noti1->imagennoti}}');"> Editar </button></p>
                                 </div>
                                 <div class="footer-main-item col-md-12">
-                                    <h3><img src="../../imagen/lotte1.jpg" width="100px" height ="100px">{{$noti2->titulonoti}}</h3>
+                                    <h3><img src="../../uploads/{{$noti2->imagennoti}}" width="100px" height ="100px">{{$noti2->titulonoti}}</h3>
                                     <p>{{$noti2->Descripcionnot}}</p>
                                     <p><button class="btn btn-primary noticias" data-toggle="modal" data-target="#editarnoticia" onclick="mostrarnoticia('{{$noti2->id}}','{{$noti2->titulonoti}}','{{$noti2->autornoti}}','{{$noti2->fechanoti}}','{{$noti2->Descripcionnot}}','{{$noti2->imagennoti}}');" > Editar </button></p>
                                 </div>
                                 <div class="footer-main-item col-md-12">
-                                    <h3><i class="fa fa-paperclip" aria-hidden="true"></i>{{$noti3->titulonoti}}</h3>
+                                    <h3><img src="../../uploads/{{$noti3->imagennoti}}" width="100px" height ="100px">{{$noti3->titulonoti}}</h3>
                                     <p>{{$noti3->Descripcionnot}}</p>
                                     <p><button class="btn btn-primary noticias" data-toggle="modal" data-target="#editarnoticia" onclick="mostrarnoticia('{{$noti3->id}}','{{$noti3->titulonoti}}','{{$noti3->autornoti}}','{{$noti3->fechanoti}}','{{$noti3->Descripcionnot}}','{{$noti3->imagennoti}}');"> Editar </button></p>
                                 </div>
                                 <div class="footer-main-item col-md-12">
-                                    <h3><i class="fa fa-paperclip" aria-hidden="true"></i>{{$noti4->titulonoti}}</h3>
+                                    <h3><img src="../../uploads/{{$noti4->imagennoti}}" width="100px" height ="100px">{{$noti4->titulonoti}}</h3>
                                     <p>{{$noti4->Descripcionnot}}</p>
                                     <p><button class="btn btn-primary noticias" data-toggle="modal" data-target="#editarnoticia" onclick="mostrarnoticia('{{$noti4->id}}','{{$noti4->titulonoti}}','{{$noti4->autornoti}}','{{$noti4->fechanoti}}','{{$noti4->Descripcionnot}}','{{$noti4->imagennoti}}');"> Editar </button></p>
                                 </div>

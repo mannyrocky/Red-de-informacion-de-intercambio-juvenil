@@ -74,39 +74,35 @@
         <div class="container" id ="infodep">
             <div class="row">
                 <div class="col-md-3">
-                    <h2>Titulo 1</h2><br>
-                    <img src="../../imagen/fondo4.jpg" width="100" class="my-4">
-                    <p style="t">El Doc. Emmet Brown anuncia la invencion del condensador
-                                de flujos (Flux Capacitor), Dispositivo que permite
-                                el viaje en el tiempo.
-                    </p>
+                    <h2>{{$even1->tituloev}}</h2><br>
+                            <img src="../../uploads/{{$even1->imagenjuv}}" width="100" class="my-4">
+                            <p style="t">
+                                {{$even1->Descripcionev}}
+                            </p>
                     <p><a href="#"><button class="btn btn-outline-success">leer más</button></a></p>
                 </div>
                 <div class="col-md-3">
-                    <h2>Titulo 2</h2><br>
-                    <img src="../../imagen/fondo4.jpg" width="100" class="my-4">
-                    <p style="t">El Doc. Emmet Brown anuncia la invencion del condensador
-                                de flujos (Flux Capacitor), Dispositivo que permite
-                                el viaje en el tiempo.
-                    </p>
+                    <h2>{{$even2->tituloev}}</h2><br>
+                            <img src="../../uploads/{{$even2->imagenjuv}}" width="100" class="my-4">
+                            <p style="t">
+                                {{$even2->Descripcionev}}
+                            </p>
                     <p><button class="btn btn-outline-success">leer más</button></p>
                 </div>
                 <div class="col-md-3" >
-                        <h2>Titulo 3</h2><br>
-                        <img src="../../imagen/fondo4.jpg" width="100" class="my-4">
-                        <p style="t">El Doc. Emmet Brown anuncia la invencion del condensador
-                                de flujos (Flux Capacitor), Dispositivo que permite
-                                el viaje en el tiempo.
-                        </p>
+                        <h2>{{$even3->tituloev}}</h2><br>
+                            <img src="../../uploads/{{$even3->imagenjuv}}" width="100" class="my-4">
+                            <p style="t">
+                                {{$even3->Descripcionev}}
+                            </p>
                         <p><button class="btn btn-outline-success">leer más</button></p>
                 </div>
                 <div class="col-md-3">
-                        <h2>Titulo 4</h2><br>
-                        <img src="../../imagen/fondo4.jpg" width="100" class="my-4">
-                        <p style="t">El Doc. Emmet Brown anuncia la invencion del condensador
-                                de flujos (Flux Capacitor), Dispositivo que permite
-                                el viaje en el tiempo.
-                    </p>
+                        <h2>{{$even4->tituloev}}</h2><br>
+                            <img src="../../uploads/{{$even4->imagenjuv}}" width="100" class="my-4">
+                            <p style="t">
+                                {{$even4->Descripcionev}}
+                            </p>
                         <p><button class="btn btn-outline-success">leer más</button></p>
                 </div>
             </div>
@@ -117,25 +113,25 @@
                 <div class="container">
                     <div class="row">
                         <div class="footer-main-item col-md-12">
-                            <h3><i class="fa fa-text-height" aria-hidden="true"></i>Noticia1</h3>
-                            <p>Herramientas para sitio web responsive</p>
+                            <h3><img src="../../uploads/{{$noti1->imagennoti}}" width="100px" height ="100px">{{$noti1->titulonoti}}</h3>
+                                    <p>{{$noti1->Descripcionnot}}</p>
                             <p><a href="#" class="btn btn-primary"> ver mas </a></p>
                         </div>
                         <div class="footer-main-item col-md-12">
-                            <h3><img src="../../imagen/lotte1.jpg" width="100px" height ="100px">Noticia2</h3>
-                            <p>Libreria para Javascript muy versatil</p>
-                            <p><a href="#" class="btn btn-primary"> ver mas </a></p>
-                        </div>
-                        <hr>
-                        <div class="footer-main-item col-md-12">
-                            <h3><i class="fa fa-paperclip" aria-hidden="true"></i>Noticia3</h3>
-                            <p>Libreria para generar hojas de estilo en cascada</p>
+                            <h3><img src="../../uploads/{{$noti2->imagennoti}}" width="100px" height ="100px">{{$noti2->titulonoti}}</h3>
+                                    <p>{{$noti2->Descripcionnot}}</p>
                             <p><a href="#" class="btn btn-primary"> ver mas </a></p>
                         </div>
                         <hr>
                         <div class="footer-main-item col-md-12">
-                            <h3><i class="fa fa-paperclip" aria-hidden="true"></i>Noticia4</h3>
-                            <p>Libreria para generar hojas de estilo en cascada</p>
+                            <h3><img src="../../uploads/{{$noti3->imagennoti}}" width="100px" height ="100px">{{$noti3->titulonoti}}</h3>
+                                    <p>{{$noti3->Descripcionnot}}</p>
+                            <p><a href="#" class="btn btn-primary"> ver mas </a></p>
+                        </div>
+                        <hr>
+                        <div class="footer-main-item col-md-12">
+                            <h3><img src="../../uploads/{{$noti4->imagennoti}}" width="100px" height ="100px">{{$noti4->titulonoti}}</h3>
+                                    <p>{{$noti4->Descripcionnot}}</p>
                             <p><a href="#" class="btn btn-primary justify-content-end" > ver mas </a></p>
                         </div>
                     </div>
