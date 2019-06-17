@@ -77,7 +77,6 @@
                         </a>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="#">Información</a>
-                            <a class="dropdown-item" href="{{route('registrar')}}">Registrate</a>
                             <a class="dropdown-item" href="#">Enterate</a>
                         </div>
                     </li>

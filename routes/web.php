@@ -23,6 +23,8 @@ Route::get('/', [
 Route::get('/dependencias/Dependencia/{id}','DependenciaController@show');
 Route::get('/juventud/Juventud/{id}','JuventudController@show');
 Route::get('/programas/Programas/{id}','Programascontroller@show');
+Route::get('/eventos/eventos/{id}','EventoController@show');
+Route::get('/noticias/noticias/{id}','NoticiaController@show');
 Route::get('/auth/registrar','RegistrarController@index')->name('registrar');
 
 // Authentication Routes...

@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 use App\Eventos;
+use App\Dependencias;
+use App\Programas;
+use App\Juventud;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -46,7 +49,11 @@ class EventoController extends Controller
      */
     public function show($id)
     {
-        //
+        $dependencia = Dependencias::all();
+        $juventud = Juventud::all();
+        $programas = Programas::all();
+        $even = Eventos::find($id);
+        return view("eventos.eventos",compact("even","juventud","programas","dependencia"));
     }
 
     /**

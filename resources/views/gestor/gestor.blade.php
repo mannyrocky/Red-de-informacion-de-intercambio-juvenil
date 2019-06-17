@@ -119,41 +119,42 @@
                     <div class="row">
                         <div class="col-md-3">
                             <h2>{{$even1->tituloev}}</h2><br>
-                            <img src="../../uploads/{{$even2->imagenjuv}}" width="100" class="my-4">
+                            <img src="../../uploads/{{$even1->imagenjuv}}" width="100" height ="150px" class="my-4">
                             <p style="t">
                                 {{$even1->Descripcionev}}
                             </p>
-                            <p><button class="btn btn-outline-success evento" data-toggle="modal" data-target="#editarevento" onclick="mostrarevento('{{$even1->id}}','{{$even1->tituloev}}','{{$even1->depev}}','{{$even1->lugar}}','{{$even1->Descripcionev}}','{{$even1->imagenjuv}}');">Editar</button></p>
+                            <p><button class="btn btn-outline-success evento" data-toggle="modal" data-target="#editarevento"data-mensaje='{{$even1->Descripcionev}}' onclick="mostrarevento('{{$even1->id}}','{{$even1->tituloev}}','{{$even1->depev}}','{{$even1->lugar}}','{{$even1->Descripcionev}}','{{$even1->imagenjuv}}');">Editar</button></p>
                         </div>
                         <div class="col-md-3">
                             <h2>{{$even2->tituloev}}</h2><br>
-                            <img src="../../uploads/{{$even2->imagenjuv}}" width="100" class="my-4">
+                            <img src="../../uploads/{{$even2->imagenjuv}}" width="100" height ="150px" class="my-4">
                             <p style="t">
                             {{$even2->Descripcionev}}
                             </p>
-                            <p><button class="btn btn-outline-success evento" data-toggle="modal" data-target="#editarevento" onclick="mostrarevento('{{$even2->id}}','{{$even2->tituloev}}','{{$even2->depev}}','{{$even2->lugar}}','{{$even2->Descripcionev}}','{{$even2->imagenjuv}}');">Editar</button></p>
+                            <p><button class="btn btn-outline-success evento" data-toggle="modal" data-target="#editarevento" data-mensaje='{{$even2->Descripcionev}}' onclick="mostrarevento('{{$even2->id}}','{{$even2->tituloev}}','{{$even2->depev}}','{{$even2->lugar}}','{{$even2->Descripcionev}}','{{$even2->imagenjuv}}');">Editar</button></p>
                         </div>
                         <div class="col-md-3" >
                                 <h2>{{$even3->tituloev}}</h2><br>
-                                <img src="../../uploads/{{$even3->imagenjuv}}" width="100" class="my-4">
+                                <img src="../../uploads/{{$even3->imagenjuv}}" width="100" height ="150px" class="my-4">
                                 <p style="t">
                                     {{$even3->Descripcionev}}
                                 </p>
-                                <p><button class="btn btn-outline-success evento" data-toggle="modal" data-target="#editarevento"onclick="mostrarevento('{{$even3->id}}','{{$even3->tituloev}}','{{$even3->depev}}','{{$even3->lugar}}','{{$even3->Descripcionev}}','{{$even3->imagenjuv}}');">Editar</button></p>
+                                <p><button class="btn btn-outline-success evento" data-toggle="modal" data-target="#editarevento" data-mensaje='{{$even3->Descripcionev}}'onclick="mostrarevento('{{$even3->id}}','{{$even3->tituloev}}','{{$even3->depev}}','{{$even3->lugar}}','{{$even3->Descripcionev}}','{{$even3->imagenjuv}}');">Editar</button></p>
                         </div>
                         <div class="col-md-3">
                                 <h2>{{$even4->tituloev}}</h2><br>
-                                <img src="../../uploads/{{$even4->imagenjuv}}" width="100" class="my-4">
+                                <img src="../../uploads/{{$even4->imagenjuv}}" width="100" height ="150px" class="my-4">
                                 <p style="t">
                                 {{$even4->Descripcionev}}
                             </p>
-                                <p><button class="btn btn-outline-success evento" data-toggle="modal" data-target="#editarevento" onclick="mostrarevento('{{$even4->id}}','{{$even4->tituloev}}','{{$even4->depev}}','{{$even4->lugar}}','{{$even4->Descripcionev}}','{{$even4->imagenjuv}}');">Editar</button></p>
+                                <p><button class="btn btn-outline-success evento" data-toggle="modal" data-target="#editarevento" data-mensaje='{{$even4->Descripcionev}}' onclick="mostrarevento('{{$even4->id}}','{{$even4->tituloev}}','{{$even4->depev}}','{{$even4->lugar}}','{{$even4->Descripcionev}}','{{$even4->imagenjuv}}');">Editar</button></p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
                 <div class="container" id ="noticias">
+                <hr>
                     <div class="footer-main">
                         <div class="container">
                             <div class="row">

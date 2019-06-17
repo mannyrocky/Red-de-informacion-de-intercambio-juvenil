@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 use App\Noticias;
+use App\Dependencias;
+use App\Juventud;
+use App\Programas;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -46,7 +49,11 @@ class NoticiaController extends Controller
      */
     public function show($id)
     {
-        //
+        $dependencia = Dependencias::all();
+        $juventud = Juventud::all();
+        $programas = Programas::all();
+        $noti = Noticias::find($id);
+        return view("noticias.noticias",compact("noti","juventud","programas","dependencia"));
     }
 
     /**
