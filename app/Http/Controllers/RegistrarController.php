@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use \App\Programas;
 use \App\Juventud;
 use \App\Dependencias;
+use \App\Escuela;
 use Illuminate\Http\Request;
 
 class RegistrarController extends Controller
@@ -18,7 +19,9 @@ class RegistrarController extends Controller
         $dependencia = Dependencias::all();
         $juventud = Juventud::all();
         $programas = Programas::all();
-        return view('auth.registrar',compact('dependencia','juventud','programas'));
+        $escolaridad = 'Kinder';
+        $escuela = Escuela::all()->where('escolaridad','=',$escolaridad);
+        return view('auth.registrar',compact('dependencia','juventud','programas','escuela'));
     }
 
     /**
@@ -48,9 +51,16 @@ class RegistrarController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($escolaridad)
     {
-        //
+         $escolar = Escuela::all()->where('escolaridad','=',$escolaridad);
+         $html="";
+         foreach($escolar as $escuelita){
+                $html .= "<option>".$escuelita->nombre_escuela."</option>";
+        }
+         echo $html;
+        
+         
     }
 
     /**

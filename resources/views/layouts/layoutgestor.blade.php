@@ -37,6 +37,20 @@
                 <li><a href="https://instagram.com/gobiernobcs/" target="_blank"><img src="http://www.bcs.gob.mx/wp-content/themes/bcsgob-wp/assets/images/icono-instagram.png"><span class="sr-only">Instagram</span></a></li>
                 <li><a href="https://www.youtube.com/channel/UC0KrSRyYv3migvbasXzNJpQ" target="_blank"> <img src="http://www.bcs.gob.mx/wp-content/themes/bcsgob-wp/assets/images/icono-youtube.png"><span class="sr-only">YouTube</span></a></li>
             </ul>
+            <ul class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{Auth::user()->name}}
+                    <i class="fa fa-user"></i>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a a href="#" class="fa fa-user "> {{ Auth::user()->email }}</a>
+                    </li>
+                    <li><a class="dropdown-item" href="#" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                            {{ __('Cerrar Sesión') }}
+                        </a>
+                    </li>
+                </ul>
+            </ul>
         </div>
     </nav>
     <div class="container">
@@ -50,9 +64,14 @@
                 <button class="btn btn-success" type="submit">Buscar</button>
             </form>
         </nav>
-        <nav class="navbar navbar-collapse" id="navbarra">
-            <div class="container-fluid">
-                <ul class="nav justify-content-center ">
+        <nav class="navbar navbar-expand-sm" id="navbarra">
+        <button type="button" class="navbar-toggler" data-toggle="collapse"
+        data-target="#navi" aria-expanded="false" 
+        aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+            <div class="collapse navbar-collapse" id="navi">
+                <ul class="navbar-nav mr-auto justify-content-center ">
                     <li class="nav-item ">
                     <a class="nav-link" href="{{route('gestor')}}">Inicio</a>
                     </li>
@@ -78,6 +97,8 @@
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="#">Información</a>
                             <a class="dropdown-item" href="#">Enterate</a>
+                            <a class="dropdown-item" href="#">Registros Código Joven</a>
+                            <a class="dropdown-item" href="#">Registrar Escuela</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
@@ -703,7 +724,8 @@ mostrarnoticia = function(idn,titnot,autornot,fechanot,desnot,imagenot){
   $('#titnoti').val(titnot);
   $('#autonoti').val(autornot);
   $('#fechanoti').val(fechanot);
-  $('#descripnoti').val(desnot);
+  var desnot_lineas = desnot.replace(new RegExp("<br>","g"), "\n");
+  $('#descripnoti').val(desnot_lineas);
   $('#imagenoti').val(imagenot); 
 };
 </script>
@@ -868,7 +890,9 @@ $(document).ready(function(){
     formData.append('titulonoti',$("#titnoti").val());
     formData.append('autornoti',$("#autonoti").val());
     formData.append('fechanoti',$("#fechanoti").val());
-    formData.append('descripnoti',$("#descripnoti").val());
+    var texto = $("#descripnoti").val();
+    var texto_linea = texto.replace(new RegExp("\n","g"), "<br>");
+    formData.append('descripnoti',texto_linea);
     formData.append('imagennoti',$('input[name=imagenoti]')[0].files[0]);
     formData.append('_token','{{ csrf_token() }}');
     if ($('#formnoti')[0].checkValidity() === false) {
@@ -951,5 +975,8 @@ $('#envImg').click( function() {
   });
 });
 </script>
+    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+        @csrf
+    </form>
 </body>
 </html>

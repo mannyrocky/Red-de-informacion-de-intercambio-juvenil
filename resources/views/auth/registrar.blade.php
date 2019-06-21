@@ -49,9 +49,27 @@
                             </div>
                         </div>
                         <div class="form-group row">
+                            <label for="Nivel Educativo" class="col-md-4 col-form-label text-md-right">{{ __('Nivel Educativo') }}</label>
+                            <div class="col-md-6">
+                                <select class="form-control" name="" id="escolaridad">
+                                    <option value="Kinder">Kinder</option>
+                                    <option value="Primaria">Primaria</option>
+                                    <option value="Secundaria">Secundaria</option>
+                                    <option value="Preparatoria">Preparatoria</option>
+                                    <option value="Universidad">Universidad</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
                             <label for="Escuela" class="col-md-4 col-form-label text-md-right">{{ __('Escuela') }}</label>
                             <div class="col-md-6">
-                                <input id="escuela" type="text" class="form-control" name="escuela" required>
+                                <select class="form-control" name="" id="escuelas">
+                                @if (App\Escuela::count() > 0)
+                                    @foreach($escuela as $escuelas)
+                                        <option>{{$escuelas->nombre_escuela}}</option>
+                                    @endforeach
+                                @endif
+                                </select>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -81,4 +99,23 @@
     </div>
 </div>
 <br>
+<script type = "text/javascript">
+$(document).ready(function(){
+    $.ajaxSetup({
+             headers: {
+                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+             }
+         });
+$("#escolaridad").change(function(){
+    var escolaridad = $("#escolaridad").val();
+    $.ajax({
+                type:'GET',
+                url:'/auth/registrar/ajaxRegistrar/'+escolaridad,
+                success:function(data) {
+                $("#escuelas").html(data);
+               },
+    });
+});
+});
+</script>
 @endsection

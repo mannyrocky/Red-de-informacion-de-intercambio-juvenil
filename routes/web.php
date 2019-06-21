@@ -26,6 +26,7 @@ Route::get('/programas/Programas/{id}','Programascontroller@show');
 Route::get('/eventos/eventos/{id}','EventoController@show');
 Route::get('/noticias/noticias/{id}','NoticiaController@show');
 Route::get('/auth/registrar','RegistrarController@index')->name('registrar');
+Route::get('/auth/registrar/ajaxRegistrar/{escolaridad}','RegistrarController@show');
 
 // Authentication Routes...
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
