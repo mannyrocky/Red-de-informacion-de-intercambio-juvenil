@@ -29,10 +29,9 @@ class HomeController extends Controller
         $noti3 = Noticias::find(3);
         $noti4 = Noticias::find(4);
         $even1 = Eventos::find(1);
-        $even2 = Eventos::find(3);
-        $even3 = Eventos::find(2);
-        $even4 = Eventos::find(4);
-        return view('home',compact('dependencia'),compact("juventud","programas","carrusel","noti1","noti2","noti3","noti4","even1","even2","even3","even4","eventos","noticias"));
+        $even2 = Eventos::find(2);
+        $even3 = Eventos::find(3);
+        return view('home',compact('dependencia'),compact("juventud","programas","carrusel","noti1","noti2","noti3","noti4","even1","even2","even3","eventos","noticias"));
     }
 
     /**
