@@ -45,10 +45,6 @@
                 <img src="http://www.bcs.gob.mx/wp-content/themes/bcsgob-wp/assets/images/logo-gobbcs.png" alt="Gobierno de Baja California Sur 2015-2021 | Mejor Futuro"> 
                 <!-- <img src="http://www.bcs.gob.mx/wp-content/uploads/2018/03/logo-gbcs.jpg" alt="Gobierno de Baja California Sur 2015-2021 | Mejor Futuro"> -->
             </a>
-        <form class="form-inline" action="">
-            <input class="form-control mr-sm-2" type="text" placeholder="Search">
-            <button class="btn btn-success" type="submit">Search</button>
-          </form>
         </nav>
         <nav class="navbar navbar-collapse">
             <div class="container">
@@ -100,6 +96,30 @@
                     @if (App\Programas::count() > 0)
                         @foreach($programas as $vars)
                             <a class="dropdown-item"  href="{{url('/programas/Programas/'.$vars->id)}}" data-toggle="tooltip" title="Mirar datos de {{$vars->nomprog}}">{{$vars->nomprog}}</a>
+                        @endforeach
+                    @endif
+                    </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                    Eventos
+                    </a>
+                    <div class="dropdown-menu">
+                    @if (App\Eventos::count() > 0)
+                        @foreach($eventos as $evento)
+                            <a class="dropdown-item"  href="#" data-toggle="tooltip" title="Mirar datos de {{$evento->tituloev}}">{{$evento->tituloev}}</a>
+                        @endforeach
+                    @endif
+                    </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                    Noticias
+                    </a>
+                    <div class="dropdown-menu">
+                    @if (App\Noticias::count() > 0)
+                        @foreach($noticias as $notici)
+                            <a class="dropdown-item"  href="#" data-toggle="tooltip" title="Mirar datos de {{$notici->titulonoti}}">{{$notici->titulonoti}}</a>
                         @endforeach
                     @endif
                     </div>

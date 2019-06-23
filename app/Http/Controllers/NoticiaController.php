@@ -5,6 +5,7 @@ use App\Noticias;
 use App\Dependencias;
 use App\Juventud;
 use App\Programas;
+use App\Eventos;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -52,8 +53,10 @@ class NoticiaController extends Controller
         $dependencia = Dependencias::all();
         $juventud = Juventud::all();
         $programas = Programas::all();
+        $noticias = Noticias::all();
+        $eventos = Eventos::all();
         $noti = Noticias::find($id);
-        return view("noticias.noticias",compact("noti","juventud","programas","dependencia"));
+        return view("noticias.noticias",compact("noti","juventud","programas","dependencia","noticias","eventos"));
     }
     public function mostrar($id){
         $noticia = Noticias::find($id);

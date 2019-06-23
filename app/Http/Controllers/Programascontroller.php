@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use \App\Programas;
 use \App\Juventud;
 use \App\Dependencias;
+use \App\Eventos;
+use \App\Noticias;
 use Illuminate\Support\Facades\Storage;
 class Programascontroller extends Controller
 {
@@ -68,8 +70,10 @@ class Programascontroller extends Controller
         $dependencia = Dependencias::all();
         $juventud = Juventud::all();
         $programas = Programas::all();
+        $noticias = Noticias::all();
+        $eventos = Eventos::all();
         $pog = Programas::find($id);
-        return view("programas.Programas",compact("pog","juventud","programas","dependencia"));  
+        return view("programas.Programas",compact("pog","juventud","programas","dependencia","noticias","eventos"));  
     }
 
     /**

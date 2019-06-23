@@ -3,13 +3,14 @@
 @section('content')
 @if (App\Usuarios::count() > 0)
 {!! csrf_field() !!}
-    <div class="input-group custom-search-form col-sm-4">
-        <input type="text" class="form-control" placeholder="Filtrar">
-        <span class="input-group-btn">
-            <button class="btn btn-default" type="button">
-                <i class="fa fa-search"></i>
+    {!! Form::open(['route' => 'Registros','method' => 'GET', 'class' => 'navbar-form
+        pull-right']) !!}
+    <div class="input-group">
+        {!! Form::text('nombres',null,['class' => 'form-control','placeholder' => 'Buscar nombre',
+            'aria-describedby' => 'search']) !!}
+            <button class="btn btn-secondary" id="search">
+                Buscar
             </button>
-        </span>
     </div>
     <br>
     <div class="row">
@@ -41,15 +42,15 @@
                     <td class="align-middle">{{$usercod->Escolaridad}}</td>
                     <td class="align-middle">{{$usercod->Escuela}}</td>
                     <td class="text-center">
-                        <a data-toggle="tooltip" title="Modificar datos de: {{$usercod->nombres}}" data-placement="left"><i
-                            class="fa fa-2x fa-pencil"></i></a>
-                        <a data-toggle="tooltip" title="Eliminar empleado: {{$usercod->nombres}}" data-placement="left"><i
-                            class="fa fa-2x fa-trash"></i></a>
+                        <a href="#"><button class="btn btn-info">Editar</button></a>
+                        <a href="#"><button class="btn btn-danger">Elminar</button></a>
+                        <a href="#"><button class="btn btn-primary">PDF</button></a>
                     </td>
                 </tr>
                 @endforeach
             </tbody>
         </table>
+        {!! $user->render() !!}
     </div>
 </div>
 @else

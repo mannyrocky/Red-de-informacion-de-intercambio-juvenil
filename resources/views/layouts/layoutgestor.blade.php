@@ -59,10 +59,6 @@
                 <img src="http://www.bcs.gob.mx/wp-content/themes/bcsgob-wp/assets/images/logo-gobbcs.png" alt="Gobierno de Baja California Sur 2015-2021 | Mejor Futuro"> 
                 <!-- <img src="http://www.bcs.gob.mx/wp-content/uploads/2018/03/logo-gbcs.jpg" alt="Gobierno de Baja California Sur 2015-2021 | Mejor Futuro"> -->
             </a>
-            <form class="form-inline" action="">
-                <input class="form-control mr-sm-2" type="text" placeholder="Buscar">
-                <button class="btn btn-success" type="submit">Buscar</button>
-            </form>
         </nav>
         <nav class="navbar navbar-expand-sm" id="navbarra">
         <button type="button" class="navbar-toggler" data-toggle="collapse"
@@ -125,6 +121,32 @@
                           @endforeach
                         @endif
                       <button class="dropdown-item programa" data-toggle="modal" data-target="#agregarprograma">Agregar Programa</button>
+                    </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                      Eventos
+                    </a>
+                    <div class="dropdown-menu">
+                      @if(App\Eventos::count()>0)
+                          @foreach($eventos as $evento)
+                          <button id="{{$evento->id}}" class="dropdown-item programa" data-toggle="modal"  data-target="#editarprograma">{{$evento->tituloev}}</button>
+                          @endforeach
+                        @endif
+                      <button class="dropdown-item programa" data-toggle="modal" data-target="#agregarprograma">Agregar Evento</button>
+                    </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                      Noticias
+                    </a>
+                    <div class="dropdown-menu">
+                      @if(App\Noticias::count()>0)
+                          @foreach($noticias as $notici)
+                          <button id="{{$notici->id}}" class="dropdown-item programa" data-toggle="modal"  data-target="#editarprograma">{{$notici->titulonoti}}</button>
+                          @endforeach
+                        @endif
+                      <button class="dropdown-item programa" data-toggle="modal" data-target="#agregarprograma">Agregar Noticia</button>
                     </div>
                     </li>
                 </ul>
@@ -476,7 +498,13 @@
       <div class="modal-body" id="bodyModal">
             <div class="row">
               <div class="col">
-                <input type="text" class="form-control" placeholder="Id"  id="idev" disabled>
+                <select class="form-control" name="idev" id="idev">
+                @if(App\Eventos::count()>0)
+                          @foreach($eventos as $evento)
+                          <option>{{$evento->id}}</option>
+                          @endforeach
+                @endif
+                </select>
               </div>
               <div class="col">
                 <input type="text" class="form-control" placeholder="Titulo Evento"  id="titev" required>
@@ -580,7 +608,29 @@
     </div>
   </div>
 </div>
-
+<script type = "text/javascript">
+$(document).ready(function(){
+    $.ajaxSetup({
+             headers: {
+                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+             }
+         });
+$("#idev").change(function(){
+    var id = $("#idev").val();
+    $.ajax({
+                type:'GET',
+                url:'/gestor/gestor/ajaxEve/'+id,
+                dataType: "json",
+                success:function(data) {
+                $("#titev").val(data[0]);
+                $("#depeve").val(data[1]);
+                $("#lugar").val(data[2]);
+                $("#descripeven").val(data[3]);
+               },
+    });
+});
+});
+</script>
 
 <script>
 $(document).ready(function(){

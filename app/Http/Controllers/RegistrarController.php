@@ -6,6 +6,8 @@ use \App\Juventud;
 use \App\Dependencias;
 use \App\Escuela;
 use \App\Usuarios;
+use \App\Eventos;
+use \App\Noticias;
 use Illuminate\Http\Request;
 use \App\Http\Controllers\PDF;
 
@@ -21,9 +23,11 @@ class RegistrarController extends Controller
         $dependencia = Dependencias::all();
         $juventud = Juventud::all();
         $programas = Programas::all();
+        $noticias = Noticias::all();
+        $eventos = Eventos::all();
         $escolaridad = 'Kinder';
         $escuela = Escuela::all()->where('escolaridad','=',$escolaridad);
-        return view('auth.registrar',compact('dependencia','juventud','programas','escuela'));
+        return view('auth.registrar',compact('dependencia','juventud','programas','escuela','eventos','noticias'));
     }
 
     /**
@@ -58,27 +62,6 @@ class RegistrarController extends Controller
         return $pdf->stream('codigo');
         return $pdf->download('codigo');
         
-    }
-    public function pdf() 
-    {
-        $data = $this->getData();
-        $date = date('Y-m-d');
-        $invoice = "2222";
-        $view =  \View::make('Gafete.codigo', compact('data', 'date', 'invoice'))->render();
-        $pdf = \App::make('dompdf.wrapper');
-        $pdf->loadHTML($view);
-        return $pdf->stream('codigo');
-    }
- 
-    public function getData() 
-    {
-        $data =  [
-            'quantity'      => '1' ,
-            'description'   => 'some ramdom text',
-            'price'   => '500',
-            'total'     => '500'
-        ];
-        return $data;
     }
 
     /**
@@ -116,13 +99,15 @@ class RegistrarController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function mostrar()
+    public function mostrar(Request $request)
     {
         $dependencia = Dependencias::all();
         $juventud = Juventud::all();
         $programas = Programas::all();
-        $user = Usuarios::all();
-        return view('codigojoven.Registros',compact('dependencia','juventud','programas','user'));
+        $noticias = Noticias::all();
+        $eventos = Eventos::all();
+        $user = Usuarios::Search($request->nombres)->orderBy('id','ASC')->paginate(2);
+        return view('codigojoven.Registros',compact('dependencia','juventud','programas','noticias','eventos'))->with('user',$user);
     }
 
     /**

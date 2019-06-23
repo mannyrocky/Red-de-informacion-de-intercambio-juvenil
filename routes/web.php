@@ -67,5 +67,6 @@ Route::post('/gestor/gestor/ajaxNoticia/{id}','NoticiaController@edit');
 Route::post('/gestor/gestor/ajaxNoti/{id}','NoticiaController@mostrar');
     //Eventos
 Route::post('/gestor/gestor/ajaxEvento/{id}','EventoController@edit');
+Route::get('/gestor/gestor/ajaxEve/{id}','EventoController@cambiar');
     //Carrusel
 Route::post('/gestor/gestor/imagenesAjax','CarruselController@actualizar');

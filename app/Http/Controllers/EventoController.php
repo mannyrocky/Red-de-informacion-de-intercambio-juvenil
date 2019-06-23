@@ -5,6 +5,7 @@ use App\Eventos;
 use App\Dependencias;
 use App\Programas;
 use App\Juventud;
+use App\Noticias;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -52,10 +53,21 @@ class EventoController extends Controller
         $dependencia = Dependencias::all();
         $juventud = Juventud::all();
         $programas = Programas::all();
+        $noticias = Noticias::all();
+        $eventos = Eventos::all();
         $even = Eventos::find($id);
-        return view("eventos.eventos",compact("even","juventud","programas","dependencia"));
+        return view("eventos.eventos",compact("even","juventud","programas","dependencia","noticias","eventos"));
     }
+    public function cambiar($id){
+        $evento = Eventos::find($id);
+        $arreglo = array();
+        $arreglo[0] = $evento->tituloev;
+        $arreglo[1] = $evento->depev;
+        $arreglo[2] = $evento->lugar;
+        $arreglo[3] = $evento->Descripcionev;
+        echo json_encode($arreglo);
 
+    }
     /**
      * Show the form for editing the specified resource.
      *
