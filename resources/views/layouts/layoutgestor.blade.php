@@ -97,7 +97,7 @@
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="#">Información</a>
                             <a class="dropdown-item" href="#">Enterate</a>
-                            <a class="dropdown-item" href="#">Registros Código Joven</a>
+                            <a class="dropdown-item" href="{{route('Registros')}}">Registros Código Joven</a>
                             <a class="dropdown-item" href="#">Registrar Escuela</a>
                         </div>
                     </li>
@@ -511,7 +511,7 @@
     </div>
   </div>
 </div>
-<div class="modal fade" id="editarnoticia" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<!--<div class="modal fade" id="editarnoticia" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -558,7 +558,29 @@
       </form>
     </div>
   </div>
+</div>-->
+<div class="modal fade" id="editarnoticiaprueba" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="titlenotiprueba"></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    <form method="post" enctype="multipart/form-data" id="formnoti" class="needs-validation" novalidate>
+      <div class="modal-body" id="bodynotiprueba">
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-outline-success" id="editnoti">Aceptar</button>
+      </div>
+      </form>
+    </div>
+  </div>
 </div>
+
 
 <script>
 $(document).ready(function(){
@@ -719,17 +741,6 @@ mostrarevento = function(ide,titev,depev,lugar,deseve,imageneve){
 };
 </script>
 <script>
-mostrarnoticia = function(idn,titnot,autornot,fechanot,desnot,imagenot){
-  $('#idnoti').val(idn);
-  $('#titnoti').val(titnot);
-  $('#autonoti').val(autornot);
-  $('#fechanoti').val(fechanot);
-  var desnot_lineas = desnot.replace(new RegExp("<br>","g"), "\n");
-  $('#descripnoti').val(desnot_lineas);
-  $('#imagenoti').val(imagenot); 
-};
-</script>
-<script>
 $(document).ready(function(){
   $("#edit").click(function(){
     var formData = new FormData();
@@ -884,6 +895,33 @@ $(document).ready(function(){
 </script>
 <script>
 $(document).ready(function(){
+  $(".noticia").click(function(){
+    var id = $(this).attr("data-id");
+    $.ajax({
+      type:"POST",
+      url:'/gestor/gestor/ajaxNoti/'+id,
+      dataType: "json",
+      data:{
+      "_token":"Vwa7Moz1zujWKN1AAAmP5Ra00rRvf3jdE7N69Dej"
+      },
+      success:function(data){
+        var form = "";
+        var titulo = $("#titlenotiprueba");
+        var body = $("#bodynotiprueba");
+        form+='<form><div class="row">';
+       form+='<div class="col"><input value="'+data[0]+'" "type="text" class="form-control" placeholder="Id"  id="idnoti" disabled><input type="text" value="'+data[1]+'" class="form-control" placeholder="Titulo Noticia"  id="titnoti" required><div class="invalid-feedback">Ingresa un Titulo</div></div></div>';
+       form+='<div class="row mt-4"><div class="col"><input value="'+data[2]+'" type="text" class="form-control" placeholder="Autor"  id="autonoti" required><div class="invalid-feedback">Ingresa un Autor</div></div><div class="col"><input value="'+data[3]+'" type="date" class="form-control"  id="fechanoti" required><div class="invalid-feedback">Ingresa una Fecha</div></div></div></form>';
+       form+='<div class="row mt-4"><div class="col"><textarea rows="4" class="form-control" placeholder="Descrpicion" id="descripnoti">'+data[4]+'</textarea></div></div>';
+       form+='<div class="row mt-4 justify-content-center"><input class="btn btn-info" name="imagenoti" id="imagenoti" type="file" /></div>';
+       body.html(form);
+       titulo.html('Editar Noticias Prueba');
+      }
+    });
+  });
+});
+</script>
+<script>
+$(document).ready(function(){
   $("#editnoti").click(function(){
     var formData = new FormData();
     var id = $("#idnoti").val();
@@ -891,8 +929,8 @@ $(document).ready(function(){
     formData.append('autornoti',$("#autonoti").val());
     formData.append('fechanoti',$("#fechanoti").val());
     var texto = $("#descripnoti").val();
-    var texto_linea = texto.replace(new RegExp("\n","g"), "<br>");
-    formData.append('descripnoti',texto_linea);
+    //var texto_linea = texto.replace(new RegExp("\n","g"), "<br>");
+    formData.append('descripnoti',texto);
     formData.append('imagennoti',$('input[name=imagenoti]')[0].files[0]);
     formData.append('_token','{{ csrf_token() }}');
     if ($('#formnoti')[0].checkValidity() === false) {

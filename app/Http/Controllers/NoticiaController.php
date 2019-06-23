@@ -55,7 +55,17 @@ class NoticiaController extends Controller
         $noti = Noticias::find($id);
         return view("noticias.noticias",compact("noti","juventud","programas","dependencia"));
     }
+    public function mostrar($id){
+        $noticia = Noticias::find($id);
+        $arreglo = array();
+        $arreglo[0] = $noticia->id;
+        $arreglo[1] = $noticia->titulonoti;
+        $arreglo[2] = $noticia->autornoti;
+        $arreglo[3] = $noticia->fechanoti;
+        $arreglo[4] = $noticia->Descripcionnot;
+        echo json_encode($arreglo);
 
+    }
     /**
      * Show the form for editing the specified resource.
      *

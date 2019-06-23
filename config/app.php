@@ -67,7 +67,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'America/Chihuahua',
 
     /*
     |--------------------------------------------------------------------------
@@ -80,7 +80,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'es',
 
     /*
     |--------------------------------------------------------------------------
@@ -106,8 +106,8 @@ return [
     |
     */
 
-    'faker_locale' => 'en_US',
-
+    //'faker_locale' => 'en_US',
+    'faker_locale' => 'es_MX',
     /*
     |--------------------------------------------------------------------------
     | Encryption Key
@@ -162,6 +162,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Codedge\Fpdf\FpdfServiceProvider::class,
+        Barryvdh\DomPDF\ServiceProvider::class,
 
         /*
          * Package Service Providers...
