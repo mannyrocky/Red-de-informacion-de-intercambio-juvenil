@@ -724,8 +724,8 @@ mostrarnoticia = function(idn,titnot,autornot,fechanot,desnot,imagenot){
   $('#titnoti').val(titnot);
   $('#autonoti').val(autornot);
   $('#fechanoti').val(fechanot);
-  var desnot_lineas = desnot.replace(new RegExp("<br>","g"), "\n");
-  $('#descripnoti').val(desnot_lineas);
+ // var desnot_lineas = desnot.replace(new RegExp("<br>","g"), "\n");
+  $('#descripnoti').val(desnot);
   $('#imagenoti').val(imagenot); 
 };
 </script>
@@ -891,8 +891,8 @@ $(document).ready(function(){
     formData.append('autornoti',$("#autonoti").val());
     formData.append('fechanoti',$("#fechanoti").val());
     var texto = $("#descripnoti").val();
-    var texto_linea = texto.replace(new RegExp("\n","g"), "<br>");
-    formData.append('descripnoti',texto_linea);
+    //var texto_linea = texto.replace(new RegExp("\n","g"), "<br>");
+    formData.append('descripnoti',texto);
     formData.append('imagennoti',$('input[name=imagenoti]')[0].files[0]);
     formData.append('_token','{{ csrf_token() }}');
     if ($('#formnoti')[0].checkValidity() === false) {

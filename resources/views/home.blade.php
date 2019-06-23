@@ -1,6 +1,7 @@
 @extends('layouts.layout')
  
 @section('content')
+
 <div class="container">
     <div class="row">
         <div class="col-md-12">
@@ -71,68 +72,123 @@
             </a>
         </div>
         <hr>
-        <div class="container" id ="infodep">
-            <div class="row">
-                <div class="col-md-3">
-                    <h2>{{$even1->tituloev}}</h2><br>
-                            <img src="../../uploads/{{$even1->imagenjuv}}" width="100" height ="150px" class="my-4">
-                            <p style="t">
-                                {{$even1->Descripcionev}}
-                            </p>
-                    <p><a href="{{url('/eventos/eventos/'.$even1->id)}}"><button class="btn btn-outline-success">leer más</button></a></p>
-                </div>
-                <div class="col-md-3">
-                    <h2>{{$even2->tituloev}}</h2><br>
-                            <img src="../../uploads/{{$even2->imagenjuv}}" width="100" height ="150px" class="my-4">
-                            <p style="t">
-                                {{$even2->Descripcionev}}
-                            </p>
-                    <p><a href="{{url('/eventos/eventos/'.$even2->id)}}"><button class="btn btn-outline-success">leer más</button></a></p>
-                </div>
-                <div class="col-md-3" >
-                        <h2>{{$even3->tituloev}}</h2><br>
-                            <img src="../../uploads/{{$even3->imagenjuv}}" width="100" height ="150px" class="my-4">
-                            <p style="t">
-                                {{$even3->Descripcionev}}
-                            </p>
-                        <p><a href="{{url('/eventos/eventos/'.$even3->id)}}"><button class="btn btn-outline-success">leer más</button></a></p>
-                </div>
-                <div class="col-md-3">
-                        <h2>{{$even4->tituloev}}</h2><br>
-                            <img src="../../uploads/{{$even4->imagenjuv}}" width="100" height ="150px" class="my-4">
-                            <p style="t">
-                                {{$even4->Descripcionev}}
-                            </p>
-                        <p><a href="{{url('/eventos/eventos/'.$even4->id)}}"><button class="btn btn-outline-success">leer más</button></a></p>
-                </div>
+        <style>
+        
+        </style>
+<div class="container" id ="infodep">
+    <div class="row justify-content-center">
+        <div class="col-md-3 shadow-lg p-3 ml-5 mb-5 bg-white rounded hvr-grow">
+        <a href="#" >
+             <img src="../../uploads/{{$noti2->imagennoti}}"  style="height:250px; width:250px;"alt="" > 
+            <div class="info btn btn-link">
+                Evento 1
             </div>
+        </a>
         </div>
+        <div class="col-md-3 shadow-lg p-3 mb-5 ml-5 bg-white rounded hvr-grow">
+        <a href="#">
+             <img src="../../uploads/{{$noti2->imagennoti}}"  style="height:250px; width:250px;"alt="" > 
+            <div class="info btn btn-link">
+                Evento 2
+            </div>
+        </a>
+        </div>
+        <div class="col-md-3 shadow-lg p-3 mb-5 ml-5 bg-white rounded hvr-grow">
+        <a href="#">
+             <img src="../../uploads/{{$noti2->imagennoti}}"  style="height:250px; width:250px;"alt="" > 
+            <div class="info btn btn-link">
+                Evento 3
+            </div>
+        </a>
+        </div>
+    </div>
+</div>
         <hr>
         <div class="Container" id ="noticias">
             <div class="footer-main">
                 <div class="container">
                     <div class="row">
-                        <div class="footer-main-item col-md-12">
-                            <h3><img src="../../uploads/{{$noti1->imagennoti}}" width="100px" height ="100px">{{$noti1->titulonoti}}</h3>
-                                    <p>{{$noti1->Descripcionnot}}</p>
-                            <p><a href="{{url('/noticias/noticias/'.$noti1->id)}}" class="btn btn-primary"> ver mas </a></p>
+                        <div class="footer-main-item col-md-12 shadow-sm p-3 mb-5 bg-white rounded">
+                            <div class="card mb-3">
+                                <div class="row no-gutters">
+                                    <div class="col-md-3">
+                                        <img src="../../uploads/{{$noti2->imagennoti}}" class="card-img" style="height:200px;width:200px;">
+                                    </div>
+                                <div class="col-md-9">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Card title</h5>
+                                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                        <div class="row justify-content-end px-2">
+                                        <a class="card-text" href="#"><small>Ver más</small></a>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
                         </div>
-                        <div class="footer-main-item col-md-12">
-                            <h3><img src="../../uploads/{{$noti2->imagennoti}}" width="100px" height ="100px">{{$noti2->titulonoti}}</h3>
-                                    <p>{{$noti2->Descripcionnot}}</p>
-                            <p><a href="{{url('/noticias/noticias/'.$noti2->id)}}" class="btn btn-primary"> ver mas </a></p>
+                </div>
                         </div>
                         <hr>
-                        <div class="footer-main-item col-md-12">
-                            <h3><img src="../../uploads/{{$noti3->imagennoti}}" width="100px" height ="100px">{{$noti3->titulonoti}}</h3>
-                                    <p>{{$noti3->Descripcionnot}}</p>
-                            <p><a href="{{url('/noticias/noticias/'.$noti3->id)}}" class="btn btn-primary"> ver mas </a></p>
+                        <div class="footer-main-item col-md-12 shadow-sm p-3 mb-5 bg-white rounded">
+                        <div class="card mb-3">
+                                <div class="row no-gutters">
+                                    <div class="col-md-3">
+                                        <img src="../../uploads/{{$noti2->imagennoti}}" class="card-img" style="height:200px;width:200px;">
+                                    </div>
+                                <div class="col-md-9">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Card title</h5>
+                                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                        <div class="row justify-content-end px-2">
+                                        <a class="card-text" href="#"><small>Ver más</small></a>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                        </div>
+                        </div>
                         </div>
                         <hr>
-                        <div class="footer-main-item col-md-12">
-                            <h3><img src="../../uploads/{{$noti4->imagennoti}}" width="100px" height ="100px">{{$noti4->titulonoti}}</h3>
-                                    <p>{{$noti4->Descripcionnot}}</p>
-                            <p><a href="{{url('/noticias/noticias/'.$noti4->id)}}" class="btn btn-primary justify-content-end" > ver mas </a></p>
+                        <div class="footer-main-item col-md-12 shadow-sm p-3 mb-5 bg-white rounded">
+                        <div class="card mb-3">
+                                <div class="row no-gutters">
+                                    <div class="col-md-3">
+                                        <img src="../../uploads/{{$noti2->imagennoti}}" class="card-img" style="height:200px;width:200px;">
+                                    </div>
+                                <div class="col-md-9">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Card title</h5>
+                                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                        <div class="row justify-content-end px-2">
+                                        <a class="card-text" href="#"><small>Ver más</small></a>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                        </div>
+                        </div>
+                        </div>
+                        <hr>
+                        <div class="footer-main-item col-md-12 shadow-sm p-3 mb-5 bg-white rounded">
+                        <div class="card mb-3">
+                                <div class="row no-gutters">
+                                    <div class="col-md-3">
+                                        <img src="../../uploads/{{$noti2->imagennoti}}" class="card-img" style="height:200px;width:200px;">
+                                    </div>
+                                <div class="col-md-9">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Card title</h5>
+                                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                        <div class="row justify-content-end px-2">
+                                        <a class="card-text" href="#"><small>Ver más</small></a>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                        </div>
                         </div>
                     </div>
                 </div>
