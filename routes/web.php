@@ -20,10 +20,22 @@ Route::get('/', [
     'as' => 'home',
     'uses' => 'HomeController@index'
 ]);
+Route::get('/home',[
+    'uses' =>'GestorController@index'
+]);
 Route::get('/dependencias/Dependencia/{id}','DependenciaController@show');
 Route::get('/juventud/Juventud/{id}','JuventudController@show');
 Route::get('/programas/Programas/{id}','Programascontroller@show');
+Route::get('/eventos/eventos/{id}','EventoController@show');
+Route::get('/noticias/noticias/{id}','NoticiaController@show');
 Route::get('/auth/registrar','RegistrarController@index')->name('registrar');
+Route::get('/auth/registrar/ajaxRegistrar/{escolaridad}','RegistrarController@show');
+Route::post('/auth/registrar/ajaxRegistro','RegistrarController@create')->name('Registrar');
+Route::get('/Gafete/codigo/{id}','RegistrarController@pdf')->name('PDFS');
+Route::get('/codigojoven/enterate','CodigoController@index')->name('enterate');
+Route::get('/codigojoven/Registros','RegistrarController@mostrar')->name('Registros');
+Route::post('/gestor/gestor/ajaxEscuela','RegistrarController@store');
+Route::get('/gestor/gestor/ajaxEnterate/{id}','CodigoController@show');
 
 // Authentication Routes...
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
@@ -57,7 +69,14 @@ Route::post('/gestor/gestor/ajaxProgramas/{id}','Programascontroller@edit');
 Route::post('/gestor/gestor/ajaxPrograma/{id}','Programascontroller@borrar');
     //Noticias
 Route::post('/gestor/gestor/ajaxNoticia/{id}','NoticiaController@edit');
+Route::get('/gestor/gestor/ajaxNoti/{id}','NoticiaController@mostrar');
+//Route::get('/gestor/gestor/ajaxNotici/{id}','NoticiaController@cambiar');
+Route::post('/gestor/gestor/ajaxNot','NoticiaController@store');
     //Eventos
+    
+Route::post('/gestor/gestor/ajaxEvent','EventoController@create');
 Route::post('/gestor/gestor/ajaxEvento/{id}','EventoController@edit');
+Route::get('/gestor/gestor/ajaxEve/{id}','EventoController@cambiar');
+Route::get('/gestor/gestor/ajaxEven/{id}','EventoController@mostrar');
     //Carrusel
 Route::post('/gestor/gestor/imagenesAjax','CarruselController@actualizar');

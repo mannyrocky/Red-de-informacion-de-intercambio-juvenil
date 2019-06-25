@@ -5,6 +5,8 @@ use Illuminate\Http\Request;
 use \App\Juventud;
 use \App\Dependencias;
 use \App\Programas;
+use \App\Eventos;
+use \App\Noticias;
 use Illuminate\Support\Facades\Storage;
 
 class JuventudController extends Controller
@@ -66,8 +68,10 @@ class JuventudController extends Controller
         $dependencia = Dependencias::all();
         $programas = Programas::all();
         $juventud=Juventud::all();
+        $noticias = Noticias::all();
+        $eventos = Eventos::all();
         $juve = Juventud::find($id);
-        return view("juventud.Juventud",compact("juventud","juve","dependencia","programas"));
+        return view("juventud.Juventud",compact("juventud","juve","dependencia","programas","noticias","eventos"));
 
     }
 

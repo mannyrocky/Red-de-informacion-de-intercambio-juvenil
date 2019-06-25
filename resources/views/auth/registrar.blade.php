@@ -6,7 +6,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-body">
-                    <form method="POST" action="">
+                    <form method="post" action="{{route('Registrar')}}">
                         @csrf
                         <div class="form-group row">
                             <label for="Nombre" class="col-md-4 col-form-label text-md-right">{{ __('Nombre') }}</label>
@@ -49,15 +49,34 @@
                             </div>
                         </div>
                         <div class="form-group row">
+                            <label for="Nivel Educativo" class="col-md-4 col-form-label text-md-right">{{ __('Escolaridad') }}</label>
+                            <div class="col-md-6">
+                                <select class="form-control" name="Escolaridad" id="Escolaridad" required>
+                                    <option value="Sin escolaridad">Sin escolaridad</option>
+                                    <option value="Kinder">Kinder</option>
+                                    <option value="Primaria">Primaria</option>
+                                    <option value="Secundaria">Secundaria</option>
+                                    <option value="Preparatoria">Preparatoria</option>
+                                    <option value="Universidad">Universidad</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
                             <label for="Escuela" class="col-md-4 col-form-label text-md-right">{{ __('Escuela') }}</label>
                             <div class="col-md-6">
-                                <input id="escuela" type="text" class="form-control" name="escuela" required>
+                                <select class="form-control" name="Escuela" id="Escuela"required>
+                                @if (App\Escuela::count() > 0)
+                                    @foreach($escuela as $escuelas)
+                                        <option>{{$escuelas->nombre_escuela}}</option>
+                                    @endforeach
+                                @endif
+                                </select>
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="Intereses" class="col-md-4 col-form-label text-md-right">{{ __('Intereses') }}</label>
                             <div class="col-md-6">
-                                <select id="empleador" class="form-control" name="empleador" required>
+                                <select id="intereses" class="form-control" name="intereses" required>
                                     <option value="Musica">Musica</option>
                                     <option value="Deportes">Deportes</option>
                                     <option value="Entretenimiento">Entretenimiento</option>
@@ -68,7 +87,7 @@
                         <br>
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-success">
+                                <button id="registro" type="submit" class="btn btn-success">
                                     {{ __('Registrar') }}
                                 </button>
                                 <a href="{{route('home')}}" class="btn btn-danger">Cancelar</a>
@@ -81,4 +100,23 @@
     </div>
 </div>
 <br>
+<script type = "text/javascript">
+$(document).ready(function(){
+    $.ajaxSetup({
+             headers: {
+                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+             }
+         });
+$("#Escolaridad").change(function(){
+    var escolaridad = $("#Escolaridad").val();
+    $.ajax({
+                type:'GET',
+                url:'/auth/registrar/ajaxRegistrar/'+escolaridad,
+                success:function(data) {
+                $("#Escuela").html(data);
+               },
+    });
+});
+});
+</script>
 @endsection

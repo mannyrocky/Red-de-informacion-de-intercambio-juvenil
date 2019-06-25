@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 use App\Noticias;
+use App\Dependencias;
+use App\Juventud;
+use App\Programas;
+use App\Eventos;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -35,7 +39,26 @@ class NoticiaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $noticias = new Noticias;
+        $titulo = $request->titulonoti;
+        $autor = $request->autornoti;
+        $fecha = $request->fechanoti;
+        $descripcion = $request->descripnoti;
+        $noticias->titulonoti = $titulo;
+        $noticias->autornoti = $autor;
+        $noticias->fechanoti = $fecha;
+        $noticias->Descripcionnot = $descripcion;
+        if(isset($_POST['imagennoti'])){
+            $noticias->imagennoti = $noticias->imagennoti;
+            $noticias->save();
+        }else{
+        $imagen = $request->file('imagennoti');
+        $imagennoti = $imagen->getClientOriginalName();
+        $noticias->imagennoti = $imagennoti;
+        $noticias->save();
+        Storage::put($imagennoti, file_get_contents($imagen));
+        }
+        echo "Agregado Noticia Correctamente";
     }
 
     /**
@@ -46,9 +69,25 @@ class NoticiaController extends Controller
      */
     public function show($id)
     {
-        //
+        $dependencia = Dependencias::all();
+        $juventud = Juventud::all();
+        $programas = Programas::all();
+        $noticias = Noticias::all();
+        $eventos = Eventos::all();
+        $noti = Noticias::find($id);
+        return view("noticias.noticias",compact("noti","juventud","programas","dependencia","noticias","eventos"));
     }
+    public function mostrar($id){
+        $noticia = Noticias::find($id);
+        $arreglo = array();
+        $arreglo[0] = $noticia->id;
+        $arreglo[1] = $noticia->titulonoti;
+        $arreglo[2] = $noticia->autornoti;
+        $arreglo[3] = $noticia->fechanoti;
+        $arreglo[4] = $noticia->Descripcionnot;
+        echo json_encode($arreglo);
 
+    }
     /**
      * Show the form for editing the specified resource.
      *

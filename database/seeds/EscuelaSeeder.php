@@ -13,6 +13,9 @@ class EscuelaSeeder extends Seeder
      */
     public function run()
     {
-        
+        Escuela::create([
+            'nombre_escuela'=>'No va a la escuela',
+            'escolaridad'=>'Sin escolaridad',
+            ]);
     }
 }

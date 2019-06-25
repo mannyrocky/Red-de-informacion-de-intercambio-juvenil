@@ -24,7 +24,7 @@
         <div class="container">
             <ul class="nav">
                 <li>
-                <span class="fecha-actual">sábado, 06 de abril de 2019</span></li>
+                <span id="lafecha" class="fecha-actual"></span></li>
             </ul>
             <ul class="nav justify-content-end">
                 <li><a href="http://www.bcs.gob.mx/formulario-de-contacto"><img src="http://www.bcs.gob.mx/wp-content/themes/bcsgob-wp/assets/images/icono-email.png" alt="Formulario de Contácto"> Contáctanos</a></li>
@@ -37,6 +37,20 @@
                 <li><a href="https://instagram.com/gobiernobcs/" target="_blank"><img src="http://www.bcs.gob.mx/wp-content/themes/bcsgob-wp/assets/images/icono-instagram.png"><span class="sr-only">Instagram</span></a></li>
                 <li><a href="https://www.youtube.com/channel/UC0KrSRyYv3migvbasXzNJpQ" target="_blank"> <img src="http://www.bcs.gob.mx/wp-content/themes/bcsgob-wp/assets/images/icono-youtube.png"><span class="sr-only">YouTube</span></a></li>
             </ul>
+            <ul class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{Auth::user()->name}}
+                    <i class="fa fa-user"></i>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a a href="#" class="fa fa-user "> {{ Auth::user()->email }}</a>
+                    </li>
+                    <li><a class="dropdown-item" href="#" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                            {{ __('Cerrar Sesión') }}
+                        </a>
+                    </li>
+                </ul>
+            </ul>
         </div>
     </nav>
     <div class="container">
@@ -45,14 +59,15 @@
                 <img src="http://www.bcs.gob.mx/wp-content/themes/bcsgob-wp/assets/images/logo-gobbcs.png" alt="Gobierno de Baja California Sur 2015-2021 | Mejor Futuro"> 
                 <!-- <img src="http://www.bcs.gob.mx/wp-content/uploads/2018/03/logo-gbcs.jpg" alt="Gobierno de Baja California Sur 2015-2021 | Mejor Futuro"> -->
             </a>
-            <form class="form-inline" action="">
-                <input class="form-control mr-sm-2" type="text" placeholder="Buscar">
-                <button class="btn btn-success" type="submit">Buscar</button>
-            </form>
         </nav>
-        <nav class="navbar navbar-collapse" id="navbarra">
-            <div class="container-fluid">
-                <ul class="nav justify-content-center ">
+        <nav class="navbar navbar-expand-sm" id="navbarra">
+        <button type="button" class="navbar-toggler" data-toggle="collapse"
+        data-target="#navi" aria-expanded="false" 
+        aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+            <div class="collapse navbar-collapse" id="navi">
+                <ul class="navbar-nav mr-auto justify-content-center ">
                     <li class="nav-item ">
                     <a class="nav-link" href="{{route('gestor')}}">Inicio</a>
                     </li>
@@ -76,9 +91,9 @@
                         Código Joven
                         </a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Información</a>
-                            <a class="dropdown-item" href="{{route('registrar')}}">Registrate</a>
-                            <a class="dropdown-item" href="#">Enterate</a>
+                            <a class="dropdown-item enterate" data-id="1" data-toggle="modal" data-target="#agregarenterate" href="#">Enterate</a>
+                            <a class="dropdown-item" href="{{route('Registros')}}">Registros Código Joven</a>
+                            <a class="dropdown-item" data-toggle="modal" data-target="#agregarescuela" href="#">Registrar Escuela</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
@@ -105,6 +120,32 @@
                           @endforeach
                         @endif
                       <button class="dropdown-item programa" data-toggle="modal" data-target="#agregarprograma">Agregar Programa</button>
+                    </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                      Eventos
+                    </a>
+                    <div class="dropdown-menu">
+                      @if(App\Eventos::count()>0)
+                          @foreach($eventos as $evento)
+                          <button id="{{$evento->id}}" class="dropdown-item evento" data-toggle="modal" data-target="#editarevento" data-id="{{$evento->id}}">{{$evento->tituloev}}</button>
+                          @endforeach
+                        @endif
+                      <button class="dropdown-item even" data-toggle="modal" data-target="#agregarevento">Agregar Evento</button>
+                    </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                      Noticias
+                    </a>
+                    <div class="dropdown-menu">
+                      @if(App\Noticias::count()>0)
+                          @foreach($noticias as $notici)
+                          <button id="{{$notici->id}}" class="dropdown-item noticias" data-toggle="modal" data-target="#editarnoticiaprueba" data-id="{{$notici->id}}">{{$notici->titulonoti}}</button>
+                          @endforeach
+                        @endif
+                      <button class="dropdown-item noti" data-toggle="modal" data-target="#agregarnoticia">Agregar Noticia</button>
                     </div>
                     </li>
                 </ul>
@@ -139,7 +180,7 @@
             </div>
         </div>
     </div>
- </footer>
+ </footer><!--
  <div class="modal fade" id="editarprograma" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
     <div class="modal-content">
@@ -292,7 +333,7 @@
       </form>
     </div>
   </div>
-</div>  
+</div>
 <div class="modal fade" id="editarcarrusel" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
     <div class="modal-content">
@@ -351,7 +392,7 @@
       </div>
     </div>
   </div>
-</div>  
+</div>
 <div class="modal fade" id="agregarprograma" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
     <div class="modal-content">
@@ -400,7 +441,7 @@
       </form>
     </div>
   </div>
-</div>
+</div>-->
 <div class="modal fade" id="agregardependencia" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
     <div class="modal-content">
@@ -447,41 +488,13 @@
   <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="modalTitle2">Editar Evento</h5>
+        <h5 class="modal-title" id="titlevento"></h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
     <form id="form" class="needs-validation" novalidate>
-      <div class="modal-body" id="bodyModal">
-            <div class="row">
-              <div class="col">
-                <input type="text" class="form-control" placeholder="Id"  id="idev" disabled>
-              </div>
-              <div class="col">
-                <input type="text" class="form-control" placeholder="Titulo Evento"  id="titev" required>
-                <div class="invalid-feedback">Ingresa un titulo</div>
-              </div>
-            </div>
-            <div class="row mt-4">
-              <div class="col">
-                <input type="text" class="form-control" placeholder="Dependencia"  id="depeve" required>
-                <div class="invalid-feedback">Ingresa una Dependencia!</div>
-              </div>
-              <div class="col">
-                <input type="text" class="form-control" placeholder="Lugar"  id="lugar" required>
-                <div class="invalid-feedback">Ingresa un lugar</div>
-              </div>
-            </div>
-            <div class="row mt-4">
-              <div class="col">
-                <textarea wrap="hard" rows="4" class="form-control" placeholder="Descrpicion" id="descripeven"></textarea>
-              </div>
-            </div>
-            <br>
-            <div class="row mt-2 justify-content-center">
-              <input class="btn btn-info" name="imageneve" id="imageneve" type="file" />
-            </div>
+      <div class="modal-body" id="bodyModalevento">    
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
@@ -491,45 +504,18 @@
     </div>
   </div>
 </div>
-<div class="modal fade" id="editarnoticia" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="editarnoticiaprueba" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="modalTitle2">Editar Noticia</h5>
+        <h5 class="modal-title" id="titlenotiprueba"></h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-    <form method="post" enctype="multipart/form-data" id="formnoti" class="needs-validation" novalidate>
-      <div class="modal-body" id="bodyModal">
-        <form>
-          <div class="row">
-            <div class="col">
-              <input type="text" class="form-control" placeholder="Id"  id="idnoti" disabled>
-            </div>
-            <div class="col">
-              <input type="text" class="form-control" placeholder="Titulo Noticia"  id="titnoti" required>
-              <div class="invalid-feedback">Ingresa un titulo</div>
-            </div>
-          </div>
-          <div class="row mt-4">
-            <div class="col">
-              <input type="text" class="form-control" placeholder="Autor"  id="autonoti" required>
-              <div class="invalid-feedback">Ingresa un Autor</div>
-            </div>
-            <div class="col">
-              <input type="date" class="form-control"  id="fechanoti" required>
-              <div class="invalid-feedback">Ingresa una fecha</div>
-            </div>
-          </div>
-        </form>
-        <div class="row mt-4"><div class="col">
-          <textarea rows="4" class="form-control" placeholder="Descrpicion" id="descripnoti"></textarea>
-        </div>
-      </div>
-      <div class="row mt-4 justify-content-center">
-        <input class="btn btn-info" name="imagenoti" id="imagenoti" type="file" />
-      </div>
+    <form  enctype="multipart/form-data" id="formnoti" class="needs-validation" novalidate>
+      <div class="modal-body" id="bodynotiprueba">
+        
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
@@ -539,7 +525,257 @@
     </div>
   </div>
 </div>
-
+<div class="modal fade" id="agregarevento" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="titleve"></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form id="formevento" enctype="multipart/form-data" class="needs-validation" novalidate>
+      <div class="modal-body" id="bodyeve">
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-outline-success" id="rgEve">Aceptar</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="agregarnoticia" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="titlenot"></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form id="formnoticia" enctype="multipart/form-data" class="needs-validation" novalidate>
+      <div class="modal-body" id="bodynot">
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-outline-success" id="rgNot">Aceptar</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="agregarenterate" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="titleenterate"></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="bodyenterate">
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-outline-success" id="rgNot">Aceptar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="agregarescuela" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="titleesc">Registrar Escuela</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" id="bodyesc">
+        <div class="row">
+            <div class="col">
+              <label for="Nombre Escuela">Nombre Escuela</label><input type="text" class="form-control" id="escuelaname">
+            </div>
+            <div class="col">
+              <label for="Escolaridad">Escolaridad</label><select class="form-control" id="escolaridad">
+                <option value="Kinder">Kinder</option>
+                <option value="Primaria">Primaria</option>
+                <option value="Secundaria">Secundaria</option>
+                <option value="Preparatoria">Preparatoria</option>
+                <option value="Universidad">Universidad</option>
+              </select>
+            </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-outline-success" id="rgEsc">Aceptar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+$(document).ready(function(){
+  $("#rgEsc").click(function(){
+    var nombre_escuela = $("#escuelaname").val();
+    var escolaridad = $("#escolaridad").val();
+    $.ajax({
+      type:'POST',
+      url:'/gestor/gestor/ajaxEscuela',
+      data:{
+        "_token":"{{ csrf_token() }}",
+        nombre_escuela:nombre_escuela,
+        escolaridad:escolaridad,
+      },
+      success:function(data){
+        $("#agregarescuela").modal("hide");
+        alert(data);
+      }
+    });
+  });
+});
+</script>
+<script>
+ $(document).ready(function(){
+  $(".enterate").click(function(){
+    var id = $(this).attr("data-id");
+    $.ajax({
+      type:"GET",
+      url:'/gestor/gestor/ajaxEnterate/'+id,
+      dataType: "json",
+      data:{
+      "_token":"Vwa7Moz1zujWKN1AAAmP5Ra00rRvf3jdE7N69Dej"
+      },
+      success:function(data){
+        var form = "";
+        var titulo = $("#titleenterate");
+        var body = $("#bodyenterate");
+        form+='<form><div class="row">';
+       form+='<div class="col"><input value="'+data[0]+'" "type="text" class="form-control" placeholder="Id"  id="idnoti" disabled></div><div class="col"><input type="text" value="'+data[1]+'" class="form-control" placeholder="Titulo Noticia"  id="titnoti" required><div class="invalid-feedback">Ingresa un Titulo</div></div></div>';
+       form+='<div class="row mt-3"><div class="col"><textarea rows="4" class="form-control" placeholder="Descrpicion" id="descripnoti">'+data[2]+'</textarea></div></div>';
+       form+='<div class="row mt-3"><div class="col"><textarea rows="4" class="form-control" placeholder="Descrpicion" id="descripnoti">'+data[3]+'</textarea></div></div>';
+       form+='<div class="row mt-3"><div class="col"><textarea rows="4" class="form-control" placeholder="Descrpicion" id="descripnoti">'+data[4]+'</textarea></div></div></form>';
+       form+='<br><div justify-content-center><input value="'+data[5]+'" class="form-control"  type="text" ></div>';
+       body.html(form);
+       titulo.html('Editar Enterate');
+      }
+    });
+  });
+}); 
+</script>
+<script type = "text/javascript">
+$(document).ready(function(){
+    $.ajaxSetup({
+             headers: {
+                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+             }
+         });
+$("#idev").change(function(){
+    var id = $("#idev").val();
+    $.ajax({
+                type:'GET',
+                url:'/gestor/gestor/ajaxEve/'+id,
+                dataType: "json",
+                success:function(data) {
+                $("#titev").val(data[0]);
+                $("#depeve").val(data[1]);
+                $("#lugar").val(data[2]);
+                $("#descripeven").val(data[3]);
+               },
+    });
+});
+});
+</script>
+<script>
+  $(document).ready(function(){
+    $(".noti").click(function(){
+        var form = "";
+        var titulo = $("#titlenot");
+        var body = $("#bodynot");
+        form+='<form><div class="row">';
+       form+='<div class="col"><input type="text" class="form-control" placeholder="Titulo Noticia"  id="titulonoticia" required><div class="invalid-feedback">Ingresa un Titulo</div></div></div>';
+       form+='<div class="row mt-4"><div class="col"><input type="text" class="form-control" placeholder="Autor"  id="autornoticia" required><div class="invalid-feedback">Ingresa un Autor</div></div><div class="col"><input type="date" class="form-control" id="fechanoticia" required><div class="invalid-feedback">Ingresa una fecha</div></div></div></form>';
+       form+='<div class="row mt-4"><div class="col"><textarea rows="4" class="form-control" placeholder="Descrpicion" id="descripcionnoticia"></textarea></div></div>';
+       form+='<div class="row mt-4 justify-content-center"><input class="btn btn-info" name="imagennoticia" id="imagennoticia" type="file" /></div>';
+       body.html(form);
+       titulo.html('Agregar Noticia');
+    });
+    $("#rgNot").click(function(){
+        var formData = new FormData();
+        formData.append('titulonoti',$("#titulonoticia").val());
+        formData.append('autornoti',$("#autornoticia").val());
+        formData.append('fechanoti',$("#fechanoticia").val());
+        formData.append('Descripcionnoti',$("#descripcionnoticia").val());
+        formData.append('imagennoti',$('input[name=imagennoticia]')[0].files[0]);
+        formData.append('_token','{{ csrf_token() }}');
+        if ($('#formnoticia')[0].checkValidity() === false) {
+            event.stopPropagation();
+        } else {
+        $.ajax({
+            type:'POST',
+            url:"/gestor/gestor/ajaxNot",
+            data:formData,
+            cache:false,
+            contentType: false,
+            processData: false,
+            success:function(data){
+            $("#agreganoticia").modal("hide");
+            location.reload();
+            alert(data);
+        }
+        });
+        }
+        $('#formnoticia').addClass('was-validated');
+    });
+});
+</script>
+<script>
+  $(document).ready(function(){
+    $(".even").click(function(){
+        var form = "";
+        var titulo = $("#titleve");
+        var body = $("#bodyeve");
+        form+='<form><div class="row">';
+       form+='<div class="col"><input type="text" class="form-control" placeholder="Titulo Evento"  id="tituloev" required><div class="invalid-feedback">Ingresa un Titulo</div></div></div>';
+       form+='<div class="row mt-4"><div class="col"><input type="text" class="form-control" placeholder="Dependecia"  id="depevento" required><div class="invalid-feedback">Ingresa una Dependencia</div></div><div class="col"><input type="text" class="form-control" placeholder="Lugar" id="lugares" required><div class="invalid-feedback">Ingresa un Lugar</div></div></div></form>';
+       form+='<div class="row mt-4"><div class="col"><textarea rows="4" class="form-control" placeholder="Descrpicion" id="descripcionevento"></textarea></div></div>';
+       form+='<div class="row mt-4 justify-content-center"><input class="btn btn-info" name="imagenevento" id="imagenevento" type="file" /></div>';
+       body.html(form);
+       titulo.html('Agregar Evento');
+    });
+    $("#rgEve").click(function(){
+        var formData = new FormData();
+        formData.append('tituloev',$("#tituloev").val());
+        formData.append('depev',$("#depevento").val());
+        formData.append('lugar',$("#lugares").val());
+        formData.append('Descripcionev',$("#descripcionevento").val());
+        formData.append('imagenjuv',$('input[name=imagenevento]')[0].files[0]);
+        formData.append('_token','{{ csrf_token() }}');
+        if ($('#formevento')[0].checkValidity() === false) {
+            event.stopPropagation();
+        } else {
+        $.ajax({
+            type:'POST',
+            url:"/gestor/gestor/ajaxEvent",
+            data:formData,
+            cache:false,
+            contentType: false,
+            processData: false,
+            success:function(data){
+            $("#agregarevento").modal("hide");
+            location.reload();
+            alert(data);
+        }
+        });
+        }
+        $('#formevento').addClass('was-validated');
+    });
+});
+</script>
 <script>
 $(document).ready(function(){
     $("#rgProg").click(function(){
@@ -657,56 +893,6 @@ $(document).ready(function(){
         $('#formrgj').addClass('was-validated');
     });
 });
-</script>
-<script>
-mostrardep = function(ids,depename,direc,descrip,urls,imagens){
-  $('#ids').val(ids);
-  $('#depename').val(depename);
-  $('#direc').val(direc);
-  $('#descrip').val(descrip);
-  $('#urls').val(urls);
-  $('imagens').val(imagens);
-};
-</script>
-<script>
-mostrarjuv = function(idj,titjuv,autjuv,fechajuv,descripjuv,imagenjuv){
-  $('#idj').val(idj);
-  $('#titjuv').val(titjuv);
-  $('#autjuv').val(autjuv);
-  $('#fechajuv').val(fechajuv);
-  $('#descripjuv').val(descripjuv);
-  $('imagenjuv').val(imagenjuv); 
-};
-</script>
-<script>
-mostrarprog = function(idp,progname,namedepe,respo,despro,imagenpro){
-  $('#idprog').val(idp);
-  $('#progname').val(progname);
-  $('#namedepe').val(namedepe);
-  $('#respo').val(respo);
-  $('#descriprograma').val(despro);
-  $('#imagenprograma').val(imagenpro); 
-};
-</script>
-<script>
-mostrarevento = function(ide,titev,depev,lugar,deseve,imageneve){
-  $('#idev').val(ide);
-  $('#titev').val(titev);
-  $('#depeve').val(depev);
-  $('#lugar').val(lugar);
-  $('#descripeven').val(deseve);
-  $('#imageneve').val(imageneve); 
-};
-</script>
-<script>
-mostrarnoticia = function(idn,titnot,autornot,fechanot,desnot,imagenot){
-  $('#idnoti').val(idn);
-  $('#titnoti').val(titnot);
-  $('#autonoti').val(autornot);
-  $('#fechanoti').val(fechanot);
-  $('#descripnoti').val(desnot);
-  $('#imagenoti').val(imagenot); 
-};
 </script>
 <script>
 $(document).ready(function(){
@@ -863,13 +1049,42 @@ $(document).ready(function(){
 </script>
 <script>
 $(document).ready(function(){
+  $(".noticias").click(function(){
+    var id = $(this).attr("data-id");
+    $.ajax({
+      type:"GET",
+      url:'/gestor/gestor/ajaxNoti/'+id,
+      dataType: "json",
+      data:{
+      "_token":"Vwa7Moz1zujWKN1AAAmP5Ra00rRvf3jdE7N69Dej"
+      },
+      success:function(data){
+        var form = "";
+        var titulo = $("#titlenotiprueba");
+        var body = $("#bodynotiprueba");
+        form+='<form><div class="row">';
+       form+='<div class="col"><input value="'+data[0]+'" "type="text" class="form-control" placeholder="Id"  id="idnoti" disabled></div><div class="col"><input type="text" value="'+data[1]+'" class="form-control" placeholder="Titulo Noticia"  id="titnoti" required><div class="invalid-feedback">Ingresa un Titulo</div></div></div>';
+       form+='<div class="row mt-4"><div class="col"><input value="'+data[2]+'" type="text" class="form-control" placeholder="Autor"  id="autonoti" required><div class="invalid-feedback">Ingresa un Autor</div></div><div class="col"><input value="'+data[3]+'" type="date" class="form-control"  id="fechanoti" required><div class="invalid-feedback">Ingresa una Fecha</div></div></div></form>';
+       form+='<div class="row mt-4"><div class="col"><textarea rows="4" class="form-control" placeholder="Descrpicion" id="descripnoti">'+data[4]+'</textarea></div></div>';
+       form+='<div class="row mt-4 justify-content-center"><input class="btn btn-info" name="imagenoti" id="imagenoti" type="file" /></div>';
+       body.html(form);
+       titulo.html('Editar Noticias Prueba');
+      }
+    });
+  });
+});
+</script>
+<script>
+$(document).ready(function(){
   $("#editnoti").click(function(){
     var formData = new FormData();
     var id = $("#idnoti").val();
     formData.append('titulonoti',$("#titnoti").val());
     formData.append('autornoti',$("#autonoti").val());
     formData.append('fechanoti',$("#fechanoti").val());
-    formData.append('descripnoti',$("#descripnoti").val());
+    var texto = $("#descripnoti").val();
+    //var texto_linea = texto.replace(new RegExp("\n","g"), "<br>");
+    formData.append('descripnoti',texto);
     formData.append('imagennoti',$('input[name=imagenoti]')[0].files[0]);
     formData.append('_token','{{ csrf_token() }}');
     if ($('#formnoti')[0].checkValidity() === false) {
@@ -889,6 +1104,33 @@ $(document).ready(function(){
     });
   }
         $('#formnoti').addClass('was-validated');
+  });
+});
+</script>
+<script>
+  $(document).ready(function(){
+  $(".evento").click(function(){
+    var id = $(this).attr("data-id");
+    $.ajax({
+      type:"GET",
+      url:'/gestor/gestor/ajaxEven/'+id,
+      dataType: "json",
+      data:{
+      "_token":"Vwa7Moz1zujWKN1AAAmP5Ra00rRvf3jdE7N69Dej"
+      },
+      success:function(data){
+        var form = "";
+        var titulo = $("#titlevento");
+        var body = $("#bodyModalevento");
+        form+='<form><div class="row">';
+       form+='<div class="col"><input value="'+data[0]+'" type="text" class="form-control" name="idev" id="idev" disabled></div><div class="col"><input type="text" value="'+data[1]+'" class="form-control" placeholder="Titulo Evento"  id="titev" required><div class="invalid-feedback">Ingresa un Titulo</div></div></div>';
+       form+='<div class="row mt-4"><div class="col"><input value="'+data[2]+'" type="text" class="form-control" placeholder="Dependencia"  id="depeve" required><div class="invalid-feedback">Ingresa una Dependencia</div></div><div class="col"><input value="'+data[3]+'" type="text" class="form-control" placeholder="Lugar"  id="lugar" required><div class="invalid-feedback">Ingresa un Lugar</div></div></div></form>';
+       form+='<div class="row mt-4"><div class="col"><textarea rows="4" class="form-control" placeholder="Descrpicion" id="descripeven">'+data[4]+'</textarea></div></div>';
+       form+='<div class="row mt-4 justify-content-center"><input class="btn btn-info" name="imageneve" id="imageneve" type="file" /></div>';
+       body.html(form);
+       titulo.html('Editar Evento');
+      }
+    });
   });
 });
 </script>
@@ -951,6 +1193,22 @@ $('#envImg').click( function() {
       }
   });
 });
+</script>
+    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+        @csrf
+    </form>
+<script>
+$(document).ready(function(){
+    fecha();
+});    
+</script>
+<script>
+    function fecha(){
+        var fecha = new Date();
+        var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        var mifecha = fecha.toLocaleDateString("es-ES", options);
+        $("#lafecha").text(mifecha);
+            }
 </script>
 </body>
 </html>

@@ -1,15 +1,15 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use Illuminate\Http\Request;
-use App\Juventud;
-use App\Programas;
-use App\Dependencias;
-use App\Carrusel;
-use \App\Eventos;
+use \App\Codjoven;
+use \App\Programas;
+use \App\Juventud;
+use \App\Dependencias;
 use \App\Noticias;
-class HomeController extends Controller
+use \App\Eventos;
+use Illuminate\Http\Request;
+
+class CodigoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,19 +19,12 @@ class HomeController extends Controller
     public function index()
     {
         $dependencia = Dependencias::all();
-        $programas = Programas::all();
         $juventud = Juventud::all();
-        $carrusel = Carrusel::find(1);
+        $programas = Programas::all();
         $noticias = Noticias::all();
         $eventos = Eventos::all();
-        $noti1 = Noticias::find(1);
-        $noti2 = Noticias::find(2);
-        $noti3 = Noticias::find(3);
-        $noti4 = Noticias::find(4);
-        $even1 = Eventos::find(1);
-        $even2 = Eventos::find(2);
-        $even3 = Eventos::find(3);
-        return view('home',compact('dependencia'),compact("juventud","programas","carrusel","noti1","noti2","noti3","noti4","even1","even2","even3","eventos","noticias"));
+        //$codigo = Codjoven::find(1);
+        return view('codigojoven.enterate',compact('dependencia','juventud','programas','noticias','eventos'));
     }
 
     /**
@@ -63,7 +56,15 @@ class HomeController extends Controller
      */
     public function show($id)
     {
-        //
+        $codigo = Codjoven::find($id);
+        $arreglo = array();
+        $arreglo[0] = $codigo->id;
+        $arreglo[1] = $codigo->titulocodigo;
+        $arreglo[2] = $codigo->infointro;
+        $arreglo[3] = $codigo->infodesa;
+        $arreglo[4] = $codigo->infoconclu;
+        $arreglo[5] = $codigo->codigourl;
+        echo json_encode($arreglo);
     }
 
     /**

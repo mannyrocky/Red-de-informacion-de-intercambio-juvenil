@@ -11,6 +11,10 @@ use Illuminate\Http\Request;
 
 class GestorController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -22,6 +26,8 @@ class GestorController extends Controller
         $dependencias = Dependencias::all();
         $juventudes = Juventud::all();
         $carrusel = Carrusel::find(1);
+        $noticias = Noticias::all();
+        $eventos = Eventos::all();
         $noti1 = Noticias::find(1);
         $noti2 = Noticias::find(2);
         $noti3 = Noticias::find(3);
@@ -30,7 +36,7 @@ class GestorController extends Controller
         $even2 = Eventos::find(3);
         $even3 = Eventos::find(2);
         $even4 = Eventos::find(4);
-        return view('gestor.gestor',compact('dependencias'),compact('juventudes','programa',"carrusel","noti1","noti2","noti3","noti4","even1","even2","even3","even4"));
+        return view('gestor.gestor',compact('dependencias'),compact('juventudes','programa',"carrusel","noti1","noti2","noti3","noti4","even1","even2","even3","even4","eventos","noticias"));
     }
 
     /**
