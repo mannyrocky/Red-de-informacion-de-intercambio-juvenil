@@ -18,7 +18,7 @@ class CrearTablaEventos extends Migration
             $table->string('tituloev')->required();
             $table->string('depev')->required();
             $table->string('lugar')->required();
-            $table->string('Descripcionev')->nullable();
+            $table->string('Descripcionev',1000)->nullable();
             $table->string('imagenjuv')->nullable();
             $table->timestamps();
         });

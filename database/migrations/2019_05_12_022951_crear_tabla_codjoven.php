@@ -15,6 +15,11 @@ class CrearTablaCodjoven extends Migration
     {
         Schema::create('codjoven', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('titulocodigo')->unique();
+            $table->string('infointro',1000);
+            $table->string('infodesa',1000);
+            $table->string('infoconclu',1000);
+            $table->string('codigourl');
             $table->timestamps();
         });
     }

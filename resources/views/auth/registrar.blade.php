@@ -52,6 +52,7 @@
                             <label for="Nivel Educativo" class="col-md-4 col-form-label text-md-right">{{ __('Escolaridad') }}</label>
                             <div class="col-md-6">
                                 <select class="form-control" name="Escolaridad" id="Escolaridad" required>
+                                    <option value="Sin escolaridad">Sin escolaridad</option>
                                     <option value="Kinder">Kinder</option>
                                     <option value="Primaria">Primaria</option>
                                     <option value="Secundaria">Secundaria</option>

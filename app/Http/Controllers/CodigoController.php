@@ -1,10 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-use \App\Codigo;
+use \App\Codjoven;
 use \App\Programas;
 use \App\Juventud;
 use \App\Dependencias;
+use \App\Noticias;
+use \App\Eventos;
 use Illuminate\Http\Request;
 
 class CodigoController extends Controller
@@ -19,8 +21,10 @@ class CodigoController extends Controller
         $dependencia = Dependencias::all();
         $juventud = Juventud::all();
         $programas = Programas::all();
-        $codigo = Codigo::find(1);
-        return view('codigojoven.enterate',compact('dependencia','juventud','programas','codigo'));
+        $noticias = Noticias::all();
+        $eventos = Eventos::all();
+        //$codigo = Codjoven::find(1);
+        return view('codigojoven.enterate',compact('dependencia','juventud','programas','noticias','eventos'));
     }
 
     /**

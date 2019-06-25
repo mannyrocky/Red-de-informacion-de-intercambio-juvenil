@@ -163,6 +163,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Codedge\Fpdf\FpdfServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
+        Milon\Barcode\BarcodeServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -228,6 +229,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Fpdf' => Codedge\Fpdf\Facades\Fpdf::class,
+        'DNS1D' => Milon\Barcode\Facades\DNS1DFacade::class,
+        'DNS2D' => Milon\Barcode\Facades\DNS2DFacade::class,
         //'Form' => Collective\Html\FormFacade::class,
 
     ],

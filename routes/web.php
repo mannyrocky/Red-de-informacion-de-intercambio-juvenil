@@ -20,6 +20,9 @@ Route::get('/', [
     'as' => 'home',
     'uses' => 'HomeController@index'
 ]);
+Route::get('/home',[
+    'uses' =>'GestorController@index'
+]);
 Route::get('/dependencias/Dependencia/{id}','DependenciaController@show');
 Route::get('/juventud/Juventud/{id}','JuventudController@show');
 Route::get('/programas/Programas/{id}','Programascontroller@show');
@@ -29,7 +32,7 @@ Route::get('/auth/registrar','RegistrarController@index')->name('registrar');
 Route::get('/auth/registrar/ajaxRegistrar/{escolaridad}','RegistrarController@show');
 Route::post('/auth/registrar/ajaxRegistro','RegistrarController@create')->name('Registrar');
 Route::get('/Gafete/codigo','RegistrarController@pdf');
-Route::get('/codigojoven/enterate','CodigoController@index');
+Route::get('/codigojoven/enterate','CodigoController@index')->name('enterate');
 Route::get('/codigojoven/Registros','RegistrarController@mostrar')->name('Registros');
 
 // Authentication Routes...
@@ -64,9 +67,10 @@ Route::post('/gestor/gestor/ajaxProgramas/{id}','Programascontroller@edit');
 Route::post('/gestor/gestor/ajaxPrograma/{id}','Programascontroller@borrar');
     //Noticias
 Route::post('/gestor/gestor/ajaxNoticia/{id}','NoticiaController@edit');
-Route::post('/gestor/gestor/ajaxNoti/{id}','NoticiaController@mostrar');
+Route::get('/gestor/gestor/ajaxNoti/{id}','NoticiaController@mostrar');
     //Eventos
 Route::post('/gestor/gestor/ajaxEvento/{id}','EventoController@edit');
 Route::get('/gestor/gestor/ajaxEve/{id}','EventoController@cambiar');
+Route::get('/gestor/gestor/ajaxEven/{id}','EventoController@mostrar');
     //Carrusel
 Route::post('/gestor/gestor/imagenesAjax','CarruselController@actualizar');

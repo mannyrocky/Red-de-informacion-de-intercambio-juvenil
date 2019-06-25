@@ -59,15 +59,10 @@
                 <!-- <img src="http://www.bcs.gob.mx/wp-content/uploads/2018/03/logo-gbcs.jpg" alt="Gobierno de Baja California Sur 2015-2021 | Mejor Futuro"> -->
                 </a>
         </div>
-           <div class="col-md-6 mt-4">
-                <form action="">
-                    <input type="text" class="form-control" placeholder="Buscar">
-                </form>
-           </div> 
-        </div>
+    </div>
         
         </nav>
-        <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm p-3 mb-5 bg-white rounded">
+        <nav id="barranavegacion" class="navbar navbar-expand-lg navbar-light bg-white shadow-sm p-3 mb-5 bg-white rounded">
   <a class="navbar-brand d-md-none" href="#">Menú</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -94,7 +89,7 @@
             Codigo Joven
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarCodigoLink">
-            <a class="dropdown-item" href="#">Enterate</a>
+            <a class="dropdown-item" href="{{route('enterate')}}">Enterate</a>
             <a class="dropdown-item" href="{{route('registrar')}}">Registrate</a>
         </div>
       </li>
@@ -153,19 +148,18 @@
 </header>
  
  @yield('content')
-
- <!--<footer style="background:gray;">
-    <div class="pie-de-pagina">
-    <div class="container">
-        <div class="info-de-contacto">
+ <!-- Footer -->
+<footer style="background:white;" class="page-footer font-small pt-4">
+<!-- Footer Links -->
+    <div class="container-fluid text-center text-md-left">
+  <!-- Grid row -->
         <div class="row">
             <div class="col-md-3">
                 <img src="http://isjuventud.gob.mx/wp-content/themes/PortalesBCS/assets/images/logo-estado-mejor-futuro.png" alt="">
             </div>  
             <div class="col-md-6">
                 <div class="info-domicilio">
-                    <h5> Instituto Sudcaliforniano de la Juventud
-                    </h5>
+                    <h5> Instituto Sudcaliforniano de la Juventud</h5>
                     Calle Antonio Navarro, esq. Melitón Albáñez <br>
                     La Paz, Baja California Sur, México         
                 </div>
@@ -177,54 +171,30 @@
                 </div>
             </div>
         </div>
-        </div>
-    </div>
-    <div class="enlaces-adicionales">
-        <div class="container">
-        <nav class="nav navbar-nav">
-        </nav>
-        <p class="copy">Algunos derechos reservados © 2015 - 2021</p>
-        </div>
-    </div>
-    </div>
- </footer>-->
- <!-- Footer -->
-<footer style="background:#EEEEEE;" class="page-footer font-small pt-4">
-
-<!-- Footer Links -->
-<div class="container-fluid text-center text-md-left">
-
   <!-- Grid row -->
-  <div class="row">
-  <div class="col-md-3">
-                <img src="http://isjuventud.gob.mx/wp-content/themes/PortalesBCS/assets/images/logo-estado-mejor-futuro.png" alt="">
-            </div>  
-            <div class="col-md-6">
-                <div class="info-domicilio">
-                    <h5> Instituto Sudcaliforniano de la Juventud
-                    </h5>
-                    Calle Antonio Navarro, esq. Melitón Albáñez <br>
-                    La Paz, Baja California Sur, México         
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="medios-de-comunicacion">
-                    Conmutador (612) 125 3767 <br>
-                    <a href="http://www.facebook.com/isjbcs">Contactanos vía web</a>
-                </div>
-            </div>
-  </div>
-  <!-- Grid row -->
-
-</div>
+    </div>
 <!-- Footer Links -->
-
 <!-- Copyright -->
-<div style="background:white;" class="footer-copyright text-center py-2"><p class="copy">Algunos derechos reservados © 2015 - 2021</p>
-</div>
+    <div style="background:#EEEEEE;" class="footer-copyright text-center py-2"><p class="copy">Algunos derechos reservados © 2015 - 2021</p>
+    </div>
 <!-- Copyright -->
-
 </footer>
+<style>
+    html {
+  min-height: 100%;
+  position: relative;
+}
+body {
+  margin: 0;
+  margin-bottom: 40px;
+}
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 40px;
+}
+</style>
 <script>
 $(document).ready(function(){
     fecha();
@@ -237,6 +207,14 @@ $(document).ready(function(){
         var mifecha = fecha.toLocaleDateString("es-ES", options);
         $("#lafecha").text(mifecha);
             }
+</script>
+<script>
+$(document).ready(function(){
+    var navegacion = $("#barranavegacion");
+    setInterval(function(){
+            location.reload();
+    },15000);
+});
 </script>
 </body>
 </html>

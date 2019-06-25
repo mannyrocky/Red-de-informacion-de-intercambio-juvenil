@@ -24,7 +24,7 @@
         <div class="container">
             <ul class="nav">
                 <li>
-                <span class="fecha-actual">sábado, 06 de abril de 2019</span></li>
+                <span id="lafecha" class="fecha-actual"></span></li>
             </ul>
             <ul class="nav justify-content-end">
                 <li><a href="http://www.bcs.gob.mx/formulario-de-contacto"><img src="http://www.bcs.gob.mx/wp-content/themes/bcsgob-wp/assets/images/icono-email.png" alt="Formulario de Contácto"> Contáctanos</a></li>
@@ -130,7 +130,7 @@
                     <div class="dropdown-menu">
                       @if(App\Eventos::count()>0)
                           @foreach($eventos as $evento)
-                          <button id="{{$evento->id}}" class="dropdown-item programa" data-toggle="modal"  data-target="#editarprograma">{{$evento->tituloev}}</button>
+                          <button id="{{$evento->id}}" class="dropdown-item evento" data-toggle="modal" data-target="#editarevento" data-id="{{$evento->id}}">{{$evento->tituloev}}</button>
                           @endforeach
                         @endif
                       <button class="dropdown-item programa" data-toggle="modal" data-target="#agregarprograma">Agregar Evento</button>
@@ -143,7 +143,7 @@
                     <div class="dropdown-menu">
                       @if(App\Noticias::count()>0)
                           @foreach($noticias as $notici)
-                          <button id="{{$notici->id}}" class="dropdown-item programa" data-toggle="modal"  data-target="#editarprograma">{{$notici->titulonoti}}</button>
+                          <button id="{{$notici->id}}" class="dropdown-item programa" data-toggle="modal" data-target="#editarnoticiaprueba" data-id="{{$notici->id}}">{{$notici->titulonoti}}</button>
                           @endforeach
                         @endif
                       <button class="dropdown-item programa" data-toggle="modal" data-target="#agregarprograma">Agregar Noticia</button>
@@ -489,47 +489,13 @@
   <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="modalTitle2">Editar Evento</h5>
+        <h5 class="modal-title" id="titlevento"></h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
     <form id="form" class="needs-validation" novalidate>
-      <div class="modal-body" id="bodyModal">
-            <div class="row">
-              <div class="col">
-                <select class="form-control" name="idev" id="idev">
-                @if(App\Eventos::count()>0)
-                          @foreach($eventos as $evento)
-                          <option>{{$evento->id}}</option>
-                          @endforeach
-                @endif
-                </select>
-              </div>
-              <div class="col">
-                <input type="text" class="form-control" placeholder="Titulo Evento"  id="titev" required>
-                <div class="invalid-feedback">Ingresa un titulo</div>
-              </div>
-            </div>
-            <div class="row mt-4">
-              <div class="col">
-                <input type="text" class="form-control" placeholder="Dependencia"  id="depeve" required>
-                <div class="invalid-feedback">Ingresa una Dependencia!</div>
-              </div>
-              <div class="col">
-                <input type="text" class="form-control" placeholder="Lugar"  id="lugar" required>
-                <div class="invalid-feedback">Ingresa un lugar</div>
-              </div>
-            </div>
-            <div class="row mt-4">
-              <div class="col">
-                <textarea wrap="hard" rows="4" class="form-control" placeholder="Descrpicion" id="descripeven"></textarea>
-              </div>
-            </div>
-            <br>
-            <div class="row mt-2 justify-content-center">
-              <input class="btn btn-info" name="imageneve" id="imageneve" type="file" />
-            </div>
+      <div class="modal-body" id="bodyModalevento">    
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
@@ -781,16 +747,6 @@ mostrarprog = function(idp,progname,namedepe,respo,despro,imagenpro){
 };
 </script>
 <script>
-mostrarevento = function(ide,titev,depev,lugar,deseve,imageneve){
-  $('#idev').val(ide);
-  $('#titev').val(titev);
-  $('#depeve').val(depev);
-  $('#lugar').val(lugar);
-  $('#descripeven').val(deseve);
-  $('#imageneve').val(imageneve); 
-};
-</script>
-<script>
 $(document).ready(function(){
   $("#edit").click(function(){
     var formData = new FormData();
@@ -945,10 +901,10 @@ $(document).ready(function(){
 </script>
 <script>
 $(document).ready(function(){
-  $(".noticia").click(function(){
+  $(".noticias").click(function(){
     var id = $(this).attr("data-id");
     $.ajax({
-      type:"POST",
+      type:"GET",
       url:'/gestor/gestor/ajaxNoti/'+id,
       dataType: "json",
       data:{
@@ -959,7 +915,7 @@ $(document).ready(function(){
         var titulo = $("#titlenotiprueba");
         var body = $("#bodynotiprueba");
         form+='<form><div class="row">';
-       form+='<div class="col"><input value="'+data[0]+'" "type="text" class="form-control" placeholder="Id"  id="idnoti" disabled><input type="text" value="'+data[1]+'" class="form-control" placeholder="Titulo Noticia"  id="titnoti" required><div class="invalid-feedback">Ingresa un Titulo</div></div></div>';
+       form+='<div class="col"><input value="'+data[0]+'" "type="text" class="form-control" placeholder="Id"  id="idnoti" disabled></div><div class="col"><input type="text" value="'+data[1]+'" class="form-control" placeholder="Titulo Noticia"  id="titnoti" required><div class="invalid-feedback">Ingresa un Titulo</div></div></div>';
        form+='<div class="row mt-4"><div class="col"><input value="'+data[2]+'" type="text" class="form-control" placeholder="Autor"  id="autonoti" required><div class="invalid-feedback">Ingresa un Autor</div></div><div class="col"><input value="'+data[3]+'" type="date" class="form-control"  id="fechanoti" required><div class="invalid-feedback">Ingresa una Fecha</div></div></div></form>';
        form+='<div class="row mt-4"><div class="col"><textarea rows="4" class="form-control" placeholder="Descrpicion" id="descripnoti">'+data[4]+'</textarea></div></div>';
        form+='<div class="row mt-4 justify-content-center"><input class="btn btn-info" name="imagenoti" id="imagenoti" type="file" /></div>';
@@ -1000,6 +956,33 @@ $(document).ready(function(){
     });
   }
         $('#formnoti').addClass('was-validated');
+  });
+});
+</script>
+<script>
+  $(document).ready(function(){
+  $(".evento").click(function(){
+    var id = $(this).attr("data-id");
+    $.ajax({
+      type:"GET",
+      url:'/gestor/gestor/ajaxEven/'+id,
+      dataType: "json",
+      data:{
+      "_token":"Vwa7Moz1zujWKN1AAAmP5Ra00rRvf3jdE7N69Dej"
+      },
+      success:function(data){
+        var form = "";
+        var titulo = $("#titlevento");
+        var body = $("#bodyModalevento");
+        form+='<form><div class="row">';
+       form+='<div class="col"><input value="'+data[0]+'" type="text" class="form-control" name="idev" id="idev" disabled></div><div class="col"><input type="text" value="'+data[1]+'" class="form-control" placeholder="Titulo Evento"  id="titev" required><div class="invalid-feedback">Ingresa un Titulo</div></div></div>';
+       form+='<div class="row mt-4"><div class="col"><input value="'+data[2]+'" type="text" class="form-control" placeholder="Dependencia"  id="depeve" required><div class="invalid-feedback">Ingresa una Dependencia</div></div><div class="col"><input value="'+data[3]+'" type="text" class="form-control" placeholder="Lugar"  id="lugar" required><div class="invalid-feedback">Ingresa un Lugar</div></div></div></form>';
+       form+='<div class="row mt-4"><div class="col"><textarea rows="4" class="form-control" placeholder="Descrpicion" id="descripeven">'+data[4]+'</textarea></div></div>';
+       form+='<div class="row mt-4 justify-content-center"><input class="btn btn-info" name="imageneve" id="imageneve" type="file" /></div>';
+       body.html(form);
+       titulo.html('Editar Evento');
+      }
+    });
   });
 });
 </script>
@@ -1066,5 +1049,19 @@ $('#envImg').click( function() {
     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
         @csrf
     </form>
+<script>
+$(document).ready(function(){
+    fecha();
+});    
+</script>
+<script>
+    function fecha(){
+        var fecha = new Date();
+        var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        var mifecha = fecha.toLocaleDateString("es-ES", options);
+        $("#lafecha").text(mifecha);
+            }
+</script>
+
 </body>
 </html>

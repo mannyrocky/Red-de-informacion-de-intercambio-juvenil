@@ -18,7 +18,9 @@ class CrearTablaNoticias extends Migration
             $table->string('titulonoti')->required();
             $table->string('autornoti')->required();
             $table->string('fechanoti')->required();
-            $table->string('Descripcionnot')->nullable();
+            $table->string('Descripcionnot',1000)->nullable();
+            $table->string('descripdes',1000)->nullable();
+            $table->string('descripcon',1000)->nullable();
             $table->string('imagennoti')->nullable();
             $table->timestamps();
         });

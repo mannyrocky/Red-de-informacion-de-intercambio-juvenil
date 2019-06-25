@@ -42,6 +42,17 @@ class EventoController extends Controller
         //
     }
 
+    public function mostrar($id){
+        $evento = Eventos::find($id);
+        $arreglo = array();
+        $arreglo[0] = $evento->id;
+        $arreglo[1] = $evento->tituloev;
+        $arreglo[2] = $evento->depev;
+        $arreglo[3] = $evento->lugar;
+        $arreglo[4] = $evento->Descripcionev;
+        echo json_encode($arreglo);
+    }
+
     /**
      * Display the specified resource.
      *

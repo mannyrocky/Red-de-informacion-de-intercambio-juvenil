@@ -8,6 +8,7 @@ use \App\Escuela;
 use \App\Usuarios;
 use \App\Eventos;
 use \App\Noticias;
+use \App\Carrusel;
 use Illuminate\Http\Request;
 use \App\Http\Controllers\PDF;
 
@@ -25,7 +26,7 @@ class RegistrarController extends Controller
         $programas = Programas::all();
         $noticias = Noticias::all();
         $eventos = Eventos::all();
-        $escolaridad = 'Kinder';
+        $escolaridad = 'Sin escolaridad';
         $escuela = Escuela::all()->where('escolaridad','=',$escolaridad);
         return view('auth.registrar',compact('dependencia','juventud','programas','escuela','eventos','noticias'));
     }
@@ -59,7 +60,7 @@ class RegistrarController extends Controller
         $view = \View::make('Gafete.codigo',compact('data'))->render();
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
-        return $pdf->stream('codigo');
+        return $pdf->stream('codigo.pdf');
         return $pdf->download('codigo');
         
     }
@@ -73,6 +74,22 @@ class RegistrarController extends Controller
     public function store(Request $request)
     {
         //
+    }
+    public function pdf(){
+        $data = [
+            'nombres' => "prueba",
+            'apellidos' => "Prueba",
+            'telefono' => "123456789",
+            'curp' => "AAAAAAAA",
+            'email' => "AAAA@email.com",
+            'Escuela' => "Ninguna"
+
+        ];
+        $view = \View::make('Gafete.codigo',compact('data'))->render();
+        $pdf = \App::make('dompdf.wrapper');
+        $pdf->loadHTML($view);
+        return $pdf->stream('codigo');
+        return $pdf->download('codigo');
     }
 
     /**
@@ -101,13 +118,14 @@ class RegistrarController extends Controller
      */
     public function mostrar(Request $request)
     {
-        $dependencia = Dependencias::all();
+        $dependencias = Dependencias::all();
         $juventud = Juventud::all();
-        $programas = Programas::all();
+        $programa = Programas::all();
         $noticias = Noticias::all();
         $eventos = Eventos::all();
+        $carrusel = Carrusel::find(1);
         $user = Usuarios::Search($request->nombres)->orderBy('id','ASC')->paginate(2);
-        return view('codigojoven.Registros',compact('dependencia','juventud','programas','noticias','eventos'))->with('user',$user);
+        return view('codigojoven.Registros',compact('carrusel','dependencias','juventud','programa','noticias','eventos'))->with('user',$user);
     }
 
     /**

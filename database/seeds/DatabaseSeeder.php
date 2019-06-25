@@ -17,6 +17,8 @@ class DatabaseSeeder extends Seeder
         $this->call(CarruselSeeder::class);
         $this->call(EventoSeeder::class);
         $this->call(NoticiaSeeder::class);
+        $this->call(EscuelaSeeder::class);
+        $this->call(EnterateSeeder::class);
 
         Model::reguard();
     }

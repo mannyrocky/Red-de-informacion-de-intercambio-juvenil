@@ -1,4 +1,4 @@
-@extends('layouts.layout')
+@extends('layouts.layoutgestor')
  
 @section('content')
 @if (App\Usuarios::count() > 0)
@@ -54,6 +54,6 @@
     </div>
 </div>
 @else
-<h1>No hay Empleados registradas</h1>
+<div style="text-align:center;"><h4>No hay Usuarios registrados</h4></div>
 @endif
 @endsection

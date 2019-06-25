@@ -123,7 +123,7 @@
                             <p style="t">
                                 {{$even1->Descripcionev}}
                             </p>
-                            <p><button class="btn btn-outline-success evento" data-toggle="modal" data-target="#editarevento"data-mensaje='{{$even1->Descripcionev}}' onclick="mostrarevento('{{$even1->id}}','{{$even1->tituloev}}','{{$even1->depev}}','{{$even1->lugar}}','{{$even1->Descripcionev}}','{{$even1->imagenjuv}}');">Editar</button></p>
+                            <p><button class="btn btn-outline-success evento">Editar</button></p>
                         </div>
                         <div class="col-md-3">
                             <h2>{{$even2->tituloev}}</h2><br>
@@ -131,23 +131,23 @@
                             <p style="t">
                             {{$even2->Descripcionev}}
                             </p>
-                            <p><button class="btn btn-outline-success evento" data-toggle="modal" data-target="#editarevento" data-mensaje='{{$even2->Descripcionev}}' onclick="mostrarevento('{{$even2->id}}','{{$even2->tituloev}}','{{$even2->depev}}','{{$even2->lugar}}','{{$even2->Descripcionev}}','{{$even2->imagenjuv}}');">Editar</button></p>
+                            <p><button class="btn btn-outline-success evento">Editar</button></p>
                         </div>
                         <div class="col-md-3" >
-                                <h2>{{$even3->tituloev}}</h2><br>
-                                <img src="../../uploads/{{$even3->imagenjuv}}" width="100" height ="150px" class="my-4">
-                                <p style="t">
-                                    {{$even3->Descripcionev}}
-                                </p>
-                                <p><button class="btn btn-outline-success evento" data-toggle="modal" onclick="mostrarevento('{{$even3->id}}','{{$even3->tituloev}}','{{$even3->depev}}','{{$even3->lugar}}','{{$even3->Descripcionev}}','{{$even3->imagenjuv}}');">Editar</button></p>
-                        </div>
+                            <h2>{{$even3->tituloev}}</h2><br>
+                            <img src="../../uploads/{{$even3->imagenjuv}}" width="100" height ="150px" class="my-4">
+                            <p style="t">
+                                {{$even3->Descripcionev}}
+                            </p>
+                            <p><button class="btn btn-outline-success evento">Editar</button></p>
+                       </div>
                         <div class="col-md-3">
                                 <h2>{{$even4->tituloev}}</h2><br>
                                 <img src="../../uploads/{{$even4->imagenjuv}}" width="100" height ="150px" class="my-4">
                                 <p style="t">
                                 {{$even4->Descripcionev}}
                             </p>
-                                <p><button class="btn btn-outline-success evento" data-toggle="modal" data-target="#editarevento" data-mensaje='{{$even4->Descripcionev}}' onclick="mostrarevento('{{$even4->id}}','{{$even4->tituloev}}','{{$even4->depev}}','{{$even4->lugar}}','{{$even4->Descripcionev}}','{{$even4->imagenjuv}}');">Editar</button></p>
+                            <p><button class="btn btn-outline-success evento" >Editar</button></p>
                         </div>
                     </div>
                 </div>
@@ -161,21 +161,22 @@
                                 <div class="noticia footer-main-item col-md-12">
                                     <h3><img src="../../uploads/{{$noti1->imagennoti}}" width="100px" height ="100px">{{$noti1->titulonoti}}</h3>
                                     <span>{{$noti1->Descripcionnot}}</span><span>...</span>
-                                    <p><button class="btn btn-primary noticia" data-toggle="modal" data-target="#editarnoticiaprueba" data-id="{{$noti1->id}}"> Editar </button></p>
+                                    <p><button class="btn btn-primary noticias"> Editar </button></p>
                                 </div>
                                 <div class="noticia footer-main-item col-md-12">
                                     <h3><img src="../../uploads/{{$noti2->imagennoti}}" width="100px" height ="100px">{{$noti2->titulonoti}}</h3>
                                     <span>{{$noti2->Descripcionnot}}</span><span>...</span>
-                                    <p><button class="btn btn-primary noticia" data-toggle="modal" data-target="#editarnoticia" onclick="mostrarnoticia('{{$noti2->id}}','{{$noti2->titulonoti}}','{{$noti2->autornoti}}','{{$noti2->fechanoti}}','{{$noti2->Descripcionnot}}','{{$noti2->imagennoti}}');" > Editar </button></p>
+                                    <p><button class="btn btn-primary noticias"> Editar </button></p>
                                 </div>
                                 <div class="noticia footer-main-item col-md-12">
                                     <h3><img src="../../uploads/{{$noti3->imagennoti}}" width="100px" height ="100px">{{$noti3->titulonoti}}</h3>
-                                    <span>{{$noti3->Descripcionnot}}</span><span> ...</span><p><button class="btn btn-primary noticia" data-toggle="modal" data-target="#editarnoticia" onclick="mostrarnoticia('{{$noti3->id}}','{{$noti3->titulonoti}}','{{$noti3->autornoti}}','{{$noti3->fechanoti}}','{{$noti3->Descripcionnot}}','{{$noti3->imagennoti}}');"> Editar </button></p>
+                                    <span>{{$noti3->Descripcionnot}}</span><span> ...</span>
+                                    <p><button class="btn btn-primary noticias"> Editar </button></p>
                                 </div>
                                 <div class="noticia footer-main-item col-md-12">
                                     <h3><img src="../../uploads/{{$noti4->imagennoti}}" width="100px" height ="100px">{{$noti4->titulonoti}}</h3>
                                     <span>{{$noti4->Descripcionnot}}</span><span>...</span>
-                                    <p><button class="btn btn-primary noticia" data-toggle="modal" data-target="#editarnoticia" onclick="mostrarnoticia('{{$noti4->id}}','{{$noti4->titulonoti}}','{{$noti4->autornoti}}','{{$noti4->fechanoti}}','{{$noti4->Descripcionnot}}','{{$noti4->imagennoti}}');"> Editar </button></p>
+                                    <p><button class="btn btn-primary noticias"> Editar </button></p>
                                 </div>
                             </div>
                         </div>
