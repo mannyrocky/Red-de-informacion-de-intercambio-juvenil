@@ -26,9 +26,24 @@ class EventoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $evento = new Eventos;
+        $evento->tituloev = $request->tituloev;
+        $evento->depev = $request->depev;
+        $evento->lugar = $request->lugar;
+        $evento->Descripcionev = $request->Descripcionev;
+        if(isset($_POST['imagenjuv'])){
+            $evento->imagenjuv = $evento->imagenjuv;
+            $evento->save();
+        }else{
+            $imagen = $request->file('imagenjuv');
+            $imagenjuv = $imagen->getClientOriginalName();
+            $evento->imagenjuv = $imagenjuv;
+            $evento->save();
+            Storage::put($imagenjuv, file_get_contents($imagen));
+        }
+        echo "Evento Agregado Correctamente";
     }
 
     /**
@@ -39,7 +54,7 @@ class EventoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     public function mostrar($id){

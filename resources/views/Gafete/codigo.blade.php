@@ -97,23 +97,3 @@
 </div>
 </body>
 </html>
-<!--
-    <div style="border:1px solid blue;" class="form-control">
-                <label class for="Nombre">Nombre: </label>
-                <span>{{ $data['nombres'] }}</span>
-                <label for="Apellidos">Apellidos: </label>
-                <span>{{ $data['apellidos'] }}: </span>
-                <label for="Telefono">Telefono</label>
-                <span>{{ $data['telefono'] }}: </span>
-                <label for="CURP">CURP: </label>
-                <span>{{ $data['curp'] }}</span><br>
-                <label for="email">E-MAIL: </label>
-                <span>{{ $data['email'] }}</span><br>
-                <label for="Escuela">Escuela: </label>
-                <span>{{ $data['Escuela'] }}</span>
-            </div>
-        <br>
-        <div>
-            Aqui va el Codigo de Barras
-        </div>
-    -->

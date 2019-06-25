@@ -1,6 +1,7 @@
 @extends('layouts.layoutgestor')
  
 @section('content')
+<div class="container">
 @if (App\Usuarios::count() > 0)
 {!! csrf_field() !!}
     {!! Form::open(['route' => 'Registros','method' => 'GET', 'class' => 'navbar-form
@@ -12,6 +13,7 @@
                 Buscar
             </button>
     </div>
+</div>
     <br>
     <div class="row">
     <div class="col-sm-12">
@@ -42,9 +44,9 @@
                     <td class="align-middle">{{$usercod->Escolaridad}}</td>
                     <td class="align-middle">{{$usercod->Escuela}}</td>
                     <td class="text-center">
-                        <a href="#"><button class="btn btn-info">Editar</button></a>
-                        <a href="#"><button class="btn btn-danger">Elminar</button></a>
-                        <a href="#"><button class="btn btn-primary">PDF</button></a>
+                        <a data-id="{{$usercod->id}}" href="#"><button type="button" class="btn btn-info btn-sm">Editar</button></a>
+                        <a data-id="{{$usercod->id}}" href="#"><button type="button" class="btn btn-danger btn-sm">Elminar</button></a>
+                        <a href="{{route('PDFS',[$usercod->id])}}"><button type="button" class="btn btn-primary btn-sm">PDF</button></a>
                     </td>
                 </tr>
                 @endforeach
@@ -54,6 +56,7 @@
     </div>
 </div>
 @else
-<div style="text-align:center;"><h4>No hay Usuarios registrados</h4></div>
+<div style="text-align:center; color:red;"><h4>No hay Usuarios registrados</h4></div>
 @endif
+
 @endsection

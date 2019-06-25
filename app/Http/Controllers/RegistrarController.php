@@ -73,23 +73,27 @@ class RegistrarController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $escuela = new Escuela;
+        $escuela->nombre_escuela = $request->nombre_escuela;
+        $escuela->escolaridad = $request->escolaridad;
+        $escuela->save();
+        echo "Escuela Agregada Correctamente";
     }
-    public function pdf(){
+    public function pdf($id){
+        $request = Usuarios::find($id);
         $data = [
-            'nombres' => "prueba",
-            'apellidos' => "Prueba",
-            'telefono' => "123456789",
-            'curp' => "AAAAAAAA",
-            'email' => "AAAA@email.com",
-            'Escuela' => "Ninguna"
-
+            'nombres' => $request->nombres,
+            'apellidos' => $request->apellidos,
+            'telefono' => $request->telefono,
+            'curp' => $request->curp,
+            'email' => $request->email,
+            'Escuela' => $request->Escuela
         ];
         $view = \View::make('Gafete.codigo',compact('data'))->render();
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view);
-        return $pdf->stream('codigo');
-        return $pdf->download('codigo');
+        return $pdf->stream('codigo.pdf');
+        return $pdf->download('codigo.pdf');
     }
 
     /**
@@ -127,6 +131,7 @@ class RegistrarController extends Controller
         $user = Usuarios::Search($request->nombres)->orderBy('id','ASC')->paginate(2);
         return view('codigojoven.Registros',compact('carrusel','dependencias','juventud','programa','noticias','eventos'))->with('user',$user);
     }
+
 
     /**
      * Update the specified resource in storage.

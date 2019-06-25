@@ -39,7 +39,26 @@ class NoticiaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $noticias = new Noticias;
+        $titulo = $request->titulonoti;
+        $autor = $request->autornoti;
+        $fecha = $request->fechanoti;
+        $descripcion = $request->descripnoti;
+        $noticias->titulonoti = $titulo;
+        $noticias->autornoti = $autor;
+        $noticias->fechanoti = $fecha;
+        $noticias->Descripcionnot = $descripcion;
+        if(isset($_POST['imagennoti'])){
+            $noticias->imagennoti = $noticias->imagennoti;
+            $noticias->save();
+        }else{
+        $imagen = $request->file('imagennoti');
+        $imagennoti = $imagen->getClientOriginalName();
+        $noticias->imagennoti = $imagennoti;
+        $noticias->save();
+        Storage::put($imagennoti, file_get_contents($imagen));
+        }
+        echo "Agregado Noticia Correctamente";
     }
 
     /**

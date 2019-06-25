@@ -56,7 +56,15 @@ class CodigoController extends Controller
      */
     public function show($id)
     {
-        //
+        $codigo = Codjoven::find($id);
+        $arreglo = array();
+        $arreglo[0] = $codigo->id;
+        $arreglo[1] = $codigo->titulocodigo;
+        $arreglo[2] = $codigo->infointro;
+        $arreglo[3] = $codigo->infodesa;
+        $arreglo[4] = $codigo->infoconclu;
+        $arreglo[5] = $codigo->codigourl;
+        echo json_encode($arreglo);
     }
 
     /**
