@@ -20,8 +20,7 @@
                                     height="500px" width="100%">
                                 </a>
                                 <div class="carousel-caption">
-                                    <h3>Komi-san Besto waifu</h3>
-                                    <p>Komi-san god</p>
+                                    <h3>{{$carrusel->titsite1}}</h3>
                                 </div>
                             </div>
                         <div class="carousel-item">
@@ -29,8 +28,7 @@
                             height="500px" width="100%">
                             </a>
                             <div class="carousel-caption">
-                                <h3>lotte Besto waifu</h3>
-                                <p>lotte god</p>
+                                <h3>{{$carrusel->titsite2}}</h3>
                             </div>   
                         </div>
                         <div class="carousel-item">
@@ -38,8 +36,7 @@
                             height="500px" width="100%">
                             <a href="htpp://"></a>
                             <div class="carousel-caption">
-                                <h3>lotte Besto waifu</h3>
-                                <p>lotte god</p>
+                                <h3>{{$carrusel->titsite3}}</h3>
                             </div>
                         </div>
                         <div class="carousel-item">
@@ -47,8 +44,7 @@
                             height="500px" width="100%">
                             <a href="htpp://"></a>
                             <div class="carousel-caption">
-                                <h3>lotte Besto waifu</h3>
-                                <p>lotte god</p>
+                                <h3>{{$carrusel->titsite4}}</h3>
                             </div>
                         </div>
                         <div class="carousel-item">
@@ -56,8 +52,7 @@
                             height="500px" width="100%">
                             <a href="htpp://"></a>
                             <div class="carousel-caption">
-                                <h3>lotte Besto waifu</h3>
-                                <p>lotte god</p>
+                                <h3>{{$carrusel->titsite5}}</h3>
                             </div>
                         </div>
                     </div>
