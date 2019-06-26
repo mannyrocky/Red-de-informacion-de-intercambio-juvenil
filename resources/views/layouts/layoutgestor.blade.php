@@ -20,29 +20,25 @@
 </head>
 <body>
 <header>
-    <nav class="navbar navbar-collapse" style="background: #d8d7dd">
+    <nav class="navbar navbar-expand-sm" style="background: #EEEE">
         <div class="container">
-            <ul class="nav">
-                <li>
-                <span id="lafecha" class="fecha-actual"></span></li>
+          <div class="collapse navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+                <li><span id="lafecha" class="fecha-actual"></span></li>
             </ul>
-            <ul class="nav justify-content-end">
-                <li><a href="http://www.bcs.gob.mx/formulario-de-contacto"><img src="http://www.bcs.gob.mx/wp-content/themes/bcsgob-wp/assets/images/icono-email.png" alt="Formulario de Contácto"> Contáctanos</a></li>
-                <li><a href="tel:6121239400"><img src="http://www.bcs.gob.mx/wp-content/themes/bcsgob-wp/assets/images/icono-llamada.png" alt="Llamanos al 612 1239400"> (612) 123 9400 </a></li>
-            </ul>
-            <ul class="nav justify-content-end">
-                <li><span class="siguenos">Siguenos</span></li>
+            <ul class="nav navbar-nav ml-auto w-50 justify-content-end">
+               <li><span class="form-control-static">Siguenos</span></li>
                 <li><a href="https://www.facebook.com/GobEdoBCS/" target="_blank"><img src="http://www.bcs.gob.mx/wp-content/themes/bcsgob-wp/assets/images/icono-facebook.png"><span class="sr-only">Facebook</span></a></li>
                 <li><a href="https://twitter.com/GobBCS" target="_blank"><img src="http://www.bcs.gob.mx/wp-content/themes/bcsgob-wp/assets/images/icono-twitter.png"><span class="sr-only">Twitter</span></a></li>
                 <li><a href="https://instagram.com/gobiernobcs/" target="_blank"><img src="http://www.bcs.gob.mx/wp-content/themes/bcsgob-wp/assets/images/icono-instagram.png"><span class="sr-only">Instagram</span></a></li>
                 <li><a href="https://www.youtube.com/channel/UC0KrSRyYv3migvbasXzNJpQ" target="_blank"> <img src="http://www.bcs.gob.mx/wp-content/themes/bcsgob-wp/assets/images/icono-youtube.png"><span class="sr-only">YouTube</span></a></li>
             </ul>
             <ul class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{Auth::user()->name}}
-                    <i class="fa fa-user"></i>
+                <a style="color:black;" class="dropdown-toggle" data-toggle="dropdown" href="#">{{Auth::user()->name}}
+                    <i style="color:black;" class="fa fa-user"></i>
                 </a>
                 <ul class="dropdown-menu">
-                    <li><a a href="#" class="fa fa-user "> {{ Auth::user()->email }}</a>
+                    <li><a style="color:black;" href="#" class="fa fa-user "> {{ Auth::user()->email }}</a>
                     </li>
                     <li><a class="dropdown-item" href="#" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -51,6 +47,7 @@
                     </li>
                 </ul>
             </ul>
+            </div>
         </div>
     </nav>
     <div class="container">
@@ -60,13 +57,13 @@
                 <!-- <img src="http://www.bcs.gob.mx/wp-content/uploads/2018/03/logo-gbcs.jpg" alt="Gobierno de Baja California Sur 2015-2021 | Mejor Futuro"> -->
             </a>
         </nav>
-        <nav class="navbar navbar-expand-sm" id="navbarra">
-        <button type="button" class="navbar-toggler" data-toggle="collapse"
-        data-target="#navi" aria-expanded="false" 
-        aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+        <nav id="barranavegacion" class="navbar navbar-expand-lg navbar-light bg-white shadow-sm p-3 mb-5 bg-white rounded">
+        <a class="navbar-brand d-md-none" href="#">Menú</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
         </button>
-            <div class="collapse navbar-collapse" id="navi">
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav mr-auto justify-content-center ">
                     <li class="nav-item ">
                     <a class="nav-link" href="{{route('gestor')}}">Inicio</a>
@@ -79,7 +76,7 @@
                         <div class="dropdown-menu">
                             @if (App\Dependencias::count() > 0)
                               @foreach($dependencias as $dependencia)
-                                <button id="{{$dependencia->id}}" class="dropdown-item dependencia" data-toggle="modal" data-target="#editardependencia" onclick="mostrardep('{{$dependencia->id}}','{{$dependencia->nombredep}}','{{$dependencia->director}}','{{$dependencia->descripciondep}}','{{$dependencia->url}}','{{$dependencia->imagendep}}');">{{$dependencia->nombredep}}</button>
+                                <button data-id="{{$dependencia->id}}" id="{{$dependencia->id}}" class="dropdown-item dependencias" data-toggle="modal" data-target="#editardependencia" >{{$dependencia->nombredep}}</button>
                               @endforeach
                             @endif
                             <button class="dropdown-item dependencia" data-toggle="modal" data-target="#agregardependencia">Agregar Dependencias</button>
@@ -103,7 +100,7 @@
                         <div class="dropdown-menu">
                         @if(App\Juventud::count()>0)
                           @foreach($juventudes as $juventud)
-                          <button id="this.{{$juventud->id}}" class="dropdown-item juventud" data-toggle="modal"  data-target="#editarjuventud" onclick="mostrarjuv('{{$juventud->id}}','{{$juventud->titulo}}','{{$juventud->autor}}','{{$juventud->fecha}}','{{$juventud->descripcionjuv}}','{{$juventud->imagenjuv}}');">{{$juventud->titulo}}</button>
+                          <button  data-id="{{$juventud->id}}" id="{{$juventud->id}}" class="dropdown-item juventudes" data-toggle="modal"  data-target="#editarjuventud" >{{$juventud->titulo}}</button>
                           @endforeach
                         @endif
                             <button class="dropdown-item juventud" data-toggle="modal" data-target="#agregarjuventud">Agregar Noticia de Juventud</button>
@@ -116,7 +113,7 @@
                     <div class="dropdown-menu">
                       @if(App\Programas::count()>0)
                           @foreach($programa as $prog)
-                          <button id="{{$prog->id}}" class="dropdown-item programa" data-toggle="modal"  data-target="#editarprograma" onclick="mostrarprog('{{$prog->id}}','{{$prog->nomprog}}','{{$prog->nomdep}}','{{$prog->responsable}}','{{$prog->descriprog}}','{{$prog->imagenprog}}');">{{$prog->nomprog}}</button>
+                          <button data-id="{{$prog->id}}" id="{{$prog->id}}" class="dropdown-item programas" data-toggle="modal"  data-target="#editarprograma">{{$prog->nomprog}}</button>
                           @endforeach
                         @endif
                       <button class="dropdown-item programa" data-toggle="modal" data-target="#agregarprograma">Agregar Programa</button>
@@ -180,52 +177,18 @@
             </div>
         </div>
     </div>
- </footer><!--
+ </footer>
  <div class="modal fade" id="editarprograma" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="modalTitle">Editar Programa</h5>
+        <h5 class="modal-title" id="titleProg"></h5>
         <button type="button" class="close" data-dismiss="modal2" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <form id="formprog" enctype="multipart/form-data" class="needs-validation" novalidate>
-        <div class="modal-body" id="bodyModal">
-          <form>
-            <div class="row">
-              <div class="col">
-                <input type="text" class="form-control" placeholder="Id"  id="idprog" disabled>
-              </div>
-              <div class="col">
-                <input type="text" class="form-control" placeholder="Nombre del Programa"  id="progname" required>
-                <div class="invalid-feedback">Ingresa un Nombre de Programa</div>
-              </div>
-            </div>
-            <div class="row mt-4">
-              <div class="col">
-                <select class="form-control" id="namedepe" required>
-                @if (App\Dependencias::count() > 0)
-                              @foreach($dependencias as $dependencia)
-                              <option>{{$dependencia->nombredep}}</option>
-                              @endforeach
-              @endif
-              </select>
-                <div class="invalid-feedback">Ingresa una Dependencia</div>
-              </div>
-              <div class="col">
-                <input type="text" class="form-control" placeholder="Responsable"  id="respo" required>
-                <div class="invalid-feedback">Ingresa una fecha</div>
-              </div>
-            </div>
-          </form>
-          <div class="row mt-4"><div class="col">
-            <textarea rows="4" class="form-control" placeholder="Descrpicion" id="descriprograma"></textarea>
-          </div>
-        </div>
-        <div class="row mt-4 justify-content-center">
-          <input class="btn btn-info" name="imagenprograma" id="imagenprograma" type="file" />
-        </div>
+        <div class="modal-body" id="bodyProg">
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
@@ -240,41 +203,13 @@
   <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="modalTitle">Editar Juventud</h5>
+        <h5 class="modal-title" id="titleJuve"></h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <form enctype="multipart/form-data" id="formjuve" class="needs-validation" novalidate>
-        <div class="modal-body" id="bodyModal">
-          <form>
-            <div class="row">
-              <div class="col">
-                <input type="text" class="form-control" placeholder="Id"  id="idj" disabled>
-              </div>
-              <div class="col">
-                <input type="text" class="form-control" placeholder="Titulo"  id="titjuv" required>
-                <div class="invalid-feedback">Ingresa un titulo</div>
-              </div>
-            </div>
-            <div class="row mt-4">
-              <div class="col">
-                <input type="text" class="form-control" placeholder="Autor"  id="autjuv" required>
-                <div class="invalid-feedback">Ingresa un Autor</div>
-              </div>
-              <div class="col">
-                <input type="date" class="form-control" placeholder="fecha"  id="fechajuv" required>
-                <div class="invalid-feedback">Ingresa una Fecha</div>
-              </div>
-            </div>
-          </form>
-          <div class="row mt-4"><div class="col">
-            <textarea rows="4" class="form-control" placeholder="Descrpicion" id="descripjuv"></textarea>
-          </div>
-        </div>
-        <div class="row mt-4 justify-content-center">
-          <input class="btn btn-info" name="imagenjuv" id="imagenjuv" type="file" />
-        </div>
+        <div class="modal-body" id="bodyJuve">
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
@@ -289,41 +224,13 @@
   <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="modalTitle2">Editar Dependencia</h5>
+        <h5 class="modal-title" id="titleDep"></h5>
         <button type="button" class="close" data-dismiss="modal2" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
     <form id="formdep" enctype="multipart/form-data" class="needs-validation" novalidate>
-        <div class="modal-body" id="bodyModal">
-          <form>
-            <div class="row">
-              <div class="col">
-                <input type="text" class="form-control" placeholder="Id"  id="ids" disabled>
-              </div>
-              <div class="col">
-                <input type="text" class="form-control" placeholder="Dependencia"  id="depename" required>
-                <div class="invalid-feedback">Ingresa un Nombre</div>
-              </div>
-            </div>
-            <div class="row mt-4">
-              <div class="col">
-                <input type="text" class="form-control" placeholder="Director"  id="direc" required>
-                <div class="invalid-feedback">Ingresa una Director</div>
-              </div>
-              <div class="col">
-                <input type="text" class="form-control" placeholder="Url"  id="urls" required>
-                <div class="invalid-feedback">Ingresa una Url</div>
-              </div>
-            </div>
-          </form>
-          <div class="row mt-4"><div class="col">
-            <textarea rows="4" class="form-control" placeholder="Descrpicion" id="descrip"></textarea>
-          </div>
-        </div>
-        <div class="row mt-4 justify-content-center">
-          <input class="btn btn-info" name="imagens" id="imagens" type="file" />
-        </div>
+        <div class="modal-body" id="bodyDep">
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
@@ -352,6 +259,11 @@
               Url de Imagen1 : <input type="text" class="form-control"  id="urlimagen1" value="{{$carrusel->urlimagen1}}">
             </div>
           </div>
+          <div class="row">
+              <div class="col">
+                Primer Titulo<input  id="titsite1" placeholder="Titulo Primera Imagen" type="text" class="form-control" value="{{$carrusel->titsite1}}">
+              </div>
+          </div>
           <div class="row mt-4">
             <div class="col">
               Imagen 2:<input type="file" class="btn btn-info"  name="imagen2" value="{{$carrusel->imagen2}}">
@@ -359,6 +271,11 @@
             <div class="col">
               url de Imagen 2:<input type="text" class="form-control"   id="urlimagen2" value="{{$carrusel->urlimagen2}}">
             </div>
+          </div>
+          <div class="row">
+              <div class="col">
+                Segundo Titulo<input id="titsite2" placeholder="Titulo Segunda Imagen" type="text" class="form-control" value="{{$carrusel->titsite2}}">
+              </div>
           </div>
           <div class="row mt-4">
               <div class="col">
@@ -368,12 +285,22 @@
                   Url de Imagen 3<input class="form-control" type="text" placeholder="Url" id="urlimagen3" value="{{$carrusel->urlimagen3}}">
               </div>
           </div>
+          <div class="row">
+              <div class="col">
+                Tercer Titulo<input id="titsite3" placeholder="Titulo Tercera Imagen" type="text" class="form-control" value="{{$carrusel->titsite3}}">
+              </div>
+          </div>
           <div class="row mt-4">
               <div class="col">
                 Imagen 4:<input class="btn btn-info"  name="imagen4" type="file" value="{{$carrusel->imagen4}}">
               </div>
               <div class="col">
                   Url de Imagen 4<input class="form-control" type="text" placeholder="Url" id="urlimagen4" value="{{$carrusel->urlimagen4}}">
+              </div>
+          </div>
+          <div class="row">
+              <div class="col">
+                Cuarto Titulo<input id="titsite4" placeholder="Titulo Cuarta Imagen" type="text" class="form-control" value="{{$carrusel->titsite4}}">
               </div>
           </div>  
           <div class="row mt-4">
@@ -384,7 +311,11 @@
                   Url de Imagen 5<input class="form-control" type="text" placeholder="Url" id="urlimagen5" value="{{$carrusel->urlimagen5}}">
               </div>
           </div>
-        
+          <div class="row">
+              <div class="col">
+                Quinto Titulo<input id="titsite5" placeholder="Titulo Quinta Imagen" type="text" class="form-control" value="{{$carrusel->titsite5}}" required>
+              </div>
+          </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
@@ -397,42 +328,14 @@
   <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="titleprograma">Agregar Programas Sociales</h5>
+        <h5 class="modal-title" id="titleprograma"></h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
     <form id="formrgp" enctype="multipart/form-data" class="needs-validation" novalidate>
         <div class="modal-body" id="bodyprograma">
-        <div class="row">
-              <div class="col">
-                <input type="text" class="form-control" placeholder="Nombre del Programa"  id="nomprog" required>
-              <div class="invalid-feedback">Ingresa un Nombre</div>
-              </div>
-            </div>
-            <div class="row mt-4">
-              <div class="col">
-                <select class="form-control" id="nomdep" required>
-                @if (App\Dependencias::count() > 0)
-                                @foreach($dependencias as $dependencia)
-                                <option>{{$dependencia->nombredep}}</option>
-                                @endforeach
-                @endif
-                </select>
-              </div>
-              <div class="col">
-                <input type="text" class="form-control" placeholder="Responsable"  id="responsable" required>
-              <div class="invalid-feedback">Ingresa un Responsable</div>
-              </div>
-            </div>
-          </form>
-          <div class="row mt-4"><div class="col">
-            <textarea rows="4" class="form-control" placeholder="Descrpicion" id="descriprog"></textarea>
-          </div>
-        </div>
-        <div class="row mt-4 justify-content-center">
-          <input class="btn btn-info" name="imagenprog" id="imagenprog" type="file" />
-        </div>
+        
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
@@ -441,7 +344,7 @@
       </form>
     </div>
   </div>
-</div>-->
+</div>
 <div class="modal fade" id="agregardependencia" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
     <div class="modal-content">
@@ -686,8 +589,8 @@ $("#idev").change(function(){
                 $("#lugar").val(data[2]);
                 $("#descripeven").val(data[3]);
                },
-    });
-});
+      });
+  });
 });
 </script>
 <script>
@@ -778,6 +681,18 @@ $("#idev").change(function(){
 </script>
 <script>
 $(document).ready(function(){
+  $(".programa").click(function(){
+        var form = "";
+        var titulo = $("#titleprograma");
+        var body = $("#bodyprograma");
+        form+='<form><div class="row">';
+       form+='<div class="col"><input type="text" class="form-control" placeholder="Nombre del Programa"  id="nomprog" required><div class="invalid-feedback">Ingresa un Nombre</div></div></div>';
+       form+='<div class="row mt-4"><div class="col"><select class="form-control" id="nomdep" required>@if (App\Dependencias::count() > 0) @foreach($dependencias as $dependencia) <option>{{$dependencia->nombredep}}</option> @endforeach @endif</select></div><div class="col"><input type="text" class="form-control" placeholder="Responsable"  id="responsable" required><div class="invalid-feedback">Ingresa un Responsable</div></div></div></form>';
+       form+='<div class="row mt-4"><div class="col"><textarea rows="4" class="form-control" placeholder="Descrpicion" id="descriprog"></textarea></div></div>';
+       form+='<div class="row mt-4 justify-content-center"><input class="btn btn-info" name="imagenprog" id="imagenprog" type="file" /></div>';
+       body.html(form);
+       titulo.html('Agregar Programa');
+    });
     $("#rgProg").click(function(){
         var formData = new FormData();
         formData.append('nomprog',$("#nomprog").val());
@@ -1048,6 +963,88 @@ $(document).ready(function(){
 });
 </script>
 <script>
+  $(document).ready(function(){
+    $(".programas").click(function(){
+      var id = $(this).attr("data-id");
+      $.ajax({
+        type:"GET",
+        url:'/gestor/gestor/ajaxProg/'+id,
+        dataType: "json",
+        data:{
+          "_token":"Vwa7Moz1zujWKN1AAAmP5Ra00rRvf3jdE7N69Dej"
+        },
+        success:function(data){
+        var form = "";
+        var titulo = $("#titleProg");
+        var body = $("#bodyProg");
+        form+='<form><div class="row">';
+       form+='<div class="col"><input value="'+data[0]+'" type="text" class="form-control" placeholder="Id"  id="idprog" disabled></div><div class="col"><input value="'+data[1]+'" type="text" class="form-control" placeholder="Nombre del Programa"  id="progname" required><div class="invalid-feedback">Ingresa un Nombre</div></div></div>';
+       form+='<div class="row mt-4"><div class="col"><select class="form-control" id="namedepe" required>@if (App\Dependencias::count() > 0) @foreach($dependencias as $dependencia) <option>{{$dependencia->nombredep}}</option> @endforeach @endif</select></div><div class="col"><input value="'+data[3]+'" type="text" class="form-control" placeholder="Responsable"  id="respo" required><div class="invalid-feedback">Ingresa un Responsable</div></div></div></form>';
+       form+='<div class="row mt-4"><div class="col"><textarea rows="4" class="form-control" placeholder="Descrpicion" id="descriprograma">'+data[4]+'</textarea></div></div>';
+       form+='<div class="row mt-4 justify-content-center"><input class="btn btn-info" name="imagenprograma" id="imagenprograma" type="file" /></div>';
+       body.html(form);
+       titulo.html('Editar Programa');
+       $("#namedepe").val(data[2]);
+        }
+      });
+    });
+  });
+</script>
+<script>
+  $(document).ready(function(){
+  $(".juventudes").click(function(){
+    var id = $(this).attr("data-id");
+    $.ajax({
+      type:"GET",
+      url:'/gestor/gestor/ajaxJuve/'+id,
+      dataType: "json",
+      data:{       
+      "_token":"Vwa7Moz1zujWKN1AAAmP5Ra00rRvf3jdE7N69Dej"
+      },
+      success:function(data){
+        var form = "";
+        var titulo = $("#titleJuve");
+        var body = $("#bodyJuve");
+        form+='<form><div class="row">';
+       form+='<div class="col"><input value="'+data[0]+'" type="text" class="form-control" placeholder="Id"  id="idj" disabled></div><div class="col"><input value="'+data[1]+'" type="text" class="form-control" placeholder="Titulo"  id="titjuv" required><div class="invalid-feedback">Ingresa un Autor</div></div></div>';
+       form+='<div class="row mt-4"><div class="col"><input value="'+data[2]+'" class="form-control" placeholder="Autor"  id="autjuv" required><div class="invalid-feedback">Ingresa un Autor</div></div><div class="col"><input value="'+data[3]+'" type="date" class="form-control" placeholder="fecha"  id="fechajuv" required><div class="invalid-feedback">Ingresa una Fecha</div></div></div></form>';
+       form+='<div class="row mt-4"><div class="col"><textarea rows="4" class="form-control" placeholder="Descrpicion" id="descripjuv">'+data[4]+'</textarea></div></div>';
+       form+='<div class="row mt-4 justify-content-center"><input class="btn btn-info" name="imagenjuv" id="imagenjuv" type="file" /></div>';
+       body.html(form);
+       titulo.html('Editar Juventud');
+      }
+    });
+  });
+});
+</script>
+<script>
+$(document).ready(function(){
+  $(".dependencias").click(function(){
+    var id = $(this).attr("data-id");
+    $.ajax({
+      type:"GET",
+      url:'/gestor/gestor/ajaxDep/'+id,
+      dataType: "json",
+      data:{       
+      "_token":"Vwa7Moz1zujWKN1AAAmP5Ra00rRvf3jdE7N69Dej"
+      },
+      success:function(data){
+        var form = "";
+        var titulo = $("#titleDep");
+        var body = $("#bodyDep");
+        form+='<form><div class="row">';
+       form+='<div class="col"><input value="'+data[0]+'" type="text" class="form-control" placeholder="Id"  id="ids" disabled></div><div class="col"><input type="text" value="'+data[1]+'" class="form-control" placeholder="Dependencia"  id="depename" required><div class="invalid-feedback">Ingresa una Dependencia</div></div></div>';
+       form+='<div class="row mt-4"><div class="col"><input value="'+data[2]+'" type="text" class="form-control" placeholder="Director"  id="direc" required><div class="invalid-feedback">Ingresa un Director</div></div><div class="col"><input value="'+data[3]+'" type="text" class="form-control" placeholder="Url"  id="urls" required><div class="invalid-feedback">Ingresa una Direccion URL</div></div></div></form>';
+       form+='<div class="row mt-4"><div class="col"><textarea rows="4" class="form-control" placeholder="Descrpicion" id="descrip">'+data[4]+'</textarea></div></div>';
+       form+='<div class="row mt-4 justify-content-center"><input class="btn btn-info" name="imagens" id="imagens" type="file" /></div>';
+       body.html(form);
+       titulo.html('Editar Dependencias');
+      }
+    });
+  });
+});
+</script>
+<script>
 $(document).ready(function(){
   $(".noticias").click(function(){
     var id = $(this).attr("data-id");
@@ -1174,6 +1171,11 @@ $('#envImg').click( function() {
   formData.append('imagen3', $('input[name=imagen3]')[0].files[0]);
   formData.append('imagen4', $('input[name=imagen4]')[0].files[0]);
   formData.append('imagen5', $('input[name=imagen5]')[0].files[0]);
+  formData.append('urlimagen1', $('#urlimagen1').val());
+  formData.append('urlimagen2', $('#urlimagen2').val());
+  formData.append('urlimagen3', $('#urlimagen3').val());
+  formData.append('urlimagen4', $('#urlimagen4').val());
+  formData.append('urlimagen5', $('#urlimagen5').val());
   formData.append('urlimagen1', $('#urlimagen1').val());
   formData.append('urlimagen2', $('#urlimagen2').val());
   formData.append('urlimagen3', $('#urlimagen3').val());

@@ -123,13 +123,13 @@ class RegistrarController extends Controller
     public function mostrar(Request $request)
     {
         $dependencias = Dependencias::all();
-        $juventud = Juventud::all();
+        $juventudes = Juventud::all();
         $programa = Programas::all();
         $noticias = Noticias::all();
         $eventos = Eventos::all();
         $carrusel = Carrusel::find(1);
         $user = Usuarios::Search($request->nombres)->orderBy('id','ASC')->paginate(2);
-        return view('codigojoven.Registros',compact('carrusel','dependencias','juventud','programa','noticias','eventos'))->with('user',$user);
+        return view('codigojoven.Registros',compact('carrusel','dependencias','juventudes','programa','noticias','eventos'))->with('user',$user);
     }
 
 

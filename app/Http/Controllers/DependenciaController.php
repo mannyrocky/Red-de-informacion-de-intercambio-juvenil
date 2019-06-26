@@ -72,6 +72,17 @@ class DependenciaController extends Controller
         //dd($dependencia->id);
         return view('dependencias.Dependencia',compact('dependencia','valor','juventud','programas','noticias','eventos'));
     }
+    public function mostrar($id){
+        $dependencia = Dependencias::find($id);
+        $arreglo = array();
+        $arreglo[0] = $dependencia->id;
+        $arreglo[1] = $dependencia->nombredep;
+        $arreglo[2] = $dependencia->director;
+        $arreglo[3] = $dependencia->url;
+        $arreglo[4] = $dependencia->descripciondep;
+        echo json_encode($arreglo);
+
+    }
 
     /**
      * Show the form for editing the specified resource.

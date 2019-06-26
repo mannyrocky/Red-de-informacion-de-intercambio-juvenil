@@ -21,7 +21,8 @@
 </head>
 <body>
 <header>
-    <nav class="navbar navbar-collapse " style="background: #EEEEEE">
+    <nav class="navbar navbar-expand-sm " style="background: #EEEEEE">
+        <div class="collapse navbar-collapse">
         <div class="container-fluid">
             <div class="row w-100">
                 <div class="col-md-4">
@@ -46,6 +47,7 @@
                     </ul> 
                 </div>
             </div>
+        </div>
         </div>
     </nav>
     <div class="container">

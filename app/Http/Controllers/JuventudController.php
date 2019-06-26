@@ -75,6 +75,18 @@ class JuventudController extends Controller
 
     }
 
+    public function mostrar($id){
+        $juventudes = Juventud::find($id);
+        $arreglo = array();
+        $arreglo[0] = $juventudes->id;
+        $arreglo[1] = $juventudes->titulo;
+        $arreglo[2] = $juventudes->autor;
+        $arreglo[3] = $juventudes->fecha;
+        $arreglo[4] = $juventudes->descripcionjuv;
+        echo json_encode($arreglo);
+
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
