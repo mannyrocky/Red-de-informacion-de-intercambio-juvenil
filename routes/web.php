@@ -34,6 +34,7 @@ Route::post('/auth/registrar/ajaxRegistro','RegistrarController@create')->name('
 Route::get('/Gafete/codigo/{id}','RegistrarController@pdf')->name('PDFS');
 Route::get('/codigojoven/enterate','CodigoController@index')->name('enterate');
 Route::get('/codigojoven/Registros','RegistrarController@mostrar')->name('Registros');
+Route::post('/codigojoven/Registros/ajaxElim/{id}','RegistrarController@borrar');
 Route::post('/gestor/gestor/ajaxEscuela','RegistrarController@store');
 Route::get('/gestor/gestor/ajaxEnterate/{id}','CodigoController@show');
 

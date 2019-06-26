@@ -15,10 +15,10 @@
                     <img src="../../uploads/{{$noti->imagennoti}}" alt="segunda imagen" height="400px" width="100%" class="shadow p-3 mb-5">
                 </a>
             </div>
-            <div class="row justify-content-center">
+            <div class="row justify-content-start">
                 <p class="font-weight-light">{{$noti->Descripcionnot}}</p>
             </div>
         </div>
-    </div>
+    </div><br>
 </div>
 @endsection

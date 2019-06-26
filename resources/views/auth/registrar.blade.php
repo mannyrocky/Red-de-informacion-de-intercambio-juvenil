@@ -11,7 +11,7 @@
                         <div class="form-group row">
                             <label for="Nombre" class="col-md-4 col-form-label text-md-right">{{ __('Nombre') }}</label>
                             <div class="col-md-6">
-                                <input id="nombres" type="text" class="form-control" name="nombres" required>
+                                <input id="nombres" type="text" maxlength="100" class="form-control" name="nombres" required>
                             </div>
                         </div>
                         
@@ -19,20 +19,20 @@
                             <label for="Apellidos" class="col-md-4 col-form-label text-md-right">{{ __('Apellidos') }}</label>
 
                             <div class="col-md-6">
-                                <input id="apellidos" type="select" class="form-control" name="apellidos" required>
+                                <input id="apellidos" type="select" maxlength="100" class="form-control" name="apellidos" required>
                             </div>
                         </div>
                         
                         <div class="form-group row">
                             <label for="Telefono" class="col-md-4 col-form-label text-md-right">{{ __('Telefono') }}</label>
                             <div class="col-md-6">
-                                <input id="telefono" type="text" class="form-control" name="telefono" required>
+                                <input id="telefono" type="tel" class="form-control" name="telefono"  required maxlength="10">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label for="Curp" class="col-md-4 col-form-label text-md-right">{{ __('Curp') }}</label>
                             <div class="col-md-6">
-                                <input id="curp" type="text" class="form-control" name="curp" required>
+                                <input id="curp" type="text" class="form-control" name="curp" maxlength="18" required>
                             </div>
                         </div>
                         <div class="form-group row">

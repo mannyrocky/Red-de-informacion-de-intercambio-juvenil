@@ -23,8 +23,8 @@ class CodigoController extends Controller
         $programas = Programas::all();
         $noticias = Noticias::all();
         $eventos = Eventos::all();
-        //$codigo = Codjoven::find(1);
-        return view('codigojoven.enterate',compact('dependencia','juventud','programas','noticias','eventos'));
+        $codigo = Codjoven::find(1);
+        return view('codigojoven.enterate',compact('codigo','dependencia','juventud','programas','noticias','eventos'));
     }
 
     /**

@@ -153,31 +153,52 @@
  
  @yield('content')
 
- <footer style="background:gray;">
- <div class="pie-de-pagina">
-  <div class="container-fluid">
-    <div class="info-de-contacto">
-      <div class="row">
-          <div class="col-md-3">
-          <img src="http://isjuventud.gob.mx/wp-content/themes/PortalesBCS/assets/images/logo-estado-mejor-futuro.png" alt="">
-        </div>  
-        <div class="col-md-6">
-          <div class="info-domicilio">
-            <h5> Instituto Sudcaliforniano de la Juventud
-            </h5>
-            Calle Antonio Navarro, esq. Melitón Albáñez <br>
-            La Paz, Baja California Sur, México         
-            </div>
-        </div>
-        <div class="enlaces-adicionales">
-            <div class="container">
-                <nav class="nav navbar-nav">
-                </nav>
-                <p class="copy">Algunos derechos reservados © 2015 - 2021</p>
-            </div>
-        </div>
-    </div>
+ <footer style="background:white;" class="page-footer font-small pt-4">
+ <!-- Footer Links -->
+     <div class="container-fluid text-center text-md-left">
+   <!-- Grid row -->
+         <div class="row">
+             <div class="col-md-3">
+                 <img src="http://isjuventud.gob.mx/wp-content/themes/PortalesBCS/assets/images/logo-estado-mejor-futuro.png" alt="">
+             </div>  
+             <div class="col-md-6">
+                 <div class="info-domicilio">
+                     <h5> Instituto Sudcaliforniano de la Juventud</h5>
+                     Calle Antonio Navarro, esq. Melitón Albáñez <br>
+                     La Paz, Baja California Sur, México         
+                 </div>
+             </div>
+             <div class="col-md-3">
+                 <div class="medios-de-comunicacion">
+                     Conmutador (612) 125 3767 <br>
+                     <a href="http://www.facebook.com/isjbcs">Contactanos vía web</a>
+                 </div>
+             </div>
+         </div>
+   <!-- Grid row -->
+     </div>
+ <!-- Footer Links -->
+ <!-- Copyright -->
+     <div style="background:#EEEEEE;" class="footer-copyright text-center py-2"><p class="copy">Algunos derechos reservados © 2015 - 2021</p>
+     </div>
+ <!-- Copyright -->
  </footer>
+ <style>
+     html {
+   min-height: 100%;
+   position: relative;
+ }
+ body {
+   margin: 0;
+   margin-bottom: 40px;
+ }
+ footer {
+   position: absolute;
+   bottom: 0;
+   width: 100%;
+   height: 40px;
+ }
+ </style>
  <div class="modal fade" id="editarprograma" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
     <div class="modal-content">
@@ -324,6 +345,48 @@
     </div>
   </div>
 </div>
+<div class="modal fade" id="msjsis" tabindex="-1" role="dialog" aria-label="modalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="modalLabel">
+                    Mensaje del Sistema
+                </h4>
+                <button type="button" class="close" data-dismiss="modal" id="" name="" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="msjbody">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary lead" id="" name="" data-dismiss="modal">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="msjeli" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Mensaje</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        Seguro que desea eliminar
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-danger" name="eliminar" id="eliminarRegistro" data-dismiss="modal">Confirmar</button>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+
 <div class="modal fade" id="agregarprograma" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
     <div class="modal-content">
@@ -569,6 +632,34 @@ $(document).ready(function(){
     });
   });
 }); 
+</script>
+<script>
+var $codigoEliminar = 0;
+$(borrar());
+function borrar(){
+  $(document).on("click","#borrar",function(){
+		var cod = $(this).attr("data-id");
+		codigoEliminar = cod;
+	});	
+
+	$(document).on("click","#eliminarRegistro",function(){
+		var id = codigoEliminar;
+		$.ajax({
+        type:"POST",
+        url:'/codigojoven/Registros/ajaxElim/'+id,
+        data:{
+          "_token":"{{ csrf_token() }}",
+				},
+				success: function (data){
+					$("#msjbody").text(data);
+          $("#msjsis").modal("show");
+          location.reload();
+
+				}
+			});
+		
+    });
+}
 </script>
 <script type = "text/javascript">
 $(document).ready(function(){
@@ -991,7 +1082,7 @@ $(document).ready(function(){
   });
 </script>
 <script>
-  $(document).ready(function(){
+$(document).ready(function(){
   $(".juventudes").click(function(){
     var id = $(this).attr("data-id");
     $.ajax({

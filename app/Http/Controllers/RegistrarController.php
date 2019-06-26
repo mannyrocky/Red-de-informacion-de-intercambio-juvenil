@@ -14,6 +14,10 @@ use \App\Http\Controllers\PDF;
 
 class RegistrarController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth',['only' =>['mostrar']]);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -131,7 +135,10 @@ class RegistrarController extends Controller
         $user = Usuarios::Search($request->nombres)->orderBy('id','ASC')->paginate(2);
         return view('codigojoven.Registros',compact('carrusel','dependencias','juventudes','programa','noticias','eventos'))->with('user',$user);
     }
-
+    public function borrar($id){
+        Usuarios::destroy($id);
+        echo "Usuario Eliminado Exitosamente";
+    }
 
     /**
      * Update the specified resource in storage.
