@@ -34,6 +34,7 @@ Route::post('/auth/registrar/ajaxRegistro','RegistrarController@create')->name('
 Route::get('/Gafete/codigo/{id}','RegistrarController@pdf')->name('PDFS');
 Route::get('/codigojoven/enterate','CodigoController@index')->name('enterate');
 Route::get('/codigojoven/Registros','RegistrarController@mostrar')->name('Registros');
+Route::post('/codigojoven/Registros/ajaxElim/{id}','RegistrarController@borrar');
 Route::post('/gestor/gestor/ajaxEscuela','RegistrarController@store');
 Route::get('/gestor/gestor/ajaxEnterate/{id}','CodigoController@show');
 
@@ -59,14 +60,17 @@ Route::post('/gestor/gestor/ajaxCarrusel/{id}','CarruselController@edit');
 Route::post('/gestor/gestor/ajaxDependencia','DependenciaController@store');
 Route::post('/gestor/gestor/ajaxDependencias/{id}','DependenciaController@edit');
 Route::post('/gestor/gestor/ajaxDependencia/{id}','DependenciaController@borrar');
+Route::get('/gestor/gestor/ajaxDep/{id}','DependenciaController@mostrar');
     //Juventud
 Route::post('/gestor/gestor/ajaxJuventud','JuventudController@store');
 Route::post('/gestor/gestor/ajaxJuventudes/{id}','JuventudController@edit');
 Route::post('/gestor/gestor/ajaxJuventud/{id}','JuventudController@borrar');
+Route::get('/gestor/gestor/ajaxJuve/{id}','JuventudController@mostrar');
     //Programas
 Route::post('/gestor/gestor/ajaxProgramas','Programascontroller@store');
 Route::post('/gestor/gestor/ajaxProgramas/{id}','Programascontroller@edit');
 Route::post('/gestor/gestor/ajaxPrograma/{id}','Programascontroller@borrar');
+Route::get('/gestor/gestor/ajaxProg/{id}','Programascontroller@mostrar');
     //Noticias
 Route::post('/gestor/gestor/ajaxNoticia/{id}','NoticiaController@edit');
 Route::get('/gestor/gestor/ajaxNoti/{id}','NoticiaController@mostrar');

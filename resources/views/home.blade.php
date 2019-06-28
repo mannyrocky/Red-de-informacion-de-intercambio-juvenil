@@ -224,7 +224,7 @@ function Recortar(){
     var cadfinal2 = cadres2 + "...";
     var cadena3 = $("#notides3").text();
     var cadres3 = cadena3.substring(0,220);
-    var cadfinal3 = cadres3 + "...";
+    var cadfinal3 = cadres3 + "...";|
     var cadena4 = $("#notides4").text();
     var cadres4 = cadena4.substring(0,220);
     var cadfinal4 = cadres4 + "...";

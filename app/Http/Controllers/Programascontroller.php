@@ -76,6 +76,18 @@ class Programascontroller extends Controller
         return view("programas.Programas",compact("pog","juventud","programas","dependencia","noticias","eventos"));  
     }
 
+    public function mostrar($id){
+        $programa = Programas::find($id);
+        $arreglo = array();
+        $arreglo[0] = $programa->id;
+        $arreglo[1] = $programa->nomprog;
+        $arreglo[2] = $programa->nomdep;
+        $arreglo[3] = $programa->responsable;
+        $arreglo[4] = $programa->descriprog;
+        echo json_encode($arreglo);
+
+    }
+
     /**
      * Show the form for editing the specified resource.
      *

@@ -1,12 +1,24 @@
 @extends('layouts.layout')
  
 @section('content')
-    <div class="container">
-    <img src="../../uploads/{{$juve->imagenjuv}}" alt="segunda imagen" 
-                        height="300px" width="100%">
-    <h1>Titulo: {{$juve->titulo}}</h1>
-    <h2>Autor: {{$juve->autor}}</h2>
-    <h2>Fecha de Publicacion: {{$juve->fecha}}</h2>
-    <p>{{$juve->descripcionjuv}}</p>
+<div class="container-fluid">
+<div class="row bg-primary justify-content-center d-block" style="color:white;">
+    <p class="text-center lead text-uppercase font-weight-bold" style="font-size:1.8rem">{{$juve->titulo}}</p>
+        <p class="text-center lead">La Paz, B.C.S a {{$juve->fecha}}, redactado por {{$juve->autor}}</p>
+    </div>
+</div>
+<div class="container shadow p-3 mb-5 bg-white rounded">
+    <div class="photo-gallery">
+        <div class="container-fluid">
+            <div class="row photos justify-content-center">
+                <a href="../../uploads/{{$juve->imagenjuv}}" data-lightbox="gallery"  style="max-height:400px;">
+                    <img src="../../uploads/{{$juve->imagenjuv}}" alt="segunda imagen" height="400px" width="100%" class="shadow p-3 mb-5">
+                </a>
+            </div>
+            <div class="row justify-content-start">
+                <p class="font-weight-light">{{$juve->descripcionjuv}}</p>
+            </div>
+        </div>
+    </div>
 </div>
 @endsection
