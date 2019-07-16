@@ -6,6 +6,8 @@ use App\Dependencias;
 use App\Juventud;
 use App\Programas;
 use App\Eventos;
+use App\MenuEvento;
+use App\MenuNoticias;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -130,6 +132,20 @@ class NoticiaController extends Controller
     {
         //
     }
+    public function cambiar($titulonoti, $valor,$val){
+        $menunoticia = MenuNoticias::find($val);
+        $noticia = Noticias::where('titulonoti',$titulonoti)->get();
+        $titulo = $noticia[0]->titulonoti;
+        $imagen = $noticia[0]->imagennoti;
+        $descripcion = $noticia[0]->Descripcionnot;
+        $id = $noticia[0]->id;
+        $menunoticia->noticiaid = $id;
+        $menunoticia->imagennoticia = $imagen;
+        $menunoticia->noticiatitulo = $titulo;
+        $menunoticia->contenidonoticia = $descripcion;
+        $menunoticia->save();
+        echo "Cambiado Exitosamente";
+    }
 
     /**
      * Remove the specified resource from storage.
@@ -137,8 +153,9 @@ class NoticiaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function borrar($id)
     {
-        //
+        Noticias::destroy($id);
+        echo "Noticia Borrada Correctamente";
     }
 }

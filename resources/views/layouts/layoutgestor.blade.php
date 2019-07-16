@@ -91,6 +91,7 @@
                             <a class="dropdown-item enterate" data-id="1" data-toggle="modal" data-target="#agregarenterate" href="#">Enterate</a>
                             <a class="dropdown-item" href="{{route('Registros')}}">Registros Código Joven</a>
                             <a class="dropdown-item" data-toggle="modal" data-target="#agregarescuela" href="#">Registrar Escuela</a>
+                            <a class="dropdown-item" href="{{route('Miescuela')}}">Escuelas registradas</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
@@ -255,7 +256,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-          <button type="button" class="btn btn-outline-warning" id="borrardepe">Eliminar</button>
+          <button id="borrardependencia" type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#eliminardependencia">Eliminar</button>
           <button type="button" class="btn btn-outline-success" id="edit">Aceptar</button>
         </div>
       </form>
@@ -274,67 +275,25 @@
       <div class="modal-body" id="bodyModal">
           <div class="row">
             <div class="col">
-              Imagen 1: <input type="file" class="btn btn-info"   name="imagen1" value="{{$carrusel->imagen1}}">
+              Imagen : <input type="file" class="btn btn-info"   name="imagen1" />
             </div>
             <div class="col">
-              Url de Imagen1 : <input type="text" class="form-control"  id="urlimagen1" value="{{$carrusel->urlimagen1}}">
+              Url de Imagen : <input type="text" class="form-control"  id="urlimagen1" value="{{$carrusel->urlimagen1}}">
             </div>
-          </div>
+          </div><br>
           <div class="row">
               <div class="col">
-                Primer Titulo<input  id="titsite1" placeholder="Titulo Primera Imagen" type="text" class="form-control" value="{{$carrusel->titsite1}}">
+                Titulo de la Imagen<input  id="titsite1" placeholder="Titulo Primera Imagen" type="text" class="form-control" value="{{$carrusel->titsite1}}">
               </div>
-          </div>
-          <div class="row mt-4">
-            <div class="col">
-              Imagen 2:<input type="file" class="btn btn-info"  name="imagen2" value="{{$carrusel->imagen2}}">
-            </div>
-            <div class="col">
-              url de Imagen 2:<input type="text" class="form-control"   id="urlimagen2" value="{{$carrusel->urlimagen2}}">
-            </div>
-          </div>
-          <div class="row">
-              <div class="col">
-                Segundo Titulo<input id="titsite2" placeholder="Titulo Segunda Imagen" type="text" class="form-control" value="{{$carrusel->titsite2}}">
-              </div>
-          </div>
-          <div class="row mt-4">
-              <div class="col">
-                Imagen 3:<input class="btn btn-info"  name="imagen3" type="file" value="{{$carrusel->imagen3}}">
-              </div>
-              <div class="col">
-                  Url de Imagen 3<input class="form-control" type="text" placeholder="Url" id="urlimagen3" value="{{$carrusel->urlimagen3}}">
-              </div>
-          </div>
-          <div class="row">
-              <div class="col">
-                Tercer Titulo<input id="titsite3" placeholder="Titulo Tercera Imagen" type="text" class="form-control" value="{{$carrusel->titsite3}}">
-              </div>
-          </div>
-          <div class="row mt-4">
-              <div class="col">
-                Imagen 4:<input class="btn btn-info"  name="imagen4" type="file" value="{{$carrusel->imagen4}}">
-              </div>
-              <div class="col">
-                  Url de Imagen 4<input class="form-control" type="text" placeholder="Url" id="urlimagen4" value="{{$carrusel->urlimagen4}}">
-              </div>
-          </div>
-          <div class="row">
-              <div class="col">
-                Cuarto Titulo<input id="titsite4" placeholder="Titulo Cuarta Imagen" type="text" class="form-control" value="{{$carrusel->titsite4}}">
-              </div>
-          </div>  
-          <div class="row mt-4">
-              <div class="col">
-                Imagen 5:<input class="btn btn-info"  name="imagen5" type="file" value="{{$carrusel->imagen5}}">           
-              </div>
-              <div class="col">
-                  Url de Imagen 5<input class="form-control" type="text" placeholder="Url" id="urlimagen5" value="{{$carrusel->urlimagen5}}">
-              </div>
-          </div>
-          <div class="row">
-              <div class="col">
-                Quinto Titulo<input id="titsite5" placeholder="Titulo Quinta Imagen" type="text" class="form-control" value="{{$carrusel->titsite5}}" required>
+              <div class="col inline">
+                Selecciona la Imagen:
+                <select class="form-control" name="imagenselecciona" id="imagenselecciona">
+                  <option value="Imagen1">Imagen1</option>
+                  <option value="Imagen2">Imagen2</option>
+                  <option value="Imagen3">Imagen3</option>
+                  <option value="Imagen4">Imagen4</option>
+                  <option value="Imagen5">Imagen5</option>
+                </select>
               </div>
           </div>
       </div>
@@ -375,7 +334,6 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        Seguro que desea eliminar
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
@@ -386,7 +344,83 @@
             </div>
         </div>
 </div>
-
+<div class="modal fade" id="eliminardependencia" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Mensaje</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" id="eliminarbody">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-danger" name="eliminar" id="borrardepe" data-dismiss="modal">Confirmar</button>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+<div class="modal fade" id="modificarNoticia" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="titlecambiarnoti">Cambiar Noticia</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" id="notibody">
+                      <select class="form-control" name="" id="cambionoticia">
+                      @if(App\Noticias::count()>0)
+                          @foreach($noticias as $noticia)
+                          <option>{{$noticia->titulonoti}}</option>
+                          @endforeach
+                        @endif
+                      </select>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-danger" name="cambiarnoti" id="cambiarnoti" data-dismiss="modal">Confirmar</button>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+<div class="modal fade" id="modificarEvento" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="titlecambiar">Cambiar Evento</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" id="cambiarbody">
+                      <select class="form-control" name="" id="cambioeve">
+                      @if(App\Eventos::count()>0)
+                          @foreach($eventos as $evento)
+                          <option>{{$evento->tituloev}}</option>
+                          @endforeach
+                        @endif
+                      </select>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-danger" name="cambiar" id="cambiar" data-dismiss="modal">Confirmar</button>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
 <div class="modal fade" id="agregarprograma" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
     <div class="modal-content">
@@ -464,6 +498,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-warning" data-dismiss="modal" id="elievento">Eliminar</button>
         <button type="button" class="btn btn-outline-success" id="editevento">Aceptar</button>
       </div>
     </form>
@@ -485,6 +520,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-warning" data-dismiss="modal" id="elinoti">Eliminar</button>
         <button type="button" class="btn btn-outline-success" id="editnoti">Aceptar</button>
       </div>
       </form>
@@ -585,6 +621,34 @@
   </div>
 </div>
 <script>
+ var codigo = 0;
+ $(document).ready(function(){
+  $("#borrardependencia").click(function(){
+    var id = $("#depename").val();
+    codigo = id;
+    $.ajax({
+      type:"POST",
+      url:'/gestor/gestor/ajaxChecar/'+id,
+      data:{
+        "_token":"{{ csrf_token() }}",
+      },
+      success:function(data){
+        if(data>0){
+          $("#eliminardependencia").modal("show");
+          $("#eliminarbody").text("La dependencia tiene "+data+" Programas,\ndesea Eliminar");
+        }else{
+          $("#eliminardependencia").modal("show");
+          $("#eliminarbody").text("¿Desea Eliminar la Dependencia?");
+        }
+      }
+    });
+  });
+  $("#eliminardependencia").click(function(){
+    var id = codigo;
+  })
+});
+</script>
+<script>
 $(document).ready(function(){
   $("#rgEsc").click(function(){
     var nombre_escuela = $("#escuelaname").val();
@@ -634,9 +698,9 @@ $(document).ready(function(){
 }); 
 </script>
 <script>
-var $codigoEliminar = 0;
-$(borrar());
-function borrar(){
+ var $codigoEliminar = 0;
+ $(borrar());
+ function borrar(){
   $(document).on("click","#borrar",function(){
 		var cod = $(this).attr("data-id");
 		codigoEliminar = cod;
@@ -661,25 +725,80 @@ function borrar(){
     });
 }
 </script>
-<script type = "text/javascript">
-$(document).ready(function(){
+<script type="text/javascript">
+ var valor = 0;
+ $(document).ready(function(){
     $.ajaxSetup({
              headers: {
                  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
              }
          });
-$("#idev").change(function(){
-    var id = $("#idev").val();
+ $(".noti").click(function(){
+  var valorcito = $(this).attr("data-id");
+  id = valorcito;
+  valor = $(this).attr("id");
+ });
+ $("#cambiarnoti").click(function(){
+    var titulonoti = $("#cambionoticia").val();
     $.ajax({
                 type:'GET',
-                url:'/gestor/gestor/ajaxEve/'+id,
-                dataType: "json",
+                url:'/gestor/gestor/ajaxNotici/'+titulonoti+'/'+id+'/'+valor,
                 success:function(data) {
-                $("#titev").val(data[0]);
-                $("#depeve").val(data[1]);
-                $("#lugar").val(data[2]);
-                $("#descripeven").val(data[3]);
-               },
+                  //alert(data[0]+data[1]);
+                alert(data);
+                location.reload();
+                /*if(valor == "e1"){
+                  $("#imgevento1").attr("src","../../uploads/"+data[1]);
+                $("#evento1").text(data[0]);
+                }else{
+                  if(valor == "e2"){
+                  $("#imgevento2").attr("src","../../uploads/"+data[1]);
+                  $("#evento2").text(data[0]);
+                  }else{
+                    $("#imgevento3").attr("src","../../uploads/"+data[1]);
+                  $("#evento3").text(data[0]);
+                  }
+                }*/
+               }
+      });
+  });
+});
+</script>
+<script type = "text/javascript">
+ var valor = 0;
+ $(document).ready(function(){
+    $.ajaxSetup({
+             headers: {
+                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+             }
+         });
+ $(".eve").click(function(){
+  var valorcito = $(this).attr("data-id");
+  id = valorcito;
+  valor = $(this).attr("id");
+ });
+ $("#cambiar").click(function(){
+    var tituloev = $("#cambioeve").val();
+    $.ajax({
+                type:'GET',
+                url:'/gestor/gestor/ajaxEve/'+tituloev+'/'+id+'/'+valor,
+                success:function(data) {
+                  //alert(data[0]+data[1]);
+                alert(data);
+                location.reload();
+                /*if(valor == "e1"){
+                  $("#imgevento1").attr("src","../../uploads/"+data[1]);
+                $("#evento1").text(data[0]);
+                }else{
+                  if(valor == "e2"){
+                  $("#imgevento2").attr("src","../../uploads/"+data[1]);
+                  $("#evento2").text(data[0]);
+                  }else{
+                    $("#imgevento3").attr("src","../../uploads/"+data[1]);
+                  $("#evento3").text(data[0]);
+                  }
+                }*/
+               }
       });
   });
 });
@@ -771,7 +890,7 @@ $("#idev").change(function(){
 });
 </script>
 <script>
-$(document).ready(function(){
+ $(document).ready(function(){
   $(".programa").click(function(){
         var form = "";
         var titulo = $("#titleprograma");
@@ -857,7 +976,7 @@ $(document).ready(function(){
 });
 </script>
 <script>
-$(document).ready(function(){
+ $(document).ready(function(){
     $(".juventud").click(function(){
         var form = "";
         var titulo = $("#titlejuventud");
@@ -901,7 +1020,45 @@ $(document).ready(function(){
 });
 </script>
 <script>
-$(document).ready(function(){
+  $(document).ready(function(){
+    $("#elievento").click(function(){  
+    var id = $("#idev").val();
+    $.ajax({
+      url: '/gestor/gestor/ajaxEvens/'+id,
+      method:'POST',
+      data:{
+      "_token":"{{ csrf_token() }}",
+      },
+      success:function(data){
+      $("#editarevento").modal("hide");
+      location.reload();
+      alert(data);
+      }
+    });
+    });
+  });
+</script>
+<script>
+ $(document).ready(function(){
+    $("#elinoti").click(function(){
+    var id = $("#idnoti").val();
+    $.ajax({
+      url: '/gestor/gestor/ajaxNotti/'+id,
+      method:'POST',
+      data:{
+      "_token":"{{ csrf_token() }}",
+      },
+      success:function(data){
+      $("#editarnoticiaprueba").modal("hide");
+      location.reload();
+      alert(data);
+      }
+    });
+    });
+  });
+</script>
+<script>
+ $(document).ready(function(){
   $("#edit").click(function(){
     var formData = new FormData();
     var id = $("#ids").val();
@@ -933,7 +1090,7 @@ $(document).ready(function(){
 });
 </script>
 <script>
-$(document).ready(function(){
+ $(document).ready(function(){
   $("#editprog").click(function(){
     var formData = new FormData();
     var id = $("#idprog").val();
@@ -965,7 +1122,7 @@ $(document).ready(function(){
 });
 </script>
 <script>
-$(document).ready(function(){
+ $(document).ready(function(){
   $("#editjuv").click(function(){
     var formData = new FormData();
     var id = $("#idj").val();
@@ -997,7 +1154,7 @@ $(document).ready(function(){
 });
 </script>
 <script>
-$(document).ready(function(){
+ $(document).ready(function(){
   $("#borrarprog").click(function(){
     var id = $("#idprog").val();
     $.ajax({
@@ -1016,7 +1173,7 @@ $(document).ready(function(){
 });
 </script>
 <script>
-$(document).ready(function(){
+ $(document).ready(function(){
   $("#borrarjuv").click(function(){
     var id = $("#idj").val();
     $.ajax({
@@ -1035,7 +1192,7 @@ $(document).ready(function(){
 });
 </script>
 <script>
-$(document).ready(function(){
+ $(document).ready(function(){
   $("#borrardepe").click(function(){
     var id = $("#ids").val();
     $.ajax({
@@ -1082,7 +1239,7 @@ $(document).ready(function(){
   });
 </script>
 <script>
-$(document).ready(function(){
+ $(document).ready(function(){
   $(".juventudes").click(function(){
     var id = $(this).attr("data-id");
     $.ajax({
@@ -1109,7 +1266,7 @@ $(document).ready(function(){
 });
 </script>
 <script>
-$(document).ready(function(){
+ $(document).ready(function(){
   $(".dependencias").click(function(){
     var id = $(this).attr("data-id");
     $.ajax({
@@ -1136,7 +1293,7 @@ $(document).ready(function(){
 });
 </script>
 <script>
-$(document).ready(function(){
+ $(document).ready(function(){
   $(".noticias").click(function(){
     var id = $(this).attr("data-id");
     $.ajax({
@@ -1163,7 +1320,7 @@ $(document).ready(function(){
 });
 </script>
 <script>
-$(document).ready(function(){
+ $(document).ready(function(){
   $("#editnoti").click(function(){
     var formData = new FormData();
     var id = $("#idnoti").val();
@@ -1223,7 +1380,7 @@ $(document).ready(function(){
 });
 </script>
 <script>
-$(document).ready(function(){
+ $(document).ready(function(){
   $("#editevento").click(function(){
     var formData = new FormData();
     var id = $("#idev").val();
@@ -1254,24 +1411,13 @@ $(document).ready(function(){
 });
 </script>
 <script>
-$('#envImg').click( function() {
+ $('#envImg').click( function() {
   // agrego la data del form a formData
   var formData = new FormData();
   formData.append('imagen1', $('input[name=imagen1]')[0].files[0]);
-  formData.append('imagen2', $('input[name=imagen2]')[0].files[0]);
-  formData.append('imagen3', $('input[name=imagen3]')[0].files[0]);
-  formData.append('imagen4', $('input[name=imagen4]')[0].files[0]);
-  formData.append('imagen5', $('input[name=imagen5]')[0].files[0]);
   formData.append('urlimagen1', $('#urlimagen1').val());
-  formData.append('urlimagen2', $('#urlimagen2').val());
-  formData.append('urlimagen3', $('#urlimagen3').val());
-  formData.append('urlimagen4', $('#urlimagen4').val());
-  formData.append('urlimagen5', $('#urlimagen5').val());
-  formData.append('urlimagen1', $('#urlimagen1').val());
-  formData.append('urlimagen2', $('#urlimagen2').val());
-  formData.append('urlimagen3', $('#urlimagen3').val());
-  formData.append('urlimagen4', $('#urlimagen4').val());
-  formData.append('urlimagen5', $('#urlimagen5').val());
+  formData.append('titsite1', $('#titsite1').val());
+  formData.append('imagenselecciona',$('#imagenselecciona').val());
   formData.append('_token','{{ csrf_token() }}');
   $.ajax({
       type:'POST',
@@ -1291,7 +1437,7 @@ $('#envImg').click( function() {
         @csrf
     </form>
 <script>
-$(document).ready(function(){
+ $(document).ready(function(){
     fecha();
 });    
 </script>

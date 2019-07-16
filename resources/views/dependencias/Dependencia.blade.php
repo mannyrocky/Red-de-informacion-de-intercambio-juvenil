@@ -1,60 +1,27 @@
 @extends('layouts.layout')
 @section('content')
-<div class="container">
-    <img src="../../uploads/{{$valor->imagendep}}" alt="primera imagen" 
-                    height="300px" width="100%">
-    <h2>{{$valor->nombredep}}</h2>
-    <h3>Director: {{$valor->director}} </h3>
-    <p>
-    {{$valor->descripciondep}}
-    </p>
-    <a href="http://{{$valor->url}}"><button>ir</button></a>
-    <br>
-    <div class="col-md-12">
-            <div class="panel panel-default">
-                    <div class="carousel slide w-100" id="carrusel" data-ride="carousel">
-                    <ol class="carousel-indicators">
-            <li class="active" data-target="#carrusel" data-slide-to="0"></li>
-            <li data-target="#carrusel" data-slide-to="1"></li>
-            <li data-target="#carrusel" data-slide-to="2"></li>
-        </ol>
-        <div class="carousel-inner" role="listbox">
-            <div class="carousel-item active">
-                <img src="../../uploads/{{$valor->imagendep}}" alt="primera imagen" 
-                height="500px" width="100%">
-                <div class="carousel-caption">
-                    <h3>Komi-san Besto waifu</h3>
-                    <p>Komi-san god</p>
-                </div>
+<div style="background:#EEEE;">
+<div class="container-fluid">
+<div class="row bg-primary justify-content-center d-block" style="color:white;">
+    <p class="text-center lead text-uppercase font-weight-bold" style="font-size:2.8rem">{{$valor->nombredep}}</p>
+        <p class="text-center lead">Director: {{$valor->director}}</p>
+    </div>
+</div>
+<div class="container shadow p-3 mb-5 bg-white rounded">
+    <div class="photo-gallery">
+        <div class="container-fluid">
+            <div class="row photos justify-content-center">
+                <a href="../../uploads/{{$valor->imagendep}}" data-lightbox="gallery"  style="max-height:400px;">
+                    <img src="../../uploads/{{$valor->imagendep}}" alt="segunda imagen" height="400px" width="100%" class="shadow p-3 mb-5">
+                </a>
             </div>
-            <div class="carousel-item">
-                    <img src="../../uploads/{{$valor->imagendep}}" alt="segunda imagen" 
-                    height="500px" width="100%">
-                    <div class="carousel-caption">
-                            <h3>lotte Besto waifu</h3>
-                            <p>lotte god</p>
-                        </div>   
-            </div>
-            <div class="carousel-item">
-                    <img src="../../uploads/{{$valor->imagendep}}" alt="tercera imagen" 
-                    height="500px" width="100%">
-                        <div class="carousel-caption">
-                            <h3>lotte Besto waifu</h3>
-                            <p>lotte god</p>
-                        </div>
+            <div class="row justify-content-start">
+                <p class="font-weight-light">{{$valor->descripciondep}}</p><br>
+                <p class="font-weight-light">Para conocer la página de Cerca haz click <a href="http://{{$valor->url}}">aqui</a></p>
             </div>
         </div>
-        <a href="#carrusel" class="carousel-control-prev" role="button"
-           data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">anterior</span>
-        </a>
-        <a href="#carrusel" class="carousel-control-next" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Siguiente</span>
-        </a>
+    </div>
 </div>
 </div>
-</div>
-</div>
+
 @endsection

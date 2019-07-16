@@ -11,8 +11,8 @@
     <div class="photo-gallery">
         <div class="container-fluid">
             <div class="row photos justify-content-center">
-                <a href="./../uploads/{{$even->imagenjuv}}" data-lightbox="gallery"  style="max-height:400px;">
-                    <img src="./../uploads/{{$even->imagenjuv}}" alt="segunda imagen" height="400px" width="100%" class="shadow p-3 mb-5">
+                <a href="../../uploads/{{$even->imagenjuv}}" data-lightbox="gallery"  style="max-height:400px;">
+                    <img src="../../uploads/{{$even->imagenjuv}}" alt="segunda imagen" height="400px" width="100%" class="shadow p-3 mb-5">
                 </a>
             </div>
             <div class="row justify-content-start">

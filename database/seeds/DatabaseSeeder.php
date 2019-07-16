@@ -19,6 +19,8 @@ class DatabaseSeeder extends Seeder
         $this->call(NoticiaSeeder::class);
         $this->call(EscuelaSeeder::class);
         $this->call(EnterateSeeder::class);
+        $this->call(MenuEventoSeeder::class);
+        $this->call(MenuNoticiaSeeder::class);
 
         Model::reguard();
     }

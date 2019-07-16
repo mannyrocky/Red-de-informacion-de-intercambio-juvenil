@@ -90,37 +90,112 @@ class CarruselController extends Controller
         
         $carrusel = Carrusel::find(1);
         $data = $request->all();
-        $imagen1 = $request->file('imagen1');
-        $nombre1 =$imagen1->getClientOriginalName();
-        $imagen2 = $request->file('imagen2');
-        $nombre2 =$imagen2->getClientOriginalName();
-        $imagen3 = $request->file('imagen3');
-        $nombre3 =$imagen3->getClientOriginalName();
-        $imagen4 = $request->file('imagen4');
-        $nombre4 =$imagen4->getClientOriginalName();
-        $imagen5 = $request->file('imagen5');
-        $nombre5 =$imagen5->getClientOriginalName();
-        $url1 = $request->urlimagen1;
-        $url2 = $request->urlimagen2;
-        $url3 = $request->urlimagen3;
-        $url4 = $request->urlimagen4;
-        $url5 = $request->urlimagen5;
-        $carrusel->imagen1 = $nombre1;
-        $carrusel->urlimagen1 = $url1;
-        $carrusel->imagen2 = $nombre2;
-        $carrusel->urlimagen2 = $url2;
-        $carrusel->imagen3 = $nombre3;
-        $carrusel->urlimagen3 = $url3;
-        $carrusel->imagen4 = $nombre4;
-        $carrusel->urlimagen4 = $url4;
-        $carrusel->imagen5 = $nombre5;
-        $carrusel->urlimagen5 = $url5;
-        $carrusel->save();
-        Storage::put($nombre1, file_get_contents($imagen1));
-        Storage::put($nombre2, file_get_contents($imagen2));
-        Storage::put($nombre3, file_get_contents($imagen3));
-        Storage::put($nombre4, file_get_contents($imagen4));
-        Storage::put($nombre5, file_get_contents($imagen5));
-        echo "Carrusel editado correctamente";
+        $dato = $request->imagenselecciona;
+        if($dato == "Imagen1"){
+            if(isset($_POST['imagen1'])){
+                $titsite1 = $request->titsite1;
+                $url1 = $request->urlimagen1;
+                $carrusel->imagen1 = $carrusel->imagen1;
+                $carrusel->urlimagen1 = $url1;
+                $carrusel->titsite1 = $titsite1;
+                $carrusel->save();
+                echo "Carrusel editado correctamente";
+            }else{
+                $imagen = $request->file('imagen1');
+                $nombre =$imagen->getClientOriginalName();
+                $titsite1 = $request->titsite1;
+                $url1 = $request->urlimagen1;
+                $carrusel->imagen1 = $nombre;
+                $carrusel->urlimagen1 = $url1;
+                $carrusel->titsite1 = $titsite1;
+                $carrusel->save();
+                Storage::put($nombre, file_get_contents($imagen));
+                echo "Carrusel editado correctamente";
+            }
+        }elseif($dato == "Imagen2"){
+            if(isset($_POST['imagen1'])){
+                $titsite1 = $request->titsite1;
+                $url1 = $request->urlimagen1;
+                $carrusel->imagen2 = $carrusel->imagen2;
+                $carrusel->urlimagen2 = $url1;
+                $carrusel->titsite2 = $titsite1;
+                $carrusel->save();
+                echo "Carrusel editado correctamente";
+            }else{
+                $imagen = $request->file('imagen1');
+                $nombre =$imagen->getClientOriginalName();
+                $titsite1 = $request->titsite1;
+                $url1 = $request->urlimagen1;
+                $carrusel->imagen2 = $nombre;
+                $carrusel->urlimagen2 = $url1;
+                $carrusel->titsite2 = $titsite1;
+                $carrusel->save();
+                Storage::put($nombre, file_get_contents($imagen));
+                echo "Carrusel editado correctamente";
+            }
+        }elseif($dato == "Imagen3"){
+            if(isset($_POST['imagen1'])){
+                $titsite1 = $request->titsite1;
+                $url1 = $request->urlimagen1;
+                $carrusel->imagen3 = $carrusel->imagen3;
+                $carrusel->urlimagen3 = $url1;
+                $carrusel->titsite3 = $titsite1;
+                $carrusel->save();
+                echo "Carrusel editado correctamente";
+            }else{
+                $imagen = $request->file('imagen1');
+                $nombre =$imagen->getClientOriginalName();
+                $titsite1 = $request->titsite1;
+                $url1 = $request->urlimagen1;
+                $carrusel->imagen3 = $nombre;
+                $carrusel->urlimagen3 = $url1;
+                $carrusel->titsite3 = $titsite1;
+                $carrusel->save();
+                Storage::put($nombre, file_get_contents($imagen));
+                echo "Carrusel editado correctamente";
+            }
+        }elseif($dato == "Imagen4"){
+            if(isset($_POST['imagen1'])){
+                $titsite1 = $request->titsite1;
+                $url1 = $request->urlimagen1;
+                $carrusel->imagen4 = $carrusel->imagen4;
+                $carrusel->urlimagen4 = $url1;
+                $carrusel->titsite4 = $titsite1;
+                $carrusel->save();
+                echo "Carrusel editado correctamente";
+            }else{
+                $imagen = $request->file('imagen1');
+                $nombre =$imagen->getClientOriginalName();
+                $titsite1 = $request->titsite1;
+                $url1 = $request->urlimagen1;
+                $carrusel->imagen4 = $nombre;
+                $carrusel->urlimagen4 = $url1;
+                $carrusel->titsite4 = $titsite1;
+                $carrusel->save();
+                Storage::put($nombre, file_get_contents($imagen));
+                echo "Carrusel editado correctamente";
+            }
+        }else{
+            if(isset($_POST['imagen1'])){
+                $titsite1 = $request->titsite1;
+                $url1 = $request->urlimagen1;
+                $carrusel->imagen5 = $carrusel->imagen5;
+                $carrusel->urlimagen5 = $url1;
+                $carrusel->titsite5 = $titsite1;
+                $carrusel->save();
+                echo "Carrusel editado correctamente";
+            }else{
+                $imagen = $request->file('imagen1');
+                $nombre =$imagen->getClientOriginalName();
+                $titsite1 = $request->titsite1;
+                $url1 = $request->urlimagen1;
+                $carrusel->imagen5 = $nombre;
+                $carrusel->urlimagen5 = $url1;
+                $carrusel->titsite5 = $titsite1;
+                $carrusel->save();
+                Storage::put($nombre, file_get_contents($imagen));
+                echo "Carrusel editado correctamente";
+            }
+        }
     }
 }

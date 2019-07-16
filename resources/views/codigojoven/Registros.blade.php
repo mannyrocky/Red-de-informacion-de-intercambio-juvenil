@@ -44,7 +44,6 @@
                     <td class="align-middle">{{$usercod->Escolaridad}}</td>
                     <td class="align-middle">{{$usercod->Escuela}}</td>
                     <td class="text-center">
-                        <a data-id="{{$usercod->id}}" href="#"><button type="button" class="btn btn-info btn-sm">Editar</button></a>
                         <a id="borrar" data-id="{{$usercod->id}}" href="#" data-toggle="modal" data-target="#msjeli"><button type="button" class="btn btn-danger btn-sm eliminar">Elminar</button></a>
                         <a href="{{route('PDFS',[$usercod->id])}}"><button type="button" class="btn btn-primary btn-sm">PDF</button></a>
                     </td>

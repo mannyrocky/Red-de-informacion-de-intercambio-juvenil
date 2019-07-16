@@ -61,6 +61,7 @@ Route::post('/gestor/gestor/ajaxDependencia','DependenciaController@store');
 Route::post('/gestor/gestor/ajaxDependencias/{id}','DependenciaController@edit');
 Route::post('/gestor/gestor/ajaxDependencia/{id}','DependenciaController@borrar');
 Route::get('/gestor/gestor/ajaxDep/{id}','DependenciaController@mostrar');
+Route::post('/gestor/gestor/ajaxChecar/{id}','DependenciaController@checar');
     //Juventud
 Route::post('/gestor/gestor/ajaxJuventud','JuventudController@store');
 Route::post('/gestor/gestor/ajaxJuventudes/{id}','JuventudController@edit');
@@ -74,13 +75,17 @@ Route::get('/gestor/gestor/ajaxProg/{id}','Programascontroller@mostrar');
     //Noticias
 Route::post('/gestor/gestor/ajaxNoticia/{id}','NoticiaController@edit');
 Route::get('/gestor/gestor/ajaxNoti/{id}','NoticiaController@mostrar');
-//Route::get('/gestor/gestor/ajaxNotici/{id}','NoticiaController@cambiar');
+Route::get('/gestor/gestor/ajaxNotici/{titulonoti}/{valor}/{val}','NoticiaController@cambiar');
 Route::post('/gestor/gestor/ajaxNot','NoticiaController@store');
+Route::post('/gestor/gestor/ajaxNotti/{id}','NoticiaController@borrar');
     //Eventos
     
 Route::post('/gestor/gestor/ajaxEvent','EventoController@create');
 Route::post('/gestor/gestor/ajaxEvento/{id}','EventoController@edit');
-Route::get('/gestor/gestor/ajaxEve/{id}','EventoController@cambiar');
+Route::get('/gestor/gestor/ajaxEve/{tituloev}/{valor}/{val}','EventoController@cambiar');
 Route::get('/gestor/gestor/ajaxEven/{id}','EventoController@mostrar');
+Route::post('/gestor/gestor/ajaxEvens/{id}','EventoController@borrar');
     //Carrusel
 Route::post('/gestor/gestor/imagenesAjax','CarruselController@actualizar');
+
+Route::get('/codigojoven/miescuela','CodigoController@miescuela')->name('Miescuela');

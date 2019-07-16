@@ -135,4 +135,9 @@ class DependenciaController extends Controller
         Dependencias::destroy($id);
         echo"borrado Exitosamente";
     }
+    public function checar($id){
+        $programas = Programas::all()->where('nomdep','=',$id);
+        $numero = count($programas);
+        echo $numero;
+    }
 }

@@ -7,6 +7,8 @@ use \App\Carrusel;
 use \App\Juventud;
 use \App\Eventos;
 use \App\Noticias;
+use \App\MenuEvento;
+use \App\MenuNoticias;
 use Illuminate\Http\Request;
 
 class GestorController extends Controller
@@ -28,14 +30,13 @@ class GestorController extends Controller
         $carrusel = Carrusel::find(1);
         $noticias = Noticias::all();
         $eventos = Eventos::all();
-        $noti1 = Noticias::find(1);
-        $noti2 = Noticias::find(2);
-        $noti3 = Noticias::find(3);
-        $noti4 = Noticias::find(4);
-        $even1 = Eventos::find(1);
-        $even2 = Eventos::find(3);
-        $even3 = Eventos::find(2);
-        $even4 = Eventos::find(4);
+        $noti1 = MenuNoticias::find(1);
+        $noti2 = MenuNoticias::find(2);
+        $noti3 = MenuNoticias::find(3);
+        $noti4 = MenuNoticias::find(4);
+        $even1 = MenuEvento::find(1);
+        $even2 = MenuEvento::find(2);
+        $even3 = MenuEvento::find(3);
         return view('gestor.gestor',compact('dependencias'),compact('juventudes','programa',"carrusel","noti1","noti2","noti3","noti4","even1","even2","even3","even4","eventos","noticias"));
     }
 

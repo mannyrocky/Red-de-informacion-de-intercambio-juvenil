@@ -7,6 +7,8 @@ use \App\Juventud;
 use \App\Dependencias;
 use \App\Noticias;
 use \App\Eventos;
+use \App\Escuela;
+use \App\Carrusel;
 use Illuminate\Http\Request;
 
 class CodigoController extends Controller
@@ -16,6 +18,16 @@ class CodigoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function miescuela(){
+        $dependencias = Dependencias::all();
+        $juventudes = Juventud::all();
+        $programa = Programas::all();
+        $noticias = Noticias::all();
+        $carrusel = Carrusel::find(1);
+        $eventos = Eventos::all();
+        $escuela = Escuela::all();
+        return view('codigojoven.miescuela',compact('carrusel','escuela','dependencias','juventudes','programa','noticias','eventos'));
+    }
     public function index()
     {
         $dependencia = Dependencias::all();

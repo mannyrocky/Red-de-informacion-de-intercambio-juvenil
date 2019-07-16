@@ -16,7 +16,7 @@
     float:left;
 }
 .container{
-    height:250px;
+    height:auto;
     width:600px;
     margin-top:5px;
     background:white;
@@ -89,7 +89,7 @@
                 <div>
                     <label class="escuela" for="Escuela">Escuela: </label><span>{{ $data['Escuela'] }}</span>
                 </div><br>
-                <div class="codigo-barras">
+                <div style="width:100px;" class="codigo-barras">
                 {!! DNS1D::getBarcodeHTML($data['curp'], "C128");!!}
                 </div>
             </div>

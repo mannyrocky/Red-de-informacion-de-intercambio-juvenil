@@ -6,6 +6,8 @@ use App\Dependencias;
 use App\Programas;
 use App\Juventud;
 use App\Noticias;
+use App\MenuEvento;
+use App\MenuNoticias;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -84,15 +86,17 @@ class EventoController extends Controller
         $even = Eventos::find($id);
         return view("eventos.eventos",compact("even","juventud","programas","dependencia","noticias","eventos"));
     }
-    public function cambiar($id){
-        $evento = Eventos::find($id);
-        $arreglo = array();
-        $arreglo[0] = $evento->tituloev;
-        $arreglo[1] = $evento->depev;
-        $arreglo[2] = $evento->lugar;
-        $arreglo[3] = $evento->Descripcionev;
-        echo json_encode($arreglo);
-
+    public function cambiar($tituloev,$valor,$val){
+        $menuevento = MenuEvento::find($val);
+        $evento = Eventos::where('tituloev',$tituloev)->get();
+        $titulo = $evento[0]->tituloev;
+        $imagen = $evento[0]->imagenjuv;
+        $id = $evento[0]->id;
+        $menuevento->eventotitulo = $titulo;
+        $menuevento->imagenevento = $imagen;
+        $menuevento->eventoid = $id;
+        $menuevento->save();
+        echo "Cambiado Exitosamente";
     }
     /**
      * Show the form for editing the specified resource.
@@ -142,8 +146,9 @@ class EventoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function borrar($id)
     {
-        //
+        Eventos::destroy($id);
+        echo "Evento Borrado Correctamente";
     }
 }

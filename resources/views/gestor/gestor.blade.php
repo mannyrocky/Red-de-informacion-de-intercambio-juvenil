@@ -120,26 +120,26 @@
     <div class="container" id ="eventos" name="eventos">
         <div class="row justify-content-center">
             <div class="col-md-3 shadow-lg p-3 ml-5 mb-5 bg-white rounded hvr-grow">
-                <a href="{{url('/eventos/eventos/'.$even1->id)}}" >
-                    <img src="../../uploads/{{$even1->imagenjuv}}"  style="height:250px; width:250px;"alt="" > 
-                    <div class="info btn btn-link">
-                        {{$even1->tituloev}}
+                <a class="eve" id = "{{$even1->id}}"data-id="{{$even1->eventoid}}" data-toggle="modal" data-target="#modificarEvento"href="#" >
+                    <img id="imgevento1" src="../../uploads/{{$even1->imagenevento}}"  style="height:250px; width:250px;"alt="" > 
+                    <div id="evento1" class="info btn btn-link">
+                        {{$even1->eventotitulo}}
                     </div>
                 </a>
             </div>
             <div class="col-md-3 shadow-lg p-3 mb-5 ml-5 bg-white rounded hvr-grow">
-                <a href="{{url('/eventos/eventos/'.$even2->id)}}">
-                    <img src="../../uploads/{{$even2->imagenjuv}}"  style="height:250px; width:250px;"alt="" > 
-                    <div class="info btn btn-link">
-                        {{$even2->tituloev}}
+                <a class="eve" id = "{{$even2->id}}" data-id="{{$even2->eventoid}}" data-toggle="modal" data-target="#modificarEvento" href="#">
+                    <img id="imgevento2" src="../../uploads/{{$even2->imagenevento}}"  style="height:250px; width:250px;"alt="" > 
+                    <div id="evento2" class="info btn btn-link">
+                        {{$even2->eventotitulo}}
                     </div>
                 </a>
             </div>
             <div class="col-md-3 shadow-lg p-3 mb-5 ml-5 bg-white rounded hvr-grow">
-                <a href="{{url('/eventos/eventos/'.$even3->id)}}">
-                    <img src="../../uploads/{{$even3->imagenjuv}}"  style="height:250px; width:250px;"alt="" > 
-                    <div class="info btn btn-link">
-                        {{$even3->tituloev}}
+                <a class="eve" id = "{{$even3->id}}" data-id="{{$even3->eventoid}}" data-toggle="modal" data-target="#modificarEvento" href="#">
+                    <img id="imgevento3" src="../../uploads/{{$even3->imagenevento}}"  style="height:250px; width:250px;"alt="" > 
+                    <div  id="evento3" class="info btn btn-link">
+                        {{$even3->eventotitulo}}
                     </div>
                 </a>
             </div>
@@ -155,15 +155,15 @@
                         <div class="card mb-3">
                             <div class="row no-gutters">
                                 <div class="col-md-3">
-                                    <img src="../../uploads/{{$noti1->imagennoti}}" class="card-img" style="height:200px;width:200px;">
+                                    <img src="../../uploads/{{$noti1->imagennoticia}}" class="card-img" style="height:200px;width:200px;">
                                 </div>
                             <div class="col-md-9">
-                                <div class="card-body">
-                                    <h5 class="card-title">{{$noti1->titulonoti}}</h5>
-                                    <p id="notides1" class="card-text">{{$noti1->Descripcionnot}}</p>
+                                <div class="card-body ">
+                                    <h5 class="card-title">{{$noti1->noticiatitulo}}</h5>
+                                    <p id="notides1" class="card-text">{{$noti1->contenidonoticia}}</p>
                                     <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                                     <div class="row justify-content-end px-2">
-                                        <a class="card-text" href="{{url('/noticias/noticias/'.$noti1->id)}}"><small>Ver más</small></a>
+                                        <a id="{{$noti1->id}}"data-id="{{$noti1->noticiaid}}"class="card-text noti" href="#" data-toggle="modal" data-target="#modificarNoticia"   ><small>Ver más</small></a>
                                     </div>
                                 </div>
                             </div>
@@ -173,15 +173,15 @@
                         <div class="card mb-3">
                             <div class="row no-gutters">
                                 <div class="col-md-3">
-                                    <img src="../../uploads/{{$noti2->imagennoti}}" class="card-img" style="height:200px;width:200px;">
+                                    <img src="../../uploads/{{$noti2->imagennoticia}}" class="card-img" style="height:200px;width:200px;">
                                     </div>
                                 <div class="col-md-9">
                                     <div class="card-body">
-                                        <h5 class="card-title">{{$noti2->titulonoti}}</h5>
-                                        <p id="notides2" class="card-text">{{$noti2->Descripcionnot}}</p>
+                                        <h5 class="card-title">{{$noti2->noticiatitulo}}</h5>
+                                        <p id="notides2" class="card-text">{{$noti2->contenidonoticia}}</p>
                                         <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                                         <div class="row justify-content-end px-2">
-                                            <a class="card-text" href="{{url('/noticias/noticias/'.$noti2->id)}}"><small>Ver más</small></a>
+                                            <a id="{{$noti2->id}}" data-id="{{$noti2->noticiaid}}"class="card-text noti" href="#" data-toggle="modal" data-target="#modificarNoticia"><small>Ver más</small></a>
                                         </div>    
                                     </div>
                                 </div>
@@ -192,15 +192,15 @@
                         <div class="card mb-3">
                             <div class="row no-gutters">
                                 <div class="col-md-3">
-                                    <img src="../../uploads/{{$noti3->imagennoti}}" class="card-img" style="height:200px;width:200px;">
+                                    <img src="../../uploads/{{$noti3->imagennoticia}}" class="card-img" style="height:200px;width:200px;">
                                 </div>
                                 <div class="col-md-9">
                                     <div class="card-body">
-                                        <h5 class="card-title">{{$noti3->titulonoti}}</h5>
-                                        <p id="notides3" class="card-text">{{$noti3->Descripcionnot}}</p>
+                                        <h5 class="card-title">{{$noti3->noticiatitulo}}</h5>
+                                        <p id="notides3" class="card-text">{{$noti3->contenidonoticia}}</p>
                                         <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                                         <div class="row justify-content-end px-2">
-                                            <a class="card-text" href="{{url('/noticias/noticias/'.$noti3->id)}}"><small>Ver más</small></a>
+                                            <a id="{{$noti3->id}}" data-id="{{$noti3->noticiaid}}"class="card-text noti" href="#" data-toggle="modal" data-target="#modificarNoticia"><small>Ver más</small></a>
                                         </div>    
                                     </div>
                                 </div>
@@ -211,15 +211,15 @@
                         <div class="card mb-3">
                             <div class="row no-gutters">
                                 <div class="col-md-3">
-                                    <img src="../../uploads/{{$noti4->imagennoti}}" class="card-img" style="height:200px;width:200px;">
+                                    <img src="../../uploads/{{$noti4->imagennoticia}}" class="card-img" style="height:200px;width:200px;">
                                 </div>
                                 <div class="col-md-9">
                                     <div class="card-body">
-                                        <h5 class="card-title">{{$noti4->titulonoti}}</h5>
-                                        <p id="notides4" class="card-text">{{$noti4->Descripcionnot}}</p>
+                                        <h5 class="card-title">{{$noti4->noticiatitulo}}</h5>
+                                        <p id="notides4" class="card-text">{{$noti4->contenidonoticia}}</p>
                                         <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                                         <div class="row justify-content-end px-2">
-                                            <a class="card-text" href="{{url('/noticias/noticias/'.$noti4->id)}}"><small>Ver más</small></a>
+                                            <a id="{{$noti4->id}}" data-id="{{$noti4->noticiaid}}"class="card-text noti" href="#" data-toggle="modal" data-target="#modificarNoticia"><small>Ver más</small></a>
                                         </div>    
                                     </div>
                                 </div>

@@ -14,9 +14,9 @@ class NoticiaSeeder extends Seeder
     {
         for($i=1; $i<5; $i++){
             Noticias::create([
-                'titulonoti'=>'Evento Prueba'.$i,
-                'autornoti'=>'Dependencia Prueba'.$i,
-                'fechanoti'=>'Lugar Prueba'.$i,
+                'titulonoti'=>'Noticia Prueba'.$i,
+                'autornoti'=>'Autor Prueba'.$i,
+                'fechanoti'=>'2019-11-11',
                 'Descripcionnot'=>'Descripcion Prueba'.$i,
                 'imagennoti'=>'42b.jpg'
                 ]);

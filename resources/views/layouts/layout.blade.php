@@ -13,12 +13,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://cdn.bootcss.com/hover.css/2.3.1/css/hover.css">
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <!--Fonts-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ asset('assets/css/nav.css')}}">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.0/js/lightbox.js"></script>    
+    <link rel="stylesheet" href="{{ asset('assets/css/nav.css')}}">    
 </head>
 <body>
 <header>
@@ -85,11 +82,11 @@
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarCodigoLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Codigo Joven
+                            Código Joven
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarCodigoLink">
-                            <a class="dropdown-item" href="{{route('enterate')}}">Enterate</a>
-                            <a class="dropdown-item" href="{{route('registrar')}}">Registrate</a>
+                            <a class="dropdown-item" href="{{route('enterate')}}">Entérate</a>
+                            <a class="dropdown-item" href="{{route('registrar')}}">Regístrate</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
