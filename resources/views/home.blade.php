@@ -57,14 +57,16 @@
                         </div>
                     </div>
                     <a href="#carrusel" class="carousel-control-prev" role="button"
-                        data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">anterior</span>
-                    </a>
-                    <a href="#carrusel" class="carousel-control-next" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Siguiente</span>
-                    </a>
+                    data-slide="prev"><button class=form-control style="margin-left:-100px;background:#1836BC; width:80px;">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">anterior</span></button>
+                </a>
+                <a href="#carrusel" class="carousel-control-next" role="button" data-slide="next">
+                    <button class=form-control style="margin-right:-100px;background:#1836BC; width:80px;">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Siguiente</span>
+                    </button>
+                </a>
                 </div>
             </div>
         </div>

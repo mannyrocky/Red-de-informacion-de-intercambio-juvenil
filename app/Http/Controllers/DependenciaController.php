@@ -69,8 +69,12 @@ class DependenciaController extends Controller
         $noticias = Noticias::all();
         $eventos = Eventos::all();
         $valor = Dependencias::find($id);
-        //dd($dependencia->id);
+        if($valor == null){
+            return view('errors.404',compact('dependencia','juventud','programas','noticias','eventos'));
+        }
+        else{
         return view('dependencias.Dependencia',compact('dependencia','valor','juventud','programas','noticias','eventos'));
+        }
     }
     public function mostrar($id){
         $dependencia = Dependencias::find($id);

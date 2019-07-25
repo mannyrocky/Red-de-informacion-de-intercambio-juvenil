@@ -73,7 +73,11 @@ class Programascontroller extends Controller
         $noticias = Noticias::all();
         $eventos = Eventos::all();
         $pog = Programas::find($id);
+        if($pog==null){
+            return view("errors.404",compact("juventud","programas","dependencia","noticias","eventos"));  
+        }else{
         return view("programas.Programas",compact("pog","juventud","programas","dependencia","noticias","eventos"));  
+        }
     }
 
     public function mostrar($id){

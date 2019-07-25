@@ -71,8 +71,11 @@ class JuventudController extends Controller
         $noticias = Noticias::all();
         $eventos = Eventos::all();
         $juve = Juventud::find($id);
+        if($juve == null){
+            return view("errors.404",compact("juventud","dependencia","programas","noticias","eventos"));
+        }else{
         return view("juventud.Juventud",compact("juventud","juve","dependencia","programas","noticias","eventos"));
-
+        }
     }
 
     public function mostrar($id){

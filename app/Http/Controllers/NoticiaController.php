@@ -77,7 +77,11 @@ class NoticiaController extends Controller
         $noticias = Noticias::all();
         $eventos = Eventos::all();
         $noti = Noticias::find($id);
+        if($noti==null){
+            return view("errors.404",compact("juventud","programas","dependencia","noticias","eventos"));    
+        }else{
         return view("noticias.noticias",compact("noti","juventud","programas","dependencia","noticias","eventos"));
+        }
     }
     public function mostrar($id){
         $noticia = Noticias::find($id);

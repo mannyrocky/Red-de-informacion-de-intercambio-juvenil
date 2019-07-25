@@ -84,7 +84,12 @@ class EventoController extends Controller
         $noticias = Noticias::all();
         $eventos = Eventos::all();
         $even = Eventos::find($id);
-        return view("eventos.eventos",compact("even","juventud","programas","dependencia","noticias","eventos"));
+        if($even == null){
+            return view("errors.404",compact("juventud","programas","dependencia","noticias","eventos"));
+        }else{
+            return view("eventos.eventos",compact("even","juventud","programas","dependencia","noticias","eventos"));
+        }
+        
     }
     public function cambiar($tituloev,$valor,$val){
         $menuevento = MenuEvento::find($val);
