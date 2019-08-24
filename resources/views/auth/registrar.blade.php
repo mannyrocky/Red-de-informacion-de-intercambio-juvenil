@@ -1,7 +1,11 @@
 @extends('layouts.layout')
  
 @section('content')
+
 <div class="container">
+@if(session()->has('msj'))
+    <div class="alert alert-danger" role="alert">{{session('msj')}}</div>
+@endif
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -24,7 +28,7 @@
                         </div>
                         
                         <div class="form-group row">
-                            <label for="Telefono" class="col-md-4 col-form-label text-md-right">{{ __('Telefono') }}</label>
+                            <label for="Telefono" class="col-md-4 col-form-label text-md-right">{{ __('Teléfono') }}</label>
                             <div class="col-md-6">
                                 <input id="telefono" type="tel" class="form-control" name="telefono"  required maxlength="10">
                             </div>
@@ -77,7 +81,7 @@
                             <label for="Intereses" class="col-md-4 col-form-label text-md-right">{{ __('Intereses') }}</label>
                             <div class="col-md-6">
                                 <select id="intereses" class="form-control" name="intereses" required>
-                                    <option value="Musica">Musica</option>
+                                    <option value="Música">Música</option>
                                     <option value="Deportes">Deportes</option>
                                     <option value="Entretenimiento">Entretenimiento</option>
                                     <option value="Programas Sociales">Programas Sociales</option>

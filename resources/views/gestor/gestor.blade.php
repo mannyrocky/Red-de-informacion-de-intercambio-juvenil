@@ -62,7 +62,7 @@
                                     <div class="overlay"></div>
                                     <div class="btnn" id="1" data-toggle="modal" data-target="#editarcarrusel"><a href="#"> Editar imágenes </a></div>
                                 <div class="carousel-caption">
-                                    <h3>{{$carrusel->titsite1}}</h3>
+                                    <h3 style="color:black;">{{$carrusel->titsite1}}</h3>
                                 </div>
                             </div>
                         <div class="carousel-item">
@@ -71,7 +71,7 @@
                             <div class="overlay"></div>
                                     <div class="btnn" data-toggle="modal" data-target="#editarcarrusel"><a href="#"> Editar imágenes </a></div>
                             <div class="carousel-caption">
-                                <h3>{{$carrusel->titsite2}}</h3>
+                                <h3 style="color:black;">{{$carrusel->titsite2}}</h3>
                             </div>   
                         </div>
                         <div class="carousel-item">
@@ -80,7 +80,7 @@
                             <div class="overlay"></div>
                                     <div class="btnn" data-toggle="modal" data-target="#editarcarrusel"><a href="#"> Editar imágenes </a></div>
                             <div class="carousel-caption">
-                                <h3>{{$carrusel->titsite3}}</h3>
+                                <h3 style="color:black;">{{$carrusel->titsite3}}</h3>
                             </div>
                         </div>
                         <div class="carousel-item">
@@ -89,7 +89,7 @@
                             <div class="overlay"></div>
                                     <div class="btnn" data-toggle="modal" data-target="#editarcarrusel"><a href="#"> Editar imágenes </a></div>
                             <div class="carousel-caption">
-                                <h3>{{$carrusel->titsite4}}</h3>
+                                <h3 style="color:black;">{{$carrusel->titsite4}}</h3>
                             </div>
                         </div>
                         <div class="carousel-item">
@@ -98,7 +98,7 @@
                             <div class="overlay"></div>
                                     <div class="btnn" data-toggle="modal" data-target="#editarcarrusel"><a href="#"> Editar imágenes </a></div>
                             <div class="carousel-caption">
-                                <h3>{{$carrusel->titsite5}}</h3>
+                                <h3 style="color:black;">{{$carrusel->titsite5}}</h3>
                             </div>
                         </div>
                     </div>
@@ -163,7 +163,6 @@
                                 <div class="card-body ">
                                     <h5 class="card-title">{{$noti1->noticiatitulo}}</h5>
                                     <p id="notides1" class="card-text">{{$noti1->contenidonoticia}}</p>
-                                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                                     <div class="row justify-content-end px-2">
                                         <a id="{{$noti1->id}}"data-id="{{$noti1->noticiaid}}"class="card-text noti" href="#" data-toggle="modal" data-target="#modificarNoticia"   ><small>Ver más</small></a>
                                     </div>
@@ -181,7 +180,6 @@
                                     <div class="card-body">
                                         <h5 class="card-title">{{$noti2->noticiatitulo}}</h5>
                                         <p id="notides2" class="card-text">{{$noti2->contenidonoticia}}</p>
-                                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                                         <div class="row justify-content-end px-2">
                                             <a id="{{$noti2->id}}" data-id="{{$noti2->noticiaid}}"class="card-text noti" href="#" data-toggle="modal" data-target="#modificarNoticia"><small>Ver más</small></a>
                                         </div>    
@@ -200,7 +198,6 @@
                                     <div class="card-body">
                                         <h5 class="card-title">{{$noti3->noticiatitulo}}</h5>
                                         <p id="notides3" class="card-text">{{$noti3->contenidonoticia}}</p>
-                                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                                         <div class="row justify-content-end px-2">
                                             <a id="{{$noti3->id}}" data-id="{{$noti3->noticiaid}}"class="card-text noti" href="#" data-toggle="modal" data-target="#modificarNoticia"><small>Ver más</small></a>
                                         </div>    
@@ -219,7 +216,6 @@
                                     <div class="card-body">
                                         <h5 class="card-title">{{$noti4->noticiatitulo}}</h5>
                                         <p id="notides4" class="card-text">{{$noti4->contenidonoticia}}</p>
-                                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                                         <div class="row justify-content-end px-2">
                                             <a id="{{$noti4->id}}" data-id="{{$noti4->noticiaid}}"class="card-text noti" href="#" data-toggle="modal" data-target="#modificarNoticia"><small>Ver más</small></a>
                                         </div>    

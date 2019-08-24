@@ -47,6 +47,12 @@ class RegistrarController extends Controller
         $escuela->apellidos = $request->apellidos;
         $escuela->telefono = $request->telefono;
         $escuela->curp = $request->curp;
+        $micurp = $request->curp;
+        $buscar = Usuarios::all()->where('curp','=',$micurp);
+        $cuentas = count($buscar);
+        if($cuentas >=1){
+            return back()->with('msj','El Curp Ya esta registrado');
+        }else{        
         $escuela->email = $request->email;
         $escuela->Escolaridad = $request->Escolaridad;
         $escuela->Escuela = $request->Escuela;
@@ -66,6 +72,7 @@ class RegistrarController extends Controller
         $pdf->loadHTML($view);
         return $pdf->stream('codigo.pdf');
         return $pdf->download('codigo');
+        }
         
     }
 
@@ -132,7 +139,7 @@ class RegistrarController extends Controller
         $noticias = Noticias::all();
         $eventos = Eventos::all();
         $carrusel = Carrusel::find(1);
-        $user = Usuarios::Search($request->nombres)->orderBy('id','ASC')->paginate(2);
+        $user = Usuarios::Search($request->nombres)->orderBy('id','ASC')->paginate(100);
         return view('codigojoven.Registros',compact('carrusel','dependencias','juventudes','programa','noticias','eventos'))->with('user',$user);
     }
     public function borrar($id){

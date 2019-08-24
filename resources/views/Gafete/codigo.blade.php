@@ -81,10 +81,10 @@
                     <label class="curp" for="Curp">CURP: </label><span>{{ $data['curp'] }}</span>
                 </div><br>
                 <div>
-                    <label class="correo" for="Email">Correo Electronico: </label><span>{{ $data['email'] }}</span>
+                    <label class="correo" for="Email">Correo Electrónico: </label><span>{{ $data['email'] }}</span>
                 </div><br>
                 <div>
-                    <label class="telefono" for="Telefono">Telefono: </label><span>{{ $data['telefono'] }}</span>
+                    <label class="telefono" for="Telefono">Teléfono: </label><span>{{ $data['telefono'] }}</span>
                 </div><br>
                 <div>
                     <label class="escuela" for="Escuela">Escuela: </label><span>{{ $data['Escuela'] }}</span>

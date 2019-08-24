@@ -88,10 +88,10 @@
                         Código Joven
                         </a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item enterate" data-id="1" data-toggle="modal" data-target="#agregarenterate" href="#">Enterate</a>
+                            <a class="dropdown-item enterate" data-id="1" data-toggle="modal" data-target="#agregarenterate" href="#">Entérate</a>
                             <a class="dropdown-item" href="{{route('Registros')}}">Registros Código Joven</a>
                             <a class="dropdown-item" data-toggle="modal" data-target="#agregarescuela" href="#">Registrar Escuela</a>
-                            <a class="dropdown-item" href="{{route('Miescuela')}}">Escuelas registradas</a>
+                            <a class="dropdown-item" href="{{route('Miescuela')}}">Escuelas Registradas</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
@@ -205,7 +205,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="titleProg"></h5>
-        <button type="button" class="close" data-dismiss="modal2" aria-label="Close">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -247,7 +247,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="titleDep"></h5>
-        <button type="button" class="close" data-dismiss="modal2" aria-label="Close">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -812,7 +812,7 @@ $(document).ready(function(){
         form+='<form><div class="row">';
        form+='<div class="col"><input type="text" class="form-control" placeholder="Titulo Noticia"  id="titulonoticia" required><div class="invalid-feedback">Ingresa un Titulo</div></div></div>';
        form+='<div class="row mt-4"><div class="col"><input type="text" class="form-control" placeholder="Autor"  id="autornoticia" required><div class="invalid-feedback">Ingresa un Autor</div></div><div class="col"><input type="date" class="form-control" id="fechanoticia" required><div class="invalid-feedback">Ingresa una fecha</div></div></div></form>';
-       form+='<div class="row mt-4"><div class="col"><textarea rows="4" class="form-control" placeholder="Descrpicion" id="descripcionnoticia"></textarea></div></div>';
+       form+='<div class="row mt-4"><div class="col"><textarea rows="4" class="form-control" placeholder="Descripción" id="descripcionnoticia"></textarea></div></div>';
        form+='<div class="row mt-4 justify-content-center"><input class="btn btn-info" name="imagennoticia" id="imagennoticia" type="file" /></div>';
        body.html(form);
        titulo.html('Agregar Noticia');
@@ -822,7 +822,7 @@ $(document).ready(function(){
         formData.append('titulonoti',$("#titulonoticia").val());
         formData.append('autornoti',$("#autornoticia").val());
         formData.append('fechanoti',$("#fechanoticia").val());
-        formData.append('Descripcionnoti',$("#descripcionnoticia").val());
+        formData.append('Descripcionnot',$("#descripcionnoticia").val());
         formData.append('imagennoti',$('input[name=imagennoticia]')[0].files[0]);
         formData.append('_token','{{ csrf_token() }}');
         if ($('#formnoticia')[0].checkValidity() === false) {
@@ -855,7 +855,7 @@ $(document).ready(function(){
         form+='<form><div class="row">';
        form+='<div class="col"><input type="text" class="form-control" placeholder="Titulo Evento"  id="tituloev" required><div class="invalid-feedback">Ingresa un Titulo</div></div></div>';
        form+='<div class="row mt-4"><div class="col"><input type="text" class="form-control" placeholder="Dependecia"  id="depevento" required><div class="invalid-feedback">Ingresa una Dependencia</div></div><div class="col"><input type="text" class="form-control" placeholder="Lugar" id="lugares" required><div class="invalid-feedback">Ingresa un Lugar</div></div></div></form>';
-       form+='<div class="row mt-4"><div class="col"><textarea rows="4" class="form-control" placeholder="Descrpicion" id="descripcionevento"></textarea></div></div>';
+       form+='<div class="row mt-4"><div class="col"><textarea rows="4" class="form-control" placeholder="Descripción" id="descripcionevento"></textarea></div></div>';
        form+='<div class="row mt-4 justify-content-center"><input class="btn btn-info" name="imagenevento" id="imagenevento" type="file" /></div>';
        body.html(form);
        titulo.html('Agregar Evento');
@@ -898,7 +898,7 @@ $(document).ready(function(){
         form+='<form><div class="row">';
        form+='<div class="col"><input type="text" class="form-control" placeholder="Nombre del Programa"  id="nomprog" required><div class="invalid-feedback">Ingresa un Nombre</div></div></div>';
        form+='<div class="row mt-4"><div class="col"><select class="form-control" id="nomdep" required>@if (App\Dependencias::count() > 0) @foreach($dependencias as $dependencia) <option>{{$dependencia->nombredep}}</option> @endforeach @endif</select></div><div class="col"><input type="text" class="form-control" placeholder="Responsable"  id="responsable" required><div class="invalid-feedback">Ingresa un Responsable</div></div></div></form>';
-       form+='<div class="row mt-4"><div class="col"><textarea rows="4" class="form-control" placeholder="Descrpicion" id="descriprog"></textarea></div></div>';
+       form+='<div class="row mt-4"><div class="col"><textarea rows="4" class="form-control" placeholder="Descripción" id="descriprog"></textarea></div></div>';
        form+='<div class="row mt-4 justify-content-center"><input class="btn btn-info" name="imagenprog" id="imagenprog" type="file" /></div>';
        body.html(form);
        titulo.html('Agregar Programa');
@@ -941,7 +941,7 @@ $(document).ready(function(){
         form+='<form><div class="row">';
        form+='<div class="col"><input type="text" class="form-control" placeholder="Nombre de la Dependencia"  id="nombredep" required><div class="invalid-feedback">Ingresa una Dependencia</div></div></div>';
        form+='<div class="row mt-4"><div class="col"><input type="text" class="form-control" placeholder="Director"  id="director" required><div class="invalid-feedback">Ingresa un Director</div></div><div class="col"><input type="text" class="form-control" placeholder="url" id="url" required><div class="invalid-feedback">Ingresa una Url</div></div></div></form>';
-       form+='<div class="row mt-4"><div class="col"><textarea rows="4" class="form-control" placeholder="Descrpicion" id="descripciondep"></textarea></div></div>';
+       form+='<div class="row mt-4"><div class="col"><textarea rows="4" class="form-control" placeholder="Descripción" id="descripciondep"></textarea></div></div>';
        form+='<div class="row mt-4 justify-content-center"><input class="btn btn-info" name="imagendep" id="imagendep" type="file" /></div>';
        body.html(form);
        titulo.html('Agregar Dependencia');
@@ -984,7 +984,7 @@ $(document).ready(function(){
         form+='<form><div class="row">';
        form+='<div class="col"><input type="text" class="form-control" placeholder="Titulo de la Noticia"  id="titulo" required><div class="invalid-feedback">Ingresa un Titulo</div></div></div>';
        form+='<div class="row mt-4"><div class="col"><input type="text" class="form-control" placeholder="Autor"  id="autor" required><div class="invalid-feedback">Ingresa un Autor</div></div><div class="col"><input type="date" class="form-control" id="fecha" required><div class="invalid-feedback">Ingresa una Fecha</div></div></div></form>';
-       form+='<div class="row mt-4"><div class="col"><textarea rows="4" class="form-control" placeholder="Descrpicion" id="descripcionjuv"></textarea></div></div>';
+       form+='<div class="row mt-4"><div class="col"><textarea rows="4" class="form-control" placeholder="Descripción" id="descripcionjuv"></textarea></div></div>';
        form+='<div class="row mt-4 justify-content-center"><input class="btn btn-info" name="imagenjuve" id="imagenjuve" type="file" /></div>';
        body.html(form);
        titulo.html('Agregar Noticias sobre la Juventud');
@@ -1228,7 +1228,7 @@ $(document).ready(function(){
         form+='<form><div class="row">';
        form+='<div class="col"><input value="'+data[0]+'" type="text" class="form-control" placeholder="Id"  id="idprog" disabled></div><div class="col"><input value="'+data[1]+'" type="text" class="form-control" placeholder="Nombre del Programa"  id="progname" required><div class="invalid-feedback">Ingresa un Nombre</div></div></div>';
        form+='<div class="row mt-4"><div class="col"><select class="form-control" id="namedepe" required>@if (App\Dependencias::count() > 0) @foreach($dependencias as $dependencia) <option>{{$dependencia->nombredep}}</option> @endforeach @endif</select></div><div class="col"><input value="'+data[3]+'" type="text" class="form-control" placeholder="Responsable"  id="respo" required><div class="invalid-feedback">Ingresa un Responsable</div></div></div></form>';
-       form+='<div class="row mt-4"><div class="col"><textarea rows="4" class="form-control" placeholder="Descrpicion" id="descriprograma">'+data[4]+'</textarea></div></div>';
+       form+='<div class="row mt-4"><div class="col"><textarea rows="4" class="form-control" placeholder="Descripción" id="descriprograma">'+data[4]+'</textarea></div></div>';
        form+='<div class="row mt-4 justify-content-center"><input class="btn btn-info" name="imagenprograma" id="imagenprograma" type="file" /></div>';
        body.html(form);
        titulo.html('Editar Programa');
@@ -1256,7 +1256,7 @@ $(document).ready(function(){
         form+='<form><div class="row">';
        form+='<div class="col"><input value="'+data[0]+'" type="text" class="form-control" placeholder="Id"  id="idj" disabled></div><div class="col"><input value="'+data[1]+'" type="text" class="form-control" placeholder="Titulo"  id="titjuv" required><div class="invalid-feedback">Ingresa un Autor</div></div></div>';
        form+='<div class="row mt-4"><div class="col"><input value="'+data[2]+'" class="form-control" placeholder="Autor"  id="autjuv" required><div class="invalid-feedback">Ingresa un Autor</div></div><div class="col"><input value="'+data[3]+'" type="date" class="form-control" placeholder="fecha"  id="fechajuv" required><div class="invalid-feedback">Ingresa una Fecha</div></div></div></form>';
-       form+='<div class="row mt-4"><div class="col"><textarea rows="4" class="form-control" placeholder="Descrpicion" id="descripjuv">'+data[4]+'</textarea></div></div>';
+       form+='<div class="row mt-4"><div class="col"><textarea rows="4" class="form-control" placeholder="Descripción" id="descripjuv">'+data[4]+'</textarea></div></div>';
        form+='<div class="row mt-4 justify-content-center"><input class="btn btn-info" name="imagenjuv" id="imagenjuv" type="file" /></div>';
        body.html(form);
        titulo.html('Editar Juventud');
@@ -1283,7 +1283,7 @@ $(document).ready(function(){
         form+='<form><div class="row">';
        form+='<div class="col"><input value="'+data[0]+'" type="text" class="form-control" placeholder="Id"  id="ids" disabled></div><div class="col"><input type="text" value="'+data[1]+'" class="form-control" placeholder="Dependencia"  id="depename" required><div class="invalid-feedback">Ingresa una Dependencia</div></div></div>';
        form+='<div class="row mt-4"><div class="col"><input value="'+data[2]+'" type="text" class="form-control" placeholder="Director"  id="direc" required><div class="invalid-feedback">Ingresa un Director</div></div><div class="col"><input value="'+data[3]+'" type="text" class="form-control" placeholder="Url"  id="urls" required><div class="invalid-feedback">Ingresa una Direccion URL</div></div></div></form>';
-       form+='<div class="row mt-4"><div class="col"><textarea rows="4" class="form-control" placeholder="Descrpicion" id="descrip">'+data[4]+'</textarea></div></div>';
+       form+='<div class="row mt-4"><div class="col"><textarea rows="4" class="form-control" placeholder="Descripción" id="descrip">'+data[4]+'</textarea></div></div>';
        form+='<div class="row mt-4 justify-content-center"><input class="btn btn-info" name="imagens" id="imagens" type="file" /></div>';
        body.html(form);
        titulo.html('Editar Dependencias');
@@ -1310,7 +1310,7 @@ $(document).ready(function(){
         form+='<form><div class="row">';
        form+='<div class="col"><input value="'+data[0]+'" "type="text" class="form-control" placeholder="Id"  id="idnoti" disabled></div><div class="col"><input type="text" value="'+data[1]+'" class="form-control" placeholder="Titulo Noticia"  id="titnoti" required><div class="invalid-feedback">Ingresa un Titulo</div></div></div>';
        form+='<div class="row mt-4"><div class="col"><input value="'+data[2]+'" type="text" class="form-control" placeholder="Autor"  id="autonoti" required><div class="invalid-feedback">Ingresa un Autor</div></div><div class="col"><input value="'+data[3]+'" type="date" class="form-control"  id="fechanoti" required><div class="invalid-feedback">Ingresa una Fecha</div></div></div></form>';
-       form+='<div class="row mt-4"><div class="col"><textarea rows="4" class="form-control" placeholder="Descrpicion" id="descripnoti">'+data[4]+'</textarea></div></div>';
+       form+='<div class="row mt-4"><div class="col"><textarea rows="4" class="form-control" placeholder="Descripción" id="descripnoti">'+data[4]+'</textarea></div></div>';
        form+='<div class="row mt-4 justify-content-center"><input class="btn btn-info" name="imagenoti" id="imagenoti" type="file" /></div>';
        body.html(form);
        titulo.html('Editar Noticias Prueba');
@@ -1370,7 +1370,7 @@ $(document).ready(function(){
         form+='<form><div class="row">';
        form+='<div class="col"><input value="'+data[0]+'" type="text" class="form-control" name="idev" id="idev" disabled></div><div class="col"><input type="text" value="'+data[1]+'" class="form-control" placeholder="Titulo Evento"  id="titev" required><div class="invalid-feedback">Ingresa un Titulo</div></div></div>';
        form+='<div class="row mt-4"><div class="col"><input value="'+data[2]+'" type="text" class="form-control" placeholder="Dependencia"  id="depeve" required><div class="invalid-feedback">Ingresa una Dependencia</div></div><div class="col"><input value="'+data[3]+'" type="text" class="form-control" placeholder="Lugar"  id="lugar" required><div class="invalid-feedback">Ingresa un Lugar</div></div></div></form>';
-       form+='<div class="row mt-4"><div class="col"><textarea rows="4" class="form-control" placeholder="Descrpicion" id="descripeven">'+data[4]+'</textarea></div></div>';
+       form+='<div class="row mt-4"><div class="col"><textarea rows="4" class="form-control" placeholder="Descripción" id="descripeven">'+data[4]+'</textarea></div></div>';
        form+='<div class="row mt-4 justify-content-center"><input class="btn btn-info" name="imageneve" id="imageneve" type="file" /></div>';
        body.html(form);
        titulo.html('Editar Evento');
@@ -1448,6 +1448,10 @@ $(document).ready(function(){
         var mifecha = fecha.toLocaleDateString("es-ES", options);
         $("#lafecha").text(mifecha);
             }
+</script>
+<script>
+</script>
+<script>
 </script>
 </body>
 </html>

@@ -24,7 +24,6 @@
                     <td class="align-middle">{{$school->escolaridad}}</td>
                     <td class="text-center">
                         <a id="borrar" data-id="{{$school->id}}" href="#" data-toggle="modal" data-target="#msjeli"><button type="button" class="btn btn-danger btn-sm eliminar">Elminar</button></a>
-                        <a id="editescuela" data-id="{{$school->id}}"><button type="button" class="btn btn-primary btn-sm">Editar</button></a>
                     </td>
                 </tr>
                 @endforeach
@@ -34,6 +33,6 @@
 </div>
 </div>
 @else
-<div style="text-align:center; color:red;"><h4>No hay Usuarios registrados</h4></div>
+<div style="text-align:center; color:red;"><h4>No hay Escuelas registrados</h4></div>
 @endif
 @endsection

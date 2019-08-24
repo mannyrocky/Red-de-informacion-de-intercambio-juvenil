@@ -45,7 +45,7 @@ class NoticiaController extends Controller
         $titulo = $request->titulonoti;
         $autor = $request->autornoti;
         $fecha = $request->fechanoti;
-        $descripcion = $request->descripnoti;
+        $descripcion = $request->Descripcionnot;
         $noticias->titulonoti = $titulo;
         $noticias->autornoti = $autor;
         $noticias->fechanoti = $fecha;
